@@ -1,181 +1,209 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Star, Users, Award, BookOpen } from "lucide-react";
-import MediaSlider from "./MediaSlider";
+import { User, Mail, Phone, Award, ShieldCheck, Briefcase, CreditCard } from "lucide-react";
 
-const Hero = () => {
-  const floatingIcons = [
-    { icon: BookOpen, delay: 0, position: "top-20 left-10" },
-    { icon: Users, delay: 0.5, position: "top-32 right-20" },
-    { icon: Award, delay: 1, position: "bottom-32 left-20" },
-    { icon: Star, delay: 1.5, position: "bottom-20 right-10" },
-  ];
- 
-  // Typing animation logic
-  const fullText = "Future Through Innovation";
-  const [displayedText, setDisplayedText] = useState("");
-  const [cursorVisible, setCursorVisible] = useState(true);
+// A simpler, more elegant background gradient.
+const HeroBackground = () => (
+    <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{
+            backgroundImage: `linear-gradient(120deg, hsl(239, 41%, 44%) 0%, hsl(286, 31%, 49%) 50%, hsl(20, 74%, 66%) 100%)`,
+        }}
+    />
+);
 
-useEffect(() => {
-  let index = 0;
+// Client logos, adapted for the new background.
+const ClientLogo = ({ name }) => (
+    <motion.div
+        variants={itemVariants}
+        className="text-gray-100 font-semibold text-xl sm:text-2xl opacity-70 hover:opacity-100 transition-opacity duration-300 drop-shadow-sm"
+    >
+        {name}
+    </motion.div>
+);
 
-  const typingInterval = setInterval(() => {
-    setDisplayedText((prev) => {
-      const nextChar = fullText.charAt(index);
-      index++;
-
-      if (index > fullText.length) {
-        clearInterval(typingInterval);
-        return prev;
-      }
-
-      return prev + nextChar;
-    });
-  }, 100);
-
-  return () => clearInterval(typingInterval);
-}, []);
-
-
-  useEffect(() => {
-    const cursorBlink = setInterval(() => {
-      setCursorVisible((prev) => !prev);
-    }, 500);
-    return () => clearInterval(cursorBlink);
-  }, []);
-
-  return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-hero opacity-90" />
-      <div className="absolute inset-0 bg-gradient-mesh" />
-
-      {floatingIcons.map((item, index) => (
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 0.3, scale: 1 }}
-          transition={{ delay: item.delay, duration: 0.8 }}
-          className={`absolute ${item.position} hidden lg:block`}
-        >
-          <motion.div
-            animate={{ y: [-20, 20, -20] }}
-            transition={{ duration: 4, repeat: Infinity, delay: item.delay }}
-            className="p-4 bg-white/10 backdrop-blur-sm rounded-full"
-          >
-            <item.icon className="w-8 h-8 text-white" />
-          </motion.div>
-        </motion.div>
-      ))}
-
-      <div className="container mx-auto px-4 sm:px-6 md:px-10 lg:px-16 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-white"
-          >
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6"
-            >
-              <Star className="w-4 h-4 text-yellow-400" />
-              <span className="text-sm font-medium">ISO 9001:2015 Certified</span>
-            </motion.div>
-
-           <motion.h1
-  initial={{ opacity: 0, y: 30 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ delay: 0.3 }}
-  className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-6 leading-snug sm:leading-tight break-words min-h-[5.5rem] sm:min-h-[6.5rem] md:min-h-[7.5rem]"
->
-  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-orange-300 whitespace-pre-wrap break-words">                 
-    {displayedText}
-    <span className="ml-1">{cursorVisible ? "|" : " "}</span>
-  </span>
-</motion.h1>
-
-
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="text-xl mb-8 text-white/90 leading-relaxed"
-            >
-              Transform your career with cutting-edge IT courses and guaranteed placement programs.
-              Join thousands of successful professionals who started their journey with QUASTECH.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="flex flex-col sm:flex-row gap-4 mb-8"
-            >
-              <Button variant="glass" size="lg" className="group">
-                Explore Courses
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button variant="outline" size="lg" className="border-white/30 text-white hover:bg-white hover:text-primary">
-                Watch Demo
-              </Button>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="grid grid-cols-3 gap-6"
-            >
-              <div className="text-center">
-                <div className="text-3xl font-bold text-yellow-300">5000+</div>
-                <div className="text-sm text-white/80">Students Placed</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-yellow-300">50+</div>
-                <div className="text-sm text-white/80">Expert Trainers</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-yellow-300">95%</div>
-                <div className="text-sm text-white/80">Success Rate</div>
-              </div>
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative"
-          >
-            <MediaSlider />
-          </motion.div>
-        </div>
-      </div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center"
-        >
-          <motion.div
-            animate={{ y: [0, 16, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="w-1 h-3 bg-white/70 rounded-full mt-2"
-          />
-        </motion.div>
-      </motion.div>
-    </section>
-  );
+// --- Framer Motion Animation Variants ---
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+    },
 };
 
-export default Hero;
+const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 100 } },
+};
+
+// The main Hero component with a simplified design.
+const Hero = () => {
+    // Typing animation logic remains the same.
+    const fullText = "Trusted and Renowned\nTraining Institute.";
+    const [displayedText, setDisplayedText] = useState("");
+    const [isTypingComplete, setIsTypingComplete] = useState(false);
+
+    useEffect(() => {
+        let index = 0;
+        const typingInterval = setInterval(() => {
+            if (index < fullText.length) {
+                setDisplayedText((prev) => prev + fullText.charAt(index));
+                index++;
+            } else {
+                clearInterval(typingInterval);
+                setIsTypingComplete(true);
+            }
+        }, 70);
+        return () => clearInterval(typingInterval);
+    }, [fullText]);
+
+    const [cursorVisible, setCursorVisible] = useState(true);
+    useEffect(() => {
+        if (!isTypingComplete) return;
+        const cursorBlink = setInterval(() => setCursorVisible((prev) => !prev), 500);
+        return () => clearInterval(cursorBlink);
+    }, [isTypingComplete]);
+
+    const features = [
+        { name: "100% Placement Assistance", icon: Briefcase },
+        { name: "ISO 9001:2015 Certified", icon: ShieldCheck },
+        { name: "Industry Expert Trainers", icon: Award },
+        { name: "Flexible EMI Options", icon: CreditCard },
+    ];
+
+    return (
+        <section id="home" className="relative w-full py-16 sm:py-24 lg:py-28 overflow-hidden">
+            <HeroBackground />
+
+            <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="grid lg:grid-cols-5 gap-x-16 gap-y-12 items-center">
+                    
+                    {/* Left Column: No background panel, content sits directly on the gradient. */}
+                    <motion.div
+                        initial="hidden"
+                        animate="visible"
+                        variants={containerVariants}
+                        className="lg:col-span-3 text-center lg:text-left"
+                    >
+                        <motion.h1
+                            variants={itemVariants}
+                            className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-8 leading-tight tracking-tight drop-shadow-md"
+                        >
+                            <span className="whitespace-pre-wrap">
+                                {displayedText}
+                                <span className={`transition-opacity duration-200 ${!isTypingComplete || cursorVisible ? 'opacity-100' : 'opacity-0'}`}>
+                                    <span className="text-orange-300">|</span>
+                                </span>
+                            </span>
+                        </motion.h1>
+
+                        <motion.div
+                            variants={containerVariants}
+                            className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10 max-w-2xl mx-auto lg:mx-0"
+                        >
+                            {features.map((feature) => (
+                                <motion.div
+                                    key={feature.name}
+                                    variants={itemVariants}
+                                    className="flex items-center gap-3 bg-white/10 rounded-lg p-3 drop-shadow-sm"
+                                >
+                                    <feature.icon className="w-6 h-6 text-orange-300 flex-shrink-0" />
+                                    <span className="text-gray-200 font-medium text-sm sm:text-base">{feature.name}</span>
+                                </motion.div>
+                            ))}
+                        </motion.div>
+
+                        <motion.div
+                            variants={itemVariants}
+                            className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+                        >
+                            <motion.button
+                                whileHover={{ scale: 1.05, y: -2, boxShadow: '0 10px 20px -5px rgba(251, 146, 60, 0.4)' }}
+                                whileTap={{ scale: 0.98 }}
+                                className="group bg-orange-500 text-white font-semibold rounded-lg px-8 py-3 hover:bg-orange-600 transition-colors duration-300 shadow-lg shadow-orange-500/30"
+                            >
+                                Download Brochure
+                            </motion.button>
+                            <motion.button
+                                whileHover={{ scale: 1.05, y: -2 }}
+                                whileTap={{ scale: 0.98 }}
+                                className="group bg-black/20 border border-white/50 text-white font-semibold rounded-lg px-8 py-3 hover:bg-black/30 transition-colors duration-300"
+                            >
+                                Know More
+                            </motion.button>
+                        </motion.div>
+                    </motion.div>
+
+                    {/* Right Column: Form also sits directly on the gradient, no panel. */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+                        className="lg:col-span-2"
+                    >
+                        <div className="relative z-10">
+                            <h3 className="text-2xl font-bold text-center text-white mb-6 drop-shadow-md">Request a Callback</h3>
+                            <form className="space-y-5">
+                                {[
+                                    { id: 'name', type: 'text', placeholder: 'Your Name', icon: User, label: 'Full Name' },
+                                    { id: 'email', type: 'email', placeholder: 'e.g., name@example.com', icon: Mail, label: 'Email Address' },
+                                    { id: 'mobile', type: 'tel', placeholder: '10-digit Mobile Number', icon: Phone, label: 'Mobile Number' },
+                                ].map(field => (
+                                    <div key={field.id}>
+                                        <label htmlFor={field.id} className="block text-sm font-medium text-gray-200 mb-1.5 drop-shadow-sm">{field.label}</label>
+                                        <div className="relative">
+                                            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5">
+                                                <field.icon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                                            </div>
+                                            <input
+                                                type={field.type}
+                                                id={field.id}
+                                                className="block w-full rounded-lg bg-black/30 border-white/20 text-gray-200 placeholder-gray-400 pl-11 shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm py-3 transition-colors duration-200"
+                                                placeholder={field.placeholder}
+                                            />
+                                        </div>
+                                    </div>
+                                ))}
+                                <motion.button
+                                    whileHover={{ scale: 1.03 }}
+                                    whileTap={{ scale: 0.98 }}
+                                    type="submit"
+                                    className="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-base font-medium text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-all duration-300"
+                                >
+                                    Submit
+                                </motion.button>
+                            </form>
+                        </div>
+                    </motion.div>
+                </div>
+
+                <motion.div
+                    initial="hidden"
+                    animate="visible"
+                    variants={containerVariants}
+                    className="mt-28"
+                >
+                    <p className="text-center text-gray-200/80 font-semibold mb-8 drop-shadow-sm">Trusted by leading companies</p>
+                    <div className="flex flex-wrap justify-center items-center gap-x-10 sm:gap-x-16 gap-y-8">
+                        <ClientLogo name="AQM" />
+                        <ClientLogo name="aurionpro" />
+                        <ClientLogo name="CCAvenue" />
+                        <ClientLogo name="CRMNEXT" />
+                    </div>
+                </motion.div>
+            </div>
+        </section>
+    );
+};
+
+// Main App component to render the page
+const App = () => {
+    return (
+        <main className="font-sans antialiased bg-gray-900">
+            <Hero />
+        </main>
+    );
+}
+
+export default App;

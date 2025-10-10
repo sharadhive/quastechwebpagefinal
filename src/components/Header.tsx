@@ -151,7 +151,7 @@ const Header = () => {
         initial={{ opacity: 0, y: -100 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="sticky top-0 z-50 bg-background/98 backdrop-blur-xl border-b border-border/50 shadow-xl"
+        className="sticky top-0 z-50 bg-white border-b border-border/50 shadow-xl"
       >
         <div className="container mx-auto px-6">
           <div className="flex items-center justify-between h-24">
@@ -181,13 +181,12 @@ const Header = () => {
                     ref={dropdownRef}
                   >
                    <motion.button
-  initial={{ opacity: 0, y: -20 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ delay: index * 0.1 }}
-  onClick={() => handleDropdownToggle(courseCategories[0].name)} // ✅ Only click
-  className="text-foreground hover:text-primary font-semibold text-lg flex items-center gap-2 transition-all duration-300 relative group py-2"
->
-
+                      initial={{ opacity: 0, y: -20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      onClick={() => handleDropdownToggle(courseCategories[0].name)} // ✅ Only click
+                      className="text-foreground hover:text-primary font-semibold text-lg flex items-center gap-2 transition-all duration-300 relative group py-2"
+                    >
                       {item.name}
                       <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${activeDropdown ? 'rotate-180' : ''}`} />
                       <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-primary to-primary-glow scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>

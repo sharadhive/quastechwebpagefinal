@@ -52,16 +52,16 @@ const Footer = () => {
     { icon: Youtube, href: "#", color: "hover:text-red-600" }
   ];
 
-  const stats = [
-    { icon: Users, value: "5000+", label: "Students Placed" },
-    { icon: Award, value: "95%", label: "Success Rate" },
-    { icon: Globe, value: "500+", label: "Partner Companies" }
-  ];
+  // const stats = [
+  //   { icon: Users, value: "5000+", label: "Students Placed" },
+  //   { icon: Award, value: "95%", label: "Success Rate" },
+  //   { icon: Globe, value: "500+", label: "Partner Companies" }
+  // ];
 
   return (
     <footer className="bg-foreground text-background">
       {/* Newsletter Section */}
-      <div className="border-b border-background/20">
+      {/* <div className="border-b border-background/20">
         <div className="container mx-auto px-4 py-12">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -88,7 +88,7 @@ const Footer = () => {
             </div>
           </motion.div>
         </div>
-      </div>
+      </div> */}
 
       {/* Main Footer Content */}
       <div className="container mx-auto px-4 py-16">
@@ -215,7 +215,7 @@ const Footer = () => {
         </div>
 
         {/* Stats Section */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
@@ -230,7 +230,7 @@ const Footer = () => {
               </div>
             ))}
           </div>
-        </motion.div>
+        </motion.div> */}
       </div>
 
       {/* Bottom Bar */}

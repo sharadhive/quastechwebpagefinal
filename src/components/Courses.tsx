@@ -25,10 +25,10 @@ const Courses = () => {
       rating: 4.9,
       price: "₹45,000",
       features: [
-        "/public/assets/images/coursesicons/bootstrap.jpg",
-        "/public/assets/images/coursesicons/css.jpg",
-        "/public/assets/images/coursesicons/django.jpg",
-        "/public/assets/images/coursesicons/html.jpg",
+        "/coursesicons/bootstrap.jpg",
+        "/coursesicons/css.jpg",
+        "/coursesicons/django.jpg",
+        "/coursesicons/html.jpg",
       ],
       color: "from-blue-500 to-purple-600"
     },
