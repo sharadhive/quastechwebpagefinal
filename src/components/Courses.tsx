@@ -41,10 +41,10 @@ const Courses = () => {
       rating: 4.8,
       price: "₹55,000",
       features: [
-        "/icons/python.png",
-        "/icons/r-lang.png",
-        "/icons/tensorflow.png",
-        "/icons/project.png"
+        "/coursesicons/python.jpg",
+        "/coursesicons/mysql.jpg",
+        "/coursesicons/django.jpg",
+        "/coursesicons/html.jpg"
       ],
       color: "from-green-500 to-teal-600"
     },
@@ -57,10 +57,10 @@ const Courses = () => {
       rating: 4.7,
       price: "₹25,000",
       features: [
-        "/icons/seo.png",
-        "/icons/ads.png",
-        "/icons/analytics.png",
-        "/icons/certified.png"
+        "/coursesicons/html.jpg",
+        "/coursesicons/css.jpg",
+        "/coursesicons/jquery.jpg",
+        "/coursesicons/bootstrap.jpg"
       ],
       color: "from-orange-500 to-red-600"
     },
@@ -73,10 +73,10 @@ const Courses = () => {
       rating: 4.9,
       price: "₹40,000",
       features: [
-        "/icons/react-native.png",
-        "/icons/flutter.png",
-        "/icons/store.png",
-        "/icons/uiux.png"
+        "/coursesicons/html.jpg",
+        "/coursesicons/css.jpg",
+        "/coursesicons/jquery.jpg",
+        "/coursesicons/bootstrap.jpg"
       ],
       color: "from-purple-500 to-pink-600"
     },
@@ -89,10 +89,10 @@ const Courses = () => {
       rating: 4.9,
       price: "₹65,000",
       features: [
-        "/icons/neural.png",
-        "/icons/openai.png",
-        "/icons/research.png",
-        "/icons/mentorship.png"
+        "/coursesicons/python.jpg",
+        "/coursesicons/django.jpg",
+        "/coursesicons/mysql.jpg",
+        "/coursesicons/html.jpg"
       ],
       color: "from-indigo-500 to-blue-600"
     },
@@ -105,10 +105,10 @@ const Courses = () => {
       rating: 4.8,
       price: "₹50,000",
       features: [
-        "/icons/hacking.png",
-        "/icons/audit.png",
-        "/icons/certification.png",
-        "/icons/lab.png"
+        "/coursesicons/html.jpg",
+        "/coursesicons/css.jpg",
+        "/coursesicons/jquery.jpg",
+        "/coursesicons/bootstrap.jpg"
       ],
       color: "from-red-500 to-orange-600"
     }
@@ -197,12 +197,8 @@ const Courses = () => {
                     </div>
                   </div>
 
-                  {/* Price & CTA */}
-                  <div className="flex items-center justify-between pt-4 border-t">
-                    <div>
-                      <div className="text-2xl font-bold text-primary">{course.price}</div>
-                      <div className="text-sm text-muted-foreground">Complete course</div>
-                    </div>
+                  {/* CTA only (price removed per requirement) */}
+                  <div className="flex items-center justify-end pt-4 border-t">
                     <Button
                       variant="default"
                       size="sm"

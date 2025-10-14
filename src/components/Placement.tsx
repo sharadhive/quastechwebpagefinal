@@ -139,9 +139,7 @@ const Subtitle = ({ text }: { text: string }) => (
 
 // --- Main Placement Component ---
 const Placement = () => {
-  return (
-    <>
-      <style jsx global>{`
+  const partnersStyles = `
         .swiper-button-next,
         .swiper-button-prev {
           color: #3154a6 !important;
@@ -156,24 +154,19 @@ const Placement = () => {
         }
 
         @keyframes scroll-vertical {
-          0% {
-            transform: translateY(0);
-          }
-          100% {
-            transform: translateY(calc(-100% + 420px));
-          }
+          0% { transform: translateY(0); }
+          100% { transform: translateY(calc(-100% + 420px)); }
         }
 
-        .animate-scroll-vertical {
-          animation: scroll-vertical 40s linear infinite;
-        }
+        .animate-scroll-vertical { animation: scroll-vertical 20s linear infinite; will-change: transform; }
+        .group:hover .animate-scroll-vertical { animation-duration: 45s; }
+      `;
 
-        .group:hover .animate-scroll-vertical {
-          animation-duration: 70s; /* slow down on hover */
-        }
-      `}</style>
+  return (
+    <>
+      <style dangerouslySetInnerHTML={{ __html: partnersStyles }} />
 
-      <section className="py-16 md:py-24 bg-gradient-to-br from-slate-50 via-white to-blue-50">
+      <section id="placement" className="py-16 md:py-24 bg-gradient-to-br from-slate-50 via-white to-blue-50">
         <div className="container mx-auto px-4 max-w-7xl">
           <SectionHeading
             title="Our Placement Success"
@@ -283,21 +276,31 @@ const Placement = () => {
           {/* 🤝 Hiring Partners */}
           <div className="group">
             <Subtitle text="Our Esteemed Hiring Partners" />
-            <div className="relative h-[420px] overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)]">
-              <motion.div className="flex flex-col gap-8 animate-scroll-vertical">
-                {partners.map((p, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center justify-center p-4 rounded-xl bg-white/70 border border-slate-200/80 shadow-sm h-28 grayscale hover:grayscale-0 transition-all duration-300"
-                  >
-                    <img
-                      src={p.logo}
-                      alt={p.name}
-                      className="max-h-20 object-contain"
-                    />
-                  </div>
-                ))}
-              </motion.div>
+            <div className="relative h-[420px] overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_15%,black_85%,transparent)]">
+              <div className="animate-scroll-vertical">
+                {/* One full grid pass */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 md:gap-8 px-2">
+                  {partners.map((p, i) => (
+                    <div
+                      key={`partners-1-${i}`}
+                      className="flex items-center justify-center rounded-2xl bg-white/80 border border-slate-200/70 shadow-sm h-28 md:h-32 px-6 grayscale hover:grayscale-0 transition-all duration-300"
+                    >
+                      <img src={p.logo} alt={p.name} className="max-h-16 md:max-h-20 object-contain" />
+                    </div>
+                  ))}
+                </div>
+                {/* Duplicate for seamless loop */}
+                <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 md:gap-8 px-2">
+                  {partners.map((p, i) => (
+                    <div
+                      key={`partners-2-${i}`}
+                      className="flex items-center justify-center rounded-2xl bg-white/80 border border-slate-200/70 shadow-sm h-28 md:h-32 px-6 grayscale hover:grayscale-0 transition-all duration-300"
+                    >
+                      <img src={p.logo} alt={p.name} className="max-h-16 md:max-h-20 object-contain" />
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
