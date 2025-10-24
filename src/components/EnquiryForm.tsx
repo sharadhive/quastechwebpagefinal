@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Phone, Mail, MapPin, Send } from "lucide-react";
+import { Phone, Mail, MapPin, Send, User, BookOpen } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const EnquiryForm = () => {
@@ -117,70 +117,105 @@ const EnquiryForm = () => {
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <motion.div whileFocus={{ scale: 1.02 }}>
-                      <Input
-                        placeholder="Full Name *"
-                        value={formData.name}
-                        onChange={(e) => handleChange("name", e.target.value)}
-                        required
-                        className="h-12"
-                      />
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <motion.div whileFocus={{ scale: 1.02 }} className="space-y-2">
+                      <label className="block text-sm font-medium text-foreground">
+                        Name: *
+                      </label>
+                      <div className="relative">
+                        <div className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 bg-muted/30 rounded-full flex items-center justify-center">
+                          <User className="w-3 h-3 text-muted-foreground" />
+                        </div>
+                        <Input
+                          placeholder="Your full name"
+                          value={formData.name}
+                          onChange={(e) => handleChange("name", e.target.value)}
+                          required
+                          className="h-12 pl-12 bg-muted/20 border-muted/30 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary"
+                        />
+                      </div>
                     </motion.div>
-                    <motion.div whileFocus={{ scale: 1.02 }}>
-                      <Input
-                        type="email"
-                        placeholder="Email Address *"
-                        value={formData.email}
-                        onChange={(e) => handleChange("email", e.target.value)}
-                        required
-                        className="h-12"
-                      />
-                    </motion.div>
-                  </div>
-
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <motion.div whileFocus={{ scale: 1.02 }}>
-                      <Input
-                        type="tel"
-                        placeholder="Phone Number *"
-                        value={formData.phone}
-                        onChange={(e) => handleChange("phone", e.target.value)}
-                        required
-                        className="h-12"
-                      />
-                    </motion.div>
-                    <motion.div whileFocus={{ scale: 1.02 }}>
-                      <Select onValueChange={(value) => handleChange("course", value)}>
-                        <SelectTrigger className="h-12">
-                          <SelectValue placeholder="Select Course" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="web-development">Full Stack Web Development</SelectItem>
-                          <SelectItem value="data-science">Data Science & Analytics</SelectItem>
-                          <SelectItem value="mobile-development">Mobile App Development</SelectItem>
-                          <SelectItem value="cloud-computing">Cloud Computing & DevOps</SelectItem>
-                          <SelectItem value="artificial-intelligence">Artificial Intelligence & ML</SelectItem>
-                          <SelectItem value="cybersecurity">Cybersecurity & Ethical Hacking</SelectItem>
-                        </SelectContent>
-                      </Select>
+                    <motion.div whileFocus={{ scale: 1.02 }} className="space-y-2">
+                      <label className="block text-sm font-medium text-foreground">
+                        E-mail: *
+                      </label>
+                      <div className="relative">
+                        <div className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 bg-muted/30 rounded-full flex items-center justify-center">
+                          <Mail className="w-3 h-3 text-muted-foreground" />
+                        </div>
+                        <Input
+                          type="email"
+                          placeholder="Email address"
+                          value={formData.email}
+                          onChange={(e) => handleChange("email", e.target.value)}
+                          required
+                          className="h-12 pl-12 bg-muted/20 border-muted/30 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary"
+                        />
+                      </div>
                     </motion.div>
                   </div>
 
-                  <motion.div whileFocus={{ scale: 1.02 }}>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <motion.div whileFocus={{ scale: 1.02 }} className="space-y-2">
+                      <label className="block text-sm font-medium text-foreground">
+                        Phone: *
+                      </label>
+                      <div className="relative">
+                        <div className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 bg-muted/30 rounded-full flex items-center justify-center">
+                          <Phone className="w-3 h-3 text-muted-foreground" />
+                        </div>
+                        <Input
+                          type="tel"
+                          placeholder="Mobile number"
+                          value={formData.phone}
+                          onChange={(e) => handleChange("phone", e.target.value)}
+                          required
+                          className="h-12 pl-12 bg-muted/20 border-muted/30 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary"
+                        />
+                      </div>
+                    </motion.div>
+                    <motion.div whileFocus={{ scale: 1.02 }} className="space-y-2">
+                      <label className="block text-sm font-medium text-foreground">
+                        Course:
+                      </label>
+                      <div className="relative">
+                        <div className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 bg-muted/30 rounded-full flex items-center justify-center">
+                          <BookOpen className="w-3 h-3 text-muted-foreground" />
+                        </div>
+                        <Select onValueChange={(value) => handleChange("course", value)}>
+                          <SelectTrigger className="h-12 pl-12 bg-muted/20 border-muted/30 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary">
+                            <SelectValue placeholder="Select Course" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="web-development">Full Stack Web Development</SelectItem>
+                            <SelectItem value="data-science">Data Science & Analytics</SelectItem>
+                            <SelectItem value="mobile-development">Mobile App Development</SelectItem>
+                            <SelectItem value="cloud-computing">Cloud Computing & DevOps</SelectItem>
+                            <SelectItem value="artificial-intelligence">Artificial Intelligence & ML</SelectItem>
+                            <SelectItem value="cybersecurity">Cybersecurity & Ethical Hacking</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </motion.div>
+                  </div>
+
+                  <motion.div whileFocus={{ scale: 1.02 }} className="space-y-2">
+                    <label className="block text-sm font-medium text-foreground">
+                      Message:
+                    </label>
                     <Textarea
                       placeholder="Tell us about your career goals and any specific questions..."
                       value={formData.message}
                       onChange={(e) => handleChange("message", e.target.value)}
                       rows={4}
-                      className="resize-none"
+                      className="resize-none bg-muted/20 border-muted/30 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary"
                     />
                   </motion.div>
 
                   <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                     <Button 
                       type="submit" 
-                      className="w-full h-12 text-lg font-semibold bg-gradient-hero hover:opacity-90 transition-opacity"
+                      className="w-full h-12 text-lg font-bold bg-gradient-primary hover:shadow-xl transition-all duration-300"
                     >
                       <Send className="w-5 h-5 mr-2" />
                       Send Enquiry

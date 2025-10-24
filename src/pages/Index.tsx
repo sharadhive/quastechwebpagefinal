@@ -11,7 +11,6 @@ import AuthModal from "@/components/AuthModal";
 import EnquiryForm from "@/components/EnquiryForm";
 import BranchSection from "@/components/BranchSection";
 import FAQSection from "@/components/FAQSection";
-
 const Index = () => {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
 
@@ -20,6 +19,7 @@ const Index = () => {
       
       <Header />
       <Hero />
+      {/* <RobotScene /> */}
       <Courses />
       <Placement />
       <Reviews />

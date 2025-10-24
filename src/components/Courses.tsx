@@ -115,8 +115,8 @@ const Courses = () => {
   ];
 
   return (
-    <section id="courses" className="py-20 bg-muted/30">
-      <div className="container mx-auto px-4">
+    <section id="courses" className="section-padding bg-gradient-mesh">
+      <div className="container mx-auto container-padding">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -124,15 +124,15 @@ const Courses = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full mb-4">
-            <Code className="w-4 h-4 text-primary" />
-            <span className="text-sm font-medium text-primary">Premium Courses</span>
+          <div className="inline-flex items-center gap-2 bg-primary/10 px-6 py-3 rounded-full mb-6">
+            <Code className="w-5 h-5 text-primary" />
+            <span className="text-sm font-semibold text-primary">Premium Courses</span>
           </div>
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+          <h2 className="heading-lg mb-6">
             Transform Your Career with
-            <span className="block text-primary">Industry-Ready Skills</span>
+            <span className="block text-gradient-primary">Industry-Ready Skills</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lead max-w-3xl mx-auto">
             Choose from our comprehensive range of courses designed by industry experts 
             with hands-on projects and guaranteed placement assistance.
           </p>
@@ -146,66 +146,66 @@ const Courses = () => {
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ y: -10 }}
+              whileHover={{ y: -8 }}
               className="group"
             >
-              <Card className="h-full overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-card/80 backdrop-blur-sm">
-                <div className={`h-2 bg-gradient-to-r ${course.color}`} />
+              <Card className="h-full overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-500 card-professional hover-lift">
+                <div className={`h-3 bg-gradient-to-r ${course.color}`} />
 
-                <CardContent className="p-6">
+                <CardContent className="p-8">
                   {/* Icon & Title */}
-                  <div className="mb-6">
-                    <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${course.color} p-4 mb-4`}>
+                  <div className="mb-8">
+                    <div className={`w-20 h-20 rounded-2xl bg-gradient-to-r ${course.color} p-5 mb-6 shadow-lg`}>
                       <course.icon className="w-full h-full text-white" />
                     </div>
-                    <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+                    <h3 className="heading-sm mb-3 group-hover:text-primary transition-colors">
                       {course.title}
                     </h3>
-                    <p className="text-muted-foreground">
+                    <p className="text-muted-foreground leading-relaxed">
                       {course.description}
                     </p>
                   </div>
 
                   {/* Stats */}
-                  <div className="grid grid-cols-3 gap-4 mb-6">
-                    <div className="text-center">
-                      <Clock className="w-5 h-5 text-primary mx-auto mb-1" />
-                      <div className="text-sm font-medium">{course.duration}</div>
+                  <div className="grid grid-cols-3 gap-4 mb-8">
+                    <div className="text-center p-3 rounded-lg bg-muted/50">
+                      <Clock className="w-5 h-5 text-primary mx-auto mb-2" />
+                      <div className="text-sm font-semibold">{course.duration}</div>
                     </div>
-                    <div className="text-center">
-                      <Users className="w-5 h-5 text-primary mx-auto mb-1" />
-                      <div className="text-sm font-medium">{course.students}</div>
+                    <div className="text-center p-3 rounded-lg bg-muted/50">
+                      <Users className="w-5 h-5 text-primary mx-auto mb-2" />
+                      <div className="text-sm font-semibold">{course.students}</div>
                     </div>
-                    <div className="text-center">
-                      <Star className="w-5 h-5 text-yellow-500 mx-auto mb-1" />
-                      <div className="text-sm font-medium">{course.rating}</div>
+                    <div className="text-center p-3 rounded-lg bg-muted/50">
+                      <Star className="w-5 h-5 text-yellow-500 mx-auto mb-2" />
+                      <div className="text-sm font-semibold">{course.rating}</div>
                     </div>
                   </div>
 
                   {/* Features as logos */}
-                  <div className="mb-6">
-                    <h4 className="font-semibold mb-3">What you'll learn:</h4>
-                    <div className="grid grid-cols-4 gap-4 items-center">
+                  <div className="mb-8">
+                    <h4 className="font-semibold mb-4 text-foreground">What you'll learn:</h4>
+                    <div className="grid grid-cols-4 gap-3 items-center">
                       {course.features.map((imgSrc, idx) => (
                         <img
                           key={idx}
                           src={imgSrc}
                           alt="Feature"
-                          className="w-10 h-10 object-contain mx-auto hover:scale-110 transition-transform"
+                          className="w-12 h-12 object-contain mx-auto hover:scale-110 transition-transform rounded-lg bg-muted/30 p-2"
                         />
                       ))}
                     </div>
                   </div>
 
-                  {/* CTA only (price removed per requirement) */}
-                  <div className="flex items-center justify-end pt-4 border-t">
+                  {/* CTA */}
+                  <div className="flex items-center justify-center pt-6 border-t border-border">
                     <Button
                       variant="default"
-                      size="sm"
-                      className="group-hover:scale-105 transition-transform"
+                      size="lg"
+                      className="group-hover:scale-105 transition-transform w-full"
                     >
                       Enroll Now
-                      <ArrowRight className="w-4 h-4 ml-2" />
+                      <ArrowRight className="w-5 h-5 ml-2" />
                     </Button>
                   </div>
                 </CardContent>
@@ -219,20 +219,20 @@ const Courses = () => {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-center mt-16"
+          className="text-center mt-20"
         >
-          <div className="bg-gradient-primary rounded-3xl p-8 lg:p-12 text-white">
-            <h3 className="text-3xl font-bold mb-4">
+          <div className="bg-gradient-hero rounded-3xl p-12 lg:p-16 text-white shadow-xl">
+            <h3 className="heading-md mb-6">
               Not sure which course is right for you?
             </h3>
-            <p className="text-xl mb-8 text-white/90">
+            <p className="text-xl mb-10 text-white/90 max-w-2xl mx-auto">
               Talk to our career counselors and get personalized course recommendations
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="glass" size="lg">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <Button variant="glass" size="xl" className="text-lg font-bold">
                 Free Career Counseling
               </Button>
-              <Button variant="outline" size="lg" className="border-white/30 text-white hover:bg-white hover:text-primary">
+              <Button variant="outline" size="xl" className="border-white/30 text-white hover:bg-white hover:text-primary text-lg font-bold">
                 Download Brochure
               </Button>
             </div>

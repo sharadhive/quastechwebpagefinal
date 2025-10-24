@@ -12,12 +12,15 @@ import {
   BookOpen,
   GraduationCap,
 } from "lucide-react";
+import CoursesMegaMenu from "@/components/CoursesMegaMenu";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [isMobile, setIsMobile] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const [showCoursesMenu, setShowCoursesMenu] = useState(false);
+  const [activeCourseType, setActiveCourseType] = useState<"it" | "non-it" | "eclass" | "degree" | null>(null);
 
   useEffect(() => {
     const checkIsMobile = () => {
@@ -41,66 +44,11 @@ const Header = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const courseCategories = [
-    {
-      name: "IT Placement Courses",
-      icon: <BookOpen className="w-5 h-5" />,
-      courses: [
-        { name: "Software Testing", href: "#software-testing" },
-        { name: "Fullstack Development", href: "#fullstack" },
-        { name: "Software Development", href: "#software-dev" },
-        { name: "Front End Development", href: "#frontend" },
-        { name: "Data Science With Python", href: "#data-science" },
-        { name: "BIG Data Engineering", href: "#big-data" },
-        { name: "RPA", href: "#rpa" },
-      ],
-      featured: [
-        { name: "Software Testing Course", href: "#software-testing-course", icon: "📘" },
-        { name: "Manual Testing", href: "#manual-testing", icon: "📗" },
-        { name: "Selenium Automation Testing", href: "#selenium", icon: "📙" },
-        { name: "ISTQB Certification", href: "#istqb", icon: "🏆" },
-      ],
-    },
-    {
-      name: "Non-IT Placement Courses",
-      icon: <Globe className="w-5 h-5" />,
-      courses: [
-        { name: "Digital Marketing", href: "#digital-marketing" },
-        { name: "Content Writing", href: "#content-writing" },
-        { name: "Graphic Design", href: "#graphic-design" },
-        { name: "HR Management", href: "#hr-management" },
-        { name: "Business Analytics", href: "#business-analytics" },
-      ],
-      featured: [
-        { name: "Digital Marketing Mastery", href: "#digital-marketing-course", icon: "📈" },
-        { name: "SEO Specialist", href: "#seo-course", icon: "🔍" },
-      ],
-    },
-    {
-      name: "E-Classes",
-      icon: <Award className="w-5 h-5" />,
-      courses: [
-        { name: "Live Online Classes", href: "#live-classes" },
-        { name: "Recorded Sessions", href: "#recorded-sessions" },
-      ],
-      featured: [
-        { name: "Virtual Lab Access", href: "#virtual-lab", icon: "💻" },
-        { name: "24/7 Learning Platform", href: "#learning-platform", icon: "🕐" },
-      ],
-    },
-    {
-      name: "Degree",
-      icon: <GraduationCap className="w-5 h-5" />,
-      courses: [
-        { name: "B.Tech Computer Science", href: "#btech-cs" },
-        { name: "BCA", href: "#bca" },
-        { name: "MCA", href: "#mca" },
-      ],
-      featured: [
-        { name: "Online Degree Programs", href: "#online-degree", icon: "🎓" },
-        { name: "Part-Time Courses", href: "#part-time", icon: "⏰" },
-      ],
-    },
+  const courseTypes = [
+    { name: "IT Courses", type: "it", icon: BookOpen, color: "from-blue-500 to-cyan-500" },
+    { name: "Non-IT Courses", type: "non-it", icon: Globe, color: "from-purple-500 to-pink-500" },
+    { name: "E-Class", type: "eclass", icon: Award, color: "from-orange-500 to-red-500" },
+    { name: "Degree", type: "degree", icon: GraduationCap, color: "from-green-500 to-emerald-500" },
   ];
 
   const navItems = [
@@ -146,191 +94,170 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Header */}
+      {/* Clean Header */}
       <motion.header
-        initial={{ opacity: 0, y: -100 }}
+        initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="sticky top-0 z-50 bg-white border-b border-border/50 shadow-xl"
+        className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm"
       >
         <div className="container mx-auto px-6">
-          <div className="flex items-center justify-between h-24">
-            {/* Logo */}
-            <motion.div 
-              whileHover={{ scale: 1.08 }} 
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-3 cursor-pointer"
-            >
-              <div className="relative">
+          <div className="flex items-center justify-between h-20">
+            {/* Logo Section */}
+            <div className="flex items-center gap-4">
+              {/* Main QUASTECH Logo */}
+              <div className="flex items-center gap-3">
                 <img
                   src="/uploads/64f34837-4f64-4bbc-886b-305630eefd79.png"
                   alt="QUASTECH Logo"
-                  className="h-14 w-auto drop-shadow-lg"
+                  className="h-12 w-auto"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-primary-glow/10 rounded-lg blur-xl -z-10"></div>
+                <div className="text-sm text-gray-600">
+                  <div className="font-semibold">ISO 9001:2015</div>
+                  <div>FUTURE through Innovations</div>
+                </div>
               </div>
-            </motion.div>
+              
+              {/* Partner Logos */}
+              <div className="flex items-center gap-3 ml-8">
+                <div className="bg-white rounded-lg p-2 shadow-sm border border-gray-100">
+                  <img
+                    src="/uploads/nsdeimg01.png"
+                    alt="NSDC Logo"
+                    className="h-8 w-auto"
+                  />
+                </div>
+                <div className="bg-white rounded-lg p-2 shadow-sm border border-gray-100">
+                  <img
+                    src="/uploads/skillindia--.jpg"
+                    alt="Skill India Logo"
+                    className="h-8 w-auto"
+                  />
+                </div>
+              </div>
+            </div>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-10">
-              {navItems.map((item, index) =>
-                item.hasDropdown ? (
-                  <div
-                    key={item.name}
-                    className="relative group"
-                    ref={dropdownRef}
-                  >
-                   <motion.button
-                      initial={{ opacity: 0, y: -20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      onClick={() => handleDropdownToggle(courseCategories[0].name)} // ✅ Only click
-                      className="text-foreground hover:text-primary font-semibold text-lg flex items-center gap-2 transition-all duration-300 relative group py-2"
-                    >
-                      {item.name}
-                      <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${activeDropdown ? 'rotate-180' : ''}`} />
-                      <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-primary to-primary-glow scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                    </motion.button>
-
-                    <AnimatePresence>
-                      {activeDropdown && (
-                        <motion.div
-                          initial={{ opacity: 0, y: 15, scale: 0.9 }}
-                          animate={{ opacity: 1, y: 0, scale: 1 }}
-                          exit={{ opacity: 0, y: 15, scale: 0.9 }}
-                          transition={{ duration: 0.3, ease: "easeOut" }}
-                          className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 w-[1100px] max-w-[95vw] bg-white/95 backdrop-blur-md border border-white/20 rounded-2xl shadow-2xl p-8 z-50 overflow-hidden"
-                          onMouseLeave={() => setActiveDropdown(null)}
-                        >
-                          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary-glow/5 rounded-2xl"></div>
-                          
-                          {/* Category Tabs */}
-                          <div className="relative flex flex-wrap gap-3 mb-8">
-                            {courseCategories.map((cat) => (
-                              <motion.button
-                                key={cat.name}
-                                onMouseEnter={() => setActiveDropdown(cat.name)}
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                className={`px-6 py-3 rounded-xl text-sm font-bold border-2 transition-all duration-300 shadow-lg ${
-                                  activeDropdown === cat.name
-                                    ? "bg-gradient-to-r from-primary to-primary-glow text-white border-primary shadow-primary/25"
-                                    : "bg-dropdown-hover text-dropdown-foreground border-dropdown-border hover:border-primary/50 hover:shadow-md"
-                                }`}
-                              >
-                                {cat.name.toUpperCase()}
-                              </motion.button>
-                            ))}
-                          </div>
-
-                          {/* Category Content */}
-                          {courseCategories
-                            .filter((cat) => cat.name === activeDropdown)
-                            .map((cat) => (
-                              <motion.div 
-                                key={cat.name} 
-                                initial={{ opacity: 0, x: 20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 0.2 }}
-                                className="relative grid grid-cols-1 md:grid-cols-2 gap-8"
-                              >
-                                <div className="space-y-3">
-                                  <h3 className="font-bold text-xl text-dropdown-foreground mb-5 flex items-center gap-3 pb-2 border-b border-dropdown-border/30">
-                                    <div className="p-2 bg-primary/10 rounded-lg">
-                                      {cat.icon}
-                                    </div>
-                                    All {cat.name}
-                                  </h3>
-                                  <div className="space-y-2">
-                                    {cat.courses.map((course, i) => (
-                                      <motion.a
-                                        key={course.name}
-                                        href={course.href}
-                                        initial={{ opacity: 0, x: -10 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        transition={{ delay: i * 0.05 }}
-                                        className="dropdown-item text-dropdown-foreground group"
-                                      >
-                                        <div className="flex items-center gap-3">
-                                          <div className="w-1.5 h-1.5 bg-primary rounded-full group-hover:scale-125 transition-transform"></div>
-                                          {course.name}
-                                        </div>
-                                      </motion.a>
-                                    ))}
-                                  </div>
-                                </div>
-                                <div className="space-y-4">
-                                  <h3 className="font-bold text-xl text-dropdown-foreground mb-5 flex items-center gap-3 pb-2 border-b border-dropdown-border/30">
-                                    <div className="p-2 bg-primary-glow/10 rounded-lg">
-                                      ⭐
-                                    </div>
-                                    Featured Courses
-                                  </h3>
-                                  <div className="space-y-3">
-                                    {cat.featured?.map((featured, i) => (
-                                      <motion.a
-                                        key={featured.name}
-                                        href={featured.href}
-                                        initial={{ opacity: 0, y: 10 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: i * 0.1 }}
-                                        className="dropdown-featured-item text-dropdown-foreground group"
-                                      >
-                                        <div className="flex items-center gap-4 p-4 bg-gradient-to-r from-primary/5 to-primary-glow/5 rounded-xl border border-dropdown-border/30 group-hover:border-primary/30 transition-all duration-300">
-                                          <span className="text-2xl group-hover:scale-110 transition-transform">{featured.icon}</span>
-                                          <div>
-                                            <span className="font-semibold text-dropdown-foreground group-hover:text-primary transition-colors">{featured.name}</span>
-                                            <div className="text-xs text-muted-foreground mt-1">Featured Course</div>
-                                          </div>
-                                        </div>
-                                      </motion.a>
-                                    ))}
-                                  </div>
-                                </div>
-                              </motion.div>
-                            ))}
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                ) : (
+            {/* Animated Navigation */}
+            <nav className="hidden lg:flex items-center gap-8">
+              {navItems.map((item, index) => (
+                <div key={item.name} className="relative">
                   <motion.a
-                    key={item.name}
+                    whileHover={{ scale: 1.05, y: -2 }}
                     href={item.href}
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="text-foreground hover:text-primary font-semibold text-lg transition-all duration-300 relative group py-2"
+                    onMouseEnter={() => item.hasDropdown && setActiveDropdown(item.name)}
+                    className="text-gray-700 hover:text-primary font-medium transition-all duration-300 flex items-center gap-1 px-3 py-2 rounded-lg hover:bg-primary/5"
                   >
                     {item.name}
-                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-primary to-primary-glow scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                    {item.hasDropdown && (
+                      <motion.div
+                        animate={{ rotate: activeDropdown === item.name ? 180 : 0 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <ChevronDown className="w-4 h-4" />
+                      </motion.div>
+                    )}
                   </motion.a>
-                )
-              )}
+
+                  {/* Dropdown Container */}
+                  {item.hasDropdown && activeDropdown === item.name && (
+                    <div
+                      className="absolute top-full left-0 pt-2 z-50 max-w-[95vw]"
+                      onMouseEnter={() => setActiveDropdown(item.name)}
+                      onMouseLeave={() => {
+                        setActiveDropdown(null);
+                        setActiveCourseType(null);
+                      }}
+                    >
+                      <div className="flex flex-col lg:flex-row gap-4 max-w-full">
+                        {/* Course Types Card */}
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          className="w-80 max-w-[45vw] lg:max-w-[45vw] w-full lg:w-80 bg-background/95 backdrop-blur-xl border border-border rounded-xl shadow-2xl p-6 bg-gradient-to-br from-background to-muted/20"
+                        >
+                          <h3 className="text-lg font-bold mb-4 text-primary">Select Course Category</h3>
+                          <div className="flex flex-col gap-3">
+                            {courseTypes.map((course) => (
+                              <motion.div
+                                key={course.type}
+                                whileHover={{ scale: 1.02, x: 4 }}
+                                onMouseEnter={() => setActiveCourseType(course.type as "it" | "non-it" | "eclass" | "degree")}
+                                className={`relative p-4 rounded-lg cursor-pointer transition-all duration-300 flex items-center gap-4 ${
+                                  activeCourseType === course.type 
+                                    ? 'bg-gradient-to-r from-primary/20 to-primary-glow/20 border-2 border-primary shadow-lg scale-[1.02]' 
+                                    : 'bg-gradient-to-r from-primary/5 to-primary-glow/5 border border-border/50 hover:border-primary/50 hover:shadow-md'
+                                }`}
+                              >
+                                <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${course.color} flex items-center justify-center shrink-0`}>
+                                  <course.icon className="w-6 h-6 text-white" />
+                                </div>
+                                <h4 className="font-semibold text-sm">{course.name}</h4>
+                              </motion.div>
+                            ))}
+                          </div>
+                        </motion.div>
+
+                        {/* Course Details Panel */}
+                        {activeCourseType && (
+                          <motion.div
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -20 }}
+                            className="w-[500px] max-w-[50vw] lg:max-w-[50vw] w-full lg:w-[500px] max-h-[80vh] bg-background/95 backdrop-blur-xl border border-border rounded-xl shadow-2xl overflow-hidden bg-gradient-to-br from-background to-muted/20"
+                          >
+                            <CoursesMegaMenu 
+                              type={activeCourseType} 
+                              onClose={() => {
+                                setActiveCourseType(null);
+                                setActiveDropdown(null);
+                              }} 
+                            />
+                        </motion.div>
+                      )}
+                      </div>
+                  </div>
+                  )}
+                </div>
+              ))}
             </nav>
 
-            {/* Desktop Action Buttons */}
+            {/* Animated Action Buttons */}
             <div className="hidden lg:flex items-center gap-4">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button variant="outline" size="lg" className="font-semibold border-2 hover:shadow-lg transition-all duration-300">
+                <Button 
+                  variant="outline" 
+                  size="lg" 
+                  className="border-primary text-primary hover:bg-primary/5 font-semibold transition-all duration-300"
+                >
                   Login
                 </Button>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button variant="hero" size="lg" className="font-bold shadow-lg hover:shadow-xl transition-all duration-300">
+                <Button 
+                  size="lg" 
+                  className="bg-gradient-to-r from-primary to-primary-glow hover:from-primary-glow hover:to-primary text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                >
                   Register Now
                 </Button>
               </motion.div>
             </div>
 
-            {/* Mobile Menu Button */}
-            <button
+            {/* Animated Mobile Menu Button */}
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="lg:hidden p-2 rounded-md hover:bg-accent transition-colors"
+              className="lg:hidden p-2 rounded-md hover:bg-primary/10 transition-all duration-300"
               aria-label="Toggle menu"
             >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
+              <motion.div
+                animate={{ rotate: isMenuOpen ? 90 : 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                {isMenuOpen ? <X className="w-6 h-6 text-primary" /> : <Menu className="w-6 h-6 text-gray-600" />}
+              </motion.div>
+            </motion.button>
           </div>
         </div>
 
@@ -345,73 +272,107 @@ const Header = () => {
               className="lg:hidden bg-background border-t border-border overflow-hidden"
             >
               <div className="container mx-auto px-4 py-4 space-y-1">
-                {navItems.map((item) =>
-                  item.hasDropdown ? (
+                {/* Mobile Logo Section */}
+                <div className="flex items-center justify-center gap-2 py-4 border-b border-border/50">
+                  <img
+                    src="/uploads/64f34837-4f64-4bbc-886b-305630eefd79.png"
+                    alt="QUASTECH Logo"
+                    className="h-10 w-auto"
+                  />
+                  <div className="bg-white rounded p-2 shadow-sm">
+                    <img
+                      src="/uploads/nsdeimg01.png"
+                      alt="NSDC Logo"
+                      className="h-10 w-auto"
+                    />
+                  </div>
+                  <div className="bg-white rounded p-2 shadow-sm">
+                    <img
+                      src="/uploads/skillindia--.jpg"
+                      alt="Skill India Logo"
+                      className="h-10 w-auto"
+                    />
+                  </div>
+                </div>
+                
+                {/* Nav Items */}
+                {navItems.map((item) => (
                     <div key={item.name} className="space-y-1">
+                    {item.hasDropdown ? (
+                      <>
                       <button
-                        onClick={() => handleDropdownToggle("mobile-courses")}
-                        className="mobile-menu-item w-full flex items-center justify-between"
+                          onClick={() => handleDropdownToggle(item.name)}
+                          className="w-full flex items-center justify-between py-3 px-4 text-left hover:bg-accent/50 rounded-md transition-colors duration-200"
                       >
                         <span>{item.name}</span>
                         <ChevronDown 
                           className={`w-4 h-4 transition-transform ${
-                            activeDropdown === "mobile-courses" ? 'rotate-180' : ''
+                              activeDropdown === item.name ? 'rotate-180' : ''
                           }`} 
                         />
                       </button>
                       
                       <AnimatePresence>
-                        {activeDropdown === "mobile-courses" && (
+                          {activeDropdown === item.name && (
                           <motion.div
                             initial={{ opacity: 0, height: 0 }}
                             animate={{ opacity: 1, height: "auto" }}
                             exit={{ opacity: 0, height: 0 }}
                             className="bg-accent/50 rounded-md overflow-hidden"
                           >
-                            {courseCategories.map((category) => (
-                              <div key={category.name} className="p-3 border-b border-border last:border-b-0">
-                                <h4 className="font-semibold text-sm text-foreground mb-2 flex items-center gap-2">
-                                  {category.icon}
-                                  {category.name}
-                                </h4>
-                                <div className="space-y-1 ml-7">
-                                  {category.courses.slice(0, 3).map((course) => (
-                                    <a
-                                      key={course.name}
-                                      href={course.href}
-                                      className="block text-sm text-muted-foreground hover:text-foreground py-1"
-                                      onClick={() => setIsMenuOpen(false)}
-                                    >
-                                      {course.name}
-                                    </a>
-                                  ))}
-                                  {category.courses.length > 3 && (
-                                    <a
-                                      href="#courses"
-                                      className="block text-sm text-primary hover:underline py-1"
-                                      onClick={() => setIsMenuOpen(false)}
-                                    >
-                                      View all {category.courses.length} courses →
-                                    </a>
-                                  )}
-                                </div>
+                              {/* Course Type Cards */}
+                              <div className="grid grid-cols-2 gap-2 p-3">
+                                {courseTypes.map((course) => (
+                                  <button
+                                    key={course.type}
+                                    onClick={() => setActiveCourseType(
+                                      activeCourseType === course.type ? null : course.type as "it" | "non-it" | "eclass" | "degree"
+                                    )}
+                                    className={`p-3 rounded-lg border transition-all text-left ${
+                                      activeCourseType === course.type
+                                        ? 'bg-gradient-to-r from-primary/20 to-primary-glow/20 border-primary shadow-md'
+                                        : 'bg-background border-border hover:border-primary hover:shadow-sm'
+                                    }`}
+                                  >
+                                    <course.icon className="w-6 h-6 text-primary mb-1" />
+                                    <div className="text-xs font-semibold">{course.name}</div>
+                                  </button>
+                                ))}
                               </div>
-                            ))}
+                              
+                              {/* Course Details */}
+                              {activeCourseType && (
+                                <motion.div
+                                  initial={{ opacity: 0, height: 0 }}
+                                  animate={{ opacity: 1, height: "auto" }}
+                                  exit={{ opacity: 0, height: 0 }}
+                                  className="border-t border-border p-3 bg-gradient-to-r from-background/50 to-muted/30 max-h-[60vh] overflow-y-auto scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent"
+                                >
+                                  <CoursesMegaMenu 
+                                    type={activeCourseType} 
+                                    onClose={() => {
+                                      setIsMenuOpen(false);
+                                      setActiveCourseType(null);
+                                      setActiveDropdown(null);
+                                    }} 
+                                  />
+                                </motion.div>
+                              )}
                           </motion.div>
                         )}
                       </AnimatePresence>
-                    </div>
+                      </>
                   ) : (
                     <a
-                      key={item.name}
                       href={item.href}
-                      className="mobile-menu-item"
+                        className="block py-3 px-4 text-foreground hover:text-primary hover:bg-accent/50 rounded-md transition-colors duration-200"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       {item.name}
                     </a>
-                  )
                 )}
+                  </div>
+                ))}
                 
                 <div className="pt-4 border-t border-border space-y-3">
                   <Button variant="outline" className="w-full" onClick={() => setIsMenuOpen(false)}>
