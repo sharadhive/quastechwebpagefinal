@@ -23,12 +23,14 @@ All colors MUST be HSL.
     --primary-foreground: 210 40% 98%;
     --primary-light: 221 83% 63%;
     --primary-dark: 221 83% 43%;
+    --primary-glow: 221 83% 58%;
 
     /* Secondary Brand Colors - Professional Orange */
     --secondary: 25 95% 53%;
     --secondary-foreground: 210 40% 98%;
     --secondary-light: 25 95% 63%;
     --secondary-dark: 25 95% 43%;
+    --secondary-glow: 25 95% 58%;
 
     /* Neutral Colors */
     --muted: 210 40% 96%;

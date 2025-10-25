@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Phone, Mail, MapPin, Send, User, BookOpen } from "lucide-react";
+import { Phone, Mail, MapPin, Send, User, BookOpen, MessageCircle, Users, Building } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const EnquiryForm = () => {
@@ -31,7 +31,49 @@ const EnquiryForm = () => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
+ const quickActions = [
+    {
+      icon: MessageCircle,
+      title: "Live Chat",
+      description: "Chat with our counselors",
+      action: "Start Chat"
+    },
+    {
+      icon: Users,
+      title: "Book Demo",
+      description: "Schedule a free demo class",
+      action: "Book Now"
+    },
+    {
+      icon: Building,
+      title: "Campus Visit",
+      description: "Visit our campus",
+      action: "Schedule Visit"
+    }
+  ];
+
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+
+
   return (
+
+
+
+
+
+
+
+
+
+
+    
     <section id="enquiry" className="py-20 relative">
       <div className="absolute inset-0 bg-gradient-mesh opacity-50" />
       
@@ -42,13 +84,25 @@ const EnquiryForm = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6 bg-gradient-hero bg-clip-text text-transparent">
-            Ready to Start Your Journey?
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          {/* <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Get personalized guidance and detailed information about our courses. Our experts are here to help you choose the right path.
-          </p>
+          </p> */}
         </motion.div>
+
+        {/* Journey Banner */}
+        {/* <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="w-full mb-16"
+        >
+          <img 
+            src="/images/careerpath.jpg" 
+            alt="Your Journey With Us" 
+            className="w-full h-auto object-cover rounded-2xl shadow-lg"
+          />
+        </motion.div> */}
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Information */}

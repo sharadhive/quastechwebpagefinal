@@ -48,7 +48,7 @@ const Marquee = ({
 
   const marqueeVariants = {
     animate: {
-      x: direction === "left" ? "-50%" : "0%",
+      x: direction === "left" ? "-25%" : "25%",
       transition: {
         x: {
           repeat: Infinity,
@@ -60,14 +60,14 @@ const Marquee = ({
     },
   };
 
-  const duplicatedChildren = React.useMemo(() => [children, children], [children]);
+  const duplicatedChildren = React.useMemo(() => [children, children, children, children], [children]);
 
   return (
     <div className="w-full overflow-hidden">
       <motion.div
         className="flex"
         variants={marqueeVariants}
-        initial={{ x: direction === "left" ? "0%" : "-50%" }}
+        initial={{ x: "0%" }}
         animate="animate"
       >
         {duplicatedChildren.map((child, index) => (
@@ -93,12 +93,12 @@ const About = () => {
     { icon: Briefcase, title: "Placement", description: "Strong placement support with resume building & HR interview prep.", color: "from-emerald-500 to-cyan-600" },
     { icon: HeadphonesIcon, title: "Continuous Support", description: "Lifetime support, mentorship, and guidance even after placement.", color: "from-rose-500 to-red-600" },
   ];
-  const achievements = [
-    { icon: Users, value: "5000+", label: "Students Trained", color: "from-blue-500 to-cyan-500" },
-    { icon: Award, value: "95%", label: "Placement Rate", color: "from-emerald-500 to-teal-500" },
-    { icon: Globe, value: "500+", label: "Company Partners", color: "from-purple-500 to-pink-500" },
-    { icon: BookOpen, value: "20+", label: "Courses Offered", color: "from-orange-500 to-red-500" }
-  ];
+  // const achievements = [
+  //   { icon: Users, value: "5000+", label: "Students Trained", color: "from-blue-500 to-cyan-500" },
+  //   { icon: Award, value: "95%", label: "Placement Rate", color: "from-emerald-500 to-teal-500" },
+  //   { icon: Globe, value: "500+", label: "Company Partners", color: "from-purple-500 to-pink-500" },
+  //   { icon: BookOpen, value: "20+", label: "Courses Offered", color: "from-orange-500 to-red-500" }
+  // ];
   const milestones = [
     { year: "2015", event: "QUASTECH Founded", description: "Started with a vision to transform IT education", icon: Star },
     { year: "2017", event: "ISO 9001:2015 Certified", description: "Achieved international quality standards", icon: Shield },
@@ -108,14 +108,62 @@ const About = () => {
     { year: "2024", event: "5000+ Alumni Network", description: "Built a strong network of successful professionals", icon: TrendingUp },
   ];
   const techCards = [
-    { icon: Cpu, label: "Core Java" },
-    { icon: Database, label: "SQL" },
-    { icon: Layers, label: "Spring Boot" },
-    { icon: Server, label: "Microservices" },
-    { icon: Cloud, label: "Cloud AWS" },
-    { icon: ShieldCheck, label: "Cyber Security" },
-    { icon: GitBranch, label: "DevOps" },
-    { icon: Code, label: "Web UI" },
+    { 
+      icon: Cpu, 
+      label: "Core Java", 
+      logo: "/coursesicons/html.jpg", 
+      color: "from-orange-500 to-orange-600",
+      description: "Object-oriented programming"
+    },
+    { 
+      icon: Database, 
+      label: "SQL", 
+      logo: "/coursesicons/mysql.jpg", 
+      color: "from-blue-500 to-blue-600",
+      description: "Database management"
+    },
+    { 
+      icon: Layers, 
+      label: "Spring Boot", 
+      logo: "/coursesicons/django.jpg", 
+      color: "from-green-500 to-green-600",
+      description: "Enterprise applications"
+    },
+    { 
+      icon: Server, 
+      label: "Microservices", 
+      logo: "/coursesicons/bootstrap.jpg", 
+      color: "from-purple-500 to-purple-600",
+      description: "Scalable architecture"
+    },
+    { 
+      icon: Cloud, 
+      label: "Cloud AWS", 
+      logo: "/coursesicons/css.jpg", 
+      color: "from-yellow-500 to-orange-500",
+      description: "Cloud computing"
+    },
+    { 
+      icon: ShieldCheck, 
+      label: "Cyber Security", 
+      logo: "/coursesicons/jquery.jpg", 
+      color: "from-red-500 to-red-600",
+      description: "Security protocols"
+    },
+    { 
+      icon: GitBranch, 
+      label: "DevOps", 
+      logo: "/coursesicons/python.jpg", 
+      color: "from-indigo-500 to-indigo-600",
+      description: "Development operations"
+    },
+    { 
+      icon: Code, 
+      label: "Web UI", 
+      logo: "/coursesicons/html.jpg", 
+      color: "from-cyan-500 to-cyan-600",
+      description: "User interface design"
+    },
   ];
   const topRow = techCards.slice(0, 4);
   const bottomRow = techCards.slice(4, 8);
@@ -227,7 +275,7 @@ const About = () => {
           </motion.div>
 
           {/* Achievements Section */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 mb-16 md:mb-24">
+          {/* <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 mb-16 md:mb-24">
             {achievements.map((achievement, index) => (
               <Card key={achievement.label} custom={index} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }} variants={achievementCardVariants}>
                 <CardContent className="text-center">
@@ -241,7 +289,7 @@ const About = () => {
                 </CardContent>
               </Card>
             ))}
-          </div>
+          </div> */}
           
           {/* --- RESPONSIVE Infinite Looping Cards Section --- */}
           <div className="py-16 md:py-24">
@@ -253,32 +301,44 @@ const About = () => {
                 Our curriculum is built on the most in-demand technologies in the industry.
               </p>
             </div>
-            <div className="flex flex-col gap-6 md:gap-8">
-              <Marquee speed="normal" direction="left">
+            <div className="flex flex-col gap-4 md:gap-6">
+              <Marquee speed="fast" direction="left">
                 {topRow.map((card, index) => (
-                  <div key={`top-${index}`} className="flex-shrink-0 w-48 sm:w-56 lg:w-64 mx-2 sm:mx-3 lg:mx-4">
-                    <Card>
-                      <CardContent>
-                        <div className="flex flex-col items-center text-center">
-                          <card.icon className="w-10 h-10 md:w-12 md:h-12 mb-4 text-blue-600" />
-                          <h3 className="text-base md:text-lg font-bold text-slate-800">{card.label}</h3>
-                        </div>
-                      </CardContent>
-                    </Card>
+                  <div key={`top-${index}`} className="flex-shrink-0 w-24 sm:w-28 lg:w-32 mx-2 sm:mx-3 lg:mx-4">
+                    <motion.div
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                      className={`w-full h-20 sm:h-24 lg:h-28 rounded-xl bg-gradient-to-r ${card.color} flex items-center justify-center shadow-lg relative overflow-hidden`}
+                    >
+                      {/* Background Logo */}
+                      <img 
+                        src={card.logo} 
+                        alt={card.label}
+                        className="absolute inset-0 w-full h-full object-cover opacity-30"
+                      />
+                      {/* Icon Overlay */}
+                      <card.icon className="w-6 h-6 sm:w-8 sm:h-8 text-white relative z-10" />
+                    </motion.div>
                   </div>
                 ))}
               </Marquee>
-              <Marquee speed="normal" direction="right">
+              <Marquee speed="fast" direction="left">
                 {bottomRow.map((card, index) => (
-                  <div key={`bottom-${index}`} className="flex-shrink-0 w-48 sm:w-56 lg:w-64 mx-2 sm:mx-3 lg:mx-4">
-                    <Card>
-                      <CardContent>
-                        <div className="flex flex-col items-center text-center">
-                          <card.icon className="w-10 h-10 md:w-12 md:h-12 mb-4 text-purple-600" />
-                          <h3 className="text-base md:text-lg font-bold text-slate-800">{card.label}</h3>
-                        </div>
-                      </CardContent>
-                    </Card>
+                  <div key={`bottom-${index}`} className="flex-shrink-0 w-24 sm:w-28 lg:w-32 mx-2 sm:mx-3 lg:mx-4">
+                    <motion.div
+                      whileHover={{ scale: 1.1, rotate: -5 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                      className={`w-full h-20 sm:h-24 lg:h-28 rounded-xl bg-gradient-to-r ${card.color} flex items-center justify-center shadow-lg relative overflow-hidden`}
+                    >
+                      {/* Background Logo */}
+                      <img 
+                        src={card.logo} 
+                        alt={card.label}
+                        className="absolute inset-0 w-full h-full object-cover opacity-30"
+                      />
+                      {/* Icon Overlay */}
+                      <card.icon className="w-6 h-6 sm:w-8 sm:h-8 text-white relative z-10" />
+                    </motion.div>
                   </div>
                 ))}
               </Marquee>

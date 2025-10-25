@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { User, Mail, Phone, Send, Star, Award, Users, TrendingUp } from "lucide-react";
+import { User, Mail, Phone, Send, Star, Award, Users, TrendingUp, Download, ArrowRight } from "lucide-react";
 import { TypeAnimation } from "react-type-animation";
 import BrochureModal from "./BrochureModal";
 
@@ -120,7 +120,7 @@ const FloatingElements = () => (
   </div>
 );
 
-// Company Logos Component
+// Company Logos Component with Auto-sliding Animation
 const CompanyLogos = () => {
   const companies = [
     { name: "AQM", logo: "/images/Logo folder/AQM_New_Logo.jpg" },
@@ -136,14 +136,13 @@ const CompanyLogos = () => {
   ];
 
   return (
-    <div className="mt-8 sm:mt-12 lg:mt-16 w-full">
+    <div className="w-full">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.5 }}
         className="text-center mb-6 sm:mb-8 w-full"
       >
-        <p className="text-white/90 text-xs sm:text-sm mb-4 sm:mb-6 font-medium tracking-wide">Trusted by students who got placed at</p>
         <div className="overflow-hidden w-full">
           <motion.div
             animate={{ x: [0, -1920] }}
@@ -189,14 +188,14 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col justify-center overflow-hidden text-white"
+      className="relative min-h-[85vh] flex flex-col justify-center overflow-hidden text-white"
     >
       <HeroBackground />
       <FloatingElements />
 
-      <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+      <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 py-4 lg:py-6">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-screen">
+          <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 lg:gap-8 items-center min-h-[75vh]">
             {/* LEFT TEXT */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -204,15 +203,15 @@ export default function Hero() {
               transition={{ duration: 0.8 }}
               className="text-center lg:text-left order-2 lg:order-1 w-full"
             >
-              <div className="mb-6">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 text-white leading-tight">
+              <div className="mb-4">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold mb-3 text-white leading-tight">
                   <TypeAnimation
                     sequence={[
+                      'Trusted and Renowned Training Institute',
+                      2000,
                       'Launch Your Tech Career',
                       2000,
                       'Build Your Future',
-                      2000,
-                      'Start Your Journey',
                       2000,
                       'Transform Your Life',
                       2000,
@@ -226,7 +225,7 @@ export default function Hero() {
                     preRenderFirstString={true}
                   />
                 </h1>
-                <div className="text-base sm:text-lg max-w-lg mx-auto lg:mx-0 font-medium text-white/90 min-h-[50px] sm:min-h-[60px] flex items-center justify-center lg:justify-start">
+                <div className="text-sm sm:text-base max-w-lg mx-auto lg:mx-0 font-medium text-white/90 min-h-[40px] sm:min-h-[45px] flex items-center justify-center lg:justify-start">
                   <TypeAnimation
                     sequence={[
                       'Learn, build, and grow with guidance from industry experts.',
@@ -249,94 +248,156 @@ export default function Hero() {
                 </div>
               </div>
 
-              <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.97 }}
-                onClick={() => setIsModalOpen(true)}
-                className="relative bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 transition-all text-white font-semibold rounded-xl px-6 sm:px-8 py-3 sm:py-4 shadow-lg hover:shadow-xl text-base sm:text-lg overflow-hidden group w-full sm:w-auto mx-auto lg:mx-0 block"
-              >
-                <span className="relative z-10">Download Brochure</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
-              </motion.button>
+              {/* Feature Cards Grid */}
+              <div className="grid grid-cols-2 gap-3 mb-6">
+                {[
+                  { title: "Placement", icon: Users, color: "from-blue-500 to-cyan-500" },
+                  { title: "ISO Certified", icon: Award, color: "from-orange-500 to-red-500" },
+                  { title: "Industrial Based Training", icon: TrendingUp, color: "from-green-500 to-emerald-500" },
+                  { title: "EMI Option", icon: Star, color: "from-purple-500 to-pink-500" },
+                ].map((feature, index) => (
+                  <motion.div
+                    key={feature.title}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.5 + index * 0.1 }}
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-lg p-3 hover:bg-white/20 transition-all duration-300 cursor-pointer"
+                  >
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className={`w-6 h-6 rounded-lg bg-gradient-to-r ${feature.color} flex items-center justify-center`}>
+                        <feature.icon className="w-3 h-3 text-white" />
+                      </div>
+                      <p className="text-xs font-semibold text-white">{feature.title}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
 
-              {/* Company Logos */}
-              <CompanyLogos />
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row gap-3 mb-6">
+                <motion.button
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.97 }}
+                  onClick={() => setIsModalOpen(true)}
+                  className="relative bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 transition-all text-white font-semibold rounded-xl px-6 py-3 shadow-lg hover:shadow-xl text-base overflow-hidden group flex items-center justify-center gap-2"
+                >
+                  <Download className="w-5 h-5" />
+                  <span className="relative z-10">Download</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+                </motion.button>
+                
+                <motion.button
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="relative bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 transition-all text-white font-semibold rounded-xl px-6 py-3 shadow-lg hover:shadow-xl text-base overflow-hidden group flex items-center justify-center gap-2"
+                >
+                  <ArrowRight className="w-5 h-5" />
+                  <span className="relative z-10">Know More</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+                </motion.button>
+              </div>
+
             </motion.div>
 
-            {/* RIGHT SIDE — FORM */}
+            {/* RIGHT SIDE — PROFESSIONAL FORM CARD */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="relative flex flex-col items-center justify-center space-y-4 sm:space-y-6 order-1 lg:order-2 w-full"
+              className="relative flex flex-col items-center justify-center order-1 lg:order-2 w-full"
             >
-              {/* FORM HEADER */}
+              {/* Professional Form Card */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.5 }}
-                className="text-center w-full"
+                className="w-full max-w-md bg-white/95 backdrop-blur-xl border border-white/30 rounded-2xl shadow-2xl overflow-hidden"
+                style={{
+                  boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1)'
+                }}
               >
-                <h3 className="text-xl sm:text-2xl font-bold mb-2 text-white">Get Started Today</h3>
-                <p className="text-white/80 text-sm font-medium">
-                  Fill out your details and our team will get in touch!
-                </p>
-              </motion.div>
-
-              {/* RESPONSIVE FORM INPUTS */}
-              <form className="space-y-4 sm:space-y-6 w-full max-w-md mx-auto" onSubmit={handleSubmit}>
-                {[
-                  { id: "name", type: "text", placeholder: "Your full name", icon: User },
-                  { id: "email", type: "email", placeholder: "Email address", icon: Mail },
-                  { id: "phone", type: "tel", placeholder: "Mobile number", icon: Phone },
-                ].map((field, index) => (
+                {/* Form Header */}
+                <div className="bg-gradient-to-r from-blue-600 via-blue-700 to-orange-500 p-6 text-center">
                   <motion.div
-                    key={field.id}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.6 + index * 0.1 }}
-                    className="relative group w-full"
+                    transition={{ delay: 0.6 }}
                   >
-                    <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:bg-white/8 hover:border-orange-400/30 transition-all duration-700 shadow-lg hover:shadow-xl hover:shadow-orange-500/20 w-full">
-                      <div className="flex items-center gap-3 sm:gap-4">
-                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg sm:rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-orange-500/50 transition-all duration-500 flex-shrink-0">
-                          <field.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                        </div>
-                        <input
-                          type={field.type}
-                          id={field.id}
-                          value={formData[field.id]}
-                          onChange={(e) =>
-                            setFormData((prev) => ({ ...prev, [field.id]: e.target.value }))
-                          }
-                          required
-                          placeholder={field.placeholder}
-                          className="flex-1 bg-transparent text-white placeholder-white/60 outline-none text-sm sm:text-base font-medium w-full"
-                        />
-                      </div>
-                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-2">Get Started</h3>
+                    <p className="text-white/90 text-sm">
+                      Fill the form to get started
+                    </p>
                   </motion.div>
-                ))}
+                </div>
 
-                {/* RESPONSIVE SUBMIT BUTTON */}
-                <motion.button
-                  type="submit"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1 }}
-                  whileHover={{ scale: 1.02, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="relative w-full py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-gradient-to-r from-orange-500 to-red-500 font-semibold flex items-center justify-center gap-2 sm:gap-3 hover:shadow-xl transition-all duration-500 text-base sm:text-lg overflow-hidden group"
-                >
-                  <Send size={18} className="relative z-10 sm:w-5 sm:h-5" />
-                  <span className="relative z-10">Send Message</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
-                </motion.button>
-              </form>
+                {/* Form Content */}
+                <div className="p-6 bg-white">
+                  <form className="space-y-4" onSubmit={handleSubmit}>
+                    {[
+                      { id: "phone", type: "tel", placeholder: "Enter 10-digit Mobile Number", icon: Phone, label: "Mobile Number" },
+                      { id: "name", type: "text", placeholder: "Your Full Name", icon: User, label: "Full Name" },
+                      { id: "email", type: "email", placeholder: "yourname@gmail.com", icon: Mail, label: "Email Address" },
+                    ].map((field, index) => (
+                      <motion.div
+                        key={field.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.7 + index * 0.1 }}
+                        className="space-y-2"
+                      >
+                        <label className="block text-gray-700 text-sm font-semibold">
+                          {field.label} <span className="text-orange-500">*</span>
+                        </label>
+                        <div className="relative group">
+                          <div className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 bg-gradient-to-r from-blue-500 to-orange-500 rounded-full flex items-center justify-center shadow-sm">
+                            <field.icon className="w-3 h-3 text-white" />
+                          </div>
+                          <input
+                            type={field.type}
+                            id={field.id}
+                            value={formData[field.id]}
+                            onChange={(e) =>
+                              setFormData((prev) => ({ ...prev, [field.id]: e.target.value }))
+                            }
+                            required
+                            placeholder={field.placeholder}
+                            className="w-full pl-12 pr-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-lg text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all duration-300 font-medium"
+                          />
+                        </div>
+                      </motion.div>
+                    ))}
+
+                    {/* Professional Submit Button */}
+                    <motion.button
+                      type="submit"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 1.0 }}
+                      whileHover={{ scale: 1.02, y: -2 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="w-full py-3 rounded-lg bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 hover:from-orange-600 hover:via-orange-700 hover:to-red-600 font-bold text-white flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group relative"
+                    >
+                      <Send className="w-5 h-5" />
+                      <span>Get Started Now</span>
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+                    </motion.button>
+                  </form>
+
+                </div>
+              </motion.div>
             </motion.div>
           </div>
         </div>
       </div>
+
+      {/* Company Logos at Bottom of Hero Section */}
+      <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 pb-8">
+        <div className="max-w-7xl mx-auto">
+          <CompanyLogos />
+        </div>
+      </div>
+
 
       <BrochureModal
         isOpen={isModalOpen}

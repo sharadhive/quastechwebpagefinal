@@ -7,14 +7,6 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 // 🔹 Type Definitions
-type Placement = {
-  role: string;
-  company: string;
-  package: string;
-  icon: string;
-  description: string;
-};
-
 type Stat = {
   icon: React.ElementType;
   value: string;
@@ -25,59 +17,6 @@ type Partner = {
   name: string;
   logo: string;
 };
-
-// 🔹 Success Stories
-const placements: Placement[] = [
-  {
-    role: "Full Stack Developer",
-    company: "Google",
-    package: "₹24 LPA",
-    icon: "👨‍💻",
-    description: "Worked on scalable web apps and cloud-based solutions.",
-  },
-  {
-    role: "AI/ML Engineer",
-    company: "Amazon",
-    package: "₹18 LPA",
-    icon: "🤖",
-    description: "Creating AI-driven recommendation systems at scale.",
-  },
-  {
-    role: "Cyber Security Specialist",
-    company: "Accenture",
-    package: "₹12 LPA",
-    icon: "🛡️",
-    description: "Protecting digital assets with advanced security measures.",
-  },
-  {
-    role: "Data Analyst",
-    company: "TCS",
-    package: "₹8 LPA",
-    icon: "📊",
-    description: "Building business insights from massive datasets.",
-  },
-  {
-    role: "Software Engineer",
-    company: "Infosys",
-    package: "₹6.5 LPA",
-    icon: "💻",
-    description: "Developing enterprise applications for global clients.",
-  },
-  {
-    role: "Cloud Engineer",
-    company: "Microsoft",
-    package: "₹20 LPA",
-    icon: "☁️",
-    description: "Managed and deployed cloud infrastructure on Azure.",
-  },
-  {
-    role: "UI/UX Designer",
-    company: "Deloitte",
-    package: "₹10 LPA",
-    icon: "🎨",
-    description: "Designing intuitive user interfaces for financial products.",
-  },
-];
 
 // 🔹 Stats
 const stats: Stat[] = [
@@ -158,8 +97,8 @@ const Placement = () => {
           100% { transform: translateY(calc(-100% + 420px)); }
         }
 
-        .animate-scroll-vertical { animation: scroll-vertical 20s linear infinite; will-change: transform; }
-        .group:hover .animate-scroll-vertical { animation-duration: 45s; }
+        .animate-scroll-vertical { animation: scroll-vertical 15s linear infinite; will-change: transform; }
+        .group:hover .animate-scroll-vertical { animation-duration: 30s; }
       `;
 
   return (
@@ -173,73 +112,6 @@ const Placement = () => {
             subtitle="QUASTECH students have transformed their careers by joining top MNCs with lucrative packages and exciting roles."
           />
 
-          {/* 🎓 Success Stories */}
-          <div className="mb-20">
-            <Subtitle text="Recent Success Stories" />
-            {/* Desktop */}
-            <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[0, 1, 2].map((colIndex) => (
-                <Swiper
-                  key={colIndex}
-                  direction="vertical"
-                  slidesPerView={1}
-                  loop
-                  autoplay={{
-                    delay: 2000 + colIndex * 500,
-                    reverseDirection: colIndex === 1,
-                  }}
-                  modules={[Autoplay]}
-                  className="h-[380px]"
-                >
-                  {placements.map((p, i) => (
-                    <SwiperSlide key={`${colIndex}-${i}`}>
-                      <Card>
-                        <div className="flex flex-col items-center text-center">
-                          <div className="w-16 h-16 mb-4 rounded-xl flex items-center justify-center bg-gradient-to-br from-[#3154a6] to-[#f15a29] shadow-lg text-3xl">
-                            {p.icon}
-                          </div>
-                          <h3 className="text-xl font-bold text-slate-800">{p.role}</h3>
-                          <p className="text-slate-600">{p.company}</p>
-                          <span className="mt-2 text-[#3154a6] font-semibold">{p.package}</span>
-                          <p className="mt-4 text-slate-500 text-sm leading-relaxed">{p.description}</p>
-                        </div>
-                      </Card>
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-              ))}
-            </div>
-            {/* Mobile */}
-            <div className="block md:hidden">
-              <Swiper
-                slidesPerView={1.2}
-                spaceBetween={20}
-                centeredSlides
-                loop
-                autoplay={{ delay: 2500 }}
-                pagination={{ clickable: true }}
-                modules={[Autoplay, Pagination]}
-              >
-                {placements.map((p, i) => (
-                  <SwiperSlide key={i}>
-                    <div className="h-[380px] py-4">
-                      <Card>
-                        <div className="flex flex-col items-center text-center">
-                          <div className="w-16 h-16 mb-4 rounded-xl flex items-center justify-center bg-gradient-to-br from-[#3154a6] to-[#f15a29] shadow-lg text-3xl">
-                            {p.icon}
-                          </div>
-                          <h3 className="text-xl font-bold text-slate-800">{p.role}</h3>
-                          <p className="text-slate-600">{p.company}</p>
-                          <span className="mt-2 text-[#3154a6] font-semibold">{p.package}</span>
-                          <p className="mt-4 text-slate-500 text-sm leading-relaxed">{p.description}</p>
-                        </div>
-                      </Card>
-                    </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </div>
-          </div>
 
           {/* 📊 Stats */}
           <div className="mb-20">
@@ -275,7 +147,7 @@ const Placement = () => {
 
           {/* 🤝 Hiring Partners */}
           <div className="group">
-            <Subtitle text="Our Esteemed Hiring Partners" />
+            <Subtitle text="Our students are placed and working in this companies" />
             <div className="relative h-[420px] overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_15%,black_85%,transparent)]">
               <div className="animate-scroll-vertical">
                 {/* One full grid pass */}

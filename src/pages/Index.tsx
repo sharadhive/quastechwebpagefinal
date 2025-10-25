@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import JourneySection from "@/components/JourneySection";
 import Courses from "@/components/Courses";
 import Placement from "@/components/Placement";
 import Reviews from "@/components/Reviews";
@@ -19,17 +20,17 @@ const Index = () => {
       
       <Header />
       <Hero />
+      <JourneySection />
       {/* <RobotScene /> */}
       <Courses />
-      <Placement />
       <Reviews />
+      <Placement />
       <About />
+       <Contact />
       <EnquiryForm />
       <BranchSection />
       <FAQSection />
-      
-      <Contact />
-      <Footer />
+    <Footer />
       
       <AuthModal 
         isOpen={isAuthModalOpen} 
