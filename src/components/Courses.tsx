@@ -167,96 +167,102 @@ const Courses = () => {
                 whileHover={{ y: -4, scale: 1.02 }}
                 className="group"
               >
-                <Card className="w-full overflow-visible border-0 shadow-2xl hover:shadow-3xl transition-all duration-700 bg-white transform-gpu">
-                  {/* Animated Header */}
-                  <motion.div 
-                    className={`h-16 bg-gradient-to-r ${course.color} relative overflow-hidden`}
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-pulse" />
-                    <div className="relative flex items-center justify-between h-full px-4">
-                      <div className="flex items-center gap-3">
-                        <motion.div 
-                          className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center"
-                          whileHover={{ rotate: 360 }}
-                          transition={{ duration: 0.6 }}
-                        >
-                          <course.icon className="w-5 h-5 text-white" />
-                        </motion.div>
-                        <div>
-                          <h3 className="text-white font-bold text-sm">{course.title}</h3>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-2 bg-white/20 rounded-full px-3 py-1">
-                        <Star className="w-4 h-4 text-yellow-300" />
-                        <span className="text-white text-xs font-bold">{course.rating}</span>
+                <Card className="w-full h-[350px] overflow-hidden border-0 shadow-2xl hover:shadow-3xl transition-all duration-700 bg-white transform-gpu">
+                  {/* Compact Header - Countdown and Seats Side by Side */}
+                  <div className="flex items-center justify-between p-3 bg-gradient-to-r from-slate-50 to-gray-100">
+                    <div className="flex items-center gap-2">
+                      <Timer className="w-3 h-3 text-blue-600" />
+                      <div>
+                        <div className="text-xs text-gray-600">Next batch starts in</div>
+                        <div className="text-sm font-bold text-blue-600">{course.countdown}</div>
                       </div>
                     </div>
-                  </motion.div>
+                    <div className="bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                      {course.seatsLeft} seats left
+                    </div>
+                  </div>
 
-                  <CardContent className="p-4 flex flex-col justify-between overflow-visible">
-                    {/* Technology Stack */}
-                    <motion.div 
-                      className="mb-3"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.3 }}
-                    >
-                      <h4 className="text-xs font-bold mb-2 text-gray-800 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                        Technologies:
-                      </h4>
-                      <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-2 border border-blue-200">
-                        <div className="grid grid-cols-4 gap-2">
-                          {course.features.map((imgSrc, idx) => (
-                            <motion.div 
-                              key={idx} 
-                              className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-sm border border-gray-200 hover:shadow-md transition-all duration-300 p-1"
-                              whileHover={{ scale: 1.1, rotate: 5, y: -2 }}
-                              transition={{ duration: 0.2 }}
-                            >
-                              <img
-                                src={imgSrc}
-                                alt="Tech"
-                                className="w-full h-full object-contain"
-                              />
-                            </motion.div>
-                          ))}
+                  <CardContent className="p-3 flex flex-col h-full">
+                    {/* Main Content - Course Icon Left, Details Right */}
+                    <div className="flex gap-3 mb-3">
+                      {/* Course Icon - Left Side */}
+                      <motion.div 
+                        className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg flex-shrink-0"
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <course.icon className="w-6 h-6 text-white" />
+                      </motion.div>
+                      
+                      {/* Course Details - Right Side */}
+                      <div className="flex-1">
+                        <h3 className="text-base font-bold text-gray-800 mb-1 leading-tight">
+                          {course.title}
+                        </h3>
+                        <div className="flex items-center gap-1 mb-1">
+                          <Clock className="w-3 h-3 text-blue-500" />
+                          <span className="text-xs text-gray-600">{course.duration} {course.trainingType}</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <Calendar className="w-3 h-3 text-green-500" />
+                          <span className="text-xs text-gray-600">{course.batchTypes}</span>
                         </div>
                       </div>
-                    </motion.div>
+                    </div>
 
-                    {/* Stats */}
-                    <motion.div 
-                      className="grid grid-cols-3 gap-2 mb-3"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.4 }}
-                    >
-                      {[
-                        { icon: Clock, value: course.duration, color: "text-blue-500" },
-                        { icon: Users, value: course.students, color: "text-green-500" },
-                        { icon: Star, value: course.rating, color: "text-yellow-500" }
-                      ].map((stat, idx) => (
-                        <motion.div
-                          key={idx}
-                          className="text-center p-2 rounded-lg bg-gradient-to-br from-gray-50 to-gray-100 hover:from-gray-100 hover:to-gray-200 transition-all duration-300 border border-gray-200"
-                          whileHover={{ scale: 1.05, y: -2 }}
-                          transition={{ duration: 0.2 }}
+                    {/* Technology Logos - Larger Size */}
+                    <div className="mb-4">
+                      <div className="flex justify-center gap-2 flex-wrap">
+                        {course.features.slice(0, 6).map((imgSrc, idx) => (
+                          <motion.div 
+                            key={idx} 
+                            className="w-8 h-8 bg-white rounded-lg flex items-center justify-center shadow-md border border-gray-200"
+                            whileHover={{ scale: 1.15, y: -3, rotate: 5 }}
+                            transition={{ duration: 0.3 }}
+                          >
+                            <img
+                              src={imgSrc}
+                              alt="Tech"
+                              className="w-6 h-6 object-contain"
+                            />
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Feature Labels - Moved Down to Fill Space */}
+                    <div className="mb-5">
+                      <div className="flex gap-1 justify-center">
+                        <div className="bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                          UNLIMITED INTERVIEWS
+                        </div>
+                        <div className="bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                          INTEGRATED INTERNSHIP
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Bottom Buttons - Compact */}
+                    <div className="mt-auto space-y-2">
+                      <div className="flex gap-1">
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="flex-1 border-gray-300 text-gray-700 hover:bg-gray-50 text-xs"
                         >
-                          <stat.icon className={`w-4 h-4 ${stat.color} mx-auto mb-1`} />
-                          <div className="text-xs font-bold text-gray-700 leading-tight">{stat.value}</div>
-                        </motion.div>
-                      ))}
-                    </motion.div>
-
-                    {/* Enroll Button */}
-                    <motion.div 
-                      className="pt-2 mt-auto"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.5 }}
-                    >
+                          <Download className="w-3 h-3 mr-1" />
+                          Download
+                        </Button>
+                        <Button
+                          size="sm"
+                          className="flex-1 bg-green-500 hover:bg-green-600 text-white text-xs"
+                        >
+                          <MoreHorizontal className="w-3 h-3 mr-1" />
+                          Know More
+                        </Button>
+                      </div>
+                      
+                      {/* Enroll Now Button */}
                       <motion.div
                         whileHover={{ scale: 1.02, y: -1 }}
                         whileTap={{ scale: 0.98 }}
@@ -268,18 +274,18 @@ const Courses = () => {
                         <Button
                           variant="default"
                           size="sm"
-                          className="w-full bg-gradient-to-r from-blue-600 via-purple-600 to-blue-700 hover:from-blue-700 hover:via-purple-700 hover:to-blue-800 text-white font-semibold py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 relative overflow-hidden group text-sm border-0"
+                          className="w-full bg-gradient-to-r from-blue-600 via-purple-600 to-blue-700 hover:from-blue-700 hover:via-purple-700 hover:to-blue-800 text-white font-semibold py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 relative overflow-hidden group text-xs border-0"
                         >
                           <motion.span 
-                            className="relative z-10 flex items-center justify-center gap-2"
+                            className="relative z-10 flex items-center justify-center gap-1"
                             whileHover={{ x: 1 }}
                           >
                             <span>Enroll Now</span>
-                            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                            <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
                           </motion.span>
                         </Button>
                       </motion.div>
-                    </motion.div>
+                    </div>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -309,103 +315,97 @@ const Courses = () => {
                 whileHover={{ y: -8, scale: 1.02 }}
                 className="group"
               >
-                <Card className="h-[500px] w-80 overflow-hidden border-0 shadow-2xl hover:shadow-3xl transition-all duration-700 bg-white transform-gpu">
-                  {/* Card Header with Countdown and Seats */}
-                  <div className="relative p-4 bg-gradient-to-r from-slate-50 to-gray-100">
-                    {/* Countdown Timer */}
-                    <div className="flex items-center gap-2 mb-2">
-                      <Timer className="w-4 h-4 text-blue-600" />
-                      <span className="text-sm font-medium text-gray-700">Next batch starts in</span>
-                    </div>
-                    <div className="text-lg font-bold text-blue-600 mb-2">{course.countdown}</div>
-                    
-                    {/* Seats Left Badge */}
-                    <div className="absolute top-4 right-4">
-                      <div className="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
-                        {course.seatsLeft} seats left
+                <Card className="h-[400px] w-80 overflow-hidden border-0 shadow-2xl hover:shadow-3xl transition-all duration-700 bg-white transform-gpu">
+                  {/* Compact Header - Countdown and Seats Side by Side */}
+                  <div className="flex items-center justify-between p-3 bg-gradient-to-r from-slate-50 to-gray-100">
+                    <div className="flex items-center gap-2">
+                      <Timer className="w-3 h-3 text-blue-600" />
+                      <div>
+                        <div className="text-xs text-gray-600">Next batch starts in</div>
+                        <div className="text-sm font-bold text-blue-600">{course.countdown}</div>
                       </div>
                     </div>
-                  </div>
-
-                  {/* Course Icon */}
-                  <div className="flex justify-center py-6">
-                    <motion.div 
-                      className="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg"
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <course.icon className="w-10 h-10 text-white" />
-                    </motion.div>
-                  </div>
-
-                  {/* Technology Logos - Enlarged and Professional */}
-                  <div className="px-4 mb-4">
-                    <div className="flex justify-center gap-3 flex-wrap">
-                      {course.features.slice(0, 6).map((imgSrc, idx) => (
-                        <motion.div 
-                          key={idx} 
-                          className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-lg border-2 border-gray-100 hover:border-blue-200 transition-all duration-300"
-                          whileHover={{ scale: 1.15, y: -3, rotate: 5 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          <img
-                            src={imgSrc}
-                            alt="Tech"
-                            className="w-10 h-10 object-contain"
-                          />
-                        </motion.div>
-                      ))}
+                    <div className="bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                      {course.seatsLeft} seats left
                     </div>
                   </div>
 
-                  {/* Feature Labels */}
-                  <div className="px-4 mb-4">
-                    <div className="flex gap-2 justify-center">
-                      <div className="bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-bold">
-                        UNLIMITED INTERVIEWS
-                      </div>
-                      <div className="bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold">
-                        INTEGRATED INTERNSHIP
+                  <CardContent className="p-4 flex flex-col h-full">
+                    {/* Main Content - Course Icon Left, Details Right */}
+                    <div className="flex gap-4 mb-4">
+                      {/* Course Icon - Left Side */}
+                      <motion.div 
+                        className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg flex-shrink-0"
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <course.icon className="w-8 h-8 text-white" />
+                      </motion.div>
+                      
+                      {/* Course Details - Right Side */}
+                      <div className="flex-1">
+                        <h3 className="text-lg font-bold text-gray-800 mb-2 leading-tight">
+                          {course.title}
+                        </h3>
+                        <div className="flex items-center gap-1 mb-1">
+                          <Clock className="w-3 h-3 text-blue-500" />
+                          <span className="text-xs text-gray-600">{course.duration} {course.trainingType}</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <Calendar className="w-3 h-3 text-green-500" />
+                          <span className="text-xs text-gray-600">{course.batchTypes}</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <CardContent className="p-4 flex flex-col justify-between h-full">
-                    {/* Course Title */}
+                    {/* Technology Logos - Larger Size */}
                     <div className="mb-4">
-                      <h3 className="text-xl font-bold text-gray-800 mb-4 leading-tight text-center">
-                        {course.title}
-                      </h3>
-                      
-                      {/* Duration and Training Type */}
-                      <div className="flex items-center justify-center gap-2 mb-3">
-                        <Clock className="w-4 h-4 text-blue-500" />
-                        <span className="text-sm text-gray-700 font-medium">{course.duration} {course.trainingType}</span>
-                      </div>
-                      
-                      {/* Batch Types */}
-                      <div className="flex items-center justify-center gap-2 mb-4">
-                        <Calendar className="w-4 h-4 text-green-500" />
-                        <span className="text-sm text-gray-700 font-medium">{course.batchTypes}</span>
+                      <div className="flex justify-center gap-3 flex-wrap">
+                        {course.features.slice(0, 6).map((imgSrc, idx) => (
+                          <motion.div 
+                            key={idx} 
+                            className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-md border border-gray-200"
+                            whileHover={{ scale: 1.15, y: -3, rotate: 5 }}
+                            transition={{ duration: 0.3 }}
+                          >
+                            <img
+                              src={imgSrc}
+                              alt="Tech"
+                              className="w-8 h-8 object-contain"
+                            />
+                          </motion.div>
+                        ))}
                       </div>
                     </div>
 
-                    {/* Bottom Buttons */}
+                    {/* Feature Labels - Moved Down to Fill Space */}
+                    <div className="mb-6">
+                      <div className="flex gap-2 justify-center">
+                        <div className="bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                          UNLIMITED INTERVIEWS
+                        </div>
+                        <div className="bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                          INTEGRATED INTERNSHIP
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Bottom Buttons - Compact */}
                     <div className="mt-auto space-y-2">
-                      <div className="flex gap-2">
+                      <div className="flex gap-1">
                         <Button
                           variant="outline"
                           size="sm"
-                          className="flex-1 border-gray-300 text-gray-700 hover:bg-gray-50"
+                          className="flex-1 border-gray-300 text-gray-700 hover:bg-gray-50 text-xs"
                         >
-                          <Download className="w-4 h-4 mr-2" />
-                          Download Brochure
+                          <Download className="w-3 h-3 mr-1" />
+                          Download
                         </Button>
                         <Button
                           size="sm"
-                          className="flex-1 bg-green-500 hover:bg-green-600 text-white"
+                          className="flex-1 bg-green-500 hover:bg-green-600 text-white text-xs"
                         >
-                          <MoreHorizontal className="w-4 h-4 mr-2" />
+                          <MoreHorizontal className="w-3 h-3 mr-1" />
                           Know More
                         </Button>
                       </div>
@@ -422,7 +422,7 @@ const Courses = () => {
                         <Button
                           variant="default"
                           size="sm"
-                          className="w-full bg-gradient-to-r from-blue-600 via-purple-600 to-blue-700 hover:from-blue-700 hover:via-purple-700 hover:to-blue-800 text-white font-semibold py-2.5 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 relative overflow-hidden group text-sm border-0"
+                          className="w-full bg-gradient-to-r from-blue-600 via-purple-600 to-blue-700 hover:from-blue-700 hover:via-purple-700 hover:to-blue-800 text-white font-semibold py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 relative overflow-hidden group text-sm border-0"
                         >
                           <motion.span 
                             className="relative z-10 flex items-center justify-center gap-2"
@@ -431,16 +431,11 @@ const Courses = () => {
                             <span>Enroll Now</span>
                             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                           </motion.span>
-                          <motion.div
-                            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                            animate={{ x: ["-100%", "100%"] }}
-                            transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-                          />
                         </Button>
                       </motion.div>
                     </div>
                   </CardContent>
-              </Card>
+                </Card>
             </motion.div>
           ))}
           </motion.div>

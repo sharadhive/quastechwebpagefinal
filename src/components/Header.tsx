@@ -11,6 +11,12 @@ import {
   Globe,
   BookOpen,
   GraduationCap,
+  Facebook,
+  Twitter,
+  Instagram,
+  Youtube,
+  Linkedin,
+  CheckSquare,
 } from "lucide-react";
 import CoursesMegaMenu from "@/components/CoursesMegaMenu";
 
@@ -64,36 +70,93 @@ const Header = () => {
   return (
     <>
       {/* Top Bar - Hidden on Mobile */}
-      <div className="hidden md:block bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 text-white py-2 px-4 text-sm shadow-md">
+      <div className="hidden md:block bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 text-white py-3 px-4 text-sm shadow-md">
         <div className="container mx-auto flex justify-between items-center">
-          <div className="flex items-center gap-4">
-            <motion.div 
-              className="flex items-center gap-2 hover:scale-105 transition-transform cursor-pointer"
-              whileHover={{ scale: 1.05 }}
-            >
-              <Phone className="w-4 h-4 text-orange-300" />
-              <span className="font-medium">+91 8422800381</span>
-            </motion.div>
-            <motion.div 
-              className="flex items-center gap-2 hover:scale-105 transition-transform cursor-pointer"
-              whileHover={{ scale: 1.05 }}
-            >
-              <Mail className="w-4 h-4 text-orange-300" />
-              <span className="font-medium">info@quastech.in</span>
-            </motion.div>
-            <motion.div 
-              className="flex items-center gap-2 hover:scale-105 transition-transform cursor-pointer"
-              whileHover={{ scale: 1.05 }}
-            >
-              <Award className="w-4 h-4 text-orange-300" />
-              <span className="font-medium">ISO 9001:2015</span>
-            </motion.div>
+          {/* Left Side - Contact Info & Certifications */}
+          <div className="flex items-center gap-8">
+            {/* Contact Information */}
+            <div className="flex items-center gap-6">
+              <motion.div 
+                className="flex items-center gap-2 hover:scale-105 transition-transform cursor-pointer"
+                whileHover={{ scale: 1.05 }}
+              >
+                <Phone className="w-4 h-4 text-white" />
+                <span className="font-medium">+91 8422800381</span>
+              </motion.div>
+              <motion.div 
+                className="flex items-center gap-2 hover:scale-105 transition-transform cursor-pointer"
+                whileHover={{ scale: 1.05 }}
+              >
+                <Mail className="w-4 h-4 text-white" />
+                <span className="font-medium">info@quastech.in</span>
+              </motion.div>
+            </div>
+            
+            {/* Certifications */}
+            <div className="flex items-center gap-6">
+              <motion.div 
+                className="flex items-center gap-2 hover:scale-105 transition-transform cursor-pointer"
+                whileHover={{ scale: 1.05 }}
+              >
+                <Award className="w-4 h-4 text-white" />
+                <span className="font-medium">ISO 9001:2015</span>
+              </motion.div>
+              <motion.div 
+                className="flex items-center gap-2 hover:scale-105 transition-transform cursor-pointer"
+                whileHover={{ scale: 1.05 }}
+              >
+                <CheckSquare className="w-4 h-4 text-white" />
+                <span className="font-medium">ISTQB</span>
+              </motion.div>
+            </div>
           </div>
+
+          {/* Right Side - Social Media & Login */}
           <div className="flex items-center gap-4">
+            {/* Social Media Icons */}
+            <div className="flex items-center gap-3">
+              <motion.a
+                href="#"
+                whileHover={{ scale: 1.2, y: -2 }}
+                className="text-white hover:text-blue-200 transition-colors duration-300"
+              >
+                <Facebook className="w-4 h-4" />
+              </motion.a>
+              <motion.a
+                href="#"
+                whileHover={{ scale: 1.2, y: -2 }}
+                className="text-white hover:text-blue-200 transition-colors duration-300"
+              >
+                <Twitter className="w-4 h-4" />
+              </motion.a>
+              <motion.a
+                href="#"
+                whileHover={{ scale: 1.2, y: -2 }}
+                className="text-white hover:text-blue-200 transition-colors duration-300"
+              >
+                <Instagram className="w-4 h-4" />
+              </motion.a>
+              <motion.a
+                href="#"
+                whileHover={{ scale: 1.2, y: -2 }}
+                className="text-white hover:text-blue-200 transition-colors duration-300"
+              >
+                <Youtube className="w-4 h-4" />
+              </motion.a>
+              <motion.a
+                href="#"
+                whileHover={{ scale: 1.2, y: -2 }}
+                className="text-white hover:text-blue-200 transition-colors duration-300"
+              >
+                <Linkedin className="w-4 h-4" />
+              </motion.a>
+            </div>
+            
+            {/* Login Button */}
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-1 rounded-md text-sm font-medium transition-colors"
+              className="bg-white text-blue-600 hover:bg-gray-50 px-4 py-1 rounded-md text-sm font-semibold transition-colors"
             >
               Login
             </motion.button>
@@ -114,7 +177,7 @@ const Header = () => {
         }}
       >
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="flex items-center justify-between h-16 sm:h-20">
+          <div className="flex items-center justify-between h-20 sm:h-24 md:h-28">
             {/* Logo Section - Responsive */}
             <div className="flex items-center gap-0.5 sm:gap-1">
               {/* Main QUASTECH Logo */}
@@ -122,21 +185,21 @@ const Header = () => {
                 <img
                   src="/uploads/64f34837-4f64-4bbc-886b-305630eefd79.png"
                   alt="QUASTECH Logo"
-                  className="h-10 sm:h-12 md:h-16 w-auto"
+                  className="h-12 sm:h-14 md:h-16 lg:h-18 w-auto"
                 />
               </div>
               
               {/* Partner Logos - Hidden on small mobile */}
-              <div className="hidden sm:flex items-center gap-1 ml-1">
+              <div className="hidden sm:flex items-center gap-2 ml-2">
                 <img
                   src="/uploads/nsdeimg01.png"
                   alt="NSDC Logo"
-                  className="h-8 sm:h-10 md:h-12 w-auto"
+                  className="h-14 sm:h-16 md:h-18 lg:h-20 w-auto"
                 />
                 <img
                   src="/uploads/skillindia--.jpg"
                   alt="Skill India Logo"
-                  className="h-8 sm:h-10 md:h-12 w-auto"
+                  className="h-12 sm:h-14 md:h-16 lg:h-18 w-auto"
                 />
               </div>
             </div>
@@ -288,21 +351,21 @@ const Header = () => {
             >
               <div className="container mx-auto px-4 py-3 space-y-1">
                 {/* Mobile Logo Section - Compact */}
-                <div className="flex items-center justify-center gap-2 py-2 border-b border-border/50">
+                <div className="flex items-center justify-center gap-3 py-3 border-b border-border/50">
                   <img
                     src="/uploads/64f34837-4f64-4bbc-886b-305630eefd79.png"
                     alt="QUASTECH Logo"
-                    className="h-8 w-auto"
+                    className="h-10 w-auto"
                   />
                     <img
                       src="/uploads/nsdeimg01.png"
                       alt="NSDC Logo"
-                    className="h-6 w-auto"
+                      className="h-10 w-auto"
                     />
                     <img
                       src="/uploads/skillindia--.jpg"
                       alt="Skill India Logo"
-                    className="h-6 w-auto"
+                      className="h-8 w-auto"
                     />
                 </div>
                 
