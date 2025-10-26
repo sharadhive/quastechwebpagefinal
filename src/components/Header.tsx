@@ -17,8 +17,11 @@ import {
   Youtube,
   Linkedin,
   CheckSquare,
+  Eye,
+  Moon,
 } from "lucide-react";
 import CoursesMegaMenu from "@/components/CoursesMegaMenu";
+import { useDarkMode } from "@/contexts/DarkModeContext";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -28,6 +31,7 @@ const Header = () => {
   const [showCoursesMenu, setShowCoursesMenu] = useState(false);
   const [activeCourseType, setActiveCourseType] = useState<"it" | "non-it" | "eclass" | "degree" | null>(null);
   const [isHoveringDropdown, setIsHoveringDropdown] = useState(false);
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
 
   useEffect(() => {
     const checkIsMobile = () => {
@@ -392,7 +396,27 @@ const Header = () => {
             </nav>
 
             {/* Animated Action Buttons */}
-            <div className="hidden lg:flex items-center gap-4">
+            <div className="hidden lg:flex items-center gap-3">
+              {/* Eye Care / Dark Mode Toggle */}
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={toggleDarkMode}
+                className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 dark-mode:bg-gray-700 dark-mode:hover:bg-gray-600 transition-colors duration-300"
+                title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode (Eye Care)"}
+              >
+                <motion.div
+                  animate={{ rotate: isDarkMode ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {isDarkMode ? (
+                    <Eye className="w-4 h-4 text-gray-600 dark-mode:text-gray-300" />
+                  ) : (
+                    <Moon className="w-4 h-4 text-gray-600 dark-mode:text-gray-300" />
+                  )}
+                </motion.div>
+              </motion.button>
+              
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button 
                   size="lg" 
@@ -465,9 +489,26 @@ const Header = () => {
                 ))}
                 
                 <div className="pt-3 border-t border-border space-y-2">
-                  <Button variant="hero" size="sm" className="w-full" onClick={() => setIsMenuOpen(false)}>
-                    Register Now
-                  </Button>
+                  <div className="flex gap-2">
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={toggleDarkMode}
+                      className="flex-1 p-2 rounded-lg bg-gray-100 hover:bg-gray-200 dark-mode:bg-gray-700 dark-mode:hover:bg-gray-600 transition-colors duration-300 flex items-center justify-center gap-2"
+                    >
+                      {isDarkMode ? (
+                        <Eye className="w-4 h-4 text-gray-600 dark-mode:text-gray-300" />
+                      ) : (
+                        <Moon className="w-4 h-4 text-gray-600 dark-mode:text-gray-300" />
+                      )}
+                      <span className="text-xs font-medium text-gray-600 dark-mode:text-gray-300">
+                        {isDarkMode ? "Light" : "Dark"}
+                      </span>
+                    </motion.button>
+                    <Button variant="hero" size="sm" className="flex-1" onClick={() => setIsMenuOpen(false)}>
+                      Register Now
+                    </Button>
+                  </div>
                 </div>
               </div>
             </motion.div>

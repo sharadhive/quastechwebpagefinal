@@ -2,6 +2,74 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Dark Mode Styles */
+.dark-mode {
+  /* Dark Background Colors */
+  --background: 222 84% 5%;
+  --foreground: 210 40% 98%;
+  --card: 222 84% 5%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222 84% 5%;
+  --popover-foreground: 210 40% 98%;
+  
+  /* Dark Muted Colors */
+  --muted: 217 32% 17%;
+  --muted-foreground: 215 20% 65%;
+  --accent: 217 32% 17%;
+  --accent-foreground: 210 40% 98%;
+  
+  /* Dark Border */
+  --border: 217 32% 17%;
+  --input: 217 32% 17%;
+  --ring: 221 83% 53%;
+  
+  /* Dark Destructive */
+  --destructive: 0 62% 30%;
+  --destructive-foreground: 210 40% 98%;
+  
+  /* Dark Success */
+  --success: 142 76% 36%;
+  --success-foreground: 210 40% 98%;
+  
+  /* Dark Warning */
+  --warning: 38 92% 50%;
+  --warning-foreground: 222 84% 5%;
+  
+  /* Dark Info */
+  --info: 221 83% 53%;
+  --info-foreground: 210 40% 98%;
+}
+
+/* Dark Mode Component Overrides */
+.dark-mode .bg-white {
+  background-color: hsl(var(--card)) !important;
+}
+
+.dark-mode .text-gray-800,
+.dark-mode .text-gray-900 {
+  color: hsl(var(--foreground)) !important;
+}
+
+.dark-mode .text-gray-600,
+.dark-mode .text-gray-700 {
+  color: hsl(var(--muted-foreground)) !important;
+}
+
+.dark-mode .bg-gray-50,
+.dark-mode .bg-slate-50 {
+  background-color: hsl(var(--muted)) !important;
+}
+
+.dark-mode .border-gray-200,
+.dark-mode .border-slate-200 {
+  border-color: hsl(var(--border)) !important;
+}
+
+.dark-mode .shadow-xl,
+.dark-mode .shadow-2xl {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
+}
+
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
 */
