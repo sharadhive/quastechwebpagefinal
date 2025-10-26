@@ -27,6 +27,7 @@ const Header = () => {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [showCoursesMenu, setShowCoursesMenu] = useState(false);
   const [activeCourseType, setActiveCourseType] = useState<"it" | "non-it" | "eclass" | "degree" | null>(null);
+  const [isHoveringDropdown, setIsHoveringDropdown] = useState(false);
 
   useEffect(() => {
     const checkIsMobile = () => {
@@ -42,13 +43,16 @@ const Header = () => {
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setActiveDropdown(null);
+        if (!isHoveringDropdown) {
+          setActiveDropdown(null);
+          setActiveCourseType(null);
+        }
       }
     };
 
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
+  }, [isHoveringDropdown]);
 
   const courseTypes = [
     { name: "IT Courses", type: "it", icon: BookOpen, color: "from-blue-500 to-cyan-500" },
@@ -64,103 +68,173 @@ const Header = () => {
   ];
 
   const handleDropdownToggle = (categoryName: string) => {
-    setActiveDropdown(activeDropdown === categoryName ? null : categoryName);
+    if (activeDropdown === categoryName) {
+      setActiveDropdown(null);
+      setActiveCourseType(null);
+    } else {
+      setActiveDropdown(categoryName);
+    }
+  };
+
+  const handleMouseEnterDropdown = () => {
+    setIsHoveringDropdown(true);
+  };
+
+  const handleMouseLeaveDropdown = () => {
+    setIsHoveringDropdown(false);
+    // Add a small delay before closing to allow smooth transitions
+    setTimeout(() => {
+      if (!isHoveringDropdown) {
+        setActiveDropdown(null);
+        setActiveCourseType(null);
+      }
+    }, 150);
   };
 
   return (
     <>
-      {/* Top Bar - Hidden on Mobile */}
-      <div className="hidden md:block bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 text-white py-3 px-4 text-sm shadow-md">
-        <div className="container mx-auto flex justify-between items-center">
-          {/* Left Side - Contact Info & Certifications */}
-          <div className="flex items-center gap-8">
-            {/* Contact Information */}
-            <div className="flex items-center gap-6">
-              <motion.div 
-                className="flex items-center gap-2 hover:scale-105 transition-transform cursor-pointer"
-                whileHover={{ scale: 1.05 }}
-              >
-                <Phone className="w-4 h-4 text-white" />
-                <span className="font-medium">+91 8422800381</span>
-              </motion.div>
-              <motion.div 
-                className="flex items-center gap-2 hover:scale-105 transition-transform cursor-pointer"
-                whileHover={{ scale: 1.05 }}
-              >
-                <Mail className="w-4 h-4 text-white" />
-                <span className="font-medium">info@quastech.in</span>
-              </motion.div>
-            </div>
-            
-            {/* Certifications */}
-            <div className="flex items-center gap-6">
-              <motion.div 
-                className="flex items-center gap-2 hover:scale-105 transition-transform cursor-pointer"
-                whileHover={{ scale: 1.05 }}
-              >
-                <Award className="w-4 h-4 text-white" />
-                <span className="font-medium">ISO 9001:2015</span>
-              </motion.div>
-              <motion.div 
-                className="flex items-center gap-2 hover:scale-105 transition-transform cursor-pointer"
-                whileHover={{ scale: 1.05 }}
-              >
-                <CheckSquare className="w-4 h-4 text-white" />
-                <span className="font-medium">ISTQB</span>
-              </motion.div>
-            </div>
-          </div>
+      {/* Top Bar - Hidden on Mobile with Continuous Sliding Animation */}
+      <div className="hidden md:block bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 text-white py-3 px-4 text-sm shadow-md overflow-hidden">
+        <div className="container mx-auto">
+          {/* Continuous Sliding Content */}
+          <motion.div
+            className="flex items-center gap-16"
+            animate={{ x: [0, -1000] }}
+            transition={{
+              x: {
+                repeat: Infinity,
+                duration: 30,
+                ease: "linear",
+              },
+            }}
+            whileHover={{ animationPlayState: "paused" }}
+          >
+            {/* Duplicate content for seamless loop */}
+            {[...Array(2)].map((_, setIndex) => (
+              <div key={setIndex} className="flex items-center gap-16 flex-shrink-0">
+                {/* Contact Information */}
+                <div className="flex items-center gap-6">
+                  <motion.a 
+                    href="tel:+918422800381"
+                    className="flex items-center gap-2 hover:scale-105 transition-transform cursor-pointer"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <Phone className="w-4 h-4 text-white" />
+                    <span className="font-medium">+91 8422800381</span>
+                  </motion.a>
+                  <motion.a 
+                    href="mailto:info@quastech.in"
+                    className="flex items-center gap-2 hover:scale-105 transition-transform cursor-pointer"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <Mail className="w-4 h-4 text-white" />
+                    <span className="font-medium">info@quastech.in</span>
+                  </motion.a>
+                </div>
+                
+                {/* Certifications */}
+                <div className="flex items-center gap-6">
+                  <motion.div 
+                    className="flex items-center gap-2 hover:scale-105 transition-transform cursor-pointer"
+                    whileHover={{ scale: 1.05 }}
+                    onClick={() => alert("ISO 9001:2015 Certified - Quality Management System")}
+                  >
+                    <Award className="w-4 h-4 text-white" />
+                    <span className="font-medium">ISO 9001:2015</span>
+                  </motion.div>
+                  <motion.div 
+                    className="flex items-center gap-2 hover:scale-105 transition-transform cursor-pointer"
+                    whileHover={{ scale: 1.05 }}
+                    onClick={() => alert("ISTQB Certified - International Software Testing Qualifications Board")}
+                  >
+                    <CheckSquare className="w-4 h-4 text-white" />
+                    <span className="font-medium">ISTQB</span>
+                  </motion.div>
+                </div>
 
-          {/* Right Side - Social Media & Login */}
-          <div className="flex items-center gap-4">
-            {/* Social Media Icons */}
-            <div className="flex items-center gap-3">
-              <motion.a
-                href="#"
-                whileHover={{ scale: 1.2, y: -2 }}
-                className="text-white hover:text-blue-200 transition-colors duration-300"
-              >
-                <Facebook className="w-4 h-4" />
-              </motion.a>
-              <motion.a
-                href="#"
-                whileHover={{ scale: 1.2, y: -2 }}
-                className="text-white hover:text-blue-200 transition-colors duration-300"
-              >
-                <Twitter className="w-4 h-4" />
-              </motion.a>
-              <motion.a
-                href="#"
-                whileHover={{ scale: 1.2, y: -2 }}
-                className="text-white hover:text-blue-200 transition-colors duration-300"
-              >
-                <Instagram className="w-4 h-4" />
-              </motion.a>
-              <motion.a
-                href="#"
-                whileHover={{ scale: 1.2, y: -2 }}
-                className="text-white hover:text-blue-200 transition-colors duration-300"
-              >
-                <Youtube className="w-4 h-4" />
-              </motion.a>
-              <motion.a
-                href="#"
-                whileHover={{ scale: 1.2, y: -2 }}
-                className="text-white hover:text-blue-200 transition-colors duration-300"
-              >
-                <Linkedin className="w-4 h-4" />
-              </motion.a>
-            </div>
-            
-            {/* Login Button */}
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-white text-blue-600 hover:bg-gray-50 px-4 py-1 rounded-md text-sm font-semibold transition-colors"
-            >
-              Login
-            </motion.button>
-          </div>
+                {/* Additional Info */}
+                <div className="flex items-center gap-8">
+                  <motion.div 
+                    className="flex items-center gap-2"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <span className="font-medium">🎓 1000+ Students Placed</span>
+                  </motion.div>
+                  <motion.div 
+                    className="flex items-center gap-2"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <span className="font-medium">⭐ 4.8/5 Rating</span>
+                  </motion.div>
+                  <motion.div 
+                    className="flex items-center gap-2"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <span className="font-medium">🏆 Award Winning Institute</span>
+                  </motion.div>
+                </div>
+
+                {/* Social Media Icons */}
+                <div className="flex items-center gap-3">
+                  <motion.a
+                    href="https://facebook.com/quastech"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.2, y: -2 }}
+                    className="text-white hover:text-blue-200 transition-colors duration-300"
+                  >
+                    <Facebook className="w-4 h-4" />
+                  </motion.a>
+                  <motion.a
+                    href="https://twitter.com/quastech"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.2, y: -2 }}
+                    className="text-white hover:text-blue-200 transition-colors duration-300"
+                  >
+                    <Twitter className="w-4 h-4" />
+                  </motion.a>
+                  <motion.a
+                    href="https://instagram.com/quastech"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.2, y: -2 }}
+                    className="text-white hover:text-blue-200 transition-colors duration-300"
+                  >
+                    <Instagram className="w-4 h-4" />
+                  </motion.a>
+                  <motion.a
+                    href="https://youtube.com/quastech"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.2, y: -2 }}
+                    className="text-white hover:text-blue-200 transition-colors duration-300"
+                  >
+                    <Youtube className="w-4 h-4" />
+                  </motion.a>
+                  <motion.a
+                    href="https://linkedin.com/company/quastech"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.2, y: -2 }}
+                    className="text-white hover:text-blue-200 transition-colors duration-300"
+                  >
+                    <Linkedin className="w-4 h-4" />
+                  </motion.a>
+                </div>
+                
+                {/* Login Button */}
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-white text-blue-600 hover:bg-gray-50 px-4 py-1 rounded-md text-sm font-semibold transition-colors"
+                  onClick={() => alert("Login functionality will be implemented")}
+                >
+                  Login
+                </motion.button>
+              </div>
+            ))}
+          </motion.div>
         </div>
       </div>
 
@@ -205,12 +279,16 @@ const Header = () => {
             </div>
 
             {/* Center Course Button with Dropdown */}
-            <div className="hidden lg:flex items-center relative">
+            <div className="hidden lg:flex items-center relative" ref={dropdownRef}>
               <motion.button
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => setActiveDropdown("Courses")}
-                onMouseEnter={() => setActiveDropdown("Courses")}
+                onClick={() => handleDropdownToggle("Courses")}
+                onMouseEnter={() => {
+                  setActiveDropdown("Courses");
+                  setIsHoveringDropdown(true);
+                }}
+                onMouseLeave={() => setIsHoveringDropdown(false)}
                 className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2"
               >
                 <BookOpen className="w-5 h-5" />
@@ -224,65 +302,71 @@ const Header = () => {
               </motion.button>
 
               {/* Course Dropdown */}
-              {activeDropdown === "Courses" && (
-                <div
-                  className="absolute top-full left-0 pt-2 z-50 max-w-[95vw]"
-                  onMouseEnter={() => setActiveDropdown("Courses")}
-                  onMouseLeave={() => {
-                    setActiveDropdown(null);
-                    setActiveCourseType(null);
-                  }}
-                >
-                  <div className="flex flex-col lg:flex-row gap-4 max-w-full">
-                    {/* Course Types Card */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 10 }}
-                      className="w-80 max-w-[45vw] lg:max-w-[45vw] w-full lg:w-80 bg-background/95 backdrop-blur-xl border border-border rounded-xl shadow-2xl p-6 bg-gradient-to-br from-background to-muted/20"
-                    >
-                      <h3 className="text-lg font-bold mb-4 text-primary">Select Course Category</h3>
-                      <div className="flex flex-col gap-3">
-                        {courseTypes.map((course) => (
-                          <motion.div
-                            key={course.type}
-                            whileHover={{ scale: 1.02, x: 4 }}
-                            onMouseEnter={() => setActiveCourseType(course.type as "it" | "non-it" | "eclass" | "degree")}
-                            className={`relative p-4 rounded-lg cursor-pointer transition-all duration-300 flex items-center gap-4 ${
-                              activeCourseType === course.type 
-                                ? 'bg-gradient-to-r from-primary/20 to-primary-glow/20 border-2 border-primary shadow-lg scale-[1.02]' 
-                                : 'bg-gradient-to-r from-primary/5 to-primary-glow/5 border border-border/50 hover:border-primary/50 hover:shadow-md'
-                            }`}
-                          >
-                            <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${course.color} flex items-center justify-center shrink-0`}>
-                              <course.icon className="w-6 h-6 text-white" />
-                            </div>
-                            <h4 className="font-semibold text-sm">{course.name}</h4>
-                          </motion.div>
-                        ))}
-                      </div>
-                    </motion.div>
-
-                    {/* Course Details Panel */}
-                    {activeCourseType && (
+              <AnimatePresence>
+                {activeDropdown === "Courses" && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
+                    className="absolute top-full left-0 pt-2 z-50 max-w-[95vw]"
+                    onMouseEnter={handleMouseEnterDropdown}
+                    onMouseLeave={handleMouseLeaveDropdown}
+                  >
+                    <div className="flex flex-col lg:flex-row gap-4 max-w-full">
+                      {/* Course Types Card */}
                       <motion.div
-                        initial={{ opacity: 0, x: -20 }}
+                        initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -20 }}
-                        className="w-[500px] max-w-[50vw] lg:max-w-[50vw] w-full lg:w-[500px] max-h-[80vh] bg-background/95 backdrop-blur-xl border border-border rounded-xl shadow-2xl overflow-hidden bg-gradient-to-br from-background to-muted/20"
+                        transition={{ delay: 0.1 }}
+                        className="w-80 max-w-[45vw] lg:max-w-[45vw] w-full lg:w-80 bg-background/95 backdrop-blur-xl border border-border rounded-xl shadow-2xl p-6 bg-gradient-to-br from-background to-muted/20"
                       >
-                        <CoursesMegaMenu 
-                          type={activeCourseType} 
-                          onClose={() => {
-                            setActiveCourseType(null);
-                            setActiveDropdown(null);
-                          }} 
-                        />
+                        <h3 className="text-lg font-bold mb-4 text-primary">Select Course Category</h3>
+                        <div className="flex flex-col gap-3">
+                          {courseTypes.map((course) => (
+                            <motion.div
+                              key={course.type}
+                              whileHover={{ scale: 1.02, x: 4 }}
+                              onMouseEnter={() => setActiveCourseType(course.type as "it" | "non-it" | "eclass" | "degree")}
+                              className={`relative p-4 rounded-lg cursor-pointer transition-all duration-300 flex items-center gap-4 ${
+                                activeCourseType === course.type 
+                                  ? 'bg-gradient-to-r from-primary/20 to-primary-glow/20 border-2 border-primary shadow-lg scale-[1.02]' 
+                                  : 'bg-gradient-to-r from-primary/5 to-primary-glow/5 border border-border/50 hover:border-primary/50 hover:shadow-md'
+                              }`}
+                            >
+                              <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${course.color} flex items-center justify-center shrink-0`}>
+                                <course.icon className="w-6 h-6 text-white" />
+                              </div>
+                              <h4 className="font-semibold text-sm">{course.name}</h4>
+                            </motion.div>
+                          ))}
+                        </div>
                       </motion.div>
-                    )}
-                  </div>
-                </div>
-              )}
+
+                      {/* Course Details Panel */}
+                      <AnimatePresence>
+                        {activeCourseType && (
+                          <motion.div
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -20 }}
+                            transition={{ duration: 0.2 }}
+                            className="w-[500px] max-w-[50vw] lg:max-w-[50vw] w-full lg:w-[500px] max-h-[80vh] bg-background/95 backdrop-blur-xl border border-border rounded-xl shadow-2xl overflow-hidden bg-gradient-to-br from-background to-muted/20"
+                          >
+                            <CoursesMegaMenu 
+                              type={activeCourseType} 
+                              onClose={() => {
+                                setActiveCourseType(null);
+                                setActiveDropdown(null);
+                              }} 
+                            />
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
 
             {/* Animated Navigation */}
@@ -291,10 +375,17 @@ const Header = () => {
                 <div key={item.name} className="relative">
                   <motion.a
                     whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
                     href={item.href}
-                    className="text-gray-700 hover:text-primary font-medium transition-all duration-300 flex items-center gap-1 px-3 py-2 rounded-lg hover:bg-primary/5"
+                    className="text-gray-700 hover:text-primary font-medium transition-all duration-300 flex items-center gap-1 px-3 py-2 rounded-lg hover:bg-primary/5 relative overflow-hidden group"
                   >
-                    {item.name}
+                    <span className="relative z-10">{item.name}</span>
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-primary/10 to-primary-glow/10 rounded-lg"
+                      initial={{ scale: 0, opacity: 0 }}
+                      whileHover={{ scale: 1, opacity: 1 }}
+                      transition={{ duration: 0.2 }}
+                    />
                   </motion.a>
                 </div>
               ))}
@@ -302,15 +393,6 @@ const Header = () => {
 
             {/* Animated Action Buttons */}
             <div className="hidden lg:flex items-center gap-4">
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button 
-                  variant="outline" 
-                  size="lg" 
-                  className="border-primary text-primary hover:bg-primary/5 font-semibold transition-all duration-300"
-                >
-                  Login
-                </Button>
-              </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button 
                   size="lg" 
@@ -383,9 +465,6 @@ const Header = () => {
                 ))}
                 
                 <div className="pt-3 border-t border-border space-y-2">
-                  <Button variant="outline" size="sm" className="w-full" onClick={() => setIsMenuOpen(false)}>
-                    Login
-                  </Button>
                   <Button variant="hero" size="sm" className="w-full" onClick={() => setIsMenuOpen(false)}>
                     Register Now
                   </Button>

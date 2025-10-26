@@ -157,7 +157,7 @@ const Courses = () => {
         {/* Courses Slider with Professional Cards */}
         <div className="relative overflow-hidden">
           {/* Mobile: Vertical Stack */}
-          <div className="block md:hidden space-y-4">
+          <div className="block md:hidden space-y-4 py-4">
           {courses.map((course, index) => (
             <motion.div
               key={course.title}
@@ -169,15 +169,15 @@ const Courses = () => {
             >
                 <Card className="w-full h-[350px] overflow-hidden border-0 shadow-2xl hover:shadow-3xl transition-all duration-700 bg-white transform-gpu">
                   {/* Compact Header - Countdown and Seats Side by Side */}
-                  <div className="flex items-center justify-between p-3 bg-gradient-to-r from-slate-50 to-gray-100">
+                  <div className="flex items-center justify-between p-3 bg-gradient-to-r from-blue-50 to-orange-50">
                     <div className="flex items-center gap-2">
-                      <Timer className="w-3 h-3 text-blue-600" />
+                      <Timer className="w-3 h-3 text-institute-blue" />
                       <div>
                         <div className="text-xs text-gray-600">Next batch starts in</div>
-                        <div className="text-sm font-bold text-blue-600">{course.countdown}</div>
+                        <div className="text-sm font-bold text-institute-blue">{course.countdown}</div>
                       </div>
                     </div>
-                    <div className="bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                    <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">
                       {course.seatsLeft} seats left
                     </div>
                   </div>
@@ -187,7 +187,7 @@ const Courses = () => {
                     <div className="flex gap-3 mb-3">
                       {/* Course Icon - Left Side */}
                       <motion.div 
-                        className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg flex-shrink-0"
+                        className="w-12 h-12 bg-gradient-to-r from-blue-600 to-orange-500 rounded-lg flex items-center justify-center shadow-lg flex-shrink-0"
                         whileHover={{ scale: 1.1, rotate: 5 }}
                         transition={{ duration: 0.3 }}
                       >
@@ -200,11 +200,11 @@ const Courses = () => {
                           {course.title}
                         </h3>
                         <div className="flex items-center gap-1 mb-1">
-                          <Clock className="w-3 h-3 text-blue-500" />
+                          <Clock className="w-3 h-3 text-institute-blue" />
                           <span className="text-xs text-gray-600">{course.duration} {course.trainingType}</span>
                         </div>
                         <div className="flex items-center gap-1">
-                          <Calendar className="w-3 h-3 text-green-500" />
+                          <Calendar className="w-3 h-3 text-institute-orange" />
                           <span className="text-xs text-gray-600">{course.batchTypes}</span>
                         </div>
                       </div>
@@ -248,14 +248,14 @@ const Courses = () => {
                         <Button
                           variant="outline"
                           size="sm"
-                          className="flex-1 border-gray-300 text-gray-700 hover:bg-gray-50 text-xs"
+                          className="flex-1 border-institute-blue text-institute-blue hover:bg-blue-50 text-xs"
                         >
                           <Download className="w-3 h-3 mr-1" />
                           Download
                         </Button>
                         <Button
                           size="sm"
-                          className="flex-1 bg-green-500 hover:bg-green-600 text-white text-xs"
+                          className="flex-1 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-xs"
                         >
                           <MoreHorizontal className="w-3 h-3 mr-1" />
                           Know More
@@ -294,7 +294,7 @@ const Courses = () => {
 
           {/* Desktop: Horizontal Slider */}
           <motion.div
-            className="hidden md:flex gap-4 sm:gap-6 lg:gap-8"
+            className="hidden md:flex gap-4 sm:gap-6 lg:gap-8 py-4"
             animate={{ x: [0, -2000] }}
             transition={{
               x: {
@@ -317,15 +317,15 @@ const Courses = () => {
               >
                 <Card className="h-[400px] w-80 overflow-hidden border-0 shadow-2xl hover:shadow-3xl transition-all duration-700 bg-white transform-gpu">
                   {/* Compact Header - Countdown and Seats Side by Side */}
-                  <div className="flex items-center justify-between p-3 bg-gradient-to-r from-slate-50 to-gray-100">
+                  <div className="flex items-center justify-between p-3 bg-gradient-to-r from-blue-50 to-orange-50">
                     <div className="flex items-center gap-2">
-                      <Timer className="w-3 h-3 text-blue-600" />
+                      <Timer className="w-3 h-3 text-institute-blue" />
                       <div>
                         <div className="text-xs text-gray-600">Next batch starts in</div>
-                        <div className="text-sm font-bold text-blue-600">{course.countdown}</div>
+                        <div className="text-sm font-bold text-institute-blue">{course.countdown}</div>
                       </div>
                     </div>
-                    <div className="bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                    <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">
                       {course.seatsLeft} seats left
                     </div>
                   </div>
@@ -335,7 +335,7 @@ const Courses = () => {
                     <div className="flex gap-4 mb-4">
                       {/* Course Icon - Left Side */}
                       <motion.div 
-                        className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg flex-shrink-0"
+                        className="w-16 h-16 bg-gradient-to-r from-blue-600 to-orange-500 rounded-xl flex items-center justify-center shadow-lg flex-shrink-0"
                         whileHover={{ scale: 1.1, rotate: 5 }}
                         transition={{ duration: 0.3 }}
                       >
@@ -348,11 +348,11 @@ const Courses = () => {
                           {course.title}
                         </h3>
                         <div className="flex items-center gap-1 mb-1">
-                          <Clock className="w-3 h-3 text-blue-500" />
+                          <Clock className="w-3 h-3 text-institute-blue" />
                           <span className="text-xs text-gray-600">{course.duration} {course.trainingType}</span>
                         </div>
                         <div className="flex items-center gap-1">
-                          <Calendar className="w-3 h-3 text-green-500" />
+                          <Calendar className="w-3 h-3 text-institute-orange" />
                           <span className="text-xs text-gray-600">{course.batchTypes}</span>
                         </div>
                       </div>
@@ -378,17 +378,17 @@ const Courses = () => {
                     </div>
                   </div>
 
-                    {/* Feature Labels - Moved Down to Fill Space */}
-                    <div className="mb-6">
-                      <div className="flex gap-2 justify-center">
-                        <div className="bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-bold">
-                          UNLIMITED INTERVIEWS
-                        </div>
-                        <div className="bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold">
-                          INTEGRATED INTERNSHIP
-                        </div>
-                      </div>
-                    </div>
+            {/* Feature Labels - Moved Down to Fill Space */}
+            <div className="mb-6">
+              <div className="flex gap-2 justify-center">
+                <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-3 py-1 rounded-full text-xs font-bold">
+                  UNLIMITED INTERVIEWS
+                </div>
+                <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-3 py-1 rounded-full text-xs font-bold">
+                  INTEGRATED INTERNSHIP
+                </div>
+              </div>
+            </div>
 
                     {/* Bottom Buttons - Compact */}
                     <div className="mt-auto space-y-2">
@@ -396,14 +396,14 @@ const Courses = () => {
                         <Button
                           variant="outline"
                           size="sm"
-                          className="flex-1 border-gray-300 text-gray-700 hover:bg-gray-50 text-xs"
+                          className="flex-1 border-institute-blue text-institute-blue hover:bg-blue-50 text-xs"
                         >
                           <Download className="w-3 h-3 mr-1" />
                           Download
                         </Button>
                         <Button
                           size="sm"
-                          className="flex-1 bg-green-500 hover:bg-green-600 text-white text-xs"
+                          className="flex-1 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-xs"
                         >
                           <MoreHorizontal className="w-3 h-3 mr-1" />
                           Know More
@@ -422,7 +422,7 @@ const Courses = () => {
                     <Button
                       variant="default"
                           size="sm"
-                          className="w-full bg-gradient-to-r from-blue-600 via-purple-600 to-blue-700 hover:from-blue-700 hover:via-purple-700 hover:to-blue-800 text-white font-semibold py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 relative overflow-hidden group text-sm border-0"
+                          className="w-full bg-gradient-to-r from-blue-600 via-blue-700 to-orange-500 hover:from-blue-700 hover:via-blue-800 hover:to-orange-600 text-white font-semibold py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 relative overflow-hidden group text-sm border-0"
                         >
                           <motion.span 
                             className="relative z-10 flex items-center justify-center gap-2"

@@ -41,34 +41,29 @@ const Marquee = ({
   direction = "left",
   speed = "normal",
 }: MarqueeProps) => {
-  // --- SPEED CHANGE HERE ---
-  // Reduced duration values for a faster animation loop.
   const duration =
     speed === "slow" ? 45 : speed === "fast" ? 12 : 25;
 
-  const marqueeVariants = {
-    animate: {
-      x: direction === "left" ? "-25%" : "25%",
-      transition: {
-        x: {
-          repeat: Infinity,
-          repeatType: "loop",
-          duration: duration,
-          ease: "linear",
-        },
-      },
-    },
-  };
-
-  const duplicatedChildren = React.useMemo(() => [children, children, children, children], [children]);
+  // Create enough duplicates to ensure seamless loop
+  const duplicatedChildren = React.useMemo(() => [
+    children, children, children, children, children, children, children, children
+  ], [children]);
 
   return (
     <div className="w-full overflow-hidden">
       <motion.div
         className="flex"
-        variants={marqueeVariants}
-        initial={{ x: "0%" }}
-        animate="animate"
+        animate={{
+          x: direction === "left" ? [0, -1920] : [0, 1920],
+        }}
+        transition={{
+          x: {
+            repeat: Infinity,
+            repeatType: "loop",
+            duration: duration,
+            ease: "linear",
+          },
+        }}
       >
         {duplicatedChildren.map((child, index) => (
           <React.Fragment key={index}>{child}</React.Fragment>
@@ -191,8 +186,25 @@ const About = () => {
   
   // --- Animation Variants (unchanged) ---
   const whyUsCardVariants = {
-    hidden: (index: number) => ({ opacity: 0, x: index % 2 === 0 ? -100 : 100 }),
-    visible: (index: number) => ({ opacity: 1, x: 0, transition: { type: "spring", stiffness: 80, delay: index * 0.1 } }),
+    hidden: (index: number) => ({ 
+      opacity: 0, 
+      y: 50,
+      scale: 0.9,
+      rotateX: 15
+    }),
+    visible: (index: number) => ({ 
+      opacity: 1, 
+      y: 0, 
+      scale: 1,
+      rotateX: 0,
+      transition: { 
+        type: "spring", 
+        stiffness: 100, 
+        damping: 15,
+        delay: index * 0.1,
+        duration: 0.8
+      } 
+    }),
   };
   const achievementCardVariants = {
     hidden: { opacity: 0, scale: 0.8, y: 50 },
@@ -255,22 +267,146 @@ const About = () => {
                 Discover what makes QUASTECH the preferred choice for ambitious professionals
               </p>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-              {whyUsFeatures.map((feature, index) => (
-                <Card key={index} custom={index} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={whyUsCardVariants}>
-                  <CardContent>
-                    <motion.div
-                      animate={{ y: [0, -5, 0] }}
-                      transition={{ duration: 3, repeat: Infinity, delay: index * 0.2 }}
-                      className={`w-16 h-16 md:w-20 md:h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-r ${feature.color} flex items-center justify-center shadow-xl`}
-                    >
-                      <feature.icon className="w-8 h-8 md:w-10 md:h-10 text-white" />
-                    </motion.div>
-                    <h3 className="text-lg md:text-xl font-bold mb-3 text-slate-900 text-center">{feature.title}</h3>
-                    <p className="text-sm text-slate-600 leading-relaxed text-center flex-grow">{feature.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
+            <div className="flex flex-col gap-8 md:gap-12">
+              {/* First Row - Slides Right */}
+              <Marquee speed="fast" direction="right">
+                {whyUsFeatures.map((feature, index) => (
+                  <motion.div
+                    key={`row1-${index}`}
+                    custom={index}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.3 }}
+                    variants={whyUsCardVariants}
+                    whileHover={{ 
+                      scale: 1.05, 
+                      y: -10,
+                      transition: { duration: 0.3, ease: "easeOut" }
+                    }}
+                    className="group flex-shrink-0 w-72 mx-4"
+                  >
+                    <Card className="h-full hover:shadow-2xl transition-all duration-500 border-0 bg-white/80 backdrop-blur-sm">
+                      <CardContent className="p-6 h-full flex flex-col">
+                        <motion.div
+                          whileHover={{ 
+                            scale: 1.1, 
+                            rotate: [0, -5, 5, 0],
+                            transition: { duration: 0.4 }
+                          }}
+                          className={`w-16 h-16 md:w-20 md:h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-r ${feature.color} flex items-center justify-center shadow-xl group-hover:shadow-2xl transition-all duration-300`}
+                        >
+                          <motion.div
+                            animate={{ 
+                              scale: [1, 1.1, 1],
+                              rotate: [0, 5, -5, 0]
+                            }}
+                            transition={{ 
+                              duration: 4, 
+                              repeat: Infinity, 
+                              delay: index * 0.3,
+                              ease: "easeInOut"
+                            }}
+                          >
+                            <feature.icon className="w-8 h-8 md:w-10 md:h-10 text-white" />
+                          </motion.div>
+                        </motion.div>
+                        
+                        <motion.h3 
+                          className="text-lg md:text-xl font-bold mb-3 text-slate-900 text-center group-hover:text-institute-blue transition-colors duration-300"
+                          whileHover={{ scale: 1.05 }}
+                        >
+                          {feature.title}
+                        </motion.h3>
+                        
+                        <motion.p 
+                          className="text-sm text-slate-600 leading-relaxed text-center flex-grow group-hover:text-slate-700 transition-colors duration-300"
+                          initial={{ opacity: 0.8 }}
+                          whileHover={{ opacity: 1 }}
+                        >
+                          {feature.description}
+                        </motion.p>
+                        
+                        {/* Subtle bottom accent */}
+                        <motion.div
+                          className="w-0 h-1 bg-gradient-to-r from-blue-500 to-orange-500 mx-auto mt-4 rounded-full"
+                          whileHover={{ width: "60%" }}
+                          transition={{ duration: 0.3 }}
+                        />
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </Marquee>
+
+              {/* Second Row - Slides Left */}
+              <Marquee speed="fast" direction="left">
+                {whyUsFeatures.map((feature, index) => (
+                  <motion.div
+                    key={`row2-${index}`}
+                    custom={index}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.3 }}
+                    variants={whyUsCardVariants}
+                    whileHover={{ 
+                      scale: 1.05, 
+                      y: -10,
+                      transition: { duration: 0.3, ease: "easeOut" }
+                    }}
+                    className="group flex-shrink-0 w-72 mx-4"
+                  >
+                    <Card className="h-full hover:shadow-2xl transition-all duration-500 border-0 bg-white/80 backdrop-blur-sm">
+                      <CardContent className="p-6 h-full flex flex-col">
+                        <motion.div
+                          whileHover={{ 
+                            scale: 1.1, 
+                            rotate: [0, -5, 5, 0],
+                            transition: { duration: 0.4 }
+                          }}
+                          className={`w-16 h-16 md:w-20 md:h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-r ${feature.color} flex items-center justify-center shadow-xl group-hover:shadow-2xl transition-all duration-300`}
+                        >
+                          <motion.div
+                            animate={{ 
+                              scale: [1, 1.1, 1],
+                              rotate: [0, 5, -5, 0]
+                            }}
+                            transition={{ 
+                              duration: 4, 
+                              repeat: Infinity, 
+                              delay: index * 0.3,
+                              ease: "easeInOut"
+                            }}
+                          >
+                            <feature.icon className="w-8 h-8 md:w-10 md:h-10 text-white" />
+                          </motion.div>
+                        </motion.div>
+                        
+                        <motion.h3 
+                          className="text-lg md:text-xl font-bold mb-3 text-slate-900 text-center group-hover:text-institute-blue transition-colors duration-300"
+                          whileHover={{ scale: 1.05 }}
+                        >
+                          {feature.title}
+                        </motion.h3>
+                        
+                        <motion.p 
+                          className="text-sm text-slate-600 leading-relaxed text-center flex-grow group-hover:text-slate-700 transition-colors duration-300"
+                          initial={{ opacity: 0.8 }}
+                          whileHover={{ opacity: 1 }}
+                        >
+                          {feature.description}
+                        </motion.p>
+                        
+                        {/* Subtle bottom accent */}
+                        <motion.div
+                          className="w-0 h-1 bg-gradient-to-r from-blue-500 to-orange-500 mx-auto mt-4 rounded-full"
+                          whileHover={{ width: "60%" }}
+                          transition={{ duration: 0.3 }}
+                        />
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </Marquee>
             </div>
           </motion.div>
 
@@ -302,7 +438,7 @@ const About = () => {
               </p>
             </div>
             <div className="flex flex-col gap-4 md:gap-6">
-              <Marquee speed="fast" direction="left">
+              <Marquee speed="fast" direction="right">
                 {topRow.map((card, index) => (
                   <div key={`top-${index}`} className="flex-shrink-0 w-24 sm:w-28 lg:w-32 mx-2 sm:mx-3 lg:mx-4">
                     <motion.div

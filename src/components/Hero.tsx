@@ -6,15 +6,18 @@ import BrochureModal from "./BrochureModal";
 
 const HeroBackground = () => (
   <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0">
-    {/* Professional Hero Gradient */}
-    <div className="absolute inset-0 bg-gradient-hero" />
+    {/* Clean Professional Hero Gradient */}
+    <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800" />
     
-    {/* Professional Mesh Overlay */}
-    <div className="absolute inset-0 bg-gradient-mesh opacity-30" />
+    {/* Subtle Overlay for Better Text Contrast */}
+    <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 via-transparent to-orange-900/20" />
     
-    {/* Subtle Grid Pattern */}
+    {/* Professional Mesh Overlay - Reduced Opacity */}
+    <div className="absolute inset-0 bg-gradient-mesh opacity-10" />
+    
+    {/* Subtle Grid Pattern - Reduced Opacity */}
     <div
-      className="absolute inset-0 opacity-10"
+      className="absolute inset-0 opacity-5"
       style={{
         backgroundImage:
           "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
@@ -22,19 +25,19 @@ const HeroBackground = () => (
       }}
     />
     
-    {/* Professional Floating Elements */}
+    {/* Professional Floating Elements - Reduced Opacity */}
     <div className="absolute inset-0">
-      {[...Array(12)].map((_, i) => (
+      {[...Array(8)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute w-2 h-2 bg-white/20 rounded-full"
+          className="absolute w-2 h-2 bg-white/10 rounded-full"
           style={{
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
           }}
           animate={{
             y: [0, -100, 0],
-            opacity: [0, 0.8, 0],
+            opacity: [0, 0.4, 0],
             scale: [0.5, 1, 0.5],
           }}
           transition={{
@@ -53,7 +56,7 @@ const FloatingElements = () => (
   <div className="absolute inset-0 pointer-events-none overflow-hidden">
     {/* Dark Professional Geometric Shapes */}
     <motion.div
-      className="absolute top-20 left-10 w-10 h-10 border border-purple-400/40 rounded-lg"
+      className="absolute top-20 left-10 w-10 h-10 border border-blue-400/20 rounded-lg"
       animate={{
         rotate: [0, 360],
         scale: [1, 1.05, 1],
@@ -66,7 +69,7 @@ const FloatingElements = () => (
     />
     
     <motion.div
-      className="absolute top-40 right-20 w-6 h-6 bg-gradient-to-r from-purple-500/20 to-orange-500/20 rounded-full"
+      className="absolute top-40 right-20 w-6 h-6 bg-gradient-to-r from-blue-500/10 to-orange-500/10 rounded-full"
       animate={{
         y: [0, -15, 0],
         scale: [1, 1.1, 1],
@@ -79,7 +82,7 @@ const FloatingElements = () => (
     />
     
     <motion.div
-      className="absolute bottom-40 left-20 w-12 h-12 border border-orange-400/30 rounded-full"
+      className="absolute bottom-40 left-20 w-12 h-12 border border-orange-400/15 rounded-full"
       animate={{
         rotate: [0, -360],
         scale: [1, 0.9, 1],
@@ -93,10 +96,10 @@ const FloatingElements = () => (
     
     {/* Subtle Glowing Lines */}
     <motion.div
-      className="absolute top-60 right-40 w-24 h-0.5 bg-gradient-to-r from-transparent via-purple-400/40 to-transparent"
+      className="absolute top-60 right-40 w-24 h-0.5 bg-gradient-to-r from-transparent via-blue-400/20 to-transparent"
       animate={{
         scaleX: [0, 1, 0],
-        opacity: [0, 0.8, 0],
+        opacity: [0, 0.4, 0],
       }}
       transition={{
         duration: 4,
@@ -106,10 +109,10 @@ const FloatingElements = () => (
     />
     
     <motion.div
-      className="absolute bottom-60 left-40 w-20 h-0.5 bg-gradient-to-r from-transparent via-orange-400/40 to-transparent"
+      className="absolute bottom-60 left-40 w-20 h-0.5 bg-gradient-to-r from-transparent via-orange-400/20 to-transparent"
       animate={{
         scaleX: [0, 1, 0],
-        opacity: [0, 0.8, 0],
+        opacity: [0, 0.4, 0],
       }}
       transition={{
         duration: 4,
@@ -204,7 +207,7 @@ export default function Hero() {
               className="text-center lg:text-left order-2 lg:order-1 w-full"
             >
               <div className="mb-4">
-                <h1 className="heading-institute mb-3 text-white leading-tight">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 text-white leading-tight drop-shadow-lg">
                   <TypeAnimation
                     sequence={[
                       'Trusted and Renowned Training Institute',
@@ -220,12 +223,12 @@ export default function Hero() {
                     speed={50}
                     deletionSpeed={30}
                     repeat={Infinity}
-                    className="block"
+                    className="block bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent"
                     cursor={true}
                     preRenderFirstString={true}
                   />
                 </h1>
-                <div className="text-sm sm:text-base max-w-lg mx-auto lg:mx-0 font-medium text-white/90 min-h-[40px] sm:min-h-[45px] flex items-center justify-center lg:justify-start">
+                <div className="text-sm sm:text-base max-w-lg mx-auto lg:mx-0 font-medium text-white/95 min-h-[40px] sm:min-h-[45px] flex items-center justify-center lg:justify-start drop-shadow-md">
                   <TypeAnimation
                     sequence={[
                       'Learn, build, and grow with guidance from industry experts.',
@@ -262,13 +265,13 @@ export default function Hero() {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.5 + index * 0.1 }}
                     whileHover={{ scale: 1.05, y: -2 }}
-                    className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-lg p-3 hover:bg-white/20 transition-all duration-300 cursor-pointer"
+                    className="bg-white/15 backdrop-blur-xl border border-white/30 rounded-lg p-3 hover:bg-white/25 transition-all duration-300 cursor-pointer shadow-lg"
                   >
                     <div className="flex items-center gap-2 mb-2">
-                      <div className={`w-6 h-6 rounded-lg bg-gradient-to-r ${feature.color} flex items-center justify-center`}>
+                      <div className={`w-6 h-6 rounded-lg bg-gradient-to-r ${feature.color} flex items-center justify-center shadow-md`}>
                         <feature.icon className="w-3 h-3 text-white" />
                       </div>
-                      <p className="text-xs font-semibold text-white">{feature.title}</p>
+                      <p className="text-xs font-semibold text-white drop-shadow-sm">{feature.title}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -307,53 +310,248 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="relative flex flex-col items-center justify-center order-1 lg:order-2 w-full"
             >
+              {/* Abstract Line Art Design */}
+              <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                {/* Orange Line Art - Top Right */}
+                <motion.div
+                  className="absolute top-8 right-8 w-24 h-24"
+                  animate={{
+                    rotate: [0, 5, 0],
+                    scale: [1, 1.05, 1],
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                >
+                  <svg viewBox="0 0 100 100" className="w-full h-full">
+                    <motion.path
+                      d="M20 20 L80 20 L80 40 L60 40 L60 60 L40 60 L40 80 L20 80 Z"
+                      stroke="rgb(249 115 22)"
+                      strokeWidth="2"
+                      fill="none"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      animate={{
+                        pathLength: [0, 1, 0],
+                        opacity: [0, 1, 0],
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: 0.5,
+                      }}
+                    />
+                    <motion.path
+                      d="M30 30 L70 30 L70 50 L50 50 L50 70 L30 70 Z"
+                      stroke="rgb(249 115 22)"
+                      strokeWidth="1.5"
+                      fill="none"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      animate={{
+                        pathLength: [0, 1, 0],
+                        opacity: [0, 0.8, 0],
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: 1,
+                      }}
+                    />
+                  </svg>
+                </motion.div>
+
+                {/* Blue Line Art - Bottom Left */}
+                <motion.div
+                  className="absolute bottom-8 left-8 w-20 h-20"
+                  animate={{
+                    rotate: [0, -3, 0],
+                    scale: [1, 1.03, 1],
+                  }}
+                  transition={{
+                    duration: 5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 1,
+                  }}
+                >
+                  <svg viewBox="0 0 100 100" className="w-full h-full">
+                    <motion.path
+                      d="M25 25 L75 25 L75 45 L55 45 L55 65 L35 65 L35 75 L25 75 Z"
+                      stroke="rgb(59 130 246)"
+                      strokeWidth="2"
+                      fill="none"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      animate={{
+                        pathLength: [0, 1, 0],
+                        opacity: [0, 1, 0],
+                      }}
+                      transition={{
+                        duration: 4,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: 0.8,
+                      }}
+                    />
+                    <motion.path
+                      d="M35 35 L65 35 L65 55 L45 55 L45 65 L35 65 Z"
+                      stroke="rgb(59 130 246)"
+                      strokeWidth="1.5"
+                      fill="none"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      animate={{
+                        pathLength: [0, 1, 0],
+                        opacity: [0, 0.7, 0],
+                      }}
+                      transition={{
+                        duration: 4,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: 1.5,
+                      }}
+                    />
+                  </svg>
+                </motion.div>
+
+                {/* Orange Line Art - Top Left */}
+                <motion.div
+                  className="absolute top-16 left-12 w-16 h-16"
+                  animate={{
+                    rotate: [0, 8, 0],
+                    scale: [1, 1.08, 1],
+                  }}
+                  transition={{
+                    duration: 6,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 2,
+                  }}
+                >
+                  <svg viewBox="0 0 100 100" className="w-full h-full">
+                    <motion.path
+                      d="M30 30 L70 30 L70 50 L50 50 L50 70 L30 70 Z"
+                      stroke="rgb(249 115 22)"
+                      strokeWidth="1.5"
+                      fill="none"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      animate={{
+                        pathLength: [0, 1, 0],
+                        opacity: [0, 0.9, 0],
+                      }}
+                      transition={{
+                        duration: 3.5,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: 0.3,
+                      }}
+                    />
+                  </svg>
+                </motion.div>
+
+                {/* Blue Line Art - Bottom Right */}
+                <motion.div
+                  className="absolute bottom-16 right-12 w-18 h-18"
+                  animate={{
+                    rotate: [0, -6, 0],
+                    scale: [1, 1.06, 1],
+                  }}
+                  transition={{
+                    duration: 4.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 1.5,
+                  }}
+                >
+                  <svg viewBox="0 0 100 100" className="w-full h-full">
+                    <motion.path
+                      d="M25 25 L75 25 L75 40 L60 40 L60 60 L40 60 L40 75 L25 75 Z"
+                      stroke="rgb(59 130 246)"
+                      strokeWidth="1.5"
+                      fill="none"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      animate={{
+                        pathLength: [0, 1, 0],
+                        opacity: [0, 0.8, 0],
+                      }}
+                      transition={{
+                        duration: 3.8,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: 0.7,
+                      }}
+                    />
+                  </svg>
+                </motion.div>
+              </div>
+              
               {/* Professional Form Card */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.5 }}
-                className="w-full max-w-md bg-white/95 backdrop-blur-xl border border-white/30 rounded-2xl shadow-2xl overflow-hidden"
+                whileHover={{ 
+                  scale: 1.02, 
+                  y: -5,
+                  boxShadow: "0 30px 60px -12px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.2)"
+                }}
+                className="w-full max-w-md bg-white/98 backdrop-blur-xl border border-white/40 rounded-2xl shadow-2xl overflow-hidden relative group"
                 style={{
                   boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1)'
                 }}
               >
                 {/* Form Header */}
-                <div className="bg-gradient-to-r from-blue-600 via-blue-700 to-orange-500 p-6 text-center">
+                <div className="bg-gradient-to-r from-blue-700 via-blue-800 to-orange-600 p-4 text-center shadow-lg relative overflow-hidden">
+                  {/* Animated Background Pattern */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+                  
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.6 }}
+                    className="relative z-10"
                   >
-                    <h3 className="text-2xl font-bold text-white mb-2">Get Started</h3>
-                    <p className="text-white/90 text-sm">
+                    <h3 className="text-xl font-bold text-white mb-1 drop-shadow-md">Get Started</h3>
+                    <p className="text-white/90 text-xs drop-shadow-sm">
                       Fill the form to get started
-                </p>
-              </motion.div>
+                    </p>
+                  </motion.div>
                 </div>
 
                 {/* Form Content */}
-                <div className="p-6 bg-white">
-                  <form className="space-y-4" onSubmit={handleSubmit}>
+                <div className="p-4 bg-gradient-to-br from-white to-gray-50">
+                  <form className="space-y-3" onSubmit={handleSubmit}>
                     {[
                       { id: "phone", type: "tel", placeholder: "Enter 10-digit Mobile Number", icon: Phone, label: "Mobile Number" },
                       { id: "name", type: "text", placeholder: "Your Full Name", icon: User, label: "Full Name" },
-                      { id: "email", type: "email", placeholder: "yourname@gmail.com", icon: Mail, label: "Email Address" },
+                      { id: "email", type: "email", placeholder: "e.g. yourname@gmail.com", icon: Mail, label: "Email Address" },
                 ].map((field, index) => (
                   <motion.div
                     key={field.id}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.7 + index * 0.1 }}
-                        className="space-y-2"
+                        className="space-y-1"
                       >
-                        <label className="block text-gray-700 text-sm font-semibold">
+                        <label className="block text-gray-700 text-xs font-semibold">
                           {field.label} <span className="text-orange-500">*</span>
                         </label>
-                        <div className="relative group">
-                          <div className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 bg-gradient-to-r from-blue-500 to-orange-500 rounded-full flex items-center justify-center shadow-sm">
+                        <motion.div 
+                          className="relative group"
+                          whileHover={{ scale: 1.01 }}
+                          whileFocus={{ scale: 1.01 }}
+                        >
+                          <div className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 bg-gradient-to-r from-blue-500 to-orange-500 rounded-full flex items-center justify-center shadow-sm group-hover:shadow-md transition-all duration-300">
                             <field.icon className="w-3 h-3 text-white" />
                         </div>
-                        <input
+                        <motion.input
                           type={field.type}
                           id={field.id}
                           value={formData[field.id]}
@@ -362,9 +560,10 @@ export default function Hero() {
                           }
                           required
                           placeholder={field.placeholder}
-                            className="w-full pl-12 pr-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-lg text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all duration-300 font-medium"
+                            className="w-full pl-12 pr-3 py-3 bg-white border border-gray-200 rounded-lg text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-orange-500/30 focus:border-orange-500 transition-all duration-300 font-medium text-sm hover:border-gray-300"
+                            whileFocus={{ scale: 1.005 }}
                         />
-                    </div>
+                    </motion.div>
                   </motion.div>
                 ))}
 
@@ -374,13 +573,22 @@ export default function Hero() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 1.0 }}
-                  whileHover={{ scale: 1.02, y: -2 }}
+                  whileHover={{ 
+                    scale: 1.02, 
+                    y: -2,
+                    boxShadow: "0 10px 25px -5px rgba(255, 140, 0, 0.3)"
+                  }}
                   whileTap={{ scale: 0.98 }}
-                      className="w-full py-3 rounded-lg bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 hover:from-orange-600 hover:via-orange-700 hover:to-red-600 font-bold text-white flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group relative"
+                      className="w-full py-3 rounded-lg bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 hover:from-orange-600 hover:via-orange-700 hover:to-red-600 font-bold text-white flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden group relative text-sm"
                     >
-                      <Send className="w-5 h-5" />
-                      <span>Get Started Now</span>
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+                      <motion.div
+                        animate={{ rotate: [0, 8, 0] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                        <Send className="w-4 h-4" />
+                      </motion.div>
+                      <span className="relative z-10">Submit</span>
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
                 </motion.button>
               </form>
 
