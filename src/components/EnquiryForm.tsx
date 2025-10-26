@@ -56,14 +56,14 @@ const EnquiryForm = () => {
   ];
 
   return (
-    <section id="enquiry" className="py-20 relative bg-gradient-to-br from-gray-50 to-blue-50/30">
+    <section id="enquiry" className="py-8 md:py-12 relative bg-gradient-to-br from-gray-50 to-blue-50/30">
       <div className="container mx-auto px-4 relative z-10">
         {/* Header Section */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-8"
         >
           <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/10 to-orange-500/10 px-6 py-3 rounded-full mb-6">
             <MessageCircle className="w-5 h-5 text-blue-600" />

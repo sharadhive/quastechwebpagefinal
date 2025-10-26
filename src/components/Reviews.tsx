@@ -83,7 +83,7 @@ const Reviews = () => {
   };
 
   return (
-    <section id="reviews" className="py-20 bg-muted/30">
+    <section id="reviews" className="py-8 md:py-12 bg-muted/30">
       <div className="container mx-auto px-4">
         {/* Header */}
         <motion.div

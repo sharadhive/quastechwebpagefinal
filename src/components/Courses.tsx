@@ -138,7 +138,7 @@ const Courses = () => {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-8"
         >
           <div className="inline-flex items-center gap-2 bg-primary/10 px-6 py-3 rounded-full mb-6">
             <Code className="w-5 h-5 text-primary" />
@@ -167,7 +167,7 @@ const Courses = () => {
                 whileHover={{ y: -4, scale: 1.02 }}
               className="group"
             >
-                <Card className="w-full h-[350px] overflow-hidden border-0 shadow-2xl hover:shadow-3xl transition-all duration-700 bg-white transform-gpu">
+                <Card className="w-full h-[380px] overflow-hidden border-0 shadow-2xl hover:shadow-3xl transition-all duration-700 bg-white transform-gpu">
                   {/* Compact Header - Countdown and Seats Side by Side */}
                   <div className="flex items-center justify-between p-3 bg-gradient-to-r from-blue-50 to-orange-50">
                     <div className="flex items-center gap-2">
@@ -210,8 +210,8 @@ const Courses = () => {
                       </div>
                     </div>
 
-                    {/* Technology Logos - Larger Size */}
-                    <div className="mb-4">
+                    {/* Technology Logos - Consistent Size */}
+                    <div className="mb-3">
                       <div className="flex justify-center gap-2 flex-wrap">
                         {course.features.slice(0, 6).map((imgSrc, idx) => (
                           <motion.div 
@@ -230,20 +230,20 @@ const Courses = () => {
                       </div>
                     </div>
 
-                    {/* Feature Labels - Moved Down to Fill Space */}
-                    <div className="mb-5">
+                    {/* Feature Labels - Consistent Spacing */}
+                    <div className="mb-4">
                       <div className="flex gap-1 justify-center">
-                        <div className="bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                        <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-2 py-1 rounded-full text-xs font-bold">
                           UNLIMITED INTERVIEWS
                         </div>
-                        <div className="bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                        <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-2 py-1 rounded-full text-xs font-bold">
                           INTEGRATED INTERNSHIP
                         </div>
                       </div>
                     </div>
 
                     {/* Bottom Buttons - Compact */}
-                    <div className="mt-auto space-y-2">
+                    <div className="mt-auto space-y-2 pb-3">
                       <div className="flex gap-1">
                         <Button
                           variant="outline"
@@ -315,7 +315,7 @@ const Courses = () => {
                 whileHover={{ y: -8, scale: 1.02 }}
                 className="group"
               >
-                <Card className="h-[400px] w-80 overflow-hidden border-0 shadow-2xl hover:shadow-3xl transition-all duration-700 bg-white transform-gpu">
+                <Card className="h-[420px] w-80 overflow-hidden border-0 shadow-2xl hover:shadow-3xl transition-all duration-700 bg-white transform-gpu">
                   {/* Compact Header - Countdown and Seats Side by Side */}
                   <div className="flex items-center justify-between p-3 bg-gradient-to-r from-blue-50 to-orange-50">
                     <div className="flex items-center gap-2">
@@ -358,7 +358,7 @@ const Courses = () => {
                       </div>
                     </div>
 
-                    {/* Technology Logos - Larger Size */}
+                    {/* Technology Logos - Consistent Size */}
                     <div className="mb-4">
                       <div className="flex justify-center gap-3 flex-wrap">
                         {course.features.slice(0, 6).map((imgSrc, idx) => (
@@ -369,29 +369,29 @@ const Courses = () => {
                             transition={{ duration: 0.3 }}
                           >
                             <img
-                          src={imgSrc}
+                              src={imgSrc}
                               alt="Tech"
                               className="w-8 h-8 object-contain"
-                        />
+                            />
                           </motion.div>
-                      ))}
+                        ))}
+                      </div>
                     </div>
-                  </div>
 
-            {/* Feature Labels - Moved Down to Fill Space */}
-            <div className="mb-6">
-              <div className="flex gap-2 justify-center">
-                <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-3 py-1 rounded-full text-xs font-bold">
-                  UNLIMITED INTERVIEWS
-                </div>
-                <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-3 py-1 rounded-full text-xs font-bold">
-                  INTEGRATED INTERNSHIP
-                </div>
-              </div>
-            </div>
+                    {/* Feature Labels - Consistent Spacing */}
+                    <div className="mb-5">
+                      <div className="flex gap-2 justify-center">
+                        <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-3 py-1 rounded-full text-xs font-bold">
+                          UNLIMITED INTERVIEWS
+                        </div>
+                        <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-3 py-1 rounded-full text-xs font-bold">
+                          INTEGRATED INTERNSHIP
+                        </div>
+                      </div>
+                    </div>
 
                     {/* Bottom Buttons - Compact */}
-                    <div className="mt-auto space-y-2">
+                    <div className="mt-auto space-y-2 pb-4">
                       <div className="flex gap-1">
                         <Button
                           variant="outline"
@@ -446,7 +446,7 @@ const Courses = () => {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-center mt-20"
+          className="text-center mt-8"
         >
           <div className="bg-gradient-hero rounded-3xl p-12 lg:p-16 text-white shadow-xl">
             <h3 className="heading-md mb-6">

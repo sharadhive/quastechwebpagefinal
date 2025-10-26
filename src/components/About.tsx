@@ -44,9 +44,9 @@ const Marquee = ({
   const duration =
     speed === "slow" ? 45 : speed === "fast" ? 12 : 25;
 
-  // Create enough duplicates to ensure seamless loop
+  // Create enough duplicates to ensure seamless loop - more duplicates for smoother animation
   const duplicatedChildren = React.useMemo(() => [
-    children, children, children, children, children, children, children, children
+    children, children, children, children, children, children, children, children, children, children
   ], [children]);
 
   return (
@@ -54,7 +54,7 @@ const Marquee = ({
       <motion.div
         className="flex"
         animate={{
-          x: direction === "left" ? [0, -1920] : [0, 1920],
+          x: direction === "left" ? [0, "-100%"] : [0, "100%"],
         }}
         transition={{
           x: {
@@ -213,7 +213,7 @@ const About = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
-      <section id="about" className="relative py-16 md:py-20 overflow-x-hidden">
+      <section id="about" className="relative py-8 md:py-12 overflow-x-hidden">
         <div className="container mx-auto px-4 max-w-7xl">
           
           {/* --- Sections are now responsive --- */}
@@ -224,7 +224,7 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16 md:mb-20"
+            className="text-center mb-8 md:mb-12"
           >
              <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
@@ -257,9 +257,9 @@ const About = () => {
           {/* Why Us Section */}
           <motion.div
             initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
-            className="mb-16 md:mb-24"
+            className="mb-8 md:mb-12"
           >
-            <div className="text-center mb-12 md:mb-16">
+            <div className="text-center mb-8 md:mb-10">
               <h2 className="heading-institute-md mb-4 md:mb-6">
                 Why Choose Us
               </h2>
@@ -340,7 +340,7 @@ const About = () => {
 
               {/* Second Row - Slides Left */}
               <Marquee speed="fast" direction="left">
-                {whyUsFeatures.map((feature, index) => (
+              {whyUsFeatures.map((feature, index) => (
                   <motion.div
                     key={`row2-${index}`}
                     custom={index}
@@ -365,7 +365,7 @@ const About = () => {
                           }}
                           className={`w-16 h-16 md:w-20 md:h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-r ${feature.color} flex items-center justify-center shadow-xl group-hover:shadow-2xl transition-all duration-300`}
                         >
-                          <motion.div
+                    <motion.div
                             animate={{ 
                               scale: [1, 1.1, 1],
                               rotate: [0, 5, -5, 0]
@@ -376,9 +376,9 @@ const About = () => {
                               delay: index * 0.3,
                               ease: "easeInOut"
                             }}
-                          >
-                            <feature.icon className="w-8 h-8 md:w-10 md:h-10 text-white" />
-                          </motion.div>
+                    >
+                      <feature.icon className="w-8 h-8 md:w-10 md:h-10 text-white" />
+                    </motion.div>
                         </motion.div>
                         
                         <motion.h3 
@@ -402,10 +402,10 @@ const About = () => {
                           whileHover={{ width: "60%" }}
                           transition={{ duration: 0.3 }}
                         />
-                      </CardContent>
-                    </Card>
+                  </CardContent>
+                </Card>
                   </motion.div>
-                ))}
+              ))}
               </Marquee>
             </div>
           </motion.div>
@@ -428,8 +428,8 @@ const About = () => {
           </div> */}
           
           {/* --- RESPONSIVE Infinite Looping Cards Section --- */}
-          <div className="py-16 md:py-24">
-            <div className="text-center mb-12 md:mb-16">
+          <div className="py-8 md:py-12">
+            <div className="text-center mb-8 md:mb-10">
               <h2 className="heading-institute-md mb-4 md:mb-6">
                 Technologies We Master
               </h2>
@@ -438,8 +438,9 @@ const About = () => {
               </p>
             </div>
             <div className="flex flex-col gap-4 md:gap-6">
+              {/* Top Row - Slides Right (Wormhole Effect) */}
               <Marquee speed="fast" direction="right">
-                {topRow.map((card, index) => (
+                {[...topRow, ...topRow].map((card, index) => (
                   <div key={`top-${index}`} className="flex-shrink-0 w-24 sm:w-28 lg:w-32 mx-2 sm:mx-3 lg:mx-4">
                     <motion.div
                       whileHover={{ scale: 1.1, rotate: 5 }}
@@ -458,8 +459,10 @@ const About = () => {
                   </div>
                 ))}
               </Marquee>
+              
+              {/* Bottom Row - Slides Left (Wormhole Effect) */}
               <Marquee speed="fast" direction="left">
-                {bottomRow.map((card, index) => (
+                {[...bottomRow, ...bottomRow].map((card, index) => (
                   <div key={`bottom-${index}`} className="flex-shrink-0 w-24 sm:w-28 lg:w-32 mx-2 sm:mx-3 lg:mx-4">
                     <motion.div
                       whileHover={{ scale: 1.1, rotate: -5 }}

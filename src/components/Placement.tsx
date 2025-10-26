@@ -105,7 +105,7 @@ const Placement = () => {
     <>
       <style dangerouslySetInnerHTML={{ __html: partnersStyles }} />
 
-      <section id="placement" className="py-16 md:py-24 bg-gradient-to-br from-slate-50 via-white to-blue-50">
+      <section id="placement" className="py-8 md:py-12 bg-gradient-to-br from-slate-50 via-white to-blue-50">
         <div className="container mx-auto px-4 max-w-7xl">
           <SectionHeading
             title="Our Placement Success"
@@ -114,7 +114,7 @@ const Placement = () => {
 
 
           {/* 📊 Stats */}
-          <div className="mb-20">
+          <div className="mb-8">
             <Subtitle text="Placement Stats at a Glance" />
             <Swiper
               loop
