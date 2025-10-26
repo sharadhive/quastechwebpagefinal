@@ -58,7 +58,7 @@ const SectionHeading = ({ title, subtitle }: { title: string; subtitle?: string 
     transition={{ duration: 0.6 }}
     className="text-center mb-12"
   >
-    <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-[#3154a6] to-[#f15a29] bg-clip-text text-transparent">
+    <h2 className="heading-institute-lg mb-4">
       {title}
     </h2>
     {subtitle && (

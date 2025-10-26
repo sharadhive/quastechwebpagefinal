@@ -194,7 +194,7 @@ const Header = () => {
                 <img
                   src="/uploads/nsdeimg01.png"
                   alt="NSDC Logo"
-                  className="h-14 sm:h-16 md:h-18 lg:h-20 w-auto"
+                  className="h-16 sm:h-18 md:h-20 lg:h-22 w-auto"
                 />
                 <img
                   src="/uploads/skillindia--.jpg"
@@ -360,7 +360,7 @@ const Header = () => {
                     <img
                       src="/uploads/nsdeimg01.png"
                       alt="NSDC Logo"
-                      className="h-10 w-auto"
+                      className="h-12 w-auto"
                     />
                     <img
                       src="/uploads/skillindia--.jpg"

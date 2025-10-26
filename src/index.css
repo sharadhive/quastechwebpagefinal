@@ -18,19 +18,27 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222 84% 5%;
 
-    /* Primary Brand Colors - Professional Blue */
+    /* Primary Brand Colors - QUASTECH Professional Blue */
     --primary: 221 83% 53%;
     --primary-foreground: 210 40% 98%;
     --primary-light: 221 83% 63%;
     --primary-dark: 221 83% 43%;
     --primary-glow: 221 83% 58%;
 
-    /* Secondary Brand Colors - Professional Orange */
+    /* Secondary Brand Colors - QUASTECH Professional Orange */
     --secondary: 25 95% 53%;
     --secondary-foreground: 210 40% 98%;
     --secondary-light: 25 95% 63%;
     --secondary-dark: 25 95% 43%;
     --secondary-glow: 25 95% 58%;
+
+    /* Professional Institute Colors */
+    --institute-blue: 221 83% 53%;
+    --institute-orange: 25 95% 53%;
+    --institute-blue-light: 221 83% 63%;
+    --institute-orange-light: 25 95% 63%;
+    --institute-blue-dark: 221 83% 43%;
+    --institute-orange-dark: 25 95% 43%;
 
     /* Neutral Colors */
     --muted: 210 40% 96%;
@@ -438,6 +446,55 @@ All colors MUST be HSL.
     font-weight: 600;
     transition: var(--transition-normal);
     box-shadow: var(--shadow);
+  }
+
+  /* Professional Institute Text Styling */
+  .text-institute-blue {
+    color: hsl(var(--institute-blue));
+  }
+
+  .text-institute-orange {
+    color: hsl(var(--institute-orange));
+  }
+
+  .text-gradient-institute {
+    background: linear-gradient(135deg, hsl(var(--institute-blue)) 0%, hsl(var(--institute-orange)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Professional Heading Styles */
+  .heading-institute {
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold;
+    background: linear-gradient(135deg, hsl(var(--institute-blue)) 0%, hsl(var(--institute-orange)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .heading-institute-lg {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold;
+    background: linear-gradient(135deg, hsl(var(--institute-blue)) 0%, hsl(var(--institute-orange)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .heading-institute-md {
+    @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold;
+    background: linear-gradient(135deg, hsl(var(--institute-blue)) 0%, hsl(var(--institute-orange)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .heading-institute-sm {
+    @apply text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold;
+    background: linear-gradient(135deg, hsl(var(--institute-blue)) 0%, hsl(var(--institute-orange)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
   
   .btn-primary:hover {

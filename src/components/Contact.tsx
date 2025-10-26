@@ -109,7 +109,7 @@ const Contact = () => {
             <Phone className="w-4 h-4 text-primary" />
             <span className="text-sm font-medium text-primary">Get In Touch</span>
           </div>
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+          <h2 className="heading-institute-lg mb-6">
             Ready to Start Your
             <span className="block text-primary">Tech Journey?</span>
           </h2>

@@ -204,7 +204,7 @@ export default function Hero() {
               className="text-center lg:text-left order-2 lg:order-1 w-full"
             >
               <div className="mb-4">
-                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold mb-3 text-white leading-tight">
+                <h1 className="heading-institute mb-3 text-white leading-tight">
                   <TypeAnimation
                     sequence={[
                       'Trusted and Renowned Training Institute',
@@ -276,17 +276,17 @@ export default function Hero() {
 
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 mb-6">
-                <motion.button
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.97 }}
-                  onClick={() => setIsModalOpen(true)}
+              <motion.button
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.97 }}
+                onClick={() => setIsModalOpen(true)}
                   className="relative bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 transition-all text-white font-semibold rounded-xl px-6 py-3 shadow-lg hover:shadow-xl text-base overflow-hidden group flex items-center justify-center gap-2"
-                >
+              >
                   <Download className="w-5 h-5" />
                   <span className="relative z-10">Download</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
-                </motion.button>
-                
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+              </motion.button>
+
                 <motion.button
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.97 }}
@@ -327,8 +327,8 @@ export default function Hero() {
                     <h3 className="text-2xl font-bold text-white mb-2">Get Started</h3>
                     <p className="text-white/90 text-sm">
                       Fill the form to get started
-                    </p>
-                  </motion.div>
+                </p>
+              </motion.div>
                 </div>
 
                 {/* Form Content */}
@@ -338,11 +338,11 @@ export default function Hero() {
                       { id: "phone", type: "tel", placeholder: "Enter 10-digit Mobile Number", icon: Phone, label: "Mobile Number" },
                       { id: "name", type: "text", placeholder: "Your Full Name", icon: User, label: "Full Name" },
                       { id: "email", type: "email", placeholder: "yourname@gmail.com", icon: Mail, label: "Email Address" },
-                    ].map((field, index) => (
-                      <motion.div
-                        key={field.id}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
+                ].map((field, index) => (
+                  <motion.div
+                    key={field.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.7 + index * 0.1 }}
                         className="space-y-2"
                       >
@@ -352,37 +352,37 @@ export default function Hero() {
                         <div className="relative group">
                           <div className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 bg-gradient-to-r from-blue-500 to-orange-500 rounded-full flex items-center justify-center shadow-sm">
                             <field.icon className="w-3 h-3 text-white" />
-                          </div>
-                          <input
-                            type={field.type}
-                            id={field.id}
-                            value={formData[field.id]}
-                            onChange={(e) =>
-                              setFormData((prev) => ({ ...prev, [field.id]: e.target.value }))
-                            }
-                            required
-                            placeholder={field.placeholder}
-                            className="w-full pl-12 pr-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-lg text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all duration-300 font-medium"
-                          />
                         </div>
-                      </motion.div>
-                    ))}
+                        <input
+                          type={field.type}
+                          id={field.id}
+                          value={formData[field.id]}
+                          onChange={(e) =>
+                            setFormData((prev) => ({ ...prev, [field.id]: e.target.value }))
+                          }
+                          required
+                          placeholder={field.placeholder}
+                            className="w-full pl-12 pr-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-lg text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all duration-300 font-medium"
+                        />
+                    </div>
+                  </motion.div>
+                ))}
 
                     {/* Professional Submit Button */}
-                    <motion.button
-                      type="submit"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
+                <motion.button
+                  type="submit"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 1.0 }}
-                      whileHover={{ scale: 1.02, y: -2 }}
-                      whileTap={{ scale: 0.98 }}
+                  whileHover={{ scale: 1.02, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
                       className="w-full py-3 rounded-lg bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 hover:from-orange-600 hover:via-orange-700 hover:to-red-600 font-bold text-white flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group relative"
                     >
                       <Send className="w-5 h-5" />
                       <span>Get Started Now</span>
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
-                    </motion.button>
-                  </form>
+                </motion.button>
+              </form>
 
                 </div>
               </motion.div>

@@ -144,9 +144,9 @@ const Courses = () => {
             <Code className="w-5 h-5 text-primary" />
             <span className="text-sm font-semibold text-primary">Premium Courses</span>
           </div>
-          <h2 className="heading-lg mb-6">
+          <h2 className="heading-institute-lg mb-6">
             Transform Your Career with
-            <span className="block text-gradient-primary">Industry-Ready Skills</span>
+            <span className="block text-gradient-institute">Industry-Ready Skills</span>
           </h2>
           <p className="text-lead max-w-3xl mx-auto">
             Choose from our comprehensive range of courses designed by industry experts 
@@ -158,15 +158,15 @@ const Courses = () => {
         <div className="relative overflow-hidden">
           {/* Mobile: Vertical Stack */}
           <div className="block md:hidden space-y-4">
-            {courses.map((course, index) => (
-              <motion.div
-                key={course.title}
+          {courses.map((course, index) => (
+            <motion.div
+              key={course.title}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ y: -4, scale: 1.02 }}
-                className="group"
-              >
+              className="group"
+            >
                 <Card className="w-full h-[350px] overflow-hidden border-0 shadow-2xl hover:shadow-3xl transition-all duration-700 bg-white transform-gpu">
                   {/* Compact Header - Countdown and Seats Side by Side */}
                   <div className="flex items-center justify-between p-3 bg-gradient-to-r from-slate-50 to-gray-100">
@@ -369,14 +369,14 @@ const Courses = () => {
                             transition={{ duration: 0.3 }}
                           >
                             <img
-                              src={imgSrc}
+                          src={imgSrc}
                               alt="Tech"
                               className="w-8 h-8 object-contain"
-                            />
+                        />
                           </motion.div>
-                        ))}
-                      </div>
+                      ))}
                     </div>
+                  </div>
 
                     {/* Feature Labels - Moved Down to Fill Space */}
                     <div className="mb-6">
@@ -419,8 +419,8 @@ const Courses = () => {
                         }}
                         className="cursor-pointer"
                       >
-                        <Button
-                          variant="default"
+                    <Button
+                      variant="default"
                           size="sm"
                           className="w-full bg-gradient-to-r from-blue-600 via-purple-600 to-blue-700 hover:from-blue-700 hover:via-purple-700 hover:to-blue-800 text-white font-semibold py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 relative overflow-hidden group text-sm border-0"
                         >
@@ -431,11 +431,11 @@ const Courses = () => {
                             <span>Enroll Now</span>
                             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                           </motion.span>
-                        </Button>
+                    </Button>
                       </motion.div>
-                    </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </CardContent>
+              </Card>
             </motion.div>
           ))}
           </motion.div>

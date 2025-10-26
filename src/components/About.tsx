@@ -227,7 +227,7 @@ const About = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 md:mb-8 bg-gradient-to-r from-slate-900 via-blue-800 to-indigo-900 bg-clip-text text-transparent leading-tight"
+                className="heading-institute mb-6 md:mb-8 leading-tight"
               >
                 Leading the Future of
                 <span className="block bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">IT Education</span>
@@ -248,7 +248,7 @@ const About = () => {
             className="mb-16 md:mb-24"
           >
             <div className="text-center mb-12 md:mb-16">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
+              <h2 className="heading-institute-md mb-4 md:mb-6">
                 Why Choose Us
               </h2>
               <p className="text-base md:text-xl text-slate-600 max-w-3xl mx-auto">
@@ -294,7 +294,7 @@ const About = () => {
           {/* --- RESPONSIVE Infinite Looping Cards Section --- */}
           <div className="py-16 md:py-24">
             <div className="text-center mb-12 md:mb-16">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
+              <h2 className="heading-institute-md mb-4 md:mb-6">
                 Technologies We Master
               </h2>
               <p className="text-base md:text-xl text-slate-600 max-w-3xl mx-auto">
