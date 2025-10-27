@@ -124,8 +124,9 @@ const Placement = () => {
               modules={[Autoplay, Navigation, Pagination]}
               className="py-4"
               breakpoints={{
-                320: { slidesPerView: 1, spaceBetween: 20 },
+                320: { slidesPerView: 1, spaceBetween: 16 },
                 640: { slidesPerView: 2, spaceBetween: 20 },
+                768: { slidesPerView: 3, spaceBetween: 24 },
                 1024: { slidesPerView: 4, spaceBetween: 30 },
               }}
             >
@@ -151,13 +152,13 @@ const Placement = () => {
             <div className="relative h-[420px] overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_15%,black_85%,transparent)]">
               <div className="animate-scroll-vertical">
                 {/* One full grid pass */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 md:gap-8 px-2">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-6 lg:gap-8 px-2">
                   {partners.map((p, i) => (
                     <div
                       key={`partners-1-${i}`}
-                      className="flex items-center justify-center rounded-2xl bg-white/80 border border-slate-200/70 shadow-sm h-28 md:h-32 px-6 grayscale hover:grayscale-0 transition-all duration-300"
+                      className="flex items-center justify-center rounded-2xl bg-white/80 border border-slate-200/70 shadow-sm h-24 sm:h-28 md:h-32 px-4 sm:px-6 grayscale hover:grayscale-0 transition-all duration-300"
                     >
-                      <img src={p.logo} alt={p.name} className="max-h-16 md:max-h-20 object-contain" />
+                      <img src={p.logo} alt={p.name} className="max-h-12 sm:max-h-16 md:max-h-20 object-contain" />
                     </div>
                   ))}
                 </div>
@@ -166,9 +167,9 @@ const Placement = () => {
                   {partners.map((p, i) => (
                     <div
                       key={`partners-2-${i}`}
-                      className="flex items-center justify-center rounded-2xl bg-white/80 border border-slate-200/70 shadow-sm h-28 md:h-32 px-6 grayscale hover:grayscale-0 transition-all duration-300"
+                      className="flex items-center justify-center rounded-2xl bg-white/80 border border-slate-200/70 shadow-sm h-24 sm:h-28 md:h-32 px-4 sm:px-6 grayscale hover:grayscale-0 transition-all duration-300"
                     >
-                      <img src={p.logo} alt={p.name} className="max-h-16 md:max-h-20 object-contain" />
+                      <img src={p.logo} alt={p.name} className="max-h-12 sm:max-h-16 md:max-h-20 object-contain" />
                     </div>
                   ))}
                 </div>

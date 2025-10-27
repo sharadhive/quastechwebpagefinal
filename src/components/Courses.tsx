@@ -157,7 +157,7 @@ const Courses = () => {
         {/* Courses Slider with Professional Cards */}
         <div className="relative overflow-hidden">
           {/* Mobile: Vertical Stack */}
-          <div className="block md:hidden space-y-4 py-4">
+          <div className="block md:hidden space-y-3 sm:space-y-4 py-2 sm:py-4">
           {courses.map((course, index) => (
             <motion.div
               key={course.title}
@@ -167,9 +167,9 @@ const Courses = () => {
                 whileHover={{ y: -4, scale: 1.02 }}
               className="group"
             >
-                <Card className="w-full h-[380px] overflow-hidden border-0 shadow-2xl hover:shadow-3xl transition-all duration-700 bg-white transform-gpu">
+                <Card className="w-full h-[350px] sm:h-[380px] overflow-hidden border-0 shadow-2xl hover:shadow-3xl transition-all duration-700 bg-white transform-gpu">
                   {/* Compact Header - Countdown and Seats Side by Side */}
-                  <div className="flex items-center justify-between p-3 bg-gradient-to-r from-blue-50 to-orange-50">
+                  <div className="flex items-center justify-between p-2 sm:p-3 bg-gradient-to-r from-blue-50 to-orange-50">
                     <div className="flex items-center gap-2">
                       <Timer className="w-3 h-3 text-institute-blue" />
                       <div>
@@ -182,21 +182,21 @@ const Courses = () => {
                     </div>
                   </div>
 
-                  <CardContent className="p-3 flex flex-col h-full">
+                  <CardContent className="p-2 sm:p-3 flex flex-col h-full">
                     {/* Main Content - Course Icon Left, Details Right */}
-                    <div className="flex gap-3 mb-3">
+                    <div className="flex gap-2 sm:gap-3 mb-2 sm:mb-3">
                       {/* Course Icon - Left Side */}
                       <motion.div 
-                        className="w-12 h-12 bg-gradient-to-r from-blue-600 to-orange-500 rounded-lg flex items-center justify-center shadow-lg flex-shrink-0"
+                        className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-blue-600 to-orange-500 rounded-lg flex items-center justify-center shadow-lg flex-shrink-0"
                         whileHover={{ scale: 1.1, rotate: 5 }}
                         transition={{ duration: 0.3 }}
                       >
-                        <course.icon className="w-6 h-6 text-white" />
+                        <course.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                       </motion.div>
                       
                       {/* Course Details - Right Side */}
                       <div className="flex-1">
-                        <h3 className="text-base font-bold text-gray-800 mb-1 leading-tight">
+                        <h3 className="text-sm sm:text-base font-bold text-gray-800 mb-1 leading-tight">
                           {course.title}
                         </h3>
                         <div className="flex items-center gap-1 mb-1">
@@ -211,19 +211,19 @@ const Courses = () => {
                     </div>
 
                     {/* Technology Logos - Consistent Size */}
-                    <div className="mb-3">
-                      <div className="flex justify-center gap-2 flex-wrap">
+                    <div className="mb-2 sm:mb-3">
+                      <div className="flex justify-center gap-1.5 sm:gap-2 flex-wrap">
                         {course.features.slice(0, 6).map((imgSrc, idx) => (
                           <motion.div 
                             key={idx} 
-                            className="w-8 h-8 bg-white rounded-lg flex items-center justify-center shadow-md border border-gray-200"
+                            className="w-7 h-7 sm:w-8 sm:h-8 bg-white rounded-lg flex items-center justify-center shadow-md border border-gray-200"
                             whileHover={{ scale: 1.15, y: -3, rotate: 5 }}
                             transition={{ duration: 0.3 }}
                           >
                             <img
                               src={imgSrc}
                               alt="Tech"
-                              className="w-6 h-6 object-contain"
+                              className="w-5 h-5 sm:w-6 sm:h-6 object-contain"
                             />
                           </motion.div>
                         ))}
@@ -294,7 +294,7 @@ const Courses = () => {
 
           {/* Desktop: Horizontal Slider */}
           <motion.div
-            className="hidden md:flex gap-4 sm:gap-6 lg:gap-8 py-4"
+            className="hidden md:flex gap-3 md:gap-4 lg:gap-6 xl:gap-8 py-4"
             animate={{ x: [0, -2000] }}
             transition={{
               x: {
@@ -308,14 +308,14 @@ const Courses = () => {
             {[...courses, ...courses].map((course, index) => (
               <motion.div
                 key={`${course.title}-${index}`}
-                className="flex-shrink-0 w-80"
+                className="flex-shrink-0 w-72 md:w-80"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ y: -8, scale: 1.02 }}
                 className="group"
               >
-                <Card className="h-[420px] w-80 overflow-hidden border-0 shadow-2xl hover:shadow-3xl transition-all duration-700 bg-white transform-gpu">
+                <Card className="h-[400px] md:h-[420px] w-72 md:w-80 overflow-hidden border-0 shadow-2xl hover:shadow-3xl transition-all duration-700 bg-white transform-gpu">
                   {/* Compact Header - Countdown and Seats Side by Side */}
                   <div className="flex items-center justify-between p-3 bg-gradient-to-r from-blue-50 to-orange-50">
                     <div className="flex items-center gap-2">

@@ -18,6 +18,12 @@ const FooterLink = ({ href, name }) => (
   <li>
     <a
       href={href}
+      onClick={(e) => {
+        if (name === "Home") {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }}
       className="flex items-center text-gray-300 hover:text-white transition-colors text-sm group"
     >
       <ArrowRight className="w-3 h-3 mr-2 text-blue-400 group-hover:text-white transition-colors" />
@@ -65,6 +71,7 @@ const Footer = () => {
   ];
 
   const quickLinks = [
+    { name: "Home", href: "#" },
     { name: "About Us", href: "#" },
     { name: "Placement", href: "#" },
     { name: "Contact Us", href: "#" },

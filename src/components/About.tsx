@@ -163,19 +163,62 @@ const About = () => {
   const topRow = techCards.slice(0, 4);
   const bottomRow = techCards.slice(4, 8);
 
-  // --- Reusable Components (unchanged) ---
+  // --- Enhanced Reusable Components ---
   const Card = ({
     children, className = "", ...props
   }: {
     children: React.ReactNode; className?: string; [key: string]: any;
   }) => (
     <motion.div
-      whileHover={{ y: -12, scale: 1.05 }}
-      transition={{ type: "spring", stiffness: 200, damping: 15 }}
-      className={`relative rounded-2xl border border-slate-200 bg-white/70 backdrop-blur-md shadow-xl overflow-hidden group ${className}`}
+      whileHover={{ 
+        y: -15, 
+        scale: 1.02,
+        rotateX: 5,
+        rotateY: 2,
+        transition: { 
+          type: "spring", 
+          stiffness: 300, 
+          damping: 25,
+          duration: 0.4
+        }
+      }}
+      whileTap={{ scale: 0.98 }}
+      className={`relative rounded-2xl border border-slate-200/50 bg-white/80 backdrop-blur-xl shadow-xl hover:shadow-2xl overflow-hidden group transition-all duration-500 ${className}`}
       {...props}
     >
-      <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-transparent to-transparent group-hover:from-slate-100/40 group-hover:via-white/10 group-hover:to-slate-200/40 transition-all duration-500"></div>
+      {/* Enhanced gradient overlay */}
+      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-transparent via-white/5 to-slate-100/20 group-hover:from-blue-50/30 group-hover:via-white/20 group-hover:to-orange-50/30 transition-all duration-700"></div>
+      
+      {/* Floating particles effect */}
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+        <motion.div
+          className="absolute top-4 right-4 w-2 h-2 bg-blue-400 rounded-full"
+          animate={{ 
+            y: [0, -10, 0],
+            opacity: [0, 1, 0],
+            scale: [0.5, 1, 0.5]
+          }}
+          transition={{ 
+            duration: 2, 
+            repeat: Infinity, 
+            delay: 0.5 
+          }}
+        />
+        <motion.div
+          className="absolute bottom-6 left-6 w-1.5 h-1.5 bg-orange-400 rounded-full"
+          animate={{ 
+            y: [0, -8, 0],
+            opacity: [0, 1, 0],
+            scale: [0.3, 0.8, 0.3]
+          }}
+          transition={{ 
+            duration: 2.5, 
+            repeat: Infinity, 
+            delay: 1 
+          }}
+        />
+      </div>
+      
       {children}
     </motion.div>
   );
@@ -184,31 +227,31 @@ const About = () => {
     <div className="p-6 md:p-8 relative z-10 flex flex-col h-full">{children}</div>
   );
   
-  // --- Animation Variants (unchanged) ---
-  const whyUsCardVariants = {
-    hidden: (index: number) => ({ 
-      opacity: 0, 
-      y: 50,
-      scale: 0.9,
-      rotateX: 15
-    }),
-    visible: (index: number) => ({ 
+  // --- Simple Animation Variants for Single Line Animation ---
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 100 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { 
+        duration: 1.0, 
+        ease: "easeOut",
+        staggerChildren: 0.2
+      } 
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50, scale: 0.9 },
+    visible: { 
       opacity: 1, 
       y: 0, 
       scale: 1,
-      rotateX: 0,
       transition: { 
-        type: "spring", 
-        stiffness: 100, 
-        damping: 15,
-        delay: index * 0.1,
-        duration: 0.8
+        duration: 0.8, 
+        ease: "easeOut"
       } 
-    }),
-  };
-  const achievementCardVariants = {
-    hidden: { opacity: 0, scale: 0.8, y: 50 },
-    visible: (index: number) => ({ opacity: 1, scale: 1, y: 0, transition: { type: "spring", delay: index * 0.15 } })
+    }
   };
 
   return (
@@ -218,47 +261,55 @@ const About = () => {
           
           {/* --- Sections are now responsive --- */}
 
-          {/* Hero Section */}
+          {/* Enhanced Hero Section */}
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
             className="text-center mb-8 md:mb-12"
           >
              <motion.div
-                initial={{ scale: 0.8, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
+                variants={itemVariants}
                 className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 md:px-8 md:py-4 rounded-full mb-6 md:mb-8 shadow-2xl"
               >
+                <motion.div
+                  animate={{ rotate: [0, 360] }}
+                  transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+              >
                 <Award className="w-5 h-5" />
+                </motion.div>
                 <span className="text-xs md:text-sm font-semibold tracking-wide">ABOUT QUASTECH</span>
               </motion.div>
               <motion.h1
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
+                variants={itemVariants}
                 className="heading-institute mb-6 md:mb-8 leading-tight"
               >
                 Leading the Future of
-                <span className="block bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">IT Education</span>
+                <motion.span 
+                  className="block bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+                  animate={{ 
+                    backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
+                  }}
+                  transition={{ 
+                    duration: 3, 
+                    repeat: Infinity, 
+                    ease: "easeInOut" 
+                  }}
+                >
+                  IT Education
+                </motion.span>
               </motion.h1>
               <motion.p
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
+                variants={itemVariants}
                 className="text-lg md:text-xl lg:text-2xl text-slate-600 max-w-4xl mx-auto leading-relaxed"
               >
                 Since 2015, QUASTECH has been at the forefront of IT education, transforming lives and careers through innovative learning experiences.
               </motion.p>
           </motion.div>
 
-          {/* Why Us Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
-            className="mb-8 md:mb-12"
-          >
+          {/* Static Why Us Section */}
+          <div className="mb-8 md:mb-12">
             <div className="text-center mb-8 md:mb-10">
               <h2 className="heading-institute-md mb-4 md:mb-6">
                 Why Choose Us
@@ -267,148 +318,47 @@ const About = () => {
                 Discover what makes QUASTECH the preferred choice for ambitious professionals
               </p>
             </div>
-            <div className="flex flex-col gap-8 md:gap-12">
-              {/* First Row - Slides Right */}
-              <Marquee speed="fast" direction="right">
-                {whyUsFeatures.map((feature, index) => (
-                  <motion.div
-                    key={`row1-${index}`}
-                    custom={index}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.3 }}
-                    variants={whyUsCardVariants}
-                    whileHover={{ 
-                      scale: 1.05, 
-                      y: -10,
-                      transition: { duration: 0.3, ease: "easeOut" }
-                    }}
-                    className="group flex-shrink-0 w-72 mx-4"
-                  >
-                    <Card className="h-full hover:shadow-2xl transition-all duration-500 border-0 bg-white/80 backdrop-blur-sm">
-                      <CardContent className="p-6 h-full flex flex-col">
-                        <motion.div
-                          whileHover={{ 
-                            scale: 1.1, 
-                            rotate: [0, -5, 5, 0],
-                            transition: { duration: 0.4 }
-                          }}
-                          className={`w-16 h-16 md:w-20 md:h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-r ${feature.color} flex items-center justify-center shadow-xl group-hover:shadow-2xl transition-all duration-300`}
-                        >
-                          <motion.div
-                            animate={{ 
-                              scale: [1, 1.1, 1],
-                              rotate: [0, 5, -5, 0]
-                            }}
-                            transition={{ 
-                              duration: 4, 
-                              repeat: Infinity, 
-                              delay: index * 0.3,
-                              ease: "easeInOut"
-                            }}
-                          >
-                            <feature.icon className="w-8 h-8 md:w-10 md:h-10 text-white" />
-                          </motion.div>
-                        </motion.div>
-                        
-                        <motion.h3 
-                          className="text-lg md:text-xl font-bold mb-3 text-slate-900 text-center group-hover:text-institute-blue transition-colors duration-300"
-                          whileHover={{ scale: 1.05 }}
-                        >
-                          {feature.title}
-                        </motion.h3>
-                        
-                        <motion.p 
-                          className="text-sm text-slate-600 leading-relaxed text-center flex-grow group-hover:text-slate-700 transition-colors duration-300"
-                          initial={{ opacity: 0.8 }}
-                          whileHover={{ opacity: 1 }}
-                        >
-                          {feature.description}
-                        </motion.p>
-                        
-                        {/* Subtle bottom accent */}
-                        <motion.div
-                          className="w-0 h-1 bg-gradient-to-r from-blue-500 to-orange-500 mx-auto mt-4 rounded-full"
-                          whileHover={{ width: "60%" }}
-                          transition={{ duration: 0.3 }}
-                        />
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                ))}
-              </Marquee>
-
-              {/* Second Row - Slides Left */}
-              <Marquee speed="fast" direction="left">
+            {/* Static Grid Layout - Why Choose Us */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
               {whyUsFeatures.map((feature, index) => (
-                  <motion.div
-                    key={`row2-${index}`}
-                    custom={index}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.3 }}
-                    variants={whyUsCardVariants}
-                    whileHover={{ 
-                      scale: 1.05, 
-                      y: -10,
-                      transition: { duration: 0.3, ease: "easeOut" }
-                    }}
-                    className="group flex-shrink-0 w-72 mx-4"
-                  >
-                    <Card className="h-full hover:shadow-2xl transition-all duration-500 border-0 bg-white/80 backdrop-blur-sm">
-                      <CardContent className="p-6 h-full flex flex-col">
-                        <motion.div
-                          whileHover={{ 
-                            scale: 1.1, 
-                            rotate: [0, -5, 5, 0],
-                            transition: { duration: 0.4 }
-                          }}
-                          className={`w-16 h-16 md:w-20 md:h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-r ${feature.color} flex items-center justify-center shadow-xl group-hover:shadow-2xl transition-all duration-300`}
-                        >
-                    <motion.div
-                            animate={{ 
-                              scale: [1, 1.1, 1],
-                              rotate: [0, 5, -5, 0]
-                            }}
-                            transition={{ 
-                              duration: 4, 
-                              repeat: Infinity, 
-                              delay: index * 0.3,
-                              ease: "easeInOut"
-                            }}
-                    >
-                      <feature.icon className="w-8 h-8 md:w-10 md:h-10 text-white" />
-                    </motion.div>
-                        </motion.div>
-                        
-                        <motion.h3 
-                          className="text-lg md:text-xl font-bold mb-3 text-slate-900 text-center group-hover:text-institute-blue transition-colors duration-300"
-                          whileHover={{ scale: 1.05 }}
-                        >
-                          {feature.title}
-                        </motion.h3>
-                        
-                        <motion.p 
-                          className="text-sm text-slate-600 leading-relaxed text-center flex-grow group-hover:text-slate-700 transition-colors duration-300"
-                          initial={{ opacity: 0.8 }}
-                          whileHover={{ opacity: 1 }}
-                        >
-                          {feature.description}
-                        </motion.p>
-                        
-                        {/* Subtle bottom accent */}
-                        <motion.div
-                          className="w-0 h-1 bg-gradient-to-r from-blue-500 to-orange-500 mx-auto mt-4 rounded-full"
-                          whileHover={{ width: "60%" }}
-                          transition={{ duration: 0.3 }}
-                        />
-                  </CardContent>
-                </Card>
-                  </motion.div>
+                <motion.div
+                  key={feature.title}
+                  className="group cursor-pointer"
+                  whileHover={{ 
+                    y: -10,
+                    scale: 1.05,
+                    rotateX: 5,
+                    rotateY: 2,
+                    transition: { 
+                      type: "spring", 
+                      stiffness: 300, 
+                      damping: 20,
+                      duration: 0.3
+                    }
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <div className="h-full bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100">
+                    <div className="p-6 h-full flex flex-col items-center text-center">
+                      <div className={`w-16 h-16 md:w-20 md:h-20 mx-auto mb-4 rounded-xl bg-gradient-to-r ${feature.color} flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300`}>
+                        <feature.icon className="w-8 h-8 md:w-10 md:h-10 text-white" />
+                      </div>
+                      
+                      <h3 className="text-lg md:text-xl font-bold mb-3 text-slate-900 group-hover:text-blue-600 transition-colors duration-300">
+                        {feature.title}
+                      </h3>
+                      
+                      <p className="text-sm md:text-base text-slate-600 leading-relaxed flex-grow group-hover:text-slate-700 transition-colors duration-300">
+                        {feature.description}
+                      </p>
+                      
+                      <div className="w-0 h-1 bg-gradient-to-r from-blue-500 to-orange-500 mx-auto mt-4 rounded-full group-hover:w-16 transition-all duration-300"></div>
+                    </div>
+                  </div>
+                </motion.div>
               ))}
-              </Marquee>
             </div>
-          </motion.div>
+          </div>
 
           {/* Achievements Section */}
           {/* <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 mb-16 md:mb-24">
@@ -427,62 +377,93 @@ const About = () => {
             ))}
           </div> */}
           
-          {/* --- RESPONSIVE Infinite Looping Cards Section --- */}
-          <div className="py-8 md:py-12">
-            <div className="text-center mb-8 md:mb-10">
+          {/* Enhanced Technologies Section */}
+          <motion.div
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            className="py-8 md:py-12"
+          >
+            <motion.div variants={itemVariants} className="text-center mb-8 md:mb-10">
               <h2 className="heading-institute-md mb-4 md:mb-6">
                 Technologies We Master
               </h2>
               <p className="text-base md:text-xl text-slate-600 max-w-3xl mx-auto">
                 Our curriculum is built on the most in-demand technologies in the industry.
               </p>
-            </div>
-            <div className="flex flex-col gap-4 md:gap-6">
-              {/* Top Row - Slides Right (Wormhole Effect) */}
-              <Marquee speed="fast" direction="right">
-                {[...topRow, ...topRow].map((card, index) => (
-                  <div key={`top-${index}`} className="flex-shrink-0 w-24 sm:w-28 lg:w-32 mx-2 sm:mx-3 lg:mx-4">
-                    <motion.div
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                      className={`w-full h-20 sm:h-24 lg:h-28 rounded-xl bg-gradient-to-r ${card.color} flex items-center justify-center shadow-lg relative overflow-hidden`}
-                    >
-                      {/* Background Logo */}
+            </motion.div>
+            
+            {/* Continuous Advertisement-Style Animation */}
+            <div className="relative overflow-hidden py-4">
+              <motion.div
+                className="flex gap-4 md:gap-6 lg:gap-8"
+                animate={{ 
+                  x: [0, -1000] 
+                }}
+                transition={{
+                  x: {
+                    repeat: Infinity,
+                    duration: 20,
+                    ease: "linear",
+                    repeatType: "loop"
+                  }
+                }}
+                style={{ width: "max-content" }}
+              >
+                {/* First set of cards */}
+                {techCards.map((card, index) => (
+                  <div
+                    key={`set1-${index}`}
+                    className="flex-shrink-0 w-24 sm:w-28 lg:w-32"
+                  >
+                    <div className={`w-full h-20 sm:h-24 lg:h-28 rounded-xl bg-gradient-to-r ${card.color} flex items-center justify-center shadow-lg hover:shadow-2xl relative overflow-hidden group cursor-pointer transition-all duration-300 hover:scale-105`}>
                       <img 
                         src={card.logo} 
                         alt={card.label}
-                        className="absolute inset-0 w-full h-full object-cover opacity-30"
+                        className="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-50 transition-opacity duration-300"
                       />
-                      {/* Icon Overlay */}
-                      <card.icon className="w-6 h-6 sm:w-8 sm:h-8 text-white relative z-10" />
-                    </motion.div>
-                  </div>
+                      <card.icon className="w-6 h-6 sm:w-8 sm:h-8 text-white relative z-10 drop-shadow-lg" />
+                    </div>
+            </div>
                 ))}
-              </Marquee>
-              
-              {/* Bottom Row - Slides Left (Wormhole Effect) */}
-              <Marquee speed="fast" direction="left">
-                {[...bottomRow, ...bottomRow].map((card, index) => (
-                  <div key={`bottom-${index}`} className="flex-shrink-0 w-24 sm:w-28 lg:w-32 mx-2 sm:mx-3 lg:mx-4">
-                    <motion.div
-                      whileHover={{ scale: 1.1, rotate: -5 }}
-                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                      className={`w-full h-20 sm:h-24 lg:h-28 rounded-xl bg-gradient-to-r ${card.color} flex items-center justify-center shadow-lg relative overflow-hidden`}
-                    >
-                      {/* Background Logo */}
+                
+                {/* Second set of cards for seamless loop */}
+                {techCards.map((card, index) => (
+                  <div
+                    key={`set2-${index}`}
+                    className="flex-shrink-0 w-24 sm:w-28 lg:w-32"
+                  >
+                    <div className={`w-full h-20 sm:h-24 lg:h-28 rounded-xl bg-gradient-to-r ${card.color} flex items-center justify-center shadow-lg hover:shadow-2xl relative overflow-hidden group cursor-pointer transition-all duration-300 hover:scale-105`}>
                       <img 
                         src={card.logo} 
                         alt={card.label}
-                        className="absolute inset-0 w-full h-full object-cover opacity-30"
+                        className="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-50 transition-opacity duration-300"
                       />
-                      {/* Icon Overlay */}
-                      <card.icon className="w-6 h-6 sm:w-8 sm:h-8 text-white relative z-10" />
-                    </motion.div>
+                      <card.icon className="w-6 h-6 sm:w-8 sm:h-8 text-white relative z-10 drop-shadow-lg" />
+                    </div>
                   </div>
                 ))}
-              </Marquee>
+                
+                {/* Third set for extra smoothness */}
+                {techCards.map((card, index) => (
+                  <div
+                    key={`set3-${index}`}
+                    className="flex-shrink-0 w-24 sm:w-28 lg:w-32"
+                  >
+                    <div className={`w-full h-20 sm:h-24 lg:h-28 rounded-xl bg-gradient-to-r ${card.color} flex items-center justify-center shadow-lg hover:shadow-2xl relative overflow-hidden group cursor-pointer transition-all duration-300 hover:scale-105`}>
+                      <img 
+                        src={card.logo} 
+                        alt={card.label}
+                        className="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-50 transition-opacity duration-300"
+                      />
+                      <card.icon className="w-6 h-6 sm:w-8 sm:h-8 text-white relative z-10 drop-shadow-lg" />
+                    </div>
+                  </div>
+                ))}
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Timeline Section (already responsive) */}
           <motion.div

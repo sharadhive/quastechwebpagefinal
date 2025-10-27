@@ -191,12 +191,12 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-[85vh] flex flex-col justify-center overflow-hidden text-white"
+      className="relative min-h-[100vh] sm:min-h-[90vh] md:min-h-[85vh] flex flex-col justify-center overflow-hidden text-white"
     >
       <HeroBackground />
       <FloatingElements />
 
-      <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 py-4 lg:py-6">
+      <div className="relative z-10 w-full px-3 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 lg:gap-8 items-center min-h-[60vh]">
             {/* LEFT TEXT */}
@@ -204,7 +204,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-center lg:text-left order-2 lg:order-1 w-full"
+              className="text-center lg:text-left order-1 lg:order-1 w-full"
             >
               <div className="mb-4">
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 text-white leading-tight drop-shadow-lg">
@@ -308,7 +308,7 @@ export default function Hero() {
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="relative flex flex-col items-center justify-center order-1 lg:order-2 w-full"
+              className="relative flex flex-col items-center justify-center order-2 lg:order-2 w-full"
             >
               {/* Abstract Line Art Design */}
               <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -502,7 +502,7 @@ export default function Hero() {
                   y: -5,
                   boxShadow: "0 30px 60px -12px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.2)"
                 }}
-                className="w-full max-w-md bg-white/98 backdrop-blur-xl border border-white/40 rounded-2xl shadow-2xl overflow-hidden relative group"
+                className="w-full max-w-sm sm:max-w-md bg-white/98 backdrop-blur-xl border border-white/40 rounded-xl sm:rounded-2xl shadow-2xl overflow-hidden relative group mx-2 sm:mx-0"
                 style={{
                   boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1)'
                 }}
@@ -526,8 +526,8 @@ export default function Hero() {
                 </div>
 
                 {/* Form Content */}
-                <div className="p-4 bg-gradient-to-br from-white to-gray-50">
-                  <form className="space-y-3" onSubmit={handleSubmit}>
+                <div className="p-3 sm:p-4 bg-gradient-to-br from-white to-gray-50">
+                  <form className="space-y-2 sm:space-y-3" onSubmit={handleSubmit}>
                     {[
                       { id: "phone", type: "tel", placeholder: "Enter 10-digit Mobile Number", icon: Phone, label: "Mobile Number" },
                       { id: "name", type: "text", placeholder: "Your Full Name", icon: User, label: "Full Name" },
@@ -560,7 +560,7 @@ export default function Hero() {
                           }
                           required
                           placeholder={field.placeholder}
-                            className="w-full pl-12 pr-3 py-3 bg-white border border-gray-200 rounded-lg text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-orange-500/30 focus:border-orange-500 transition-all duration-300 font-medium text-sm hover:border-gray-300"
+                            className="w-full pl-10 sm:pl-12 pr-3 py-2.5 sm:py-3 bg-white border border-gray-200 rounded-lg text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-orange-500/30 focus:border-orange-500 transition-all duration-300 font-medium text-sm hover:border-gray-300"
                             whileFocus={{ scale: 1.005 }}
                         />
                     </motion.div>
@@ -579,7 +579,7 @@ export default function Hero() {
                     boxShadow: "0 10px 25px -5px rgba(255, 140, 0, 0.3)"
                   }}
                   whileTap={{ scale: 0.98 }}
-                      className="w-full py-3 rounded-lg bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 hover:from-orange-600 hover:via-orange-700 hover:to-red-600 font-bold text-white flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden group relative text-sm"
+                      className="w-full py-2.5 sm:py-3 rounded-lg bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 hover:from-orange-600 hover:via-orange-700 hover:to-red-600 font-bold text-white flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden group relative text-sm"
                     >
                       <motion.div
                         animate={{ rotate: [0, 8, 0] }}

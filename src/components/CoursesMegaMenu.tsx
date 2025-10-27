@@ -2,20 +2,13 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
-  Code,
-  Database,
-  Globe,
-  Smartphone,
-  Brain,
-  Shield,
   Clock,
-  Users,
-  Star,
   ArrowRight,
   BookOpen,
   Award,
   GraduationCap,
-  ExternalLink
+  Globe,
+  Phone
 } from "lucide-react";
 
 interface CoursesMegaMenuProps {
@@ -31,40 +24,32 @@ const CoursesMegaMenu = ({ type, onClose }: CoursesMegaMenuProps) => {
       color: "from-blue-500 to-cyan-500",
       courses: [
         {
-          title: "Full Stack Development",
-          description: "Master MERN, Django, and modern web technologies",
-          duration: "6 months",
-          students: "500+",
-          rating: 4.9,
-          features: ["React", "Node.js", "MongoDB", "Express"],
-          color: "from-blue-500 to-purple-600"
+          title: "Data Science and Analytics with AI",
+          duration: "8-10 Months"
         },
         {
-          title: "Data Science & AI",
-          description: "Python, Machine Learning, Deep Learning & Analytics",
-          duration: "8 months",
-          students: "300+",
-          rating: 4.8,
-          features: ["Python", "TensorFlow", "Pandas", "Scikit-learn"],
-          color: "from-green-500 to-teal-600"
+          title: "Python Full Stack Development",
+          duration: "6-8 Months"
         },
         {
-          title: "Mobile App Development",
-          description: "iOS, Android & Cross-platform development",
-          duration: "5 months",
-          students: "400+",
-          rating: 4.9,
-          features: ["React Native", "Flutter", "Swift", "Kotlin"],
-          color: "from-purple-500 to-pink-600"
+          title: "Java Full Stack Development",
+          duration: "6-8 Months"
         },
         {
-          title: "Cybersecurity",
-          description: "Ethical Hacking, Network Security & Penetration Testing",
-          duration: "6 months",
-          students: "350+",
-          rating: 4.8,
-          features: ["Ethical Hacking", "Network Security", "Penetration Testing", "Forensics"],
-          color: "from-red-500 to-orange-600"
+          title: "DevOps with AWS",
+          duration: "4-6 Months"
+        },
+        {
+          title: "Digital Marketing with AI",
+          duration: "4-6 Months"
+        },
+        {
+          title: "Investment Banking with AI",
+          duration: "4-6 Months"
+        },
+        {
+          title: "Software Testing With AI",
+          duration: "4-6 Months"
         }
       ]
     },
@@ -75,30 +60,23 @@ const CoursesMegaMenu = ({ type, onClose }: CoursesMegaMenuProps) => {
       courses: [
         {
           title: "Digital Marketing",
-          description: "SEO, SEM, Social Media & Content Marketing",
-          duration: "4 months",
-          students: "800+",
-          rating: 4.7,
-          features: ["SEO", "Google Ads", "Social Media", "Analytics"],
-          color: "from-orange-500 to-red-600"
+          duration: "4-6 Months"
         },
         {
           title: "Business Analytics",
-          description: "Data Analysis, Visualization & Business Intelligence",
-          duration: "5 months",
-          students: "250+",
-          rating: 4.6,
-          features: ["Excel", "Power BI", "Tableau", "SQL"],
-          color: "from-indigo-500 to-blue-600"
+          duration: "4-6 Months"
         },
         {
           title: "Project Management",
-          description: "PMP, Agile, Scrum & Project Leadership",
-          duration: "3 months",
-          students: "400+",
-          rating: 4.8,
-          features: ["PMP", "Agile", "Scrum", "Leadership"],
-          color: "from-green-500 to-emerald-600"
+          duration: "3-4 Months"
+        },
+        {
+          title: "Financial Analysis",
+          duration: "4-6 Months"
+        },
+        {
+          title: "Human Resources",
+          duration: "3-4 Months"
         }
       ]
     },
@@ -109,21 +87,19 @@ const CoursesMegaMenu = ({ type, onClose }: CoursesMegaMenuProps) => {
       courses: [
         {
           title: "Online Full Stack Development",
-          description: "Live online classes with industry experts",
-          duration: "6 months",
-          students: "200+",
-          rating: 4.9,
-          features: ["Live Sessions", "Recordings", "Projects", "Mentorship"],
-          color: "from-blue-500 to-purple-600"
+          duration: "6-8 Months"
         },
         {
           title: "Online Data Science",
-          description: "Interactive online learning with real-world projects",
-          duration: "8 months",
-          students: "150+",
-          rating: 4.8,
-          features: ["Live Coding", "Projects", "Certification", "Placement"],
-          color: "from-green-500 to-teal-600"
+          duration: "8-10 Months"
+        },
+        {
+          title: "Online Digital Marketing",
+          duration: "4-6 Months"
+        },
+        {
+          title: "Online Business Analytics",
+          duration: "4-6 Months"
         }
       ]
     },
@@ -134,21 +110,19 @@ const CoursesMegaMenu = ({ type, onClose }: CoursesMegaMenuProps) => {
       courses: [
         {
           title: "B.Tech Computer Science",
-          description: "4-year degree program with industry exposure",
-          duration: "4 years",
-          students: "100+",
-          rating: 4.9,
-          features: ["University Degree", "Industry Projects", "Internships", "Placement"],
-          color: "from-blue-500 to-purple-600"
+          duration: "4 Years"
         },
         {
           title: "MCA (Master of Computer Applications)",
-          description: "2-year postgraduate program",
-          duration: "2 years",
-          students: "80+",
-          rating: 4.8,
-          features: ["Master's Degree", "Advanced Programming", "Research", "Placement"],
-          color: "from-indigo-500 to-blue-600"
+          duration: "2 Years"
+        },
+        {
+          title: "BBA (Bachelor of Business Administration)",
+          duration: "3 Years"
+        },
+        {
+          title: "MBA (Master of Business Administration)",
+          duration: "2 Years"
         }
       ]
     }
@@ -158,101 +132,147 @@ const CoursesMegaMenu = ({ type, onClose }: CoursesMegaMenuProps) => {
 
   return (
     <div className="w-full">
-      <div className="flex items-center gap-3 mb-6">
-        <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${currentData.color} flex items-center justify-center`}>
-          <currentData.icon className="w-6 h-6 text-white" />
-        </div>
-        <div>
-          <h3 className="text-xl font-bold text-foreground">{currentData.title}</h3>
-          <p className="text-sm text-muted-foreground">Choose your specialization</p>
-        </div>
-      </div>
-
-      <div className="space-y-4 max-h-[60vh] overflow-y-auto scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent">
-        {currentData.courses.map((course, index) => (
-          <motion.div
-            key={course.title}
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: index * 0.1 }}
-            className="group"
+      {/* Course Category Tabs */}
+      <div className="flex gap-2 mb-6">
+        {Object.entries(courseData).map(([key, data]) => (
+          <motion.button
+            key={key}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            onClick={() => {
+              // Handle category selection if needed
+            }}
+            className={`px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-300 ${
+              type === key
+                ? 'bg-white text-blue-600 border-2 border-blue-600'
+                : 'bg-blue-600 text-white hover:bg-blue-700'
+            }`}
           >
-            <Card className="border border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-lg">
-              <CardContent className="p-6">
-                <div className="mb-4">
-                  <h4 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors mb-2">
-                    {course.title}
-                  </h4>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {course.description}
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-3 gap-3 mb-4">
-                  <div className="text-center p-2 rounded-lg bg-muted/50">
-                    <Clock className="w-4 h-4 text-primary mx-auto mb-1" />
-                    <div className="text-xs font-semibold">{course.duration}</div>
-                  </div>
-                  <div className="text-center p-2 rounded-lg bg-muted/50">
-                    <Users className="w-4 h-4 text-primary mx-auto mb-1" />
-                    <div className="text-xs font-semibold">{course.students}</div>
-                  </div>
-                  <div className="text-center p-2 rounded-lg bg-muted/50">
-                    <Star className="w-4 h-4 text-yellow-500 mx-auto mb-1" />
-                    <div className="text-xs font-semibold">{course.rating}</div>
-                  </div>
-                </div>
-
-                <div className="mb-4">
-                  <h5 className="text-sm font-semibold text-foreground mb-2">What you'll learn:</h5>
-                  <div className="flex flex-wrap gap-2">
-                    {course.features.map((feature, idx) => (
-                      <span
-                        key={idx}
-                        className="px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full"
-                      >
-                        {feature}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="flex gap-3">
-                  <Button
-                    size="sm"
-                    className="flex-1 group-hover:scale-105 transition-transform"
-                    onClick={onClose}
-                  >
-                    Enroll Now
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="group-hover:scale-105 transition-transform"
-                    onClick={onClose}
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
+            {key === 'it' ? 'IT PLACEMENT COURSES' :
+             key === 'non-it' ? 'NON IT PLACEMENT COURSES' :
+             key === 'eclass' ? 'E Class' :
+             'Degree'}
+          </motion.button>
         ))}
       </div>
 
-      <div className="mt-6 pt-4 border-t border-border">
+      {/* Course Cards - Two Column Layout for IT Courses */}
+      <div className="max-h-[60vh] overflow-y-auto scrollbar-thin scrollbar-thumb-blue-500/20 scrollbar-track-transparent">
+        {type === 'it' ? (
+          <div className="grid grid-cols-2 gap-4">
+            {/* Left Column - General IT Courses */}
+            <div className="space-y-3">
+              <h4 className="text-sm font-semibold text-gray-600 mb-3">General IT Courses</h4>
+              {[
+                "Software Testing",
+                "Fullstack Development", 
+                "Software Development",
+                "Front End Development",
+                "Data Science With Python",
+                "BIG Data Engineering",
+                "RPA"
+              ].map((courseName, index) => (
+                <motion.div
+                  key={courseName}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.05 }}
+                  className="group"
+                >
+                  <Card className="border border-gray-200 hover:border-blue-500 transition-all duration-300 hover:shadow-lg cursor-pointer">
+                    <CardContent className="p-3">
+                      <div className="flex items-center justify-between">
+                        <h4 className="text-sm font-semibold text-gray-800 group-hover:text-blue-600 transition-colors">
+                          {courseName}
+                        </h4>
+                        <ArrowRight className="w-4 h-4 text-blue-500 group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Right Column - Software Testing Specialized Courses */}
+            <div className="space-y-3">
+              <h4 className="text-sm font-semibold text-gray-600 mb-3">Software Testing Specialized</h4>
+              {[
+                "Software Testing Course",
+                "Manual Testing",
+                "Selenium Automation Testing", 
+                "ISTQB Certification"
+              ].map((courseName, index) => (
+                <motion.div
+                  key={courseName}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: (index + 7) * 0.05 }}
+                  className="group"
+                >
+                  <Card className="border border-gray-200 hover:border-blue-500 transition-all duration-300 hover:shadow-lg cursor-pointer">
+                    <CardContent className="p-3">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <div className="w-4 h-4 bg-orange-500 rounded-sm flex items-center justify-center">
+                            <div className="w-2 h-2 bg-white rounded-sm"></div>
+                          </div>
+                          <h4 className="text-sm font-semibold text-gray-800 group-hover:text-blue-600 transition-colors">
+                            {courseName}
+                          </h4>
+                        </div>
+                        <ArrowRight className="w-4 h-4 text-blue-500 group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        ) : (
+          /* Single Column Layout for Other Categories */
+          <div className="space-y-3">
+            {currentData.courses.map((course, index) => (
+              <motion.div
+                key={course.title}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.05 }}
+                className="group"
+              >
+                <Card className="border border-gray-200 hover:border-blue-500 transition-all duration-300 hover:shadow-lg cursor-pointer">
+                  <CardContent className="p-4">
+                    <div className="flex items-center justify-between">
+                      <div className="flex-1">
+                        <h4 className="text-base font-semibold text-gray-800 group-hover:text-blue-600 transition-colors mb-1">
+                          {course.title}
+                        </h4>
+                        <div className="flex items-center gap-2 text-sm text-gray-600">
+                          <Clock className="w-4 h-4 text-blue-500" />
+                          <span>Duration: {course.duration}</span>
+                        </div>
+                      </div>
+                      <ArrowRight className="w-5 h-5 text-blue-500 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Call to Action */}
+      <div className="mt-6 pt-4 border-t border-gray-200">
         <div className="text-center">
-          <p className="text-sm text-muted-foreground mb-3">
-            Need help choosing the right course?
+          <p className="text-sm text-gray-600 mb-3">
+            Looking for Guidance ?
           </p>
           <Button
-            variant="outline"
-            size="sm"
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition-colors duration-300 flex items-center justify-center gap-2"
             onClick={onClose}
-            className="w-full"
           >
-            Get Free Career Counseling
+            <Phone className="w-4 h-4" />
+            Request A Call Back
           </Button>
         </div>
       </div>

@@ -17,53 +17,73 @@ const Reviews = () => {
 
   const reviews = [
     {
-      name: "Amit Kumar",
+      name: "Aditya Mistry",
       role: "Full Stack Developer at Google",
       course: "MERN Stack Development",
       rating: 5,
-      image: "👨‍💻",
+      image: "/images/Review list/1Aditya Mistry.jpeg",
       review: "QUASTECH completely transformed my career. The instructors are industry experts, and the hands-on projects gave me real-world experience. Within 3 months of completing the course, I landed my dream job at Google!",
       package: "₹24 LPA",
       videoUrl: "#"
     },
     {
-      name: "Priya Singh",
+      name: "Anurag Rajpurohit",
       role: "Data Scientist at Microsoft",
       course: "Data Science & AI",
       rating: 5,
-      image: "👩‍💻",
+      image: "/images/Review list/2Anurag Rajpurohit.jpeg",
       review: "The Data Science course at QUASTECH is exceptional. The curriculum is up-to-date with industry standards, and the placement assistance is phenomenal. I highly recommend QUASTECH to anyone looking to break into tech.",
       package: "₹28 LPA",
       videoUrl: "#"
     },
     {
-      name: "Rohit Sharma",
+      name: "Sagar Chaudhari",
       role: "DevOps Engineer at Amazon",
       course: "DevOps & Cloud Computing",
       rating: 5,
-      image: "👨‍💼",
+      image: "/images/Review list/3Sagar Chaudhari.jpeg",
       review: "The practical approach and live projects at QUASTECH made all the difference. The mentorship and career guidance helped me transition from a non-tech background to landing a role at Amazon.",
       package: "₹22 LPA",
       videoUrl: "#"
     },
     {
-      name: "Sneha Reddy",
+      name: "Sonakshi Saxena",
       role: "Mobile App Developer at Flipkart",
       course: "Mobile App Development",
       rating: 5,
-      image: "👩‍💼",
+      image: "/images/Review list/4Sonakshi Saxena.jpeg",
       review: "QUASTECH's mobile development course is comprehensive and practical. The instructors provide personal attention, and the placement cell worked tirelessly to help me secure my position at Flipkart.",
       package: "₹20 LPA",
       videoUrl: "#"
     },
     {
-      name: "Arjun Patel",
+      name: "Jesica Mistry",
       role: "Cybersecurity Analyst at TCS",
       course: "Cybersecurity",
       rating: 5,
-      image: "👨‍🔧",
+      image: "/images/Review list/5Jesica Mistry.jpeg",
       review: "The cybersecurity program at QUASTECH is world-class. Real-world scenarios, hands-on labs, and expert mentorship prepared me for the challenges in the industry. Grateful for the excellent placement support!",
       package: "₹18 LPA",
+      videoUrl: "#"
+    },
+    {
+      name: "Atish Satpute",
+      role: "Software Engineer at Infosys",
+      course: "Full Stack Development",
+      rating: 5,
+      image: "/images/Review list/6Atish Satpute.jpeg",
+      review: "QUASTECH provided me with the perfect foundation for my tech career. The comprehensive curriculum and practical projects helped me develop strong technical skills. The placement support was outstanding!",
+      package: "₹16 LPA",
+      videoUrl: "#"
+    },
+    {
+      name: "Rajiv Jangam",
+      role: "Cloud Solutions Architect at Wipro",
+      course: "Cloud Computing & DevOps",
+      rating: 5,
+      image: "/images/Review list/7Rajiv Jangam.jpeg",
+      review: "The cloud computing course at QUASTECH exceeded my expectations. The hands-on labs and real-world projects prepared me perfectly for my role. The instructors are knowledgeable and supportive throughout the journey.",
+      package: "₹26 LPA",
       videoUrl: "#"
     }
   ];
@@ -141,7 +161,13 @@ const Reviews = () => {
             <div className="bg-gradient-primary p-8 text-white relative">
               <Quote className="absolute top-4 right-4 w-12 h-12 opacity-30" />
               <div className="flex items-center gap-6 mb-6">
-                <div className="text-6xl">{reviews[currentReview].image}</div>
+                <div className="w-20 h-20 rounded-full overflow-hidden border-4 border-white/20">
+                  <img 
+                    src={reviews[currentReview].image} 
+                    alt={reviews[currentReview].name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
                 <div>
                   <h3 className="text-2xl font-bold">{reviews[currentReview].name}</h3>
                   <p className="text-white/90">{reviews[currentReview].role}</p>
@@ -219,7 +245,13 @@ const Reviews = () => {
                 <Card className="h-full border-0 shadow-lg hover:shadow-xl transition-all duration-300">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-4 mb-4">
-                      <div className="text-3xl">{review.image}</div>
+                      <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-gray-200">
+                        <img 
+                          src={review.image} 
+                          alt={review.name}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
                       <div>
                         <h4 className="font-semibold">{review.name}</h4>
                         <p className="text-sm text-muted-foreground">{review.role}</p>

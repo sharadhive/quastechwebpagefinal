@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import Responsive Utilities */
+@import './styles/responsive.css';
+
 /* Dark Mode Styles */
 .dark-mode {
   /* Dark Background Colors */

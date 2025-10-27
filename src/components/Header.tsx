@@ -59,13 +59,14 @@ const Header = () => {
   }, [isHoveringDropdown]);
 
   const courseTypes = [
-    { name: "IT Courses", type: "it", icon: BookOpen, color: "from-blue-500 to-cyan-500" },
-    { name: "Non-IT Courses", type: "non-it", icon: Globe, color: "from-purple-500 to-pink-500" },
-    { name: "E-Class", type: "eclass", icon: Award, color: "from-orange-500 to-red-500" },
+    { name: "IT PLACEMENT COURSES", type: "it", icon: BookOpen, color: "from-blue-500 to-cyan-500" },
+    { name: "NON IT PLACEMENT COURSES", type: "non-it", icon: Globe, color: "from-purple-500 to-pink-500" },
+    { name: "E Class", type: "eclass", icon: Award, color: "from-orange-500 to-red-500" },
     { name: "Degree", type: "degree", icon: GraduationCap, color: "from-green-500 to-emerald-500" },
   ];
 
   const navItems = [
+    { name: "Home", href: "#" },
     { name: "About-Us", href: "#about" },
     { name: "Placement", href: "#placement" },
     { name: "Contact-Us", href: "#contact" },
@@ -98,11 +99,11 @@ const Header = () => {
   return (
     <>
       {/* Top Bar - Hidden on Mobile with Continuous Sliding Animation */}
-      <div className="hidden md:block bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 text-white py-3 px-4 text-sm shadow-md overflow-hidden">
-        <div className="container mx-auto">
+      <div className="hidden md:block bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 text-white py-1.5 px-3 text-xs shadow-md overflow-hidden">
+        <div className="container mx-auto max-w-5xl">
           {/* Continuous Sliding Content */}
           <motion.div
-            className="flex items-center gap-16"
+            className="flex items-center gap-8"
             animate={{ x: [0, -1000] }}
             transition={{
               x: {
@@ -115,71 +116,71 @@ const Header = () => {
           >
             {/* Duplicate content for seamless loop */}
             {[...Array(2)].map((_, setIndex) => (
-              <div key={setIndex} className="flex items-center gap-16 flex-shrink-0">
+              <div key={setIndex} className="flex items-center gap-10 flex-shrink-0">
                 {/* Contact Information */}
-                <div className="flex items-center gap-6">
+                <div className="flex items-center gap-4">
                   <motion.a 
                     href="tel:+918422800381"
-                    className="flex items-center gap-2 hover:scale-105 transition-transform cursor-pointer"
+                    className="flex items-center gap-1.5 hover:scale-105 transition-transform cursor-pointer"
                     whileHover={{ scale: 1.05 }}
                   >
-                    <Phone className="w-4 h-4 text-white" />
-                    <span className="font-medium">+91 8422800381</span>
+                    <Phone className="w-3 h-3 text-white" />
+                    <span className="font-medium text-xs">+91 8422800381</span>
                   </motion.a>
                   <motion.a 
                     href="mailto:info@quastech.in"
-                    className="flex items-center gap-2 hover:scale-105 transition-transform cursor-pointer"
+                    className="flex items-center gap-1.5 hover:scale-105 transition-transform cursor-pointer"
                     whileHover={{ scale: 1.05 }}
                   >
-                    <Mail className="w-4 h-4 text-white" />
-                    <span className="font-medium">info@quastech.in</span>
+                    <Mail className="w-3 h-3 text-white" />
+                    <span className="font-medium text-xs">info@quastech.in</span>
                   </motion.a>
                 </div>
                 
                 {/* Certifications */}
-                <div className="flex items-center gap-6">
+                <div className="flex items-center gap-4">
                   <motion.div 
-                    className="flex items-center gap-2 hover:scale-105 transition-transform cursor-pointer"
+                    className="flex items-center gap-1.5 hover:scale-105 transition-transform cursor-pointer"
                     whileHover={{ scale: 1.05 }}
                     onClick={() => alert("ISO 9001:2015 Certified - Quality Management System")}
                   >
-                    <Award className="w-4 h-4 text-white" />
-                    <span className="font-medium">ISO 9001:2015</span>
+                    <Award className="w-3 h-3 text-white" />
+                    <span className="font-medium text-xs">ISO 9001:2015</span>
                   </motion.div>
                   <motion.div 
-                    className="flex items-center gap-2 hover:scale-105 transition-transform cursor-pointer"
+                    className="flex items-center gap-1.5 hover:scale-105 transition-transform cursor-pointer"
                     whileHover={{ scale: 1.05 }}
                     onClick={() => alert("ISTQB Certified - International Software Testing Qualifications Board")}
                   >
-                    <CheckSquare className="w-4 h-4 text-white" />
-                    <span className="font-medium">ISTQB</span>
+                    <CheckSquare className="w-3 h-3 text-white" />
+                    <span className="font-medium text-xs">ISTQB</span>
                   </motion.div>
                 </div>
 
                 {/* Additional Info */}
-                <div className="flex items-center gap-8">
+                <div className="flex items-center gap-5">
                   <motion.div 
-                    className="flex items-center gap-2"
+                    className="flex items-center gap-1.5"
                     whileHover={{ scale: 1.05 }}
                   >
-                    <span className="font-medium">🎓 1000+ Students Placed</span>
+                    <span className="font-medium text-xs">🎓 1000+ Students Placed</span>
                   </motion.div>
                   <motion.div 
-                    className="flex items-center gap-2"
+                    className="flex items-center gap-1.5"
                     whileHover={{ scale: 1.05 }}
                   >
-                    <span className="font-medium">⭐ 4.8/5 Rating</span>
+                    <span className="font-medium text-xs">⭐ 4.8/5 Rating</span>
                   </motion.div>
                   <motion.div 
-                    className="flex items-center gap-2"
+                    className="flex items-center gap-1.5"
                     whileHover={{ scale: 1.05 }}
                   >
-                    <span className="font-medium">🏆 Award Winning Institute</span>
+                    <span className="font-medium text-xs">🏆 Award Winning Institute</span>
                   </motion.div>
                 </div>
 
                 {/* Social Media Icons */}
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2">
                   <motion.a
                     href="https://facebook.com/quastech"
                     target="_blank"
@@ -187,7 +188,7 @@ const Header = () => {
                     whileHover={{ scale: 1.2, y: -2 }}
                     className="text-white hover:text-blue-200 transition-colors duration-300"
                   >
-                    <Facebook className="w-4 h-4" />
+                    <Facebook className="w-3 h-3" />
                   </motion.a>
                   <motion.a
                     href="https://twitter.com/quastech"
@@ -196,7 +197,7 @@ const Header = () => {
                     whileHover={{ scale: 1.2, y: -2 }}
                     className="text-white hover:text-blue-200 transition-colors duration-300"
                   >
-                    <Twitter className="w-4 h-4" />
+                    <Twitter className="w-3 h-3" />
                   </motion.a>
                   <motion.a
                     href="https://instagram.com/quastech"
@@ -205,7 +206,7 @@ const Header = () => {
                     whileHover={{ scale: 1.2, y: -2 }}
                     className="text-white hover:text-blue-200 transition-colors duration-300"
                   >
-                    <Instagram className="w-4 h-4" />
+                    <Instagram className="w-3 h-3" />
                   </motion.a>
                   <motion.a
                     href="https://youtube.com/quastech"
@@ -214,7 +215,7 @@ const Header = () => {
                     whileHover={{ scale: 1.2, y: -2 }}
                     className="text-white hover:text-blue-200 transition-colors duration-300"
                   >
-                    <Youtube className="w-4 h-4" />
+                    <Youtube className="w-3 h-3" />
                   </motion.a>
                   <motion.a
                     href="https://linkedin.com/company/quastech"
@@ -223,7 +224,7 @@ const Header = () => {
                     whileHover={{ scale: 1.2, y: -2 }}
                     className="text-white hover:text-blue-200 transition-colors duration-300"
                   >
-                    <Linkedin className="w-4 h-4" />
+                    <Linkedin className="w-3 h-3" />
                   </motion.a>
                 </div>
                 
@@ -231,7 +232,7 @@ const Header = () => {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-white text-blue-600 hover:bg-gray-50 px-4 py-1 rounded-md text-sm font-semibold transition-colors"
+                  className="bg-white text-blue-600 hover:bg-gray-50 px-3 py-1 rounded-md text-xs font-semibold transition-colors"
                   onClick={() => alert("Login functionality will be implemented")}
                 >
                   Login
@@ -254,30 +255,30 @@ const Header = () => {
           background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%)'
         }}
       >
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="flex items-center justify-between h-20 sm:h-24 md:h-28">
+        <div className="container mx-auto px-3 sm:px-4 md:px-6">
+          <div className="flex items-center justify-between h-18 sm:h-20 md:h-24 lg:h-28">
             {/* Logo Section - Responsive */}
             <div className="flex items-center gap-0.5 sm:gap-1">
               {/* Main QUASTECH Logo */}
-              <div className="flex items-center -ml-8 sm:-ml-6 md:-ml-4">
+              <div className="flex items-center -ml-6 sm:-ml-6 md:-ml-4">
                 <img
                   src="/uploads/64f34837-4f64-4bbc-886b-305630eefd79.png"
                   alt="QUASTECH Logo"
-                  className="h-12 sm:h-14 md:h-16 lg:h-18 w-auto"
+                  className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto"
                 />
               </div>
               
               {/* Partner Logos - Hidden on small mobile */}
-              <div className="hidden sm:flex items-center gap-2 ml-2">
+              <div className="hidden sm:flex items-center gap-1 sm:gap-2 ml-1 sm:ml-2">
                 <img
                   src="/uploads/nsdeimg01.png"
                   alt="NSDC Logo"
-                  className="h-16 sm:h-18 md:h-20 lg:h-22 w-auto"
+                  className="h-12 sm:h-14 md:h-16 lg:h-18 w-auto"
                 />
                 <img
                   src="/uploads/skillindia--.jpg"
                   alt="Skill India Logo"
-                  className="h-12 sm:h-14 md:h-16 lg:h-18 w-auto"
+                  className="h-8 sm:h-10 md:h-12 lg:h-14 w-auto"
                 />
               </div>
             </div>
@@ -323,9 +324,9 @@ const Header = () => {
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.1 }}
-                        className="w-80 max-w-[45vw] lg:max-w-[45vw] w-full lg:w-80 bg-background/95 backdrop-blur-xl border border-border rounded-xl shadow-2xl p-6 bg-gradient-to-br from-background to-muted/20"
+                        className="w-80 max-w-[45vw] lg:max-w-[45vw] w-full lg:w-80 bg-white/95 backdrop-blur-xl border border-gray-200 rounded-xl shadow-2xl p-6"
                       >
-                        <h3 className="text-lg font-bold mb-4 text-primary">Select Course Category</h3>
+                        <h3 className="text-lg font-bold mb-4 text-blue-600">Select Course Category</h3>
                         <div className="flex flex-col gap-3">
                           {courseTypes.map((course) => (
                             <motion.div
@@ -334,14 +335,14 @@ const Header = () => {
                               onMouseEnter={() => setActiveCourseType(course.type as "it" | "non-it" | "eclass" | "degree")}
                               className={`relative p-4 rounded-lg cursor-pointer transition-all duration-300 flex items-center gap-4 ${
                                 activeCourseType === course.type 
-                                  ? 'bg-gradient-to-r from-primary/20 to-primary-glow/20 border-2 border-primary shadow-lg scale-[1.02]' 
-                                  : 'bg-gradient-to-r from-primary/5 to-primary-glow/5 border border-border/50 hover:border-primary/50 hover:shadow-md'
+                                  ? 'bg-blue-50 border-2 border-blue-500 shadow-lg scale-[1.02]' 
+                                  : 'bg-gray-50 border border-gray-200 hover:border-blue-300 hover:shadow-md'
                               }`}
                             >
                               <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${course.color} flex items-center justify-center shrink-0`}>
                                 <course.icon className="w-6 h-6 text-white" />
                               </div>
-                              <h4 className="font-semibold text-sm">{course.name}</h4>
+                              <h4 className="font-semibold text-sm text-gray-800">{course.name}</h4>
                             </motion.div>
                           ))}
                         </div>
@@ -355,7 +356,7 @@ const Header = () => {
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: -20 }}
                             transition={{ duration: 0.2 }}
-                            className="w-[500px] max-w-[50vw] lg:max-w-[50vw] w-full lg:w-[500px] max-h-[80vh] bg-background/95 backdrop-blur-xl border border-border rounded-xl shadow-2xl overflow-hidden bg-gradient-to-br from-background to-muted/20"
+                            className="w-[500px] max-w-[50vw] lg:max-w-[50vw] w-full lg:w-[500px] max-h-[80vh] bg-white/95 backdrop-blur-xl border border-gray-200 rounded-xl shadow-2xl overflow-hidden"
                           >
                             <CoursesMegaMenu 
                               type={activeCourseType} 
@@ -381,6 +382,12 @@ const Header = () => {
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
                     href={item.href}
+                    onClick={(e) => {
+                      if (item.name === "Home") {
+                        e.preventDefault();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }
+                    }}
                     className="text-gray-700 hover:text-primary font-medium transition-all duration-300 flex items-center gap-1 px-3 py-2 rounded-lg hover:bg-primary/5 relative overflow-hidden group"
                   >
                     <span className="relative z-10">{item.name}</span>
@@ -481,7 +488,13 @@ const Header = () => {
                     <a
                       href={item.href}
                         className="block py-2 px-3 text-foreground hover:text-primary hover:bg-accent/50 rounded-md transition-colors duration-200 text-sm"
-                      onClick={() => setIsMenuOpen(false)}
+                      onClick={(e) => {
+                        if (item.name === "Home") {
+                          e.preventDefault();
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }
+                        setIsMenuOpen(false);
+                      }}
                     >
                       {item.name}
                     </a>
