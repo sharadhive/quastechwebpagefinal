@@ -291,6 +291,7 @@ const Header = () => {
                 onClick={() => handleDropdownToggle("Courses")}
                 onMouseEnter={() => {
                   setActiveDropdown("Courses");
+                  setActiveCourseType("it"); // Set default to IT courses
                   setIsHoveringDropdown(true);
                 }}
                 onMouseLeave={() => setIsHoveringDropdown(false)}
@@ -318,56 +319,15 @@ const Header = () => {
                     onMouseEnter={handleMouseEnterDropdown}
                     onMouseLeave={handleMouseLeaveDropdown}
                   >
-                    <div className="flex flex-col lg:flex-row gap-4 max-w-full">
-                      {/* Course Types Card */}
-                      <motion.div
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.1 }}
-                        className="w-80 max-w-[45vw] lg:max-w-[45vw] w-full lg:w-80 bg-white/95 backdrop-blur-xl border border-gray-200 rounded-xl shadow-2xl p-6"
-                      >
-                        <h3 className="text-lg font-bold mb-4 text-blue-600">Select Course Category</h3>
-                        <div className="flex flex-col gap-3">
-                          {courseTypes.map((course) => (
-                            <motion.div
-                              key={course.type}
-                              whileHover={{ scale: 1.02, x: 4 }}
-                              onMouseEnter={() => setActiveCourseType(course.type as "it" | "non-it" | "eclass" | "degree")}
-                              className={`relative p-4 rounded-lg cursor-pointer transition-all duration-300 flex items-center gap-4 ${
-                                activeCourseType === course.type 
-                                  ? 'bg-blue-50 border-2 border-blue-500 shadow-lg scale-[1.02]' 
-                                  : 'bg-gray-50 border border-gray-200 hover:border-blue-300 hover:shadow-md'
-                              }`}
-                            >
-                              <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${course.color} flex items-center justify-center shrink-0`}>
-                                <course.icon className="w-6 h-6 text-white" />
-                              </div>
-                              <h4 className="font-semibold text-sm text-gray-800">{course.name}</h4>
-                            </motion.div>
-                          ))}
-                        </div>
-                      </motion.div>
-
-                      {/* Course Details Panel */}
-                      <AnimatePresence>
-                        {activeCourseType && (
-                          <motion.div
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: -20 }}
-                            transition={{ duration: 0.2 }}
-                            className="w-[500px] max-w-[50vw] lg:max-w-[50vw] w-full lg:w-[500px] max-h-[80vh] bg-white/95 backdrop-blur-xl border border-gray-200 rounded-xl shadow-2xl overflow-hidden"
-                          >
-                            <CoursesMegaMenu 
-                              type={activeCourseType} 
-                              onClose={() => {
-                                setActiveCourseType(null);
-                                setActiveDropdown(null);
-                              }} 
-                            />
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
+                    <div className="w-full max-w-5xl bg-white rounded-xl shadow-2xl border border-gray-200 p-6 max-h-[80vh] overflow-y-auto">
+                      <CoursesMegaMenu 
+                        type={activeCourseType || "it"} 
+                        onClose={() => {
+                          setActiveCourseType(null);
+                          setActiveDropdown(null);
+                        }}
+                        onTabChange={(newType) => setActiveCourseType(newType)}
+                      />
                     </div>
                   </motion.div>
                 )}
