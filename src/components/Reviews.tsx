@@ -23,7 +23,6 @@ const Reviews = () => {
       rating: 5,
       image: "/images/Review list/1Aditya Mistry.jpeg",
       review: "QUASTECH completely transformed my career. The instructors are industry experts, and the hands-on projects gave me real-world experience. Within 3 months of completing the course, I landed my dream job at Google!",
-      package: "₹24 LPA",
       videoUrl: "#"
     },
     {
@@ -33,7 +32,6 @@ const Reviews = () => {
       rating: 5,
       image: "/images/Review list/2Anurag Rajpurohit.jpeg",
       review: "The Data Science course at QUASTECH is exceptional. The curriculum is up-to-date with industry standards, and the placement assistance is phenomenal. I highly recommend QUASTECH to anyone looking to break into tech.",
-      package: "₹28 LPA",
       videoUrl: "#"
     },
     {
@@ -43,7 +41,6 @@ const Reviews = () => {
       rating: 5,
       image: "/images/Review list/3Sagar Chaudhari.jpeg",
       review: "The practical approach and live projects at QUASTECH made all the difference. The mentorship and career guidance helped me transition from a non-tech background to landing a role at Amazon.",
-      package: "₹22 LPA",
       videoUrl: "#"
     },
     {
@@ -53,7 +50,6 @@ const Reviews = () => {
       rating: 5,
       image: "/images/Review list/4Sonakshi Saxena.jpeg",
       review: "QUASTECH's mobile development course is comprehensive and practical. The instructors provide personal attention, and the placement cell worked tirelessly to help me secure my position at Flipkart.",
-      package: "₹20 LPA",
       videoUrl: "#"
     },
     {
@@ -63,7 +59,6 @@ const Reviews = () => {
       rating: 5,
       image: "/images/Review list/5Jesica Mistry.jpeg",
       review: "The cybersecurity program at QUASTECH is world-class. Real-world scenarios, hands-on labs, and expert mentorship prepared me for the challenges in the industry. Grateful for the excellent placement support!",
-      package: "₹18 LPA",
       videoUrl: "#"
     },
     {
@@ -73,7 +68,6 @@ const Reviews = () => {
       rating: 5,
       image: "/images/Review list/6Atish Satpute.jpeg",
       review: "QUASTECH provided me with the perfect foundation for my tech career. The comprehensive curriculum and practical projects helped me develop strong technical skills. The placement support was outstanding!",
-      package: "₹16 LPA",
       videoUrl: "#"
     },
     {
@@ -83,7 +77,6 @@ const Reviews = () => {
       rating: 5,
       image: "/images/Review list/7Rajiv Jangam.jpeg",
       review: "The cloud computing course at QUASTECH exceeded my expectations. The hands-on labs and real-world projects prepared me perfectly for my role. The instructors are knowledgeable and supportive throughout the journey.",
-      package: "₹26 LPA",
       videoUrl: "#"
     }
   ];
@@ -189,37 +182,28 @@ const Reviews = () => {
                 "{reviews[currentReview].review}"
               </blockquote>
               
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <div className="text-2xl font-bold text-secondary">
-                    {reviews[currentReview].package}
-                  </div>
-                  <div className="text-sm text-muted-foreground">Package Achieved</div>
-                </div>
-                
-                <div className="flex items-center gap-4">
-                  <Button variant="outline" size="sm">
-                    <Play className="w-4 h-4 mr-2" />
-                    Watch Video
+              <div className="flex items-center justify-end gap-4">
+                <Button variant="outline" size="sm">
+                  <Play className="w-4 h-4 mr-2" />
+                  Watch Video
+                </Button>
+                <div className="flex gap-2">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={prevReview}
+                    className="w-10 h-10 p-0"
+                  >
+                    <ArrowLeft className="w-4 h-4" />
                   </Button>
-                  <div className="flex gap-2">
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={prevReview}
-                      className="w-10 h-10 p-0"
-                    >
-                      <ArrowLeft className="w-4 h-4" />
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={nextReview}
-                      className="w-10 h-10 p-0"
-                    >
-                      <ArrowRight className="w-4 h-4" />
-                    </Button>
-                  </div>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={nextReview}
+                    className="w-10 h-10 p-0"
+                  >
+                    <ArrowRight className="w-4 h-4" />
+                  </Button>
                 </div>
               </div>
             </CardContent>
@@ -267,8 +251,7 @@ const Reviews = () => {
                       "{review.review.substring(0, 120)}..."
                     </blockquote>
                     
-                    <div className="flex items-center justify-between pt-4 border-t">
-                      <div className="font-semibold text-secondary">{review.package}</div>
+                    <div className="flex items-center justify-end pt-4 border-t">
                       <Button variant="ghost" size="sm">
                         Read More
                       </Button>
@@ -299,7 +282,7 @@ const Reviews = () => {
                 Start Your Journey Today
               </Button>
               <Button variant="outline" size="lg" className="border-white/30 text-white hover:bg-white hover:text-primary">
-                Talk to Alumni
+                Placement
               </Button>
             </div>
           </div>

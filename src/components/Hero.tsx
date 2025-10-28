@@ -286,7 +286,7 @@ export default function Hero() {
                   className="relative bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 transition-all text-white font-semibold rounded-xl px-6 py-3 shadow-lg hover:shadow-xl text-base overflow-hidden group flex items-center justify-center gap-2"
               >
                   <Download className="w-5 h-5" />
-                  <span className="relative z-10">Download</span>
+                  <span className="relative z-10">Book Your Demo</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
               </motion.button>
 

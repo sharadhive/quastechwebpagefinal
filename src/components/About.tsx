@@ -308,6 +308,92 @@ const About = () => {
               </motion.p>
           </motion.div>
 
+          {/* About Quastech - Image and Description Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="mb-16 md:mb-20"
+          >
+            <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
+              {/* Left Side - Image */}
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="relative"
+              >
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                  className="relative rounded-3xl overflow-hidden shadow-2xl"
+                >
+                  <img
+                    src="/images/Why US.png"
+                    alt="Why Choose Quastech"
+                    className="w-full h-auto"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent" />
+                </motion.div>
+              </motion.div>
+
+              {/* Right Side - Description */}
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="space-y-6"
+              >
+                <div>
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-4">
+                    About <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-orange-500">QUASTECH</span>
+                  </h2>
+                  <div className="h-1 w-24 bg-gradient-to-r from-blue-600 to-orange-500 rounded-full mb-6" />
+                </div>
+
+                <div className="space-y-4 text-gray-700 leading-relaxed">
+                  <p className="text-lg">
+                    <strong className="text-blue-600">Quastech (Future Through Innovations)</strong> established by <strong>Mrs. Navdeep Kaur</strong> with the motive <em className="text-orange-600">"To Provide excellent & smart working professional to IT industry"</em> Candidate who has an excellent command of Software Technology.
+                  </p>
+
+                  <p className="text-lg">
+                    Quastech conducts unique and professional training for graduates and postgraduates, we are specialized in real-time industry training with the added advantage of domain knowledge. We believe in well-organized, Systematized and Standardized training.
+                  </p>
+
+                  <div className="bg-gradient-to-br from-blue-50 to-orange-50 rounded-2xl p-6 mt-6">
+                    <h3 className="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                      <Award className="w-6 h-6 text-blue-600" />
+                      SPECIALITY
+                    </h3>
+                    <ul className="space-y-3">
+                      <li className="flex items-start gap-3">
+                        <div className="w-6 h-6 rounded-full bg-gradient-to-r from-blue-600 to-orange-500 flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <span className="text-white text-sm">✓</span>
+                        </div>
+                        <span className="text-gray-700">Specialized and certified Faculty for each course.</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <div className="w-6 h-6 rounded-full bg-gradient-to-r from-blue-600 to-orange-500 flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <span className="text-white text-sm">✓</span>
+                        </div>
+                        <span className="text-gray-700">Training is 100% based on current industry requirements and real-time projects.</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <div className="w-6 h-6 rounded-full bg-gradient-to-r from-blue-600 to-orange-500 flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <span className="text-white text-sm">✓</span>
+                        </div>
+                        <span className="text-gray-700">Apart from technical knowledge, Quastech believes in the overall growth of the candidates.</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+
           {/* Static Why Us Section */}
           <div className="mb-8 md:mb-12">
             <div className="text-center mb-8 md:mb-10">

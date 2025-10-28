@@ -21,23 +21,39 @@ type Partner = {
 // 🔹 Stats
 const stats: Stat[] = [
   { icon: Users, value: "5000+", label: "Students Placed" },
-  { icon: Briefcase, value: "300+", label: "Hiring Partners" },
+  { icon: Briefcase, value: "800+", label: "Hiring Partners" },
   { icon: Globe, value: "25+", label: "Global Recruiters" },
   { icon: Star, value: "95%", label: "Placement Rate" },
 ];
 
 // 🔹 Hiring Partners (logos)
 const partners: Partner[] = [
+  { name: "Accenture", logo: "/images/Logo folder/accenture.jpg" },
   { name: "AQM", logo: "/images/Logo folder/AQM_New_Logo.jpg" },
   { name: "Aurion", logo: "/images/Logo folder/Aurion logo.png" },
+  { name: "Axioned", logo: "/images/Logo folder/axioned.jpg" },
+  { name: "Capgemini", logo: "/images/Logo folder/capgemini.jpg" },
   { name: "CC Avenue", logo: "/images/Logo folder/cc avenue-payment-module.png" },
+  { name: "Circux", logo: "/images/Logo folder/circux.jpg" },
   { name: "CRM Next", logo: "/images/Logo folder/crm next.webp" },
   { name: "Cyber Tech", logo: "/images/Logo folder/Cyber Tech-Logo.png" },
+  { name: "Cybertech", logo: "/images/Logo folder/cybertech.jpg" },
   { name: "GreytHR", logo: "/images/Logo folder/greytrix_logo.jpg" },
+  { name: "Infibeam", logo: "/images/Logo folder/infibeam.jpg" },
+  { name: "Infosos", logo: "/images/Logo folder/infosos.jpg" },
+  { name: "Ingram", logo: "/images/Logo folder/ingram.jpg" },
+  { name: "JustDial", logo: "/images/Logo folder/justdial.jpg" },
   { name: "Mind Gate", logo: "/images/Logo folder/mind gate.jpg" },
+  { name: "Mr", logo: "/images/Logo folder/mr.jpg" },
+  { name: "Nisco", logo: "/images/Logo folder/nisco.jpg" },
+  { name: "Planit", logo: "/images/Logo folder/planit.jpg" },
   { name: "Proteus", logo: "/images/Logo folder/proteus.jpg" },
+  { name: "Quality Tech", logo: "/images/Logo folder/qualitytech.jpg" },
   { name: "Shawman", logo: "/images/Logo folder/shawman.png" },
-  { name: "SWQA", logo: "/images/Logo folder/swqa_india_logo.jpg" },
+  { name: "SurePR", logo: "/images/Logo folder/surepr.jpg" },
+  { name: "SWQA India", logo: "/images/Logo folder/swqa_india_logo.jpg" },
+  { name: "SWQA", logo: "/images/Logo folder/swqa.jpg" },
+  { name: "TCS", logo: "/images/Logo folder/tcs.jpg" },
 ];
 
 // --- Sub Components ---
@@ -146,34 +162,148 @@ const Placement = () => {
             </Swiper>
           </div>
 
-          {/* 🤝 Hiring Partners */}
-          <div className="group">
-            <Subtitle text="Our students are placed and working in this companies" />
-            <div className="relative h-[420px] overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_15%,black_85%,transparent)]">
-              <div className="animate-scroll-vertical">
-                {/* One full grid pass */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-6 lg:gap-8 px-2">
-                  {partners.map((p, i) => (
-                    <div
-                      key={`partners-1-${i}`}
-                      className="flex items-center justify-center rounded-2xl bg-white/80 border border-slate-200/70 shadow-sm h-24 sm:h-28 md:h-32 px-4 sm:px-6 grayscale hover:grayscale-0 transition-all duration-300"
-                    >
-                      <img src={p.logo} alt={p.name} className="max-h-12 sm:max-h-16 md:max-h-20 object-contain" />
-                    </div>
-                  ))}
-                </div>
+          {/* 🤝 Hiring Partners - 3 Rows with Alternating Animations */}
+          <div className="overflow-hidden bg-gradient-to-br from-blue-100 via-slate-100 to-orange-100 rounded-3xl py-12 px-4">
+            <Subtitle text="Associated with 1200+ Hiring partners" />
+            
+            {/* Row 1 - Slide Left */}
+            <div className="relative overflow-hidden mb-6">
+              <motion.div
+                className="flex gap-6"
+                animate={{ x: [0, -1500] }}
+                transition={{
+                  x: {
+                    repeat: Infinity,
+                    duration: 15,
+                    ease: "linear",
+                  },
+                }}
+              >
+                {/* First set */}
+                {partners.slice(0, 6).map((p, i) => (
+                  <div
+                    key={`row1-set1-${i}`}
+                    className="flex-shrink-0 w-48 h-28 flex items-center justify-center rounded-xl bg-white border border-slate-200 shadow-md hover:shadow-xl transition-all duration-300 px-6"
+                  >
+                    <img src={p.logo} alt={p.name} className="max-h-16 max-w-full object-contain" />
+                  </div>
+                ))}
                 {/* Duplicate for seamless loop */}
-                <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 md:gap-8 px-2">
-                  {partners.map((p, i) => (
-                    <div
-                      key={`partners-2-${i}`}
-                      className="flex items-center justify-center rounded-2xl bg-white/80 border border-slate-200/70 shadow-sm h-24 sm:h-28 md:h-32 px-4 sm:px-6 grayscale hover:grayscale-0 transition-all duration-300"
-                    >
-                      <img src={p.logo} alt={p.name} className="max-h-12 sm:max-h-16 md:max-h-20 object-contain" />
-                    </div>
-                  ))}
-                </div>
-              </div>
+                {partners.slice(0, 6).map((p, i) => (
+                  <div
+                    key={`row1-set2-${i}`}
+                    className="flex-shrink-0 w-48 h-28 flex items-center justify-center rounded-xl bg-white border border-slate-200 shadow-md hover:shadow-xl transition-all duration-300 px-6"
+                  >
+                    <img src={p.logo} alt={p.name} className="max-h-16 max-w-full object-contain" />
+                  </div>
+                ))}
+                {/* Third set for extra smoothness */}
+                {partners.slice(0, 6).map((p, i) => (
+                  <div
+                    key={`row1-set3-${i}`}
+                    className="flex-shrink-0 w-48 h-28 flex items-center justify-center rounded-xl bg-white border border-slate-200 shadow-md hover:shadow-xl transition-all duration-300 px-6"
+                  >
+                    <img src={p.logo} alt={p.name} className="max-h-16 max-w-full object-contain" />
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+
+            {/* Row 2 - Slide Right */}
+            <div className="relative overflow-hidden mb-6">
+              <motion.div
+                className="flex gap-6"
+                animate={{ x: [-1500, 0] }}
+                transition={{
+                  x: {
+                    repeat: Infinity,
+                    duration: 25,
+                    ease: "linear",
+                  },
+                }}
+              >
+                {/* First set */}
+                {partners.slice(3, 9).map((p, i) => (
+                  <div
+                    key={`row2-set1-${i}`}
+                    className="flex-shrink-0 w-48 h-28 flex items-center justify-center rounded-xl bg-white border border-slate-200 shadow-md hover:shadow-xl transition-all duration-300 px-6"
+                  >
+                    <img src={p.logo} alt={p.name} className="max-h-16 max-w-full object-contain" />
+                  </div>
+                ))}
+                {/* Duplicate for seamless loop */}
+                {partners.slice(3, 9).map((p, i) => (
+                  <div
+                    key={`row2-set2-${i}`}
+                    className="flex-shrink-0 w-48 h-28 flex items-center justify-center rounded-xl bg-white border border-slate-200 shadow-md hover:shadow-xl transition-all duration-300 px-6"
+                  >
+                    <img src={p.logo} alt={p.name} className="max-h-16 max-w-full object-contain" />
+                  </div>
+                ))}
+                {/* Third set */}
+                {partners.slice(3, 9).map((p, i) => (
+                  <div
+                    key={`row2-set3-${i}`}
+                    className="flex-shrink-0 w-48 h-28 flex items-center justify-center rounded-xl bg-white border border-slate-200 shadow-md hover:shadow-xl transition-all duration-300 px-6"
+                  >
+                    <img src={p.logo} alt={p.name} className="max-h-16 max-w-full object-contain" />
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+
+            {/* Row 3 - Slide Left */}
+            <div className="relative overflow-hidden">
+              <motion.div
+                className="flex gap-6"
+                animate={{ x: [0, -1500] }}
+                transition={{
+                  x: {
+                    repeat: Infinity,
+                    duration: 25,
+                    ease: "linear",
+                  },
+                }}
+              >
+                {/* First set */}
+                {partners.slice(0, 6).map((p, i) => (
+                  <div
+                    key={`row3-set1-${i}`}
+                    className="flex-shrink-0 w-48 h-28 flex items-center justify-center rounded-xl bg-white border border-slate-200 shadow-md hover:shadow-xl transition-all duration-300 px-6"
+                  >
+                    <img src={p.logo} alt={p.name} className="max-h-16 max-w-full object-contain" />
+                  </div>
+                ))}
+                {/* Duplicate for seamless loop */}
+                {partners.slice(0, 6).map((p, i) => (
+                  <div
+                    key={`row3-set2-${i}`}
+                    className="flex-shrink-0 w-48 h-28 flex items-center justify-center rounded-xl bg-white border border-slate-200 shadow-md hover:shadow-xl transition-all duration-300 px-6"
+                  >
+                    <img src={p.logo} alt={p.name} className="max-h-16 max-w-full object-contain" />
+                  </div>
+                ))}
+                {/* Third set */}
+                {partners.slice(0, 6).map((p, i) => (
+                  <div
+                    key={`row3-set3-${i}`}
+                    className="flex-shrink-0 w-48 h-28 flex items-center justify-center rounded-xl bg-white border border-slate-200 shadow-md hover:shadow-xl transition-all duration-300 px-6"
+                  >
+                    <img src={p.logo} alt={p.name} className="max-h-16 max-w-full object-contain" />
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+
+            {/* View All Partners Button */}
+            <div className="text-center mt-10">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                View All Partners
+              </motion.button>
             </div>
           </div>
         </div>

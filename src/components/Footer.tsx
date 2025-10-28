@@ -74,7 +74,7 @@ const Footer = () => {
     { name: "Home", href: "#" },
     { name: "About Us", href: "#" },
     { name: "Placement", href: "#" },
-    { name: "Contact Us", href: "#" },
+    { name: "Contact Us", href: "#enquiry" },
     { name: "Certificate Download", href: "#" },
     { name: "Payment Methods", href: "#" },
     { name: "Blogs", href: "#" },

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
   Menu,
@@ -21,6 +22,7 @@ import {
   Moon,
 } from "lucide-react";
 import CoursesMegaMenu from "@/components/CoursesMegaMenu";
+import CoursesModal from "@/components/CoursesModal";
 import { useDarkMode } from "@/contexts/DarkModeContext";
 
 const Header = () => {
@@ -31,6 +33,7 @@ const Header = () => {
   const [showCoursesMenu, setShowCoursesMenu] = useState(false);
   const [activeCourseType, setActiveCourseType] = useState<"it" | "non-it" | "eclass" | "degree" | null>(null);
   const [isHoveringDropdown, setIsHoveringDropdown] = useState(false);
+  const [showCoursesModal, setShowCoursesModal] = useState(false);
   const { isDarkMode, toggleDarkMode } = useDarkMode();
 
   useEffect(() => {
@@ -66,10 +69,10 @@ const Header = () => {
   ];
 
   const navItems = [
-    { name: "Home", href: "#" },
-    { name: "About-Us", href: "#about" },
-    { name: "Placement", href: "#placement" },
-    { name: "Contact-Us", href: "#contact" },
+    { name: "Home", href: "#", isExternal: false },
+    { name: "About-Us", href: "/about", isExternal: true },
+    { name: "Placement", href: "#placement", isExternal: false },
+    { name: "Contact-Us", href: "/contact", isExternal: true },
   ];
 
   const handleDropdownToggle = (categoryName: string) => {
@@ -98,6 +101,9 @@ const Header = () => {
 
   return (
     <>
+      {/* Courses Modal */}
+      <CoursesModal isOpen={showCoursesModal} onClose={() => setShowCoursesModal(false)} />
+      
       {/* Top Bar - Hidden on Mobile with Continuous Sliding Animation */}
       <div className="hidden md:block bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 text-white py-1.5 px-3 text-xs shadow-md overflow-hidden">
         <div className="container mx-auto max-w-5xl">
@@ -260,13 +266,13 @@ const Header = () => {
             {/* Logo Section - Responsive */}
             <div className="flex items-center gap-0.5 sm:gap-1">
               {/* Main QUASTECH Logo */}
-              <div className="flex items-center -ml-6 sm:-ml-6 md:-ml-4">
+              <Link to="/" className="flex items-center -ml-6 sm:-ml-6 md:-ml-4">
                 <img
                   src="/uploads/64f34837-4f64-4bbc-886b-305630eefd79.png"
                   alt="QUASTECH Logo"
-                  className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto"
+                  className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto cursor-pointer hover:opacity-90 transition-opacity"
                 />
-              </div>
+              </Link>
               
               {/* Partner Logos - Hidden on small mobile */}
               <div className="hidden sm:flex items-center gap-1 sm:gap-2 ml-1 sm:ml-2">
@@ -283,81 +289,61 @@ const Header = () => {
               </div>
             </div>
 
-            {/* Center Course Button with Dropdown */}
-            <div className="hidden lg:flex items-center relative" ref={dropdownRef}>
+            {/* Center Course Button - Opens Modal */}
+            <div className="hidden lg:flex items-center relative">
               <motion.button
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => handleDropdownToggle("Courses")}
-                onMouseEnter={() => {
-                  setActiveDropdown("Courses");
-                  setActiveCourseType("it"); // Set default to IT courses
-                  setIsHoveringDropdown(true);
-                }}
-                onMouseLeave={() => setIsHoveringDropdown(false)}
+                onClick={() => setShowCoursesModal(true)}
                 className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2"
               >
                 <BookOpen className="w-5 h-5" />
                 Course's
-                <motion.div
-                  animate={{ rotate: activeDropdown === "Courses" ? 180 : 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <ChevronDown className="w-4 h-4" />
-                </motion.div>
               </motion.button>
-
-              {/* Course Dropdown */}
-              <AnimatePresence>
-                {activeDropdown === "Courses" && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                    transition={{ duration: 0.2, ease: "easeOut" }}
-                    className="absolute top-full left-0 pt-2 z-50 max-w-[95vw]"
-                    onMouseEnter={handleMouseEnterDropdown}
-                    onMouseLeave={handleMouseLeaveDropdown}
-                  >
-                    <div className="w-full max-w-5xl bg-white rounded-xl shadow-2xl border border-gray-200 p-6 max-h-[80vh] overflow-y-auto">
-                      <CoursesMegaMenu 
-                        type={activeCourseType || "it"} 
-                        onClose={() => {
-                          setActiveCourseType(null);
-                          setActiveDropdown(null);
-                        }}
-                        onTabChange={(newType) => setActiveCourseType(newType)}
-                      />
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
             </div>
 
             {/* Animated Navigation */}
             <nav className="hidden lg:flex items-center gap-8">
               {navItems.map((item, index) => (
                 <div key={item.name} className="relative">
-                  <motion.a
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                    href={item.href}
-                    onClick={(e) => {
-                      if (item.name === "Home") {
-                        e.preventDefault();
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                      }
-                    }}
-                    className="text-gray-700 hover:text-primary font-medium transition-all duration-300 flex items-center gap-1 px-3 py-2 rounded-lg hover:bg-primary/5 relative overflow-hidden group"
-                  >
-                    <span className="relative z-10">{item.name}</span>
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-primary/10 to-primary-glow/10 rounded-lg"
-                      initial={{ scale: 0, opacity: 0 }}
-                      whileHover={{ scale: 1, opacity: 1 }}
-                      transition={{ duration: 0.2 }}
-                    />
-                  </motion.a>
+                  {item.isExternal ? (
+                    <Link to={item.href}>
+                      <motion.div
+                        whileHover={{ scale: 1.05, y: -2 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="text-gray-700 hover:text-primary font-medium transition-all duration-300 flex items-center gap-1 px-3 py-2 rounded-lg hover:bg-primary/5 relative overflow-hidden group"
+                      >
+                        <span className="relative z-10">{item.name}</span>
+                        <motion.div
+                          className="absolute inset-0 bg-gradient-to-r from-primary/10 to-primary-glow/10 rounded-lg"
+                          initial={{ scale: 0, opacity: 0 }}
+                          whileHover={{ scale: 1, opacity: 1 }}
+                          transition={{ duration: 0.2 }}
+                        />
+                      </motion.div>
+                    </Link>
+                  ) : (
+                    <motion.a
+                      whileHover={{ scale: 1.05, y: -2 }}
+                      whileTap={{ scale: 0.95 }}
+                      href={item.href}
+                      onClick={(e) => {
+                        if (item.name === "Home") {
+                          e.preventDefault();
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }
+                      }}
+                      className="text-gray-700 hover:text-primary font-medium transition-all duration-300 flex items-center gap-1 px-3 py-2 rounded-lg hover:bg-primary/5 relative overflow-hidden group"
+                    >
+                      <span className="relative z-10">{item.name}</span>
+                      <motion.div
+                        className="absolute inset-0 bg-gradient-to-r from-primary/10 to-primary-glow/10 rounded-lg"
+                        initial={{ scale: 0, opacity: 0 }}
+                        whileHover={{ scale: 1, opacity: 1 }}
+                        transition={{ duration: 0.2 }}
+                      />
+                    </motion.a>
+                  )}
                 </div>
               ))}
             </nav>
@@ -442,22 +428,44 @@ const Header = () => {
                     />
                 </div>
                 
+                {/* Courses Button - Mobile */}
+                <button
+                  onClick={() => {
+                    setShowCoursesModal(true);
+                    setIsMenuOpen(false);
+                  }}
+                  className="w-full py-3 px-4 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-md"
+                >
+                  <BookOpen className="w-5 h-5" />
+                  Course's
+                </button>
+
                 {/* Nav Items - Compact */}
                 {navItems.map((item) => (
                     <div key={item.name} className="space-y-1">
-                    <a
-                      href={item.href}
+                    {item.isExternal ? (
+                      <Link
+                        to={item.href}
                         className="block py-2 px-3 text-foreground hover:text-primary hover:bg-accent/50 rounded-md transition-colors duration-200 text-sm"
-                      onClick={(e) => {
-                        if (item.name === "Home") {
-                          e.preventDefault();
-                          window.scrollTo({ top: 0, behavior: 'smooth' });
-                        }
-                        setIsMenuOpen(false);
-                      }}
-                    >
-                      {item.name}
-                    </a>
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        {item.name}
+                      </Link>
+                    ) : (
+                      <a
+                        href={item.href}
+                        className="block py-2 px-3 text-foreground hover:text-primary hover:bg-accent/50 rounded-md transition-colors duration-200 text-sm"
+                        onClick={(e) => {
+                          if (item.name === "Home") {
+                            e.preventDefault();
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                          }
+                          setIsMenuOpen(false);
+                        }}
+                      >
+                        {item.name}
+                      </a>
+                    )}
                   </div>
                 ))}
                 

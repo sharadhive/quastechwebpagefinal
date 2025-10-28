@@ -248,10 +248,10 @@ const Courses = () => {
                         <Button
                           variant="outline"
                           size="sm"
-                          className="flex-1 border-institute-blue text-institute-blue hover:bg-blue-50 text-xs"
+                          className="flex-1 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white hover:border-blue-600 text-xs transition-all duration-300 font-semibold"
                         >
                           <Download className="w-3 h-3 mr-1" />
-                          Download
+                          <span className="relative z-10">Download</span>
                         </Button>
                         <Button
                           size="sm"
@@ -396,10 +396,10 @@ const Courses = () => {
                         <Button
                           variant="outline"
                           size="sm"
-                          className="flex-1 border-institute-blue text-institute-blue hover:bg-blue-50 text-xs"
+                          className="flex-1 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white hover:border-blue-600 text-xs transition-all duration-300 font-semibold"
                         >
                           <Download className="w-3 h-3 mr-1" />
-                          Download
+                          <span className="relative z-10">Download</span>
                         </Button>
                         <Button
                           size="sm"
