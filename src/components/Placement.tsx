@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
-import { Briefcase, Users, Star, Globe } from "lucide-react";
+import { Briefcase, Users, Star, Globe, Award, Building2 } from "lucide-react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -74,9 +74,16 @@ const SectionHeading = ({ title, subtitle }: { title: string; subtitle?: string 
     transition={{ duration: 0.6 }}
     className="text-center mb-12"
   >
-    <h2 className="heading-institute-lg mb-4">
-      {title}
+    <div className="inline-flex items-center gap-2 bg-blue-100 px-6 py-3 rounded-full mb-6">
+      <Award className="w-5 h-5 text-blue-600" />
+      <span className="text-sm font-bold text-blue-600 tracking-wide">PLACEMENTS</span>
+    </div>
+    <h2 className="text-4xl md:text-6xl font-extrabold mb-3">
+      <span className="bg-gradient-to-r from-[#6B5B95] via-[#9B6B8F] to-[#8B5A5A] bg-clip-text text-transparent">
+        {title}
+      </span>
     </h2>
+    <div className="h-1 w-32 mx-auto rounded-full bg-gradient-to-r from-blue-600 via-purple-600 to-orange-500 mb-4" />
     {subtitle && (
       <p className="text-base md:text-lg text-slate-600 max-w-3xl mx-auto">
         {subtitle}
@@ -87,8 +94,16 @@ const SectionHeading = ({ title, subtitle }: { title: string; subtitle?: string 
 
 const Subtitle = ({ text }: { text: string }) => (
   <div className="text-center mb-10">
-    <h3 className="text-3xl font-bold text-slate-800">{text}</h3>
-    <div className="mt-2 h-1 w-20 mx-auto rounded-full bg-gradient-to-r from-[#3154a6] to-[#f15a29]" />
+    <div className="inline-flex items-center gap-2 bg-blue-100 px-6 py-3 rounded-full mb-4">
+      <Building2 className="w-5 h-5 text-blue-600" />
+      <span className="text-sm font-bold text-blue-600 tracking-wide">HIRING PARTNERS</span>
+    </div>
+    <h3 className="text-2xl md:text-3xl font-extrabold">
+      <span className="bg-gradient-to-r from-[#6B5B95] via-[#9B6B8F] to-[#8B5A5A] bg-clip-text text-transparent">
+        {text}
+      </span>
+    </h3>
+    <div className="mt-2 h-1 w-24 mx-auto rounded-full bg-gradient-to-r from-blue-600 via-purple-600 to-orange-500" />
   </div>
 );
 
@@ -119,14 +134,14 @@ const Placement = () => {
 
   return (
     <>
-      <style dangerouslySetInnerHTML={{ __html: partnersStyles }} />
+      {/* <style dangerouslySetInnerHTML={{ __html: partnersStyles }} /> */}
 
       <section id="placement" className="py-8 md:py-12 bg-gradient-to-br from-slate-50 via-white to-blue-50">
         <div className="container mx-auto px-4 max-w-7xl">
-          <SectionHeading
+          {/* <SectionHeading
             title="Our Placement Success"
             subtitle="QUASTECH students have transformed their careers by joining top MNCs with lucrative packages and exciting roles."
-          />
+          /> */}
 
 
           {/* 📊 Stats */}
@@ -164,7 +179,7 @@ const Placement = () => {
 
           {/* 🤝 Hiring Partners - 3 Rows with Alternating Animations */}
           <div className="overflow-hidden bg-gradient-to-br from-blue-100 via-slate-100 to-orange-100 rounded-3xl py-12 px-4">
-            <Subtitle text="Associated with 1200+ Hiring partners" />
+            <Subtitle text="Associated with 800+ Hiring partners" />
             
             {/* Row 1 - Slide Left */}
             <div className="relative overflow-hidden mb-6">

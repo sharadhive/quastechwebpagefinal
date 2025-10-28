@@ -96,7 +96,7 @@ const Reviews = () => {
   };
 
   return (
-    <section id="reviews" className="py-8 md:py-12 bg-muted/30">
+    <section id="reviews" className="py-8 md:py-12 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
       <div className="container mx-auto px-4">
         {/* Header */}
         <motion.div
@@ -105,15 +105,17 @@ const Reviews = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 bg-yellow-100 px-4 py-2 rounded-full mb-4">
-            <Star className="w-4 h-4 text-yellow-600" />
-            <span className="text-sm font-medium text-yellow-600">Student Success Stories</span>
+          <div className="inline-flex items-center gap-2 bg-blue-100 px-6 py-3 rounded-full mb-6">
+            <Star className="w-5 h-5 text-blue-600" />
+            <span className="text-sm font-bold text-blue-600 tracking-wide">SUCCESS STORIES</span>
           </div>
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-            What Our Students
-            <span className="block text-primary">Say About Us</span>
+          <h2 className="text-4xl lg:text-6xl font-extrabold mb-3">
+            <span className="bg-gradient-to-r from-[#6B5B95] via-[#9B6B8F] to-[#8B5A5A] bg-clip-text text-transparent">
+              Student Success Stories
+            </span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <div className="h-1 w-32 mx-auto rounded-full bg-gradient-to-r from-blue-600 via-purple-600 to-orange-500 mb-6" />
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
             Hear from our successful alumni who have transformed their careers and 
             achieved their dream jobs after completing our courses.
           </p>
@@ -216,7 +218,11 @@ const Reviews = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <h3 className="text-3xl font-bold text-center mb-12">More Success Stories</h3>
+          <h3 className="text-3xl font-bold text-center mb-12">
+            <span className="bg-gradient-to-r from-[#6B5B95] via-[#9B6B8F] to-[#8B5A5A] bg-clip-text text-transparent">
+              More Success Stories
+            </span>
+          </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {reviews.slice(0, 6).map((review, index) => (
               <motion.div

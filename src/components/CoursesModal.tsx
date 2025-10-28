@@ -115,7 +115,7 @@ const CoursesModal = ({ isOpen, onClose }: CoursesModalProps) => {
   const tabs = [
     { id: "it" as CourseTab, label: "IT PLACEMENT COURSES" },
     { id: "non-it" as CourseTab, label: "NON IT PLACEMENT COURSES" },
-    { id: "eclass" as CourseTab, label: "E Class" },
+    { id: "eclass" as CourseTab, label: "Online" },
     { id: "degree" as CourseTab, label: "Degree" }
   ];
 
@@ -330,16 +330,24 @@ const CoursesModal = ({ isOpen, onClose }: CoursesModalProps) => {
 
           {/* Modal Footer */}
           <div className="bg-gray-50 px-6 py-4 border-t border-gray-200">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between flex-wrap gap-3">
               <p className="text-sm text-gray-600">
-                Need help choosing? <span className="font-semibold text-blue-600">Call us at +91 8422800381</span>
+                Need help choosing a course?
               </p>
-              <Button
-                onClick={onClose}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors duration-300"
-              >
-                Close
-              </Button>
+              <div className="flex items-center gap-3">
+                <Button
+                  onClick={() => window.location.href = 'tel:+918422800381'}
+                  className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300 shadow-md hover:shadow-lg"
+                >
+                  Request to Call
+                </Button>
+                <Button
+                  onClick={onClose}
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors duration-300"
+                >
+                  Close
+                </Button>
+              </div>
             </div>
           </div>
         </motion.div>

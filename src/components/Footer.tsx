@@ -59,7 +59,7 @@ const Footer = () => {
     { name: "Quastech Degree Program", href: "#" }
   ];
   
-  const eClassLinks = [
+  const onlineLinks = [
     { name: "Software Testing Training", href: "#" },
     { name: "Full Stack Java Development", href: "#" },
     { name: "Full Stack Python Development", href: "#" },
@@ -169,15 +169,15 @@ const Footer = () => {
             </ul>
           </motion.div>
 
-          {/* Column 3: E CLASS & QUICK LINKS (From Image) */}
+          {/* Column 3: ONLINE & QUICK LINKS (From Image) */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <FooterTitle title="E CLASS" />
+            <FooterTitle title="ONLINE" />
             <ul className="space-y-3">
-              {eClassLinks.map((link) => (
+              {onlineLinks.map((link) => (
                 <FooterLink key={link.name} {...link} />
               ))}
             </ul>

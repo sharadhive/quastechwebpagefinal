@@ -104,8 +104,10 @@ const BranchSection = () => {
               Our Campuses
             </span>
           </div>
-          <h2 className="text-5xl md:text-6xl font-extrabold text-gray-800 mb-4 tracking-tight">
-            Explore Our Branches
+          <h2 className="text-5xl md:text-6xl font-extrabold mb-4 tracking-tight">
+            <span className="bg-gradient-to-r from-[#6B5B95] via-[#9B6B8F] to-[#8B5A5A] bg-clip-text text-transparent">
+              Explore Our Branches
+            </span>
           </h2>
           <p className="text-lg text-gray-500 max-w-2xl mx-auto">
             Pick your city and see what our student-friendly campuses look like.

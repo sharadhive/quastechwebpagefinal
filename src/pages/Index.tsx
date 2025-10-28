@@ -36,7 +36,7 @@ const Index = () => {
       <Footer />
         
         {/* Fixed Google Rating Element - Desktop */}
-        <div className="fixed right-4 top-1/2 -translate-y-1/2 z-50 hidden lg:block">
+        <div className="fixed right-0 top-1/2 -translate-y-1/2 z-50 hidden lg:block">
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -49,7 +49,7 @@ const Index = () => {
               className="bg-blue-600 rounded-lg shadow-xl flex items-center justify-center"
               style={{ 
                 transform: 'rotate(-90deg)',
-                width: '100px',
+                width: '160px',
                 height: '50px',
                 padding: '5px'
               }}
@@ -77,9 +77,9 @@ const Index = () => {
               className="bg-blue-600 rounded-lg shadow-xl flex items-center justify-center"
               style={{ 
                 transform: 'rotate(90deg)',
-                width: '60px',
-                height: '120px',
-                padding: '6px'
+                width: '80px',
+                height: '160px',
+                padding: '8px'
               }}
             >
               <img

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp, HelpCircle } from "lucide-react";
 
 interface FAQItem {
   id: number;
@@ -54,9 +54,18 @@ const FAQSection = () => {
     <section id="faq" className="py-20 px-4 bg-gradient-to-b from-blue-50 via-white to-orange-50">
       <div className="max-w-7xl mx-auto">
         {/* Section Title */}
-        <h2 className="text-center text-4xl md:text-5xl font-extrabold text-blue-900 mb-16 tracking-tight">
-          Frequently Asked <span className="text-orange-600">Questions</span>
-        </h2>
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 bg-blue-100 px-6 py-3 rounded-full mb-6">
+            <HelpCircle className="w-5 h-5 text-blue-600" />
+            <span className="text-sm font-bold text-blue-600 tracking-wide">FAQ</span>
+          </div>
+          <h2 className="text-4xl md:text-6xl font-extrabold mb-3">
+            <span className="bg-gradient-to-r from-[#6B5B95] via-[#9B6B8F] to-[#8B5A5A] bg-clip-text text-transparent">
+              Frequently Asked Questions
+            </span>
+          </h2>
+          <div className="h-1 w-32 mx-auto rounded-full bg-gradient-to-r from-blue-600 via-purple-600 to-orange-500" />
+        </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* FAQ Accordion */}

@@ -140,15 +140,17 @@ const Courses = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-8"
         >
-          <div className="inline-flex items-center gap-2 bg-primary/10 px-6 py-3 rounded-full mb-6">
-            <Code className="w-5 h-5 text-primary" />
-            <span className="text-sm font-semibold text-primary">Premium Courses</span>
+          <div className="inline-flex items-center gap-2 bg-blue-100 px-6 py-3 rounded-full mb-6">
+            <Code className="w-5 h-5 text-blue-600" />
+            <span className="text-sm font-bold text-blue-600 tracking-wide">PREMIUM COURSES</span>
           </div>
-          <h2 className="heading-institute-lg mb-6">
-            Transform Your Career with
-            <span className="block text-gradient-institute">Industry-Ready Skills</span>
+          <h2 className="text-4xl lg:text-6xl font-extrabold mb-3">
+            <span className="bg-gradient-to-r from-[#6B5B95] via-[#9B6B8F] to-[#8B5A5A] bg-clip-text text-transparent">
+              Transform Your Career
+            </span>
           </h2>
-          <p className="text-lead max-w-3xl mx-auto">
+          <div className="h-1 w-32 mx-auto rounded-full bg-gradient-to-r from-blue-600 via-purple-600 to-orange-500 mb-6" />
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
             Choose from our comprehensive range of courses designed by industry experts 
             with hands-on projects and guaranteed placement assistance.
           </p>

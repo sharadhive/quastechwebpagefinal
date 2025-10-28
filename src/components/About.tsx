@@ -26,6 +26,7 @@ import {
   ShieldCheck,
   GitBranch,
   Layers,
+  Sparkles,
 } from "lucide-react";
 
 // --- Reusable Marquee Component (animation speed is now faster) ---
@@ -283,23 +284,15 @@ const About = () => {
               </motion.div>
               <motion.h1
                 variants={itemVariants}
-                className="heading-institute mb-6 md:mb-8 leading-tight"
+                className="text-4xl md:text-6xl font-extrabold mb-6 md:mb-8 leading-tight"
               >
-                Leading the Future of
                 <motion.span 
-                  className="block bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
-                  animate={{ 
-                    backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
-                  }}
-                  transition={{ 
-                    duration: 3, 
-                    repeat: Infinity, 
-                    ease: "easeInOut" 
-                  }}
+                  className="block bg-gradient-to-r from-[#6B5B95] via-[#9B6B8F] to-[#8B5A5A] bg-clip-text text-transparent"
                 >
-                  IT Education
+                  Leading the Future of IT Education
                 </motion.span>
               </motion.h1>
+              <div className="h-1 w-32 mx-auto rounded-full bg-gradient-to-r from-blue-600 via-purple-600 to-orange-500 mb-6" />
               <motion.p
                 variants={itemVariants}
                 className="text-lg md:text-xl lg:text-2xl text-slate-600 max-w-4xl mx-auto leading-relaxed"
@@ -348,8 +341,10 @@ const About = () => {
                 className="space-y-6"
               >
                 <div>
-                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-4">
-                    About <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-orange-500">QUASTECH</span>
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+                    <span className="bg-gradient-to-r from-[#6B5B95] via-[#9B6B8F] to-[#8B5A5A] bg-clip-text text-transparent">
+                      About QUASTECH
+                    </span>
                   </h2>
                   <div className="h-1 w-24 bg-gradient-to-r from-blue-600 to-orange-500 rounded-full mb-6" />
                 </div>
@@ -364,9 +359,11 @@ const About = () => {
                   </p>
 
                   <div className="bg-gradient-to-br from-blue-50 to-orange-50 rounded-2xl p-6 mt-6">
-                    <h3 className="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                    <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
                       <Award className="w-6 h-6 text-blue-600" />
-                      SPECIALITY
+                      <span className="bg-gradient-to-r from-[#6B5B95] via-[#9B6B8F] to-[#8B5A5A] bg-clip-text text-transparent">
+                        SPECIALITY
+                      </span>
                     </h3>
                     <ul className="space-y-3">
                       <li className="flex items-start gap-3">
@@ -397,9 +394,16 @@ const About = () => {
           {/* Static Why Us Section */}
           <div className="mb-8 md:mb-12">
             <div className="text-center mb-8 md:mb-10">
-              <h2 className="heading-institute-md mb-4 md:mb-6">
-                Why Choose Us
+              <div className="inline-flex items-center gap-2 bg-blue-100 px-6 py-3 rounded-full mb-6">
+                <Sparkles className="w-5 h-5 text-blue-600" />
+                <span className="text-sm font-bold text-blue-600 tracking-wide">WHY CHOOSE US</span>
+              </div>
+              <h2 className="text-4xl md:text-6xl font-extrabold mb-3">
+                <span className="bg-gradient-to-r from-[#6B5B95] via-[#9B6B8F] to-[#8B5A5A] bg-clip-text text-transparent">
+                  Why Choose QUASTECH
+                </span>
               </h2>
+              <div className="h-1 w-32 mx-auto rounded-full bg-gradient-to-r from-blue-600 via-purple-600 to-orange-500 mb-4" />
               <p className="text-base md:text-xl text-slate-600 max-w-3xl mx-auto">
                 Discover what makes QUASTECH the preferred choice for ambitious professionals
               </p>
@@ -472,8 +476,10 @@ const About = () => {
             className="py-8 md:py-12"
           >
             <motion.div variants={itemVariants} className="text-center mb-8 md:mb-10">
-              <h2 className="heading-institute-md mb-4 md:mb-6">
-                Technologies We Master
+              <h2 className="text-4xl md:text-5xl font-extrabold mb-4 md:mb-6">
+                <span className="bg-gradient-to-r from-[#6B5B95] via-[#9B6B8F] to-[#8B5A5A] bg-clip-text text-transparent">
+                  Technologies We Master
+                </span>
               </h2>
               <p className="text-base md:text-xl text-slate-600 max-w-3xl mx-auto">
                 Our curriculum is built on the most in-demand technologies in the industry.

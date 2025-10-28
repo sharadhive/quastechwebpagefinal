@@ -1,15 +1,23 @@
 import { motion } from "framer-motion";
+import { TrendingUp } from "lucide-react";
 
 const JourneySection = () => {
   return (
-    <section className="w-full bg-white py-16 lg:py-24">
+    <section className="w-full bg-gradient-to-br from-orange-50 via-white to-blue-50 py-16 lg:py-24">
       <div className="w-full">
         {/* Section Title */}
-        <div className="text-center mb-8">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
-            Our Placement Journey
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 bg-blue-100 px-6 py-3 rounded-full mb-6">
+            <TrendingUp className="w-5 h-5 text-blue-600" />
+            <span className="text-sm font-bold text-blue-600 tracking-wide">PLACEMENT JOURNEY</span>
+          </div>
+          <h2 className="text-4xl lg:text-6xl font-extrabold mb-3">
+            <span className="bg-gradient-to-r from-[#6B5B95] via-[#9B6B8F] to-[#8B5A5A] bg-clip-text text-transparent">
+              Your Path to Success
+            </span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <div className="h-1 w-32 mx-auto rounded-full bg-gradient-to-r from-blue-600 via-purple-600 to-orange-500 mb-4" />
+          <p className="text-lg text-slate-600 max-w-3xl mx-auto">
             Follow the path from learning to placement success
           </p>
         </div>
