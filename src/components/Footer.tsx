@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Link } from "react-router-dom";
 import { 
   MapPin, 
   Phone, 
@@ -14,23 +15,52 @@ import {
 } from "lucide-react";
 
 // Helper component for list items
-const FooterLink = ({ href, name }) => (
-  <li>
-    <a
-      href={href}
-      onClick={(e) => {
-        if (name === "Home") {
-          e.preventDefault();
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-      }}
-      className="flex items-center text-gray-300 hover:text-white transition-colors text-sm group"
-    >
-      <ArrowRight className="w-3 h-3 mr-2 text-blue-400 group-hover:text-white transition-colors" />
-      {name}
-    </a>
-  </li>
-);
+const FooterLink = ({ href, name }) => {
+  // Check if it's an internal link (starts with /) or external link
+  const isInternalLink = href.startsWith('/');
+  
+  if (isInternalLink) {
+    return (
+      <li>
+        <Link
+          to={href}
+          onClick={(e) => {
+            if (name === "Home") {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+          }}
+          className="flex items-center text-gray-300 hover:text-white transition-colors text-sm group"
+        >
+          <ArrowRight className="w-3 h-3 mr-2 text-blue-400 group-hover:text-white transition-colors" />
+          {name}
+        </Link>
+      </li>
+    );
+  }
+  
+  return (
+    <li>
+      <a
+        href={href}
+        onClick={(e) => {
+          if (name === "Home") {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          } else if (name === "Faq's") {
+            e.preventDefault();
+            // Navigate to home page first, then scroll to FAQ section
+            window.location.href = '/#faq';
+          }
+        }}
+        className="flex items-center text-gray-300 hover:text-white transition-colors text-sm group"
+      >
+        <ArrowRight className="w-3 h-3 mr-2 text-blue-400 group-hover:text-white transition-colors" />
+        {name}
+      </a>
+    </li>
+  );
+};
 
 // Helper component for section titles
 const FooterTitle = ({ title }) => (
@@ -41,40 +71,40 @@ const FooterTitle = ({ title }) => (
 
 const Footer = () => {
   const itTrainingLinks = [
-    { name: "Software Testing Training", href: "#" },
-    { name: "Full Stack Java Development", href: "#" },
-    { name: "Full Stack Python Development", href: "#" },
-    { name: "Full Stack Web Development", href: "#" },
-    { name: "Data Science With Python", href: "#" },
-    { name: "Java Development Training", href: "#" },
-    { name: "Python Development Training", href: "#" },
-    { name: "Web Designing Training", href: "#" },
-    { name: "React Training", href: "#" },
-    { name: "Angular Training", href: "#" },
-    { name: "RPA Training", href: "#" }
+    { name: "Software Testing Training", href: "/software-testing-training" },
+    { name: "Full Stack Java Development", href: "/full-stack-java-development" },
+    { name: "Full Stack Python Development", href: "/full-stack-python-development" },
+    { name: "Full Stack Web Development", href: "/web-development-course" },
+    { name: "Data Science With Python", href: "/python-data-science" },
+    { name: "Java Development Training", href: "/java-training" },
+    { name: "Python Development Training", href: "/python-training" },
+    { name: "Web Designing Training", href: "/web-designing-training" },
+    { name: "React Training", href: "/react-course" },
+    { name: "Angular Training", href: "/angular-course" },
+    { name: "RPA Training", href: "/rpa" }
   ];
 
   const dualDegreeLinks = [
-    { name: "BCA", href: "#" },
-    { name: "Quastech Degree Program", href: "#" }
+    { name: "BCA", href: "/bca" },
+    { name: "Quastech Degree Program", href: "/quastech-degree-program" }
   ];
   
   const onlineLinks = [
-    { name: "Software Testing Training", href: "#" },
-    { name: "Full Stack Java Development", href: "#" },
-    { name: "Full Stack Python Development", href: "#" },
-    { name: "Full Stack Web Development", href: "#" },
-    { name: "Java Development Training", href: "#" },
-    { name: "Python Development Training", href: "#" },
-    { name: "Web Designing Training", href: "#" },
+    { name: "Software Testing Training", href: "/software-testing-training" },
+    { name: "Full Stack Java Development", href: "/full-stack-java-development" },
+    { name: "Full Stack Python Development", href: "/full-stack-python-development" },
+    { name: "Full Stack Web Development", href: "/web-development-course" },
+    { name: "Java Development Training", href: "/java-training" },
+    { name: "Python Development Training", href: "/python-training" },
+    { name: "Web Designing Training", href: "/web-designing-training" },
     { name: "Digital Marketing", href: "#" }
   ];
 
   const quickLinks = [
     { name: "Home", href: "#" },
-    { name: "About Us", href: "#" },
-    { name: "Placement", href: "#" },
-    { name: "Contact Us", href: "#enquiry" },
+    { name: "About Us", href: "/about" },
+    { name: "Placement", href: "/placement" },
+    { name: "Contact Us", href: "/contact" },
     { name: "Certificate Download", href: "#" },
     { name: "Payment Methods", href: "#" },
     { name: "Blogs", href: "#" },
@@ -82,15 +112,15 @@ const Footer = () => {
   ];
 
   const nonItTrainingLinks = [
-    { name: "Digital Marketing", href: "#" },
-    { name: "Data Analysis & Visualization With Python", href: "#" },
-    { name: "Graphic Designing", href: "#" },
-    { name: "Web Graphic Designing", href: "#" },
-    { name: "Management Information Systems (MIS)", href: "#" },
-    { name: "Information Technology Programme", href: "#" },
-    { name: "Financial Accounting", href: "#" },
-    { name: "Accounting", href: "#" },
-    { name: "Taxation", href: "#" }
+    { name: "Digital Marketing", href: "/digital-marketing" },
+    { name: "Data Analysis & Visualization With Python", href: "/data-analysis-visualization" },
+    { name: "Graphic Designing", href: "/graphic-designing" },
+    { name: "Web Graphic Designing", href: "/web-graphic-designing" },
+    { name: "Management Information Systems (MIS)", href: "/management-information-systems" },
+    { name: "Information Technology Programme", href: "/information-technology-programme" },
+    { name: "Financial Accounting", href: "/financial-accounting" },
+    { name: "Accounting", href: "/accounting" },
+    { name: "Taxation", href: "/taxation" }
   ];
 
   const socialLinks = [

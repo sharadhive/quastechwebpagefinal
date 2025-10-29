@@ -179,7 +179,14 @@ const Placement = () => {
 
           {/* 🤝 Hiring Partners - 3 Rows with Alternating Animations */}
           <div className="overflow-hidden bg-gradient-to-br from-blue-100 via-slate-100 to-orange-100 rounded-3xl py-12 px-4">
-            <Subtitle text="Associated with 800+ Hiring partners" />
+            <div className="text-center mb-10">
+              <h3 className="text-2xl md:text-3xl font-extrabold">
+                <span className="bg-gradient-to-r from-[#6B5B95] via-[#9B6B8F] to-[#8B5A5A] bg-clip-text text-transparent">
+                  Associated with 800+ Hiring partners
+                </span>
+              </h3>
+              <div className="mt-2 h-1 w-24 mx-auto rounded-full bg-gradient-to-r from-blue-600 via-purple-600 to-orange-500" />
+            </div>
             
             {/* Row 1 - Slide Left */}
             <div className="relative overflow-hidden mb-6">

@@ -71,7 +71,7 @@ const Header = () => {
   const navItems = [
     { name: "Home", href: "#", isExternal: false },
     { name: "About-Us", href: "/about", isExternal: true },
-    { name: "Placement", href: "#placement", isExternal: false },
+    { name: "Placement", href: "/placement", isExternal: true },
     { name: "Contact-Us", href: "/contact", isExternal: true },
   ];
 

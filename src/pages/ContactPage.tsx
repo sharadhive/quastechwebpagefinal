@@ -409,7 +409,7 @@ const ContactPage = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-3 relative"
+                className="text-3xl md:text-4xl font-extrabold mb-3 relative"
               >
                 <span className="bg-gradient-to-r from-white via-blue-100 to-orange-100 bg-clip-text text-transparent border-l-4 border-orange-500 pl-4">
                   GET IN TOUCH
@@ -422,7 +422,7 @@ const ContactPage = () => {
                 transition={{ delay: 0.3 }}
                 className="mb-6"
               >
-                <p className="text-xl md:text-2xl text-white/90 leading-relaxed pl-6">
+                <p className="text-base md:text-lg text-white/90 leading-relaxed pl-6">
                   We Accelerate Customer Experiences
                 </p>
               </motion.div>
@@ -436,42 +436,68 @@ const ContactPage = () => {
                 In this competitive world where each industry demands more, we help you in transforming your skill base that drives measurable impact on your Professional Life.
               </motion.p>
 
-              {/* Animated CTA Buttons */}
+              {/* Contact Details in Banner */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
-                className="flex gap-4 pl-6 mt-6"
+                className="pl-6 mt-8"
               >
-                <motion.a
-                  href="tel:+918422800381"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="group relative bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white font-bold py-3 px-6 rounded-xl border border-white/30 shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2 overflow-hidden"
-                >
-                  <motion.div
-                    animate={{ rotate: [0, 15, -15, 0] }}
-                    transition={{ duration: 2, repeat: Infinity }}
+                <div className="grid md:grid-cols-3 gap-6 max-w-4xl">
+                  {/* Call Us */}
+                  <motion.a
+                    href="tel:+918422800381"
+                    whileHover={{ scale: 1.05, y: -5 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                    className="text-center group cursor-pointer"
                   >
-                    <Phone className="w-5 h-5" />
-                  </motion.div>
-                  <span>Call Now</span>
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                    animate={{ x: ['-100%', '100%'] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                  />
-                </motion.a>
+                    <div className="w-16 h-16 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/30 transition-all duration-300">
+                      <Phone className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="text-lg font-bold text-white mb-2">Call Us</h3>
+                    <p className="text-white/90 font-medium">+91 8422800381</p>
+                  </motion.a>
 
-                <motion.a
-                  href="mailto:info@quastech.in"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="group relative bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2"
+                  {/* Email Us */}
+                  <motion.a
+                    href="mailto:info@quastech.in"
+                    whileHover={{ scale: 1.05, y: -5 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                    className="text-center group cursor-pointer"
+                  >
+                    <div className="w-16 h-16 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/30 transition-all duration-300">
+                      <Mail className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="text-lg font-bold text-white mb-2">Email Us</h3>
+                    <p className="text-white/90 font-medium">info@quastech.in</p>
+                  </motion.a>
+
+                  {/* WhatsApp */}
+                  <motion.a
+                    href="https://wa.me/918422800381"
+                    whileHover={{ scale: 1.05, y: -5 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                    className="text-center group cursor-pointer"
+                  >
+                    <div className="w-16 h-16 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/30 transition-all duration-300">
+                      <MessageCircle className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="text-lg font-bold text-white mb-2">WhatsApp</h3>
+                    <p className="text-white/90 font-medium">+91 8422800381</p>
+                  </motion.a>
+                </div>
+
+                {/* Additional Info */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 0.8 }}
+                  className="text-center mt-6 pt-6 border-t border-white/20"
                 >
-                  <Mail className="w-5 h-5" />
-                  <span>Email Us</span>
-                </motion.a>
+                  <p className="text-white/80 text-lg">
+                    Available 24/7 for your career guidance needs
+                  </p>
+                </motion.div>
               </motion.div>
             </motion.div>
 
@@ -509,38 +535,6 @@ const ContactPage = () => {
           </div>
         </section>
 
-        {/* Quick Contact Methods - 3D Cards */}
-        <section className="py-8 relative z-10">
-          <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-              {contactMethods.map((method, index) => (
-                <motion.a
-                  key={index}
-                  href={method.link}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ 
-                    scale: 1.05,
-                    rotateY: 5,
-                    z: 50,
-                  }}
-                  style={{ transformStyle: "preserve-3d" }}
-                  className={`group relative bg-white rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden`}
-                >
-                  <div className={`absolute inset-0 bg-gradient-to-br ${method.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
-                  <div className="relative z-10">
-                    <div className={`w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br ${method.color} flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300`}>
-                      <method.icon className="w-8 h-8 text-white" />
-                    </div>
-                    <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-white transition-colors">{method.title}</h3>
-                    <p className="text-gray-600 group-hover:text-white/90 transition-colors font-semibold">{method.value}</p>
-                  </div>
-                </motion.a>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* Contact Form & Details - Side by Side with 3D Effect */}
         <section className="py-8">
@@ -566,7 +560,7 @@ const ContactPage = () => {
                         <Send className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <h3 className="text-2xl font-bold text-gray-800">Send Us A Message</h3>
+                        <h3 className="text-xl md:text-2xl font-bold text-gray-800">Send Us A Message</h3>
                         <p className="text-gray-600">We'll respond within 24 hours</p>
                       </div>
                     </div>
@@ -658,7 +652,7 @@ const ContactPage = () => {
                 className="space-y-4"
               >
                 <div className="bg-white/80 backdrop-blur-xl rounded-3xl p-6 shadow-2xl border border-white/20">
-                  <h3 className="text-2xl font-bold text-gray-800 mb-6">Why Contact Us?</h3>
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">Why Contact Us?</h3>
                   <ul className="space-y-4">
                     {[
                       "Get personalized course recommendations",
@@ -684,7 +678,7 @@ const ContactPage = () => {
                 </div>
 
                 <div className="bg-white/80 backdrop-blur-xl rounded-3xl p-6 shadow-2xl border border-white/20">
-                  <h3 className="text-2xl font-bold text-gray-800 mb-4">Office Hours</h3>
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-4">Office Hours</h3>
                   <div className="space-y-3">
                     <div className="flex items-center gap-3">
                       <Clock className="w-5 h-5 text-blue-600" />
@@ -715,8 +709,8 @@ const ContactPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               className="text-center mb-8"
             >
-              <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
-                <span className="bg-gradient-to-r from-[#6B5B95] via-[#9B6B8F] to-[#8B5A5A] bg-clip-text text-transparent">
+              <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
+                <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-orange-500 bg-clip-text text-transparent">
                   Contact Departments
                 </span>
               </h2>
@@ -738,24 +732,29 @@ const ContactPage = () => {
                   style={{ transformStyle: "preserve-3d" }}
                   className={`group relative bg-gradient-to-br ${card.color} backdrop-blur-xl rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer border border-white/20`}
                 >
-                  <div className="text-4xl mb-3">{card.icon}</div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-3">{card.title}</h3>
-                  <div className="flex items-center gap-2 mb-2">
-                    <Mail className="w-5 h-5 text-blue-600" />
+                  {/* Icon and Title - Side by Side */}
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="text-4xl flex-shrink-0">{card.icon}</div>
+                    <h3 className="text-xl font-bold text-gray-800">{card.title}</h3>
                   </div>
-                  <a
-                    href={`mailto:${card.email}`}
-                    className="text-blue-600 hover:text-orange-600 font-semibold transition-colors inline-flex items-center gap-2 group-hover:gap-3"
-                  >
-                    {card.email}
-                    <motion.span
-                      animate={{ x: [0, 5, 0] }}
-                      transition={{ duration: 1.5, repeat: Infinity }}
-                      className="text-orange-500"
+                  
+                  {/* Email Section */}
+                  <div className="flex items-center gap-2">
+                    <Mail className="w-5 h-5 text-blue-600" />
+                    <a
+                      href={`mailto:${card.email}`}
+                      className="text-blue-600 hover:text-orange-600 font-semibold transition-colors inline-flex items-center gap-2 group-hover:gap-3"
                     >
-                      →
-                    </motion.span>
-                  </a>
+                      {card.email}
+                      <motion.span
+                        animate={{ x: [0, 5, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity }}
+                        className="text-orange-500"
+                      >
+                        →
+                      </motion.span>
+                    </a>
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -777,7 +776,7 @@ const ContactPage = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 className="text-white lg:w-1/2"
               >
-                <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
+                <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
                   Stay Connected with Us!
                 </h2>
                 <p className="text-lg text-blue-100 leading-relaxed">
@@ -831,8 +830,8 @@ const ContactPage = () => {
                 <Building className="w-5 h-5 text-blue-600" />
                 <span className="text-sm font-bold text-blue-600 tracking-wide">OUR CAMPUSES</span>
               </div>
-              <h2 className="text-4xl md:text-6xl font-extrabold mb-3">
-                <span className="bg-gradient-to-r from-[#6B5B95] via-[#9B6B8F] to-[#8B5A5A] bg-clip-text text-transparent">
+              <h2 className="text-3xl md:text-4xl font-extrabold mb-3">
+                <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-orange-500 bg-clip-text text-transparent">
                   Visit Our Branches
                 </span>
               </h2>
