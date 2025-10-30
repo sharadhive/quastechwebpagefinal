@@ -89,13 +89,13 @@ const FloatingCTA = () => {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              {/* WhatsApp Icon - Top Right (Properly positioned inside circle) */}
-              <div className="absolute top-1 right-1 w-6 h-6 bg-[#25D366] rounded-full flex items-center justify-center shadow-md">
-                <MessageCircle className="w-3.5 h-3.5 text-white" fill="white" />
+              {/* WhatsApp Icon - Top Right (Very close to center) */}
+              <div className="absolute top-1 right-1 w-7 h-7 bg-[#25D366] rounded-full flex items-center justify-center shadow-md">
+                <MessageCircle className="w-4.5 h-4.5 text-white" fill="white" />
               </div>
               
-              {/* Call Icon - Bottom Left (Properly positioned inside circle) */}
-              <Phone className="w-6 h-6 text-orange-500 absolute bottom-1 left-1" strokeWidth={2.5} />
+              {/* Call Icon - Bottom Left (Very close to center) */}
+              <Phone className="w-7 h-7 text-orange-500 absolute bottom-1 left-1" strokeWidth={2.5} />
             </motion.button>
           </motion.div>
         )}

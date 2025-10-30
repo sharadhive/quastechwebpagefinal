@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
   CheckCircle2,
@@ -315,25 +316,25 @@ const SoftwareTestingTraining = () => {
         <section 
           className="relative w-full h-[600px] flex items-center overflow-hidden"
           style={{
-            background: 'linear-gradient(135deg, #1e40af 0%, #0ea5e9 25%, #06b6d4 50%, #10b981 75%, #14b8a6 100%)'
+            background: 'linear-gradient(135deg, #3b82f6 0%, #f97316 100%)'
           }}
         >
           <div className="absolute inset-0 bg-black/20" />
           
-          <div className="relative z-10 w-full container mx-auto px-4 py-8">
+          <div className="relative z-10 w-full container mx-auto px-4 py-4">
             <div className="grid lg:grid-cols-[1.3fr_1fr] gap-8 items-center h-full">
               {/* Left Content Section */}
-              <div className="relative z-10 space-y-4">
+              <div className="relative z-10 space-y-2">
                 {/* Breadcrumbs */}
             <motion.div
                   initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
-                  className="flex items-center gap-2 text-white/90 text-sm"
+                  className="flex items-center gap-2 text-white/90 text-sm -mt-2"
                 >
-                  <a href="/" className="hover:text-white flex items-center gap-1">
+                  <Link to="/" className="hover:text-white flex items-center gap-1">
                     <Home className="w-4 h-4" />
                     Home
-                  </a>
+                  </Link>
                   <ChevronRight className="w-4 h-4" />
                   <span>IT Courses</span>
                   <ChevronRight className="w-4 h-4" />
@@ -355,7 +356,7 @@ const SoftwareTestingTraining = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
-                  className="text-base md:text-lg text-white/90 max-w-2xl"
+                  className="text-base md:text-lg text-white/90 max-w-2xl mb-6"
                 >
                   Learn how to master software testing and quality assurance. Enroll now to learn from expert test engineers and get industry-ready.
                 </motion.p>
@@ -385,25 +386,35 @@ const SoftwareTestingTraining = () => {
                       { icon: "Jd", label: "Justdial", rating: "4.3/5" },
                       { icon: "f", label: "Facebook", rating: "4.5/5" }
                     ].map((platform, idx) => (
-                      <div key={idx} className="flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-1.5">
+                      <motion.button
+                        key={idx}
+                        className="flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-1.5 cursor-pointer hover:bg-white/30 hover:shadow-lg transition-all duration-300 border border-white/10 hover:border-white/20"
+                        whileHover={{ 
+                          scale: 1.05,
+                          y: -2,
+                          transition: { duration: 0.2, ease: "easeOut" }
+                        }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => {
+                          console.log(`${platform.label || platform.icon} rating clicked: ${platform.rating}`);
+                          // Add your click functionality here - you can navigate to reviews or show more details
+                        }}
+                      >
                         <span className="text-white font-bold text-xs">{platform.icon}</span>
                         {platform.label && <span className="text-white/90 text-xs">{platform.label}</span>}
                         <span className="text-yellow-400 font-semibold text-xs">{platform.rating}</span>
-                      </div>
+                      </motion.button>
                     ))}
                   </div>
                 </motion.div>
 
-                {/* Collaboration Section */}
+                {/* Course Details Section */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 }}
                   className="space-y-3"
                 >
-                  <p className="text-white/80 text-sm">In collaboration with</p>
-                  <div className="text-3xl font-bold text-red-400">NASSCOM</div>
-                  
                   {/* Course Details Box */}
                   <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 grid grid-cols-3 gap-3 border border-white/20">
                     <div className="text-center">
@@ -1639,7 +1650,7 @@ const SoftwareTestingTraining = () => {
                           <img
                             src={partner.logo}
                             alt={partner.name}
-                            className="max-h-20 max-w-full object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                            className="max-h-20 max-w-full object-contain transition-all duration-300"
                           />
                         </div>
                       ))}
@@ -1674,7 +1685,7 @@ const SoftwareTestingTraining = () => {
                           <img
                             src={partner.logo}
                             alt={partner.name}
-                            className="max-h-20 max-w-full object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                            className="max-h-20 max-w-full object-contain transition-all duration-300"
                           />
                         </div>
                       ))}
@@ -1709,7 +1720,7 @@ const SoftwareTestingTraining = () => {
                           <img
                             src={partner.logo}
                             alt={partner.name}
-                            className="max-h-20 max-w-full object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                            className="max-h-20 max-w-full object-contain transition-all duration-300"
                           />
                         </div>
                       ))}
@@ -1728,7 +1739,7 @@ const SoftwareTestingTraining = () => {
                   className="text-center lg:text-left"
                 >
                   <div className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-600 via-purple-600 to-orange-500 bg-clip-text text-transparent mb-2">
-                    5000+
+                    800+
                   </div>
                   <div className="text-xl font-semibold text-gray-800">
                     Hiring companies
@@ -1798,12 +1809,11 @@ const SoftwareTestingTraining = () => {
                 <div className="mb-8">
                   <h3 className="text-xl font-semibold text-gray-800 mb-4">in Collaboration with</h3>
                   <div className="h-px bg-gray-300 mb-6"></div>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                     {[
-                      { name: "TCS", logo: "/images/Logo folder/tcs.jpg" },
-                      { name: "Capgemini", logo: "/images/Logo folder/capgemini.jpg" },
-                      { name: "Accenture", logo: "/images/Logo folder/accenture.jpg" },
-                      { name: "Infibeam", logo: "/images/Logo folder/infibeam.jpg" }
+                      { name: "NSDC", logo: "/uploads/nsdeimg01.png" },
+                      { name: "Skill India", logo: "/uploads/skillindia--.jpg" },
+                      { name: "IBM", logo: "/uploads/ibm.png" }
                     ].map((partner, index) => (
                       <motion.div
                         key={index}
@@ -1817,7 +1827,7 @@ const SoftwareTestingTraining = () => {
                         <img
                           src={partner.logo}
                           alt={partner.name}
-                          className="max-h-16 max-w-full object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                          className="max-h-16 max-w-full object-contain transition-all duration-300"
                         />
                       </motion.div>
                     ))}
@@ -1898,6 +1908,103 @@ const SoftwareTestingTraining = () => {
                   </motion.div>
                 ))}
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQs Section - Professional */}
+        <section className="py-12 md:py-16 bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-center mb-12"
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 backdrop-blur-sm border border-blue-100 shadow-sm mb-4">
+                <span className="w-2 h-2 rounded-full bg-blue-600"></span>
+                <span className="text-xs font-semibold text-blue-700 tracking-widest">FREQUENTLY ASKED QUESTIONS</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-extrabold mb-3">
+                <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-orange-500 bg-clip-text text-transparent">
+                  Everything you need to know
+                </span>
+              </h2>
+              <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto">
+                Clear, concise answers about our Software Testing Training—curriculum, format, placement, and more.
+              </p>
+            </motion.div>
+
+            <div className="grid lg:grid-cols-2 gap-10 max-w-7xl mx-auto items-center">
+              {/* Left - Illustration Image */}
+              <motion.div
+                initial={{ opacity: 0, x: -40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                className="relative"
+              >
+                <div className="absolute -inset-4 bg-gradient-to-tr from-blue-200/40 via-purple-200/40 to-orange-200/40 rounded-3xl blur-2xl" aria-hidden></div>
+                <img
+                  src="/uploads/FAQ-vector-design-concept.jpg"
+                  alt="Frequently Asked Questions"
+                  className="relative w-full h-auto rounded-3xl ring-1 ring-blue-100 shadow-xl"
+                />
+              </motion.div>
+
+              {/* Right - FAQ Accordions */}
+              <motion.div
+                initial={{ opacity: 0, x: 40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="w-full"
+              >
+                <Accordion type="single" collapsible className="w-full">
+                  <AccordionItem value="faq-1" className="group bg-white border border-blue-100 rounded-2xl mb-4 shadow-sm hover:shadow-lg transition-shadow">
+                    <AccordionTrigger className="px-6 py-5 text-left font-semibold hover:no-underline">
+                      <span className="text-gray-900">What is included in the Software Testing Training Program?</span>
+                    </AccordionTrigger>
+                    <AccordionContent className="px-6 pb-6 text-gray-700 leading-relaxed">
+                      The program covers Manual Testing, Automation with Selenium Java, SQL fundamentals, tools like JIRA & JMeter, ISTQB concepts, profile building, and interview preparation with case-study projects.
+                    </AccordionContent>
+                  </AccordionItem>
+
+                  <AccordionItem value="faq-2" className="group bg-white border border-blue-100 rounded-2xl mb-4 shadow-sm hover:shadow-lg transition-shadow">
+                    <AccordionTrigger className="px-6 py-5 text-left font-semibold hover:no-underline">
+                      <span className="text-gray-900">Do you provide placement assistance?</span>
+                    </AccordionTrigger>
+                    <AccordionContent className="px-6 pb-6 text-gray-700 leading-relaxed">
+                      Yes. You get resume polishing, mock interviews, HR preparation, and interview opportunities through our hiring partners. Many learners secure offers within weeks of completion.
+                    </AccordionContent>
+                  </AccordionItem>
+
+                  <AccordionItem value="faq-3" className="group bg-white border border-blue-100 rounded-2xl mb-4 shadow-sm hover:shadow-lg transition-shadow">
+                    <AccordionTrigger className="px-6 py-5 text-left font-semibold hover:no-underline">
+                      <span className="text-gray-900">Is the training available online and offline? Do I get LMS access?</span>
+                    </AccordionTrigger>
+                    <AccordionContent className="px-6 pb-6 text-gray-700 leading-relaxed">
+                      The course is offered in both formats. You also receive lifetime LMS access to recordings, notes, code repositories, and assignments.
+                    </AccordionContent>
+                  </AccordionItem>
+
+                  <AccordionItem value="faq-4" className="group bg-white border border-blue-100 rounded-2xl mb-4 shadow-sm hover:shadow-lg transition-shadow">
+                    <AccordionTrigger className="px-6 py-5 text-left font-semibold hover:no-underline">
+                      <span className="text-gray-900">What is the course duration and weekly schedule?</span>
+                    </AccordionTrigger>
+                    <AccordionContent className="px-6 pb-6 text-gray-700 leading-relaxed">
+                      Typical duration is 10–14 weeks depending on the track. Sessions are planned on weekdays/weekends with additional practice and doubt-clearing support.
+                    </AccordionContent>
+                  </AccordionItem>
+
+                  <AccordionItem value="faq-5" className="group bg-white border border-blue-100 rounded-2xl mb-1 shadow-sm hover:shadow-lg transition-shadow">
+                    <AccordionTrigger className="px-6 py-5 text-left font-semibold hover:no-underline">
+                      <span className="text-gray-900">Who can join—do I need coding experience?</span>
+                    </AccordionTrigger>
+                    <AccordionContent className="px-6 pb-6 text-gray-700 leading-relaxed">
+                      No prior coding is required for the Manual Testing track. Basic programming is introduced gradually for the Automation track with simple, guided practice.
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
+              </motion.div>
             </div>
           </div>
         </section>

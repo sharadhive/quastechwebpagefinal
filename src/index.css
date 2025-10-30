@@ -73,13 +73,12 @@
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
 }
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* QUASTECH UNIFIED DESIGN SYSTEM - Professional Theme */
+/* All colors, gradients, fonts, spacing, and components defined here for consistency */
 
 @layer base {
   :root {
-    /* QUASTECH Professional Design System */
+    /* QUASTECH Professional Design System - Unified Theme */
     
     /* Base Colors */
     --background: 0 0% 100%;
@@ -103,7 +102,7 @@ All colors MUST be HSL.
     --secondary-dark: 25 95% 43%;
     --secondary-glow: 25 95% 58%;
 
-    /* Professional Institute Colors */
+    /* Professional Institute Colors - Consistent across all pages */
     --institute-blue: 221 83% 53%;
     --institute-orange: 25 95% 53%;
     --institute-blue-light: 221 83% 63%;
@@ -130,14 +129,17 @@ All colors MUST be HSL.
     --input: 214 32% 91%;
     --ring: 221 83% 53%;
 
-    /* Professional Gradients */
+    /* UNIFIED GRADIENTS - Consistent across all pages */
     --gradient-primary: linear-gradient(135deg, hsl(221 83% 53%) 0%, hsl(221 83% 63%) 100%);
     --gradient-secondary: linear-gradient(135deg, hsl(25 95% 53%) 0%, hsl(25 95% 63%) 100%);
     --gradient-hero: linear-gradient(135deg, hsl(221 83% 53%) 0%, hsl(25 95% 53%) 100%);
+    --gradient-hero-dark: linear-gradient(135deg, hsl(221 83% 43%) 0%, hsl(25 95% 43%) 100%);
     --gradient-mesh: linear-gradient(135deg, hsl(221 83% 53% / 0.1) 0%, hsl(25 95% 53% / 0.1) 100%);
     --gradient-card: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(210 40% 98%) 100%);
+    --gradient-text: linear-gradient(135deg, hsl(221 83% 53%) 0%, hsl(25 95% 53%) 100%);
+    --gradient-text-alt: linear-gradient(135deg, hsl(25 95% 53%) 0%, hsl(221 83% 53%) 100%);
     
-    /* Professional Shadows */
+    /* UNIFIED SHADOWS - Consistent across all components */
     --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.05);
     --shadow: 0 1px 3px 0 hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
     --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.1), 0 2px 4px -2px hsl(0 0% 0% / 0.1);
@@ -146,14 +148,17 @@ All colors MUST be HSL.
     --shadow-primary: 0 10px 30px -10px hsl(221 83% 53% / 0.3);
     --shadow-secondary: 0 10px 30px -10px hsl(25 95% 53% / 0.3);
     --shadow-glow: 0 0 40px hsl(221 83% 53% / 0.4);
+    --shadow-card: 0 4px 20px -2px hsl(0 0% 0% / 0.1), 0 2px 8px -2px hsl(0 0% 0% / 0.06);
+    --shadow-hover: 0 20px 40px -10px hsl(0 0% 0% / 0.15), 0 8px 16px -8px hsl(0 0% 0% / 0.1);
     
-    /* Professional Animations */
+    /* UNIFIED ANIMATIONS - Consistent timing across all components */
     --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-normal: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
-    /* Border Radius */
+    /* UNIFIED BORDER RADIUS - Consistent across all components */
     --radius: 0.5rem;
     --radius-sm: 0.25rem;
     --radius-md: 0.375rem;
@@ -162,7 +167,7 @@ All colors MUST be HSL.
     --radius-2xl: 1rem;
     --radius-3xl: 1.5rem;
 
-    /* Spacing Scale */
+    /* UNIFIED SPACING SCALE - Consistent across all pages */
     --space-xs: 0.25rem;
     --space-sm: 0.5rem;
     --space-md: 1rem;
@@ -171,8 +176,9 @@ All colors MUST be HSL.
     --space-2xl: 3rem;
     --space-3xl: 4rem;
     --space-4xl: 6rem;
+    --space-5xl: 8rem;
 
-    /* Typography Scale */
+    /* UNIFIED TYPOGRAPHY SCALE - Consistent across all pages */
     --text-xs: 0.75rem;
     --text-sm: 0.875rem;
     --text-base: 1rem;
@@ -183,6 +189,24 @@ All colors MUST be HSL.
     --text-4xl: 2.25rem;
     --text-5xl: 3rem;
     --text-6xl: 3.75rem;
+    --text-7xl: 4.5rem;
+
+    /* UNIFIED HERO SECTION STYLES */
+    --hero-bg: linear-gradient(135deg, hsl(221 83% 53%) 0%, hsl(25 95% 53%) 100%);
+    --hero-overlay: linear-gradient(135deg, hsl(221 83% 53% / 0.9) 0%, hsl(25 95% 53% / 0.9) 100%);
+    --hero-text-shadow: 0 2px 4px hsl(0 0% 0% / 0.3);
+
+    /* UNIFIED CARD STYLES */
+    --card-bg: hsl(0 0% 100%);
+    --card-border: hsl(214 32% 91%);
+    --card-shadow: var(--shadow-card);
+    --card-hover-shadow: var(--shadow-hover);
+
+    /* UNIFIED BUTTON STYLES */
+    --btn-primary-bg: var(--gradient-primary);
+    --btn-secondary-bg: var(--gradient-secondary);
+    --btn-hover-scale: 1.05;
+    --btn-active-scale: 0.95;
 
     /* Sidebar Colors */
     --sidebar-background: 0 0% 98%;
@@ -507,19 +531,174 @@ All colors MUST be HSL.
     color: hsl(var(--muted-foreground));
   }
   
-  /* Professional Button Styles */
+  /* UNIFIED HERO SECTION STYLES - Consistent across all pages */
+  .hero-section {
+    position: relative;
+    min-height: 100vh;
+    background: var(--hero-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--hero-overlay);
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    color: white;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--space-4xl) var(--space-lg);
+  }
+
+  .hero-title {
+    font-size: var(--text-5xl);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: var(--space-lg);
+    text-shadow: var(--hero-text-shadow);
+  }
+
+  .hero-subtitle {
+    font-size: var(--text-xl);
+    font-weight: 400;
+    line-height: 1.6;
+    margin-bottom: var(--space-2xl);
+    opacity: 0.95;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: var(--radius-2xl);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin-bottom: var(--space-xl);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* UNIFIED CARD STYLES - Consistent across all components */
+  .card-unified {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--card-shadow);
+    transition: var(--transition-normal);
+    overflow: hidden;
+  }
+
+  .card-unified:hover {
+    box-shadow: var(--card-hover-shadow);
+    transform: translateY(-4px);
+  }
+
+  .card-header {
+    padding: var(--space-lg);
+    border-bottom: 1px solid var(--card-border);
+    background: linear-gradient(135deg, hsl(var(--muted)) 0%, hsl(var(--accent)) 100%);
+  }
+
+  .card-content {
+    padding: var(--space-lg);
+  }
+
+  .card-footer {
+    padding: var(--space-lg);
+    border-top: 1px solid var(--card-border);
+    background: hsl(var(--muted) / 0.5);
+  }
+
+  /* UNIFIED BUTTON STYLES - Consistent across all components */
   .btn-primary {
-    background: var(--gradient-primary);
+    background: var(--btn-primary-bg);
     color: hsl(var(--primary-foreground));
     border: none;
     border-radius: var(--radius-lg);
     padding: var(--space-md) var(--space-xl);
     font-weight: 600;
+    font-size: var(--text-base);
     transition: var(--transition-normal);
     box-shadow: var(--shadow);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
   }
 
-  /* Professional Institute Text Styling */
+  .btn-primary:hover {
+    transform: translateY(-2px) scale(var(--btn-hover-scale));
+    box-shadow: var(--shadow-lg);
+  }
+
+  .btn-primary:active {
+    transform: scale(var(--btn-active-scale));
+  }
+  
+  .btn-secondary {
+    background: var(--btn-secondary-bg);
+    color: hsl(var(--secondary-foreground));
+    border: none;
+    border-radius: var(--radius-lg);
+    padding: var(--space-md) var(--space-xl);
+    font-weight: 600;
+    font-size: var(--text-base);
+    transition: var(--transition-normal);
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+  }
+  
+  .btn-secondary:hover {
+    transform: translateY(-2px) scale(var(--btn-hover-scale));
+    box-shadow: var(--shadow-lg);
+  }
+
+  .btn-secondary:active {
+    transform: scale(var(--btn-active-scale));
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: hsl(var(--primary));
+    border: 2px solid hsl(var(--primary));
+    border-radius: var(--radius-lg);
+    padding: var(--space-md) var(--space-xl);
+    font-weight: 600;
+    font-size: var(--text-base);
+    transition: var(--transition-normal);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+  }
+
+  .btn-outline:hover {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    transform: translateY(-2px) scale(var(--btn-hover-scale));
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* UNIFIED TEXT STYLES - Consistent across all pages */
   .text-institute-blue {
     color: hsl(var(--institute-blue));
   }
@@ -529,63 +708,213 @@ All colors MUST be HSL.
   }
 
   .text-gradient-institute {
-    background: linear-gradient(135deg, hsl(var(--institute-blue)) 0%, hsl(var(--institute-orange)) 100%);
+    background: var(--gradient-text);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  /* Professional Heading Styles */
-  .heading-institute {
-    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold;
-    background: linear-gradient(135deg, hsl(var(--institute-blue)) 0%, hsl(var(--institute-orange)) 100%);
+  .text-gradient-institute-alt {
+    background: var(--gradient-text-alt);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+
+  /* UNIFIED HEADING STYLES - Consistent across all pages */
+  .heading-institute {
+    font-size: var(--text-5xl);
+    font-weight: 800;
+    line-height: 1.1;
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: var(--space-lg);
   }
 
   .heading-institute-lg {
-    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold;
-    background: linear-gradient(135deg, hsl(var(--institute-blue)) 0%, hsl(var(--institute-orange)) 100%);
+    font-size: var(--text-4xl);
+    font-weight: 700;
+    line-height: 1.2;
+    background: var(--gradient-text);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    margin-bottom: var(--space-md);
   }
 
   .heading-institute-md {
-    @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold;
-    background: linear-gradient(135deg, hsl(var(--institute-blue)) 0%, hsl(var(--institute-orange)) 100%);
+    font-size: var(--text-3xl);
+    font-weight: 600;
+    line-height: 1.3;
+    background: var(--gradient-text);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    margin-bottom: var(--space-md);
   }
 
   .heading-institute-sm {
-    @apply text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold;
-    background: linear-gradient(135deg, hsl(var(--institute-blue)) 0%, hsl(var(--institute-orange)) 100%);
+    font-size: var(--text-2xl);
+    font-weight: 600;
+    line-height: 1.4;
+    background: var(--gradient-text);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    margin-bottom: var(--space-sm);
   }
-  
-  .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
+
+  /* UNIFIED SECTION STYLES - Consistent across all pages */
+  .section-unified {
+    padding: var(--space-4xl) 0;
+    position: relative;
   }
-  
-  .btn-secondary {
-    background: var(--gradient-secondary);
-    color: hsl(var(--secondary-foreground));
-    border: none;
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-3xl);
+  }
+
+  .section-title {
+    font-size: var(--text-4xl);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: var(--space-md);
+  }
+
+  .section-subtitle {
+    font-size: var(--text-lg);
+    color: hsl(var(--muted-foreground));
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .section-divider {
+    width: 80px;
+    height: 4px;
+    background: var(--gradient-text);
     border-radius: var(--radius-lg);
-    padding: var(--space-md) var(--space-xl);
-    font-weight: 600;
-    transition: var(--transition-normal);
-    box-shadow: var(--shadow);
+    margin: var(--space-lg) auto;
   }
-  
-  .btn-secondary:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
+
+  /* UNIFIED CONTAINER STYLES - Consistent across all pages */
+  .container-unified {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+  }
+
+  .container-wide {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+  }
+
+  /* UNIFIED GRID STYLES - Consistent across all components */
+  .grid-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-xl);
+  }
+
+  .grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .grid-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-lg);
+  }
+
+  /* UNIFIED ANIMATION CLASSES - Consistent across all components */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 0.6s ease-out;
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.6s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out;
+  }
+
+  .animate-bounce-in {
+    animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  /* UNIFIED HOVER EFFECTS - Consistent across all components */
+  .hover-lift {
+    transition: var(--transition-normal);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .hover-scale {
+    transition: var(--transition-normal);
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+
+  .hover-glow {
+    transition: var(--transition-normal);
+  }
+
+  .hover-glow:hover {
+    box-shadow: var(--shadow-primary);
+  }
+
+  /* UNIFIED GLASSMORPHISM EFFECTS - Consistent across all components */
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* UNIFIED RESPONSIVE UTILITIES - Consistent across all pages */
+  .responsive-text {
+    font-size: var(--text-base);
+  }
+
+  @media (min-width: 640px) {
+    .responsive-text {
+      font-size: var(--text-lg);
+    }
+  }
+
+  @media (min-width: 768px) {
+    .responsive-text {
+      font-size: var(--text-xl);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .responsive-text {
+      font-size: var(--text-2xl);
+    }
   }
 }

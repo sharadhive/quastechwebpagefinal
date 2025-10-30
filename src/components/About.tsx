@@ -262,17 +262,17 @@ const About = () => {
           
           {/* --- Sections are now responsive --- */}
 
-          {/* Enhanced Hero Section */}
+          {/* UNIFIED HERO SECTION */}
           <motion.div
             variants={sectionVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
-            className="text-center mb-8 md:mb-12"
+            className="section-header"
           >
              <motion.div
                 variants={itemVariants}
-                className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 md:px-8 md:py-4 rounded-full mb-6 md:mb-8 shadow-2xl"
+                className="hero-badge"
               >
                 <motion.div
                   animate={{ rotate: [0, 360] }}
@@ -280,22 +280,18 @@ const About = () => {
               >
                 <Award className="w-5 h-5" />
                 </motion.div>
-                <span className="text-xs md:text-sm font-semibold tracking-wide">ABOUT QUASTECH</span>
+                <span>ABOUT QUASTECH</span>
               </motion.div>
               <motion.h1
                 variants={itemVariants}
-                className="text-4xl md:text-6xl font-extrabold mb-6 md:mb-8 leading-tight"
+                className="heading-institute"
               >
-                <motion.span 
-                  className="block bg-gradient-to-r from-[#6B5B95] via-[#9B6B8F] to-[#8B5A5A] bg-clip-text text-transparent"
-                >
-                  Leading the Future of IT Education
-                </motion.span>
+                Leading the Future of IT Education
               </motion.h1>
-              <div className="h-1 w-32 mx-auto rounded-full bg-gradient-to-r from-blue-600 via-purple-600 to-orange-500 mb-6" />
+              <div className="section-divider" />
               <motion.p
                 variants={itemVariants}
-                className="text-lg md:text-xl lg:text-2xl text-slate-600 max-w-4xl mx-auto leading-relaxed"
+                className="section-subtitle"
               >
                 Since 2015, QUASTECH has been at the forefront of IT education, transforming lives and careers through innovative learning experiences.
               </motion.p>
@@ -391,25 +387,23 @@ const About = () => {
             </div>
           </motion.div>
 
-          {/* Static Why Us Section */}
-          <div className="mb-8 md:mb-12">
-            <div className="text-center mb-8 md:mb-10">
-              <div className="inline-flex items-center gap-2 bg-blue-100 px-6 py-3 rounded-full mb-6">
-                <Sparkles className="w-5 h-5 text-blue-600" />
-                <span className="text-sm font-bold text-blue-600 tracking-wide">WHY CHOOSE US</span>
+          {/* UNIFIED WHY US SECTION */}
+          <div className="section-unified">
+            <div className="section-header">
+              <div className="hero-badge">
+                <Sparkles className="w-5 h-5" />
+                <span>WHY CHOOSE US</span>
               </div>
-              <h2 className="text-4xl md:text-6xl font-extrabold mb-3">
-                <span className="bg-gradient-to-r from-[#6B5B95] via-[#9B6B8F] to-[#8B5A5A] bg-clip-text text-transparent">
-                  Why Choose QUASTECH
-                </span>
+              <h2 className="heading-institute">
+                Why Choose QUASTECH
               </h2>
-              <div className="h-1 w-32 mx-auto rounded-full bg-gradient-to-r from-blue-600 via-purple-600 to-orange-500 mb-4" />
-              <p className="text-base md:text-xl text-slate-600 max-w-3xl mx-auto">
+              <div className="section-divider" />
+              <p className="section-subtitle">
                 Discover what makes QUASTECH the preferred choice for ambitious professionals
               </p>
             </div>
-            {/* Static Grid Layout - Why Choose Us */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            {/* UNIFIED GRID LAYOUT - Why Choose Us */}
+            <div className="grid-features">
               {whyUsFeatures.map((feature, index) => (
                 <motion.div
                   key={feature.title}
@@ -428,8 +422,8 @@ const About = () => {
                   }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <div className="h-full bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100">
-                    <div className="p-6 h-full flex flex-col items-center text-center">
+                  <div className="card-unified hover-lift">
+                    <div className="card-content h-full flex flex-col items-center text-center">
                       <div className={`w-16 h-16 md:w-20 md:h-20 mx-auto mb-4 rounded-xl bg-gradient-to-r ${feature.color} flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300`}>
                         <feature.icon className="w-8 h-8 md:w-10 md:h-10 text-white" />
                       </div>
@@ -475,13 +469,11 @@ const About = () => {
             viewport={{ once: true, amount: 0.2 }}
             className="py-8 md:py-12"
           >
-            <motion.div variants={itemVariants} className="text-center mb-8 md:mb-10">
-              <h2 className="text-4xl md:text-5xl font-extrabold mb-4 md:mb-6">
-                <span className="bg-gradient-to-r from-[#6B5B95] via-[#9B6B8F] to-[#8B5A5A] bg-clip-text text-transparent">
-                  Technologies We Master
-                </span>
+            <motion.div variants={itemVariants} className="section-header">
+              <h2 className="heading-institute-lg">
+                Technologies We Master
               </h2>
-              <p className="text-base md:text-xl text-slate-600 max-w-3xl mx-auto">
+              <p className="section-subtitle">
                 Our curriculum is built on the most in-demand technologies in the industry.
               </p>
             </motion.div>

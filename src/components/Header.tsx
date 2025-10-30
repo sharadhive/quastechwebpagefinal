@@ -375,7 +375,7 @@ const Header = () => {
                   size="lg" 
                   className="bg-gradient-to-r from-primary to-primary-glow hover:from-primary-glow hover:to-primary text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
                 >
-                  Register Now
+                  LMS Login
                 </Button>
               </motion.div>
             </div>
@@ -487,7 +487,7 @@ const Header = () => {
                       </span>
                     </motion.button>
                     <Button variant="hero" size="sm" className="flex-1" onClick={() => setIsMenuOpen(false)}>
-                      Register Now
+                      LMS Login
                     </Button>
                   </div>
                 </div>

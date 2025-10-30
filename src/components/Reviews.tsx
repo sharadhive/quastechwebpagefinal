@@ -105,9 +105,9 @@ const Reviews = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 bg-blue-100 px-6 py-3 rounded-full mb-6">
-            <Star className="w-5 h-5 text-blue-600" />
-            <span className="text-sm font-bold text-blue-600 tracking-wide">SUCCESS STORIES</span>
+          <div className="inline-flex items-center gap-3 px-6 py-2 mb-6 rounded-full bg-gradient-to-r from-blue-500 to-orange-400 shadow text-white text-base font-semibold">
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mr-1 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M12 17.27L18.18 21 16.54 14.42 22 10.08l-7.19-.61L12 3 9.19 9.47 2 10.08l5.46 4.34L5.82 21z" /></svg>
+            SUCCESS STORIES
           </div>
           <h2 className="text-4xl lg:text-6xl font-extrabold mb-3">
             <span className="bg-gradient-to-r from-[#6B5B95] via-[#9B6B8F] to-[#8B5A5A] bg-clip-text text-transparent">

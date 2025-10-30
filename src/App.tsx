@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { DarkModeProvider } from "@/contexts/DarkModeContext";
 import FloatingCTA from "@/components/FloatingCTA";
 import Index from "./pages/Index";
 import ContactPage from "./pages/ContactPage";
@@ -47,10 +48,11 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
-        {/* Global Floating CTA - Appears on all pages */}
-        <FloatingCTA />
-        <Routes>
+      <DarkModeProvider>
+        <BrowserRouter>
+          {/* Global Floating CTA - Appears on all pages */}
+          <FloatingCTA />
+          <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
@@ -88,8 +90,9 @@ const App = () => (
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+          </Routes>
+        </BrowserRouter>
+      </DarkModeProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );

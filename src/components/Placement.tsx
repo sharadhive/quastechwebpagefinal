@@ -74,9 +74,9 @@ const SectionHeading = ({ title, subtitle }: { title: string; subtitle?: string 
     transition={{ duration: 0.6 }}
     className="text-center mb-12"
   >
-    <div className="inline-flex items-center gap-2 bg-blue-100 px-6 py-3 rounded-full mb-6">
-      <Award className="w-5 h-5 text-blue-600" />
-      <span className="text-sm font-bold text-blue-600 tracking-wide">PLACEMENTS</span>
+    <div className="inline-flex items-center gap-3 px-6 py-2 mb-6 rounded-full bg-gradient-to-r from-blue-500 to-orange-400 shadow text-white text-base font-semibold">
+      <Award className="w-6 h-6 mr-1 text-white" />
+      PLACEMENT
     </div>
     <h2 className="text-4xl md:text-6xl font-extrabold mb-3">
       <span className="bg-gradient-to-r from-[#6B5B95] via-[#9B6B8F] to-[#8B5A5A] bg-clip-text text-transparent">

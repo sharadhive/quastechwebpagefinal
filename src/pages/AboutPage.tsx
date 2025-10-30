@@ -116,8 +116,8 @@ const AboutPage = () => {
       <div className="min-h-screen bg-white">
         <Header />
 
-        {/* Hero Banner Section */}
-        <section className="relative h-[500px] md:h-[600px] overflow-hidden">
+        {/* UNIFIED HERO BANNER SECTION */}
+        <section className="hero-section">
           <div className="absolute inset-0">
             <motion.img
               initial={{ scale: 1.1 }}
@@ -127,34 +127,34 @@ const AboutPage = () => {
               alt="About QUASTECH"
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 via-blue-800/80 to-transparent" />
+            <div className="hero-overlay" />
           </div>
 
-          <div className="relative z-10 container mx-auto px-4 h-full flex items-center">
+          <div className="hero-content">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="max-w-3xl text-white"
+              className="max-w-4xl mx-auto"
             >
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.2 }}
-                className="inline-flex items-center gap-3 bg-white/20 backdrop-blur-md px-6 py-3 rounded-full mb-6"
+                className="hero-badge"
               >
                 <Award className="w-5 h-5" />
-                <span className="font-semibold text-sm tracking-wider">ABOUT QUASTECH</span>
+                <span>ABOUT QUASTECH</span>
               </motion.div>
 
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
-                className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
+                className="hero-title"
               >
                 Transforming Lives Through
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-pink-400">
+                <span className="block text-gradient-institute-alt">
                   Quality Education
                 </span>
               </motion.h1>
@@ -163,7 +163,7 @@ const AboutPage = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
-                className="text-xl md:text-2xl text-gray-100 leading-relaxed"
+                className="hero-subtitle"
               >
                 Since 2010, we've been committed to empowering individuals with cutting-edge skills and knowledge to excel in the tech industry.
               </motion.p>
