@@ -116,66 +116,77 @@ const AboutPage = () => {
       <div className="min-h-screen bg-white">
         <Header />
 
-        {/* UNIFIED HERO BANNER SECTION */}
-        <section className="hero-section">
-          <div className="absolute inset-0">
-            <motion.img
-              initial={{ scale: 1.1 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 1.5 }}
-              src="/assets/about_asset/images/Main_About.jpg"
-              alt="About QUASTECH"
-              className="w-full h-full object-cover"
-            />
-            <div className="hero-overlay" />
+        {/* --- Short, Focused About Banner --- */}
+        <section className="relative px-4 py-20 md:py-24 flex items-center justify-center overflow-hidden min-h-[300px]">
+          {/* Branded gradient BG + light mesh overlay */}
+          <div className="absolute inset-0 z-0">
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-800 via-purple-700 to-orange-500" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-200/10 via-transparent to-transparent opacity-30 pointer-events-none" />
           </div>
-
-          <div className="hero-content">
+          <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center text-center">
+            {/* Capsule badge */}
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: -30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="max-w-4xl mx-auto"
+              transition={{ duration: 0.7 }}
+              className="inline-flex gap-2 mb-4 px-6 py-2 items-center rounded-full font-bold shadow-xl text-sm text-white/95 tracking-wider bg-gradient-to-r from-blue-600 to-orange-500 bg-opacity-90 border-2 border-blue-300/40 animate-float"
             >
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.2 }}
-                className="hero-badge"
-              >
-                <Award className="w-5 h-5" />
-                <span>ABOUT QUASTECH</span>
-              </motion.div>
-
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                className="hero-title"
-              >
-                Transforming Lives Through
-                <span className="block text-gradient-institute-alt">
-                  Quality Education
-                </span>
-              </motion.h1>
-
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 }}
-                className="hero-subtitle"
-              >
-                Since 2010, we've been committed to empowering individuals with cutting-edge skills and knowledge to excel in the tech industry.
-              </motion.p>
+              <svg xmlns='http://www.w3.org/2000/svg' className='w-5 h-5 text-white' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M12 11c1.333-2.667 2.667-2.667 4 0' /><path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M2 12S6 4 12 4s10 8 10 8-4 8-10 8-10-8-10-8z' /></svg>
+              ABOUT QUASTECH
             </motion.div>
+            {/* Main heading */}
+            <motion.h1
+              initial={{opacity:0, y:10}}
+              animate={{opacity:1, y:0}}
+              transition={{delay:0.12}}
+              className="font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white mb-4 drop-shadow-lg leading-tight"
+            >
+              Transforming Lives Through <br/>
+              <span className="text-orange-200 drop-shadow-lg">Quality Education</span>
+            </motion.h1>
+            {/* Subtitle only (no long body) */}
+            <motion.p
+              initial={{opacity:0, y:10}}
+              animate={{opacity:1, y:0}}
+              transition={{delay:0.25}}
+              className="text-lg md:text-2xl text-white max-w-2xl mx-auto mb-2 font-normal"
+            >
+              Since 2010, we've been committed to empowering individuals with cutting-edge skills and knowledge to excel in the tech industry.
+            </motion.p>
           </div>
+        </section>
 
-          {/* Floating Animation Elements */}
-          <motion.div
-            animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
-            transition={{ duration: 5, repeat: Infinity }}
-            className="absolute bottom-10 right-10 w-32 h-32 bg-gradient-to-br from-orange-400/30 to-pink-400/30 rounded-full blur-2xl"
-          />
+        {/* --- Why Quastech and Specialities --- */}
+        <section className="py-12 bg-white">
+          <div className="max-w-5xl mx-auto px-4">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl md:text-4xl font-bold text-blue-800 mb-4">Why Quastech?</h2>
+            </div>
+            {/* Brand description & specialty */}
+            <div className="mb-6 text-lg text-gray-700 bg-blue-50/60 p-5 rounded-2xl shadow-sm border border-blue-100 max-w-3xl mx-auto">
+              Quastech (Future Through Innovations): "To Provide excellent & smart working professional to IT industry". Unique, professional real-time industry training for graduates/postgraduates, domain knowledge, systematized, standardized training.<br/>
+              <span className="block mt-3 text-blue-700 font-semibold">Speciality:</span>
+              Specialized and certified faculty. 100% based on current requirements & real-time projects. We believe in overall candidate growth.
+            </div>
+            {/* Professional bullet/feature block */}
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 max-w-3xl mx-auto mt-6">
+              {[
+                "Proficient and Reputed Trainers with Industry Experience.",
+                "Industry and Job Familiarity programs.",
+                "Excellent Placement record.",
+                "Well organized, Systematized and Standardized training.",
+                "Huge infrastructure with AC class rooms for training.",
+                "Special Attention to every Student.",
+                "Real-time projects.",
+                "Quastech offers week day classes from 9.00 AM to 8:00 PM in training center Thane."
+              ].map((item, i) => (
+                <li key={i} className="flex items-start gap-3 text-blue-900 text-[17px] border border-blue-50 rounded-xl shadow bg-white py-3 px-4">
+                  <span className="flex-shrink-0 rounded-full bg-gradient-to-r from-blue-600 to-orange-400 w-8 h-8 flex items-center justify-center font-bold text-white text-lg mr-1 shadow-sm border-2 border-blue-100">Q</span>
+                  <span className="leading-snug">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </section>
 
         {/* Stats Section */}
@@ -368,50 +379,71 @@ const AboutPage = () => {
           </div>
         </section>
 
-        {/* Timeline/Milestones Section */}
-        <section className="py-20 bg-white">
+        {/* --- Informational Card Row as in reference image --- */}
+        <section className="py-12 bg-gradient-to-tr from-blue-50 to-white">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-800">Our Journey</h2>
-              <p className="text-xl text-gray-600">Key milestones that shaped our success</p>
-              <div className="h-1 w-24 bg-gradient-to-r from-blue-600 to-orange-500 mx-auto mt-4 rounded-full" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {/* TEAM CARD */}
+              <div className="rounded-2xl p-6 shadow-xl bg-gradient-to-br from-blue-700 to-orange-500 text-white flex flex-col justify-between min-h-[210px] border border-blue-200/20">
+                <div className="flex items-center gap-2 mb-1">
+                  <Users className="w-6 h-6 text-white" />
+                  <span className="font-bold text-lg tracking-wide">TEAM</span>
+                </div>
+                <div className="font-semibold text-[15px] mb-2">Professional & Dedicated Team</div>
+                <div className="text-white/90 text-[15px] leading-snug">
+                  Expert, Dedicated, Creative, Enthusiastic, Reliable, Passionate, Updated, Result Oriented people are Part of our Team.
+                </div>
+              </div>
+              {/* PROGRAMS/COURSES CARD */}
+              <div className="rounded-2xl p-6 shadow-xl bg-white flex flex-col justify-between min-h-[210px] border border-orange-100/20">
+                <div className="flex items-center gap-2 mb-1">
+                  <BookOpen className="w-6 h-6 text-orange-500" />
+                  <span className="font-bold text-lg tracking-wide text-orange-600">PROGRAMS - COURSES</span>
+                </div>
+                <div className="font-semibold text-[15px] text-gray-900 mb-2">Job Ready Programs for Success</div>
+                <div className="text-gray-700 text-[15px] leading-snug">
+                  Well Planned, Well Organized and transparent process for Candidates to achieve their goal.
+                </div>
+              </div>
+              {/* WORK CULTURE CARD */}
+              <div className="rounded-2xl p-6 shadow-xl bg-white flex flex-col justify-between min-h-[210px] border border-orange-100/20">
+                <div className="flex items-center gap-2 mb-1">
+                  <TrendingUp className="w-6 h-6 text-orange-500" />
+                  <span className="font-bold text-lg tracking-wide text-orange-600">WORK CULTURE</span>
+                </div>
+                <div className="font-semibold text-[15px] text-gray-900 mb-2">Recognition for Hard work.</div>
+                <div className="text-gray-700 text-[15px] leading-snug">
+                  "Employee is the key of our success"&nbsp;We believe in healthy environment, Transparent and open communication, Right to speak, Employee Engagement, Learning Opportunities.
+                </div>
+              </div>
             </div>
+          </div>
+        </section>
 
-            <div className="max-w-5xl mx-auto">
-              {milestones.map((milestone, index) => (
-                <motion.div
-                  key={milestone.year}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6 }}
-                  viewport={{ once: true }}
-                  className={`flex items-center gap-8 mb-12 ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
-                >
-                  <div className="flex-1 text-right">
-                    <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      className={`bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all ${index % 2 === 0 ? 'text-right' : 'text-left'}`}
-                    >
-                      <div className="text-2xl font-bold text-blue-600 mb-2">{milestone.year}</div>
-                      <h3 className="text-xl font-bold text-gray-800 mb-2">{milestone.title}</h3>
-                      <p className="text-gray-600">{milestone.description}</p>
-                    </motion.div>
-                  </div>
-
-                  <div className="relative">
-                    <motion.div
-                      whileHover={{ scale: 1.2, rotate: 180 }}
-                      className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center shadow-lg"
-                    >
-                      <milestone.icon className="w-8 h-8 text-white" />
-                    </motion.div>
-                    {index < milestones.length - 1 && (
-                      <div className="absolute top-16 left-1/2 -translate-x-1/2 w-1 h-24 bg-gradient-to-b from-blue-600 to-purple-600" />
+        {/* --- Journey Timeline Section as in reference image --- */}
+        <section className="py-20 bg-white relative z-10">
+          <div className="container mx-auto px-4">
+            <div className="mb-16 text-center">
+              <h2 className="text-4xl md:text-5xl font-bold mb-2 text-gray-900">A quick look at our <span className="text-orange-500">journey</span></h2>
+            </div>
+            <div className="relative max-w-3xl mx-auto flex flex-col gap-12">
+              {milestones.map((item, idx) => (
+                <div key={item.year} className="flex w-full items-start gap-6 md:gap-10 relative">
+                  <div className={`hidden md:block w-1/2 ${idx%2!==0 && 'order-2'}`}></div>
+                  {/* Timeline step and line */}
+                  <div className="flex flex-col items-center relative z-20">
+                    <div className={`rounded-full flex items-center justify-center w-10 h-10 bg-gradient-to-br from-blue-600 via-purple-600 to-orange-500 shadow-xl font-bold text-white text-lg mb-2 border-4 border-white`}>{idx+1}</div>
+                    {idx < milestones.length-1 && (
+                      <div className="h-24 border-l-2 border-dashed border-blue-400/50"></div>
                     )}
                   </div>
-
-                  <div className="flex-1" />
-                </motion.div>
+                  {/* Info card */}
+                  <div className={`flex-1 max-w-[420px] rounded-xl shadow-lg bg-gradient-to-tr ${idx%2===0 ? 'from-blue-50 to-white' : 'from-white to-orange-50'} px-6 py-5 border border-blue-100/30`}> 
+                    <div className="font-extrabold text-xl text-gray-800 mb-1">{item.year}</div>
+                    <div className="font-bold text-md text-blue-700 mb-2">{item.title}</div>
+                    <div className="text-gray-700 text-[15px] leading-snug">{item.description}</div>
+                  </div>
+                </div>
               ))}
             </div>
           </div>

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, BookOpen, ArrowRight, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 interface CoursesModalProps {
   isOpen: boolean;
@@ -224,23 +225,45 @@ const CoursesModal = ({ isOpen, onClose }: CoursesModalProps) => {
                       {itCourses[activeCategory].title}
                     </h3>
                     {itCourses[activeCategory].courses.map((course, index) => (
-                      <motion.div
-                        key={index}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.05 }}
-                        className="group bg-gradient-to-r from-orange-50 to-orange-100 hover:from-orange-100 hover:to-orange-200 rounded-lg p-4 cursor-pointer transition-all duration-300 hover:shadow-md"
-                      >
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-3">
-                            <span className="text-2xl">{course.icon}</span>
-                            <span className="font-medium text-gray-800 group-hover:text-blue-600 transition-colors">
-                              {course.name}
-                            </span>
+                      course.name === "Software Testing Course" ? (
+                        <Link to="/software-testing-training" key={index}>
+                          <motion.div
+                            onClick={onClose}
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: index * 0.05 }}
+                            className="group bg-gradient-to-r from-orange-50 to-orange-100 hover:from-orange-100 hover:to-orange-200 rounded-lg p-4 cursor-pointer transition-all duration-300 hover:shadow-md"
+                          >
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center gap-3">
+                                <span className="text-2xl">{course.icon}</span>
+                                <span className="font-medium text-gray-800 group-hover:text-blue-600 transition-colors">
+                                  {course.name}
+                                </span>
+                              </div>
+                              <ArrowRight className="w-5 h-5 text-blue-600 group-hover:translate-x-1 transition-transform" />
+                            </div>
+                          </motion.div>
+                        </Link>
+                      ) : (
+                        <motion.div
+                          key={index}
+                          initial={{ opacity: 0, x: 20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: index * 0.05 }}
+                          className="group bg-gradient-to-r from-orange-50 to-orange-100 hover:from-orange-100 hover:to-orange-200 rounded-lg p-4 cursor-pointer transition-all duration-300 hover:shadow-md"
+                        >
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-3">
+                              <span className="text-2xl">{course.icon}</span>
+                              <span className="font-medium text-gray-800 group-hover:text-blue-600 transition-colors">
+                                {course.name}
+                              </span>
+                            </div>
+                            <ArrowRight className="w-5 h-5 text-blue-600 group-hover:translate-x-1 transition-transform" />
                           </div>
-                          <ArrowRight className="w-5 h-5 text-blue-600 group-hover:translate-x-1 transition-transform" />
-                        </div>
-                      </motion.div>
+                        </motion.div>
+                      )
                     ))}
                   </motion.div>
                 </div>
@@ -357,4 +380,5 @@ const CoursesModal = ({ isOpen, onClose }: CoursesModalProps) => {
 };
 
 export default CoursesModal;
+
 

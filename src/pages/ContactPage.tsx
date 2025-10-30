@@ -96,6 +96,28 @@ const ContactPage = () => {
     { title: "Become Instructor", email: "instructor@quastech.in", icon: "👨‍🏫", color: "from-pink-500/20 to-rose-500/20" }
   ];
 
+  // ----- Career Resources Cards Data (for new section) -----
+  const resourcesCards = [
+    {
+      icon: <span className="text-blue-700 bg-blue-100 rounded-full p-2 text-2xl">📝</span>,
+      title: 'Mock Session',
+      desc: 'You will get certificate after completion of program',
+      border: 'border-b-4 border-blue-600',
+    },
+    {
+      icon: <span className="text-orange-500 bg-orange-100 rounded-full p-2 text-2xl">💻</span>,
+      title: 'LMS Learning',
+      desc: 'You will get certificate after completion of program',
+      border: 'border-b-4 border-orange-400',
+    },
+    {
+      icon: <span className="text-indigo-500 bg-indigo-100 rounded-full p-2 text-2xl">🎯</span>,
+      title: 'Career Support',
+      desc: 'You will get certificate after completion of program',
+      border: 'border-b-4 border-blue-400',
+    },
+  ];
+
   return (
     <DarkModeProvider>
       <div ref={containerRef} className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50">
@@ -535,6 +557,31 @@ const ContactPage = () => {
           </div>
         </section>
 
+        {/* --- Career Resources Section (Matches screenshot style) --- */}
+        <section className="max-w-6xl mx-auto mt-10 mb-14 flex flex-col md:flex-row items-center md:items-stretch gap-8 p-4 md:p-0">
+          {/* Left: Heading/Description */}
+          <div className="flex-1 flex items-center justify-center md:justify-start">
+            <div className="max-w-xs md:max-w-[260px] rounded-2xl min-h-[180px] flex items-center bg-white/90 border border-blue-100 shadow-md p-4 md:p-6">
+              <span className="text-lg font-bold leading-tight text-blue-800 md:text-xl">
+                Get exclusive<br />access to career resources<br />upon completion
+              </span>
+            </div>
+          </div>
+          {/* Right: Cards Grid */}
+          <div className="flex-[2] flex gap-4 w-full md:w-auto items-stretch">
+            {resourcesCards.map((card, i) => (
+              <div key={card.title} className={`flex-1 bg-white rounded-xl shadow-md border border-gray-100 flex flex-col items-start p-6 min-w-[220px] max-w-[240px] ${card.border}`} style={{ minHeight: 175 }}>
+                <div>{card.icon}</div>
+                <div className="mt-4 font-semibold text-gray-800 text-base mb-2">
+                  {card.title}
+                </div>
+                <div className="text-xs text-gray-500 font-medium">
+                  {card.desc}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
 
         {/* Contact Form & Details - Side by Side with 3D Effect */}
         <section className="py-8">

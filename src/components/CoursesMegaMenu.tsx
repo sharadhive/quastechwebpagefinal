@@ -10,6 +10,7 @@ import {
   Globe,
   Phone
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface CoursesMegaMenuProps {
   type: "it" | "non-it" | "eclass" | "degree";
@@ -173,7 +174,31 @@ const CoursesMegaMenu = ({ type, onClose, onTabChange }: CoursesMegaMenuProps) =
 
       {/* Course Cards - Unified Grid Layout */}
       <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
-        {currentData.courses.map((course, index) => (
+        {currentData.courses.map((course, index) => {
+        const isSoftwareTesting =
+          course.title === "Software Testing" || course.title === "Software Testing Course";
+
+        const cardContent = (
+          <Card className="border border-gray-200 hover:border-blue-500 transition-all duration-300 hover:shadow-lg cursor-pointer h-full">
+            <CardContent className="p-4">
+              <div className="flex flex-col justify-between h-full">
+                <div>
+                  <h4 className="text-sm font-semibold text-gray-800 group-hover:text-blue-600 transition-colors mb-2">
+                    {course.title}
+                  </h4>
+                  <div className="flex items-center gap-2 text-xs text-gray-600">
+                    <Clock className="w-3 h-3 text-blue-500" />
+                    <span>Duration: {course.duration}</span>
+                  </div>
+                </div>
+                <div className="flex justify-end mt-3">
+                  <ArrowRight className="w-4 h-4 text-blue-500 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        );
+        return (
           <motion.div
             key={course.title}
             initial={{ opacity: 0, x: -20 }}
@@ -181,26 +206,16 @@ const CoursesMegaMenu = ({ type, onClose, onTabChange }: CoursesMegaMenuProps) =
             transition={{ delay: index * 0.05 }}
             className="group"
           >
-            <Card className="border border-gray-200 hover:border-blue-500 transition-all duration-300 hover:shadow-lg cursor-pointer h-full">
-              <CardContent className="p-4">
-                <div className="flex flex-col justify-between h-full">
-                  <div>
-                    <h4 className="text-sm font-semibold text-gray-800 group-hover:text-blue-600 transition-colors mb-2">
-                      {course.title}
-                    </h4>
-                    <div className="flex items-center gap-2 text-xs text-gray-600">
-                      <Clock className="w-3 h-3 text-blue-500" />
-                      <span>Duration: {course.duration}</span>
-                    </div>
-                  </div>
-                  <div className="flex justify-end mt-3">
-                    <ArrowRight className="w-4 h-4 text-blue-500 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+            {isSoftwareTesting ? (
+              <Link to="/software-testing-training">
+                {cardContent}
+              </Link>
+            ) : (
+              cardContent
+            )}
           </motion.div>
-        ))}
+        );
+      })}
       </div>
 
       {/* Call to Action */}

@@ -286,3 +286,4 @@ const AngularTraining = () => {
 export default AngularTraining;
 
 
+

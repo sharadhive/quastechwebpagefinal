@@ -272,14 +272,9 @@ const About = () => {
           >
              <motion.div
                 variants={itemVariants}
-                className="hero-badge"
+                className="inline-flex items-center gap-2 px-6 py-2 rounded-full font-bold uppercase bg-gradient-to-r from-blue-500 to-orange-500 text-white shadow-lg mb-6 tracking-widest text-sm"
               >
-                <motion.div
-                  animate={{ rotate: [0, 360] }}
-                  transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-              >
-                <Award className="w-5 h-5" />
-                </motion.div>
+                <Award className="w-5 h-5 text-white drop-shadow" />
                 <span>ABOUT QUASTECH</span>
               </motion.div>
               <motion.h1
@@ -390,8 +385,8 @@ const About = () => {
           {/* UNIFIED WHY US SECTION */}
           <div className="section-unified">
             <div className="section-header">
-              <div className="hero-badge">
-                <Sparkles className="w-5 h-5" />
+              <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full font-bold uppercase bg-gradient-to-r from-blue-500 to-orange-500 text-white shadow-lg mb-6 tracking-widest text-sm">
+                <Sparkles className="w-5 h-5 text-white drop-shadow" />
                 <span>WHY CHOOSE US</span>
               </div>
               <h2 className="heading-institute">

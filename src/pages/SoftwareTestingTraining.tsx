@@ -40,7 +40,8 @@ import {
   FolderOpen,
   Certificate,
   ArrowUp,
-  UserCircle
+  UserCircle,
+  BadgeCheck
 } from "lucide-react";
 import {
   Accordion,
@@ -55,6 +56,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import BranchSection from "@/components/BranchSection";
 
 const SoftwareTestingTraining = () => {
   const { toast } = useToast();
@@ -324,12 +326,12 @@ const SoftwareTestingTraining = () => {
           <div className="relative z-10 w-full container mx-auto px-4 py-4">
             <div className="grid lg:grid-cols-[1.3fr_1fr] gap-8 items-center h-full">
               {/* Left Content Section */}
-              <div className="relative z-10 space-y-2">
+              <div className="relative z-10 flex flex-col space-y-5 md:space-y-7">
                 {/* Breadcrumbs */}
-            <motion.div
+                <motion.div
                   initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-                  className="flex items-center gap-2 text-white/90 text-sm -mt-2"
+                  animate={{ opacity: 1, y: 0 }}
+                  className="flex items-center gap-2 text-white/90 text-sm -mt-2 mb-5 md:mb-7"
                 >
                   <Link to="/" className="hover:text-white flex items-center gap-1">
                     <Home className="w-4 h-4" />
@@ -346,7 +348,7 @@ const SoftwareTestingTraining = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
-                  className="text-3xl md:text-4xl font-extrabold text-white leading-tight"
+                  className="text-3xl md:text-4xl font-extrabold text-white leading-tight mb-2"
                 >
                   Software Testing Training Program
                 </motion.h1>
@@ -356,29 +358,28 @@ const SoftwareTestingTraining = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
-                  className="text-base md:text-lg text-white/90 max-w-2xl mb-6"
+                  className="text-base md:text-lg text-white/90 max-w-2xl mb-5"
                 >
                   Learn how to master software testing and quality assurance. Enroll now to learn from expert test engineers and get industry-ready.
                 </motion.p>
 
                 {/* Ratings Section */}
-                  <motion.div
+                <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 }}
-                  className="space-y-3"
+                  className="space-y-3 mb-2"
                 >
-                  {/* Main Rating */}
-                  <div className="flex items-center gap-3 flex-wrap">
+                  {/* Main Rating Row */}
+                  <div className="flex items-center gap-3 flex-wrap mb-2">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
                     ))}
                     <span className="text-white font-semibold text-base">4.8 out of 5</span>
                     <span className="text-white/80 text-sm">based on 18647 votes</span>
-              </div>
-
-                  {/* Platform Ratings */}
-                  <div className="flex items-center gap-3 flex-wrap">
+                  </div>
+                  {/* Platform Ratings Row */}
+                  <div className="flex items-center gap-3 flex-wrap mb-2">
                     {[
                       { icon: "G", label: "Google", rating: "4.2/5" },
                       { icon: "⭐", label: "", rating: "4.8/5" },
@@ -413,7 +414,7 @@ const SoftwareTestingTraining = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 }}
-                  className="space-y-3"
+                  className="space-y-4 mb-4"
                 >
                   {/* Course Details Box */}
                   <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 grid grid-cols-3 gap-3 border border-white/20">
@@ -433,12 +434,12 @@ const SoftwareTestingTraining = () => {
                 </motion.div>
 
                 {/* Action Buttons */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 }}
-                  className="flex flex-wrap gap-3"
-              >
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 }}
+                  className="flex flex-wrap gap-4 pt-3"
+                >
                   <motion.button
                     whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
@@ -463,7 +464,7 @@ const SoftwareTestingTraining = () => {
                     <FileText className="w-4 h-4" />
                     INTERVIEW QUESTIONS
                   </motion.button>
-              </motion.div>
+                </motion.div>
               </div>
 
               {/* Right Side - Counselling Form */}
@@ -937,91 +938,80 @@ const SoftwareTestingTraining = () => {
         {/* Career Resources Section */}
         <section className="py-8 md:py-12 bg-white">
           <div className="container mx-auto px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-center mb-12"
-            >
-              <h2 className="text-3xl md:text-4xl font-extrabold mb-6">
-                <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-orange-500 bg-clip-text text-transparent">
-                  Get exclusive access to career resources upon completion
-                </span>
-              </h2>
-            </motion.div>
-
-            <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-              {/* Mock Session Card */}
+            <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+              {/* Heading Left (on desktop) */}
               <motion.div
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -8, scale: 1.02 }}
-                className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group text-center"
+                transition={{ duration: 0.8 }}
+                className="w-full md:w-[360px] lg:w-[420px] flex-shrink-0 text-center md:text-left mb-2 md:mb-0"
               >
-                <div className="relative w-20 h-20 mx-auto mb-6 flex items-center justify-center">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full opacity-20 group-hover:opacity-30 transition-opacity"></div>
-                  <div className="relative flex items-center justify-center gap-2">
-                    <MessageSquare className="w-10 h-10 text-blue-600 group-hover:text-blue-700 transition-colors" strokeWidth={1.5} />
-                    <HelpCircle className="w-6 h-6 text-blue-600 -ml-3 -mt-2 group-hover:scale-110 transition-transform" strokeWidth={2} />
-                  </div>
-                </div>
-                <h3 className="text-2xl font-bold mb-4 text-gray-800 group-hover:text-blue-600 transition-colors">
-                  Mock Session
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  You will get certificate after completion of program.
-                </p>
+                <h2 className="text-3xl md:text-4xl font-extrabold mb-3 md:mb-0">
+                  <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-orange-500 bg-clip-text text-transparent">
+                    Get exclusive access to career resources upon completion
+                  </span>
+                </h2>
               </motion.div>
-
-              {/* LMS Learning Card */}
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -8, scale: 1.02 }}
-                className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group text-center"
-              >
-                <div className="relative w-20 h-20 mx-auto mb-6 flex items-center justify-center">
-                  <div className="absolute inset-0 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full opacity-20 group-hover:opacity-30 transition-opacity"></div>
-                  <div className="relative flex items-center justify-center">
-                    <Laptop className="w-10 h-10 text-orange-600 group-hover:text-orange-700 transition-colors" strokeWidth={1.5} />
-                    <MessageCircle className="w-6 h-6 text-orange-600 absolute -top-1 -right-2 group-hover:scale-110 transition-transform" strokeWidth={2} />
+              {/* Cards Right (on desktop) */}
+              <div className="w-full flex flex-col md:flex-row gap-6 md:gap-8 justify-center items-center">
+                {/* Mock Session Card */}
+                <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group text-center md:text-left w-full md:w-[270px]"
+                >
+                  <div className="relative w-20 h-20 mx-auto mb-6 flex items-center justify-center">
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full opacity-20 group-hover:opacity-30 transition-opacity"></div>
+                    <div className="relative flex items-center justify-center gap-2">
+                      <MessageSquare className="w-10 h-10 text-blue-600 group-hover:text-blue-700 transition-colors" strokeWidth={1.5} />
+                      <HelpCircle className="w-6 h-6 text-blue-600 -ml-3 -mt-2 group-hover:scale-110 transition-transform" strokeWidth={2} />
+                    </div>
                   </div>
-                </div>
-                <h3 className="text-2xl font-bold mb-4 text-gray-800 group-hover:text-orange-600 transition-colors">
-                  LMS Learning
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  You will get certificate after completion of program.
-                </p>
-              </motion.div>
-
-              {/* Career Support Card */}
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -8, scale: 1.02 }}
-                className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group text-center"
-              >
-                <div className="relative w-20 h-20 mx-auto mb-6 flex items-center justify-center">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full opacity-20 group-hover:opacity-30 transition-opacity"></div>
-                  <div className="relative flex items-center justify-center gap-1">
-                    <Users className="w-10 h-10 text-blue-600 group-hover:text-blue-700 transition-colors" strokeWidth={1.5} />
-                    <Star className="w-6 h-6 text-blue-600 absolute -top-2 -right-3 group-hover:scale-110 transition-transform fill-blue-600" strokeWidth={2} />
+                  <h3 className="text-2xl font-bold mb-4 text-gray-800 group-hover:text-blue-600 transition-colors">Mock Session</h3>
+                  <p className="text-gray-600 leading-relaxed">You will get certificate after completion of program.</p>
+                </motion.div>
+                {/* LMS Learning Card */}
+                <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.18 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group text-center md:text-left w-full md:w-[270px]"
+                >
+                  <div className="relative w-20 h-20 mx-auto mb-6 flex items-center justify-center">
+                    <div className="absolute inset-0 bg-gradient-to-br from-orange-400 to-orange-500 rounded-full opacity-20 group-hover:opacity-30 transition-opacity"></div>
+                    <div className="relative flex items-center justify-center gap-2">
+                      <Monitor className="w-10 h-10 text-orange-500 group-hover:text-orange-600 transition-colors" strokeWidth={1.5} />
+                      <BadgeCheck className="w-6 h-6 text-orange-500 -ml-3 -mt-2 group-hover:scale-110 transition-transform" strokeWidth={2} />
+                    </div>
                   </div>
-                </div>
-                <h3 className="text-2xl font-bold mb-4 text-gray-800 group-hover:text-blue-600 transition-colors">
-                  Career Support
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  You will get certificate after completion of program.
-                </p>
-              </motion.div>
+                  <h3 className="text-2xl font-bold mb-4 text-gray-800 group-hover:text-orange-500 transition-colors">LMS Learning</h3>
+                  <p className="text-gray-600 leading-relaxed">You will get certificate after completion of program.</p>
+                </motion.div>
+                {/* Career Support Card */}
+                <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.25 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group text-center md:text-left w-full md:w-[270px]"
+                >
+                  <div className="relative w-20 h-20 mx-auto mb-6 flex items-center justify-center">
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-blue-500 rounded-full opacity-20 group-hover:opacity-30 transition-opacity"></div>
+                    <div className="relative flex items-center justify-center gap-2">
+                      <UserCheck className="w-10 h-10 text-blue-500 group-hover:text-blue-600 transition-colors" strokeWidth={1.5} />
+                      <Star className="w-6 h-6 text-blue-400 -ml-3 -mt-2 group-hover:scale-110 transition-transform" strokeWidth={2} />
+                    </div>
+                  </div>
+                  <h3 className="text-2xl font-bold mb-4 text-gray-800 group-hover:text-blue-500 transition-colors">Career Support</h3>
+                  <p className="text-gray-600 leading-relaxed">You will get certificate after completion of program.</p>
+                </motion.div>
+              </div>
             </div>
           </div>
         </section>
@@ -2047,6 +2037,8 @@ const SoftwareTestingTraining = () => {
             </motion.div>
           </div>
         </section>
+
+        <BranchSection />
 
         <Footer />
       </div>

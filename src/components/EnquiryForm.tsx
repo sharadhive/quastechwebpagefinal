@@ -65,9 +65,9 @@ const EnquiryForm = () => {
           viewport={{ once: true }}
           className="text-center mb-8"
         >
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/10 to-orange-500/10 px-6 py-3 rounded-full mb-6">
-            <MessageCircle className="w-5 h-5 text-blue-600" />
-            <span className="text-sm font-semibold text-blue-600">Get In Touch</span>
+          <div className="inline-flex items-center gap-2 px-6 py-2 mb-6 rounded-full bg-gradient-to-r from-blue-500 to-orange-400 shadow text-white text-sm font-bold uppercase">
+            <MessageCircle className="w-5 h-5 text-white drop-shadow" />
+            GET IN TOUCH
           </div>
           <h2 className="heading-institute-lg mb-6">
             Ready to Start Your

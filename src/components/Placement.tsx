@@ -94,9 +94,9 @@ const SectionHeading = ({ title, subtitle }: { title: string; subtitle?: string 
 
 const Subtitle = ({ text }: { text: string }) => (
   <div className="text-center mb-10">
-    <div className="inline-flex items-center gap-2 bg-blue-100 px-6 py-3 rounded-full mb-4">
-      <Building2 className="w-5 h-5 text-blue-600" />
-      <span className="text-sm font-bold text-blue-600 tracking-wide">HIRING PARTNERS</span>
+    <div className="inline-flex items-center gap-2 px-6 py-2 mb-4 rounded-full bg-gradient-to-r from-blue-500 to-orange-400 shadow text-white text-sm font-bold uppercase">
+      <Building2 className="w-5 h-5 text-white drop-shadow" />
+      HIRING PARTNERS
     </div>
     <h3 className="text-2xl md:text-3xl font-extrabold">
       <span className="bg-gradient-to-r from-[#6B5B95] via-[#9B6B8F] to-[#8B5A5A] bg-clip-text text-transparent">

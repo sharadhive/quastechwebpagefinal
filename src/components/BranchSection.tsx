@@ -98,11 +98,9 @@ const BranchSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="inline-flex items-center gap-3 mb-6 px-5 py-2 bg-indigo-100 rounded-full shadow-sm">
-            <Building2 className="w-5 h-5 text-indigo-600" />
-            <span className="text-indigo-600 font-semibold text-sm uppercase tracking-wide">
-              Our Campuses
-            </span>
+          <div className="inline-flex items-center gap-2 px-6 py-2 mb-6 rounded-full bg-gradient-to-r from-blue-500 to-orange-400 shadow text-white text-sm font-bold uppercase">
+            <Building2 className="w-5 h-5 text-white drop-shadow" />
+            OUR CAMPUSES
           </div>
           <h2 className="text-5xl md:text-6xl font-extrabold mb-4 tracking-tight">
             <span className="bg-gradient-to-r from-[#6B5B95] via-[#9B6B8F] to-[#8B5A5A] bg-clip-text text-transparent">
