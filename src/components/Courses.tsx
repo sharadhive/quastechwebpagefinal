@@ -14,8 +14,7 @@ import {
   ArrowRight,
   Download,
   MoreHorizontal,
-  Calendar,
-  Timer
+  Calendar
 } from "lucide-react";
 
 const Courses = () => {
@@ -26,8 +25,8 @@ const Courses = () => {
       duration: "8-10 Months",
       trainingType: "Classroom & Online Training",
       batchTypes: "Weekday and Weekend Batches",
-      seatsLeft: 2,
-      countdown: "47 hrs : 59 mins : 44 sec",
+      // seatsLeft: 2,
+      // countdown: "47 hrs : 59 mins : 44 sec",
       features: [
         "/coursesicons/bootstrap.jpg",
         "/coursesicons/css.jpg",
@@ -44,8 +43,8 @@ const Courses = () => {
       duration: "6-8 Months",
       trainingType: "Classroom & Online Training",
       batchTypes: "Weekday and Weekend Batches",
-      seatsLeft: 3,
-      countdown: "23 hrs : 15 mins : 32 sec",
+      // seatsLeft: 3,
+      // countdown: "23 hrs : 15 mins : 32 sec",
       features: [
         "/coursesicons/python.jpg",
         "/coursesicons/django.jpg",
@@ -62,8 +61,8 @@ const Courses = () => {
       duration: "7-9 Months",
       trainingType: "Classroom & Online Training",
       batchTypes: "Weekday and Weekend Batches",
-      seatsLeft: 1,
-      countdown: "12 hrs : 30 mins : 15 sec",
+      // seatsLeft: 1,
+      // countdown: "12 hrs : 30 mins : 15 sec",
       features: [
         "/coursesicons/bootstrap.jpg",
         "/coursesicons/css.jpg",
@@ -80,8 +79,8 @@ const Courses = () => {
       duration: "5-7 Months",
       trainingType: "Classroom & Online Training",
       batchTypes: "Weekday and Weekend Batches",
-      seatsLeft: 4,
-      countdown: "18 hrs : 45 mins : 22 sec",
+      // seatsLeft: 4,
+      // countdown: "18 hrs : 45 mins : 22 sec",
       features: [
         "/coursesicons/html.jpg",
         "/coursesicons/css.jpg",
@@ -98,8 +97,8 @@ const Courses = () => {
       duration: "10-12 Months",
       trainingType: "Classroom & Online Training",
       batchTypes: "Weekday and Weekend Batches",
-      seatsLeft: 2,
-      countdown: "35 hrs : 20 mins : 18 sec",
+      // seatsLeft: 2,
+      // countdown: "35 hrs : 20 mins : 18 sec",
       features: [
         "/coursesicons/python.jpg",
         "/coursesicons/django.jpg",
@@ -116,8 +115,8 @@ const Courses = () => {
       duration: "6-8 Months",
       trainingType: "Classroom & Online Training",
       batchTypes: "Weekday and Weekend Batches",
-      seatsLeft: 3,
-      countdown: "28 hrs : 12 mins : 45 sec",
+      // seatsLeft: 3,
+      // countdown: "28 hrs : 12 mins : 45 sec",
       features: [
         "/coursesicons/html.jpg",
         "/coursesicons/css.jpg",
@@ -171,7 +170,7 @@ const Courses = () => {
             >
                 <Card className="w-full h-[350px] sm:h-[380px] overflow-hidden border-0 shadow-2xl hover:shadow-3xl transition-all duration-700 bg-white transform-gpu">
                   {/* Compact Header - Countdown and Seats Side by Side */}
-                  <div className="flex items-center justify-between p-2 sm:p-3 bg-gradient-to-r from-blue-50 to-orange-50">
+                  {/* <div className="flex items-center justify-between p-2 sm:p-3 bg-gradient-to-r from-blue-50 to-orange-50">
                     <div className="flex items-center gap-2">
                       <Timer className="w-3 h-3 text-institute-blue" />
                       <div>
@@ -182,7 +181,7 @@ const Courses = () => {
                     <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">
                       {course.seatsLeft} seats left
                     </div>
-                  </div>
+                  </div> */}
 
                   <CardContent className="p-2 sm:p-3 flex flex-col h-full">
                     {/* Main Content - Course Icon Left, Details Right */}
@@ -318,20 +317,6 @@ const Courses = () => {
                 className="group"
               >
                 <Card className="h-[400px] md:h-[420px] w-72 md:w-80 overflow-hidden border-0 shadow-2xl hover:shadow-3xl transition-all duration-700 bg-white transform-gpu">
-                  {/* Compact Header - Countdown and Seats Side by Side */}
-                  <div className="flex items-center justify-between p-3 bg-gradient-to-r from-blue-50 to-orange-50">
-                    <div className="flex items-center gap-2">
-                      <Timer className="w-3 h-3 text-institute-blue" />
-                      <div>
-                        <div className="text-xs text-gray-600">Next batch starts in</div>
-                        <div className="text-sm font-bold text-institute-blue">{course.countdown}</div>
-                      </div>
-                    </div>
-                    <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">
-                      {course.seatsLeft} seats left
-                    </div>
-                  </div>
-
                   <CardContent className="p-4 flex flex-col h-full">
                     {/* Main Content - Course Icon Left, Details Right */}
                     <div className="flex gap-4 mb-4">

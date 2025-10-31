@@ -25,6 +25,7 @@ import {
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import BranchSection from "@/components/BranchSection";
 import { DarkModeProvider } from "@/contexts/DarkModeContext";
 
 // Company logos for sliding effect
@@ -817,6 +818,9 @@ const AboutPage = () => {
             </motion.div>
           </div>
         </section>
+
+        {/* Branches Section */}
+        <BranchSection />
 
         <Footer />
       </div>

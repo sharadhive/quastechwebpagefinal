@@ -257,13 +257,10 @@ const About = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
-      <section id="about" className="relative py-8 md:py-12 overflow-x-hidden">
+      <section id="about" className="relative pt-4 pb-8 md:pt-6 md:pb-12 overflow-x-hidden">
         <div className="container mx-auto px-4 max-w-7xl">
-          
-          {/* --- Sections are now responsive --- */}
-
-          {/* UNIFIED HERO SECTION */}
-          <motion.div
+          {/* UNIFIED HERO SECTION - REMOVED/COMMENTED OUT */}
+          {/* <motion.div
             variants={sectionVariants}
             initial="hidden"
             whileInView="visible"
@@ -290,43 +287,20 @@ const About = () => {
               >
                 Since 2015, QUASTECH has been at the forefront of IT education, transforming lives and careers through innovative learning experiences.
               </motion.p>
-          </motion.div>
+          </motion.div> */}
 
-          {/* About Quastech - Image and Description Section */}
-          <motion.div
+          {/* About Quastech - Image and Description Section - REMOVED/COMMENTED OUT */}
+          {/* <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
             className="mb-16 md:mb-20"
           >
-            <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
-              {/* Left Side - Image */}
+            <div className="max-w-4xl mx-auto">
               <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-                className="relative"
-              >
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.3 }}
-                  className="relative rounded-3xl overflow-hidden shadow-2xl"
-                >
-                  <img
-                    src="/images/Why US.png"
-                    alt="Why Choose Quastech"
-                    className="w-full h-auto"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent" />
-                </motion.div>
-              </motion.div>
-
-              {/* Right Side - Description */}
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
                 className="space-y-6"
@@ -380,12 +354,12 @@ const About = () => {
                 </div>
               </motion.div>
             </div>
-          </motion.div>
+          </motion.div> */}
 
           {/* UNIFIED WHY US SECTION */}
           <div className="section-unified">
-            <div className="section-header">
-              <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full font-bold uppercase bg-gradient-to-r from-blue-500 to-orange-500 text-white shadow-lg mb-6 tracking-widest text-sm">
+            <div className="section-header -mt-4">
+              <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full font-bold uppercase bg-gradient-to-r from-blue-500 to-orange-500 text-white shadow-lg mb-4 tracking-widest text-sm">
                 <Sparkles className="w-5 h-5 text-white drop-shadow" />
                 <span>WHY CHOOSE US</span>
               </div>

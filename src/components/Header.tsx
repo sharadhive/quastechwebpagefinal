@@ -20,13 +20,14 @@ import {
   CheckSquare,
   Eye,
   Moon,
+  ArrowRight,
 } from "lucide-react";
 import CoursesMegaMenu from "@/components/CoursesMegaMenu";
 import CoursesModal from "@/components/CoursesModal";
+import SidebarMenu from "@/components/SidebarMenu";
 import { useDarkMode } from "@/contexts/DarkModeContext";
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [isMobile, setIsMobile] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -34,6 +35,7 @@ const Header = () => {
   const [activeCourseType, setActiveCourseType] = useState<"it" | "non-it" | "eclass" | "degree" | null>(null);
   const [isHoveringDropdown, setIsHoveringDropdown] = useState(false);
   const [showCoursesModal, setShowCoursesModal] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { isDarkMode, toggleDarkMode } = useDarkMode();
 
   useEffect(() => {
@@ -68,11 +70,13 @@ const Header = () => {
     { name: "Degree", type: "degree", icon: GraduationCap, color: "from-green-500 to-emerald-500" },
   ];
 
-  const navItems = [
-    { name: "Home", href: "#", isExternal: false },
-    { name: "About-Us", href: "/about", isExternal: true },
-    { name: "Placement", href: "/placement", isExternal: true },
+  // Main navigation items (visible in navbar) - Empty since Placement is in sidebar menu
+  const navItems: { name: string; href: string; isExternal: boolean }[] = [];
+
+  // Sidebar menu items (Contact-Us and About-Us)
+  const sidebarMenuItems = [
     { name: "Contact-Us", href: "/contact", isExternal: true },
+    { name: "About-Us", href: "/about", isExternal: true },
   ];
 
   const handleDropdownToggle = (categoryName: string) => {
@@ -235,14 +239,14 @@ const Header = () => {
                 </div>
                 
                 {/* Login Button */}
-                <motion.button
+                {/* <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="bg-white text-blue-600 hover:bg-gray-50 px-3 py-1 rounded-md text-xs font-semibold transition-colors"
                   onClick={() => alert("Login functionality will be implemented")}
                 >
                   Login
-                </motion.button>
+                </motion.button> */}
               </div>
             ))}
           </motion.div>
@@ -254,7 +258,7 @@ const Header = () => {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-lg backdrop-blur-sm"
+        className={`sticky top-0 z-50 bg-white border-b border-gray-200 shadow-lg backdrop-blur-sm ${isSidebarOpen ? 'pr-0' : ''}`}
         style={{
           boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08)',
           transform: 'translateZ(0)',
@@ -263,10 +267,20 @@ const Header = () => {
       >
         <div className="container mx-auto px-3 sm:px-4 md:px-6">
           <div className="flex items-center justify-between h-18 sm:h-20 md:h-24 lg:h-28">
-            {/* Logo Section - Responsive */}
-            <div className="flex items-center gap-0.5 sm:gap-1">
+            {/* Logo Section with Courses Button */}
+            <div className="flex items-center gap-3 sm:gap-4 md:gap-6">
               {/* Main QUASTECH Logo */}
-              <Link to="/" className="flex items-center -ml-6 sm:-ml-6 md:-ml-4">
+              <Link 
+                to="/" 
+                className="flex items-center"
+                onClick={(e) => {
+                  // If already on home page, scroll to top; otherwise let Link handle navigation
+                  if (window.location.pathname === '/' || window.location.pathname === '') {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }
+                }}
+              >
                 <img
                   src="/uploads/64f34837-4f64-4bbc-886b-305630eefd79.png"
                   alt="QUASTECH Logo"
@@ -274,79 +288,18 @@ const Header = () => {
                 />
               </Link>
               
-              {/* Partner Logos - Hidden on small mobile */}
-              <div className="hidden sm:flex items-center gap-1 sm:gap-2 ml-1 sm:ml-2">
-                <img
-                  src="/uploads/nsdeimg01.png"
-                  alt="NSDC Logo"
-                  className="h-12 sm:h-14 md:h-16 lg:h-18 w-auto"
-                />
-                <img
-                  src="/uploads/skillindia--.jpg"
-                  alt="Skill India Logo"
-                  className="h-8 sm:h-10 md:h-12 lg:h-14 w-auto"
-                />
-              </div>
-            </div>
-
-            {/* Center Course Button - Opens Modal */}
-            <div className="hidden lg:flex items-center relative">
+              {/* Courses Button - Next to Logo */}
               <motion.button
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setShowCoursesModal(true)}
-                className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2"
+                className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2 text-sm sm:text-base"
               >
-                <BookOpen className="w-5 h-5" />
-                Course's
+                <BookOpen className="w-4 h-4 sm:w-5 sm:h-5" />
+                <span className="hidden sm:inline">Course's</span>
               </motion.button>
             </div>
 
-            {/* Animated Navigation */}
-            <nav className="hidden lg:flex items-center gap-8">
-              {navItems.map((item, index) => (
-                <div key={item.name} className="relative">
-                  {item.isExternal ? (
-                    <Link to={item.href}>
-                      <motion.div
-                        whileHover={{ scale: 1.05, y: -2 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="text-gray-700 hover:text-primary font-medium transition-all duration-300 flex items-center gap-1 px-3 py-2 rounded-lg hover:bg-primary/5 relative overflow-hidden group"
-                      >
-                        <span className="relative z-10">{item.name}</span>
-                        <motion.div
-                          className="absolute inset-0 bg-gradient-to-r from-primary/10 to-primary-glow/10 rounded-lg"
-                          initial={{ scale: 0, opacity: 0 }}
-                          whileHover={{ scale: 1, opacity: 1 }}
-                          transition={{ duration: 0.2 }}
-                        />
-                      </motion.div>
-                    </Link>
-                  ) : (
-                    <motion.a
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      whileTap={{ scale: 0.95 }}
-                      href={item.href}
-                      onClick={(e) => {
-                        if (item.name === "Home") {
-                          e.preventDefault();
-                          window.scrollTo({ top: 0, behavior: 'smooth' });
-                        }
-                      }}
-                      className="text-gray-700 hover:text-primary font-medium transition-all duration-300 flex items-center gap-1 px-3 py-2 rounded-lg hover:bg-primary/5 relative overflow-hidden group"
-                    >
-                      <span className="relative z-10">{item.name}</span>
-                      <motion.div
-                        className="absolute inset-0 bg-gradient-to-r from-primary/10 to-primary-glow/10 rounded-lg"
-                        initial={{ scale: 0, opacity: 0 }}
-                        whileHover={{ scale: 1, opacity: 1 }}
-                        transition={{ duration: 0.2 }}
-                      />
-                    </motion.a>
-                  )}
-                </div>
-              ))}
-            </nav>
 
             {/* Animated Action Buttons */}
             <div className="hidden lg:flex items-center gap-3">
@@ -374,127 +327,47 @@ const Header = () => {
                 <Button 
                   size="lg" 
                   className="bg-gradient-to-r from-primary to-primary-glow hover:from-primary-glow hover:to-primary text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                  onClick={() => window.location.href = 'tel:+918422800381'}
                 >
-                  LMS Login
+                  Speak to Counsellor
                 </Button>
               </motion.div>
+
+              {/* Burger Menu Icon - Hidden when sidebar is open */}
+              {!isSidebarOpen && (
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setIsSidebarOpen(true)}
+                  className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 dark-mode:bg-gray-700 dark-mode:hover:bg-gray-600 transition-colors duration-300"
+                  title="Menu"
+                >
+                  <Menu className="w-5 h-5 text-gray-600 dark-mode:text-gray-300" />
+                </motion.button>
+              )}
             </div>
 
-            {/* Animated Mobile Menu Button */}
+            {/* Animated Mobile Menu Button - Opens Sidebar Menu */}
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              onClick={() => setIsSidebarOpen(true)}
               className="lg:hidden p-2 rounded-md hover:bg-primary/10 transition-all duration-300"
               aria-label="Toggle menu"
             >
-              <motion.div
-                animate={{ rotate: isMenuOpen ? 90 : 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                {isMenuOpen ? <X className="w-6 h-6 text-primary" /> : <Menu className="w-6 h-6 text-gray-600" />}
-              </motion.div>
+              <Menu className="w-6 h-6 text-gray-600" />
             </motion.button>
           </div>
         </div>
 
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {isMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="lg:hidden bg-background border-t border-border overflow-hidden"
-            >
-              <div className="container mx-auto px-4 py-3 space-y-1">
-                {/* Mobile Logo Section - Compact */}
-                <div className="flex items-center justify-center gap-3 py-3 border-b border-border/50">
-                  <img
-                    src="/uploads/64f34837-4f64-4bbc-886b-305630eefd79.png"
-                    alt="QUASTECH Logo"
-                    className="h-10 w-auto"
-                  />
-                    <img
-                      src="/uploads/nsdeimg01.png"
-                      alt="NSDC Logo"
-                      className="h-12 w-auto"
-                    />
-                    <img
-                      src="/uploads/skillindia--.jpg"
-                      alt="Skill India Logo"
-                      className="h-8 w-auto"
-                    />
-                </div>
-                
-                {/* Courses Button - Mobile */}
-                <button
-                  onClick={() => {
-                    setShowCoursesModal(true);
-                    setIsMenuOpen(false);
-                  }}
-                  className="w-full py-3 px-4 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-md"
-                >
-                  <BookOpen className="w-5 h-5" />
-                  Course's
-                </button>
 
-                {/* Nav Items - Compact */}
-                {navItems.map((item) => (
-                    <div key={item.name} className="space-y-1">
-                    {item.isExternal ? (
-                      <Link
-                        to={item.href}
-                        className="block py-2 px-3 text-foreground hover:text-primary hover:bg-accent/50 rounded-md transition-colors duration-200 text-sm"
-                        onClick={() => setIsMenuOpen(false)}
-                      >
-                        {item.name}
-                      </Link>
-                    ) : (
-                      <a
-                        href={item.href}
-                        className="block py-2 px-3 text-foreground hover:text-primary hover:bg-accent/50 rounded-md transition-colors duration-200 text-sm"
-                        onClick={(e) => {
-                          if (item.name === "Home") {
-                            e.preventDefault();
-                            window.scrollTo({ top: 0, behavior: 'smooth' });
-                          }
-                          setIsMenuOpen(false);
-                        }}
-                      >
-                        {item.name}
-                      </a>
-                    )}
-                  </div>
-                ))}
-                
-                <div className="pt-3 border-t border-border space-y-2">
-                  <div className="flex gap-2">
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={toggleDarkMode}
-                      className="flex-1 p-2 rounded-lg bg-gray-100 hover:bg-gray-200 dark-mode:bg-gray-700 dark-mode:hover:bg-gray-600 transition-colors duration-300 flex items-center justify-center gap-2"
-                    >
-                      {isDarkMode ? (
-                        <Eye className="w-4 h-4 text-gray-600 dark-mode:text-gray-300" />
-                      ) : (
-                        <Moon className="w-4 h-4 text-gray-600 dark-mode:text-gray-300" />
-                      )}
-                      <span className="text-xs font-medium text-gray-600 dark-mode:text-gray-300">
-                        {isDarkMode ? "Light" : "Dark"}
-                      </span>
-                    </motion.button>
-                    <Button variant="hero" size="sm" className="flex-1" onClick={() => setIsMenuOpen(false)}>
-                      LMS Login
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {/* Right Side Sidebar Menu - Canvas Component */}
+        <SidebarMenu
+          isOpen={isSidebarOpen}
+          onClose={() => setIsSidebarOpen(false)}
+          menuItems={sidebarMenuItems}
+          onCoursesClick={() => setShowCoursesModal(true)}
+        />
       </motion.header>
     </>
   );

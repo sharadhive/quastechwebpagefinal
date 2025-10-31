@@ -114,8 +114,8 @@ const CoursesModal = ({ isOpen, onClose }: CoursesModalProps) => {
   ];
 
   const tabs = [
-    { id: "it" as CourseTab, label: "IT PLACEMENT COURSES" },
-    { id: "non-it" as CourseTab, label: "NON IT PLACEMENT COURSES" },
+    { id: "it" as CourseTab, label: "Placement Courses with AI" },
+    { id: "non-it" as CourseTab, label: "Certification Courses" },
     { id: "eclass" as CourseTab, label: "Online" },
     { id: "degree" as CourseTab, label: "Degree" }
   ];

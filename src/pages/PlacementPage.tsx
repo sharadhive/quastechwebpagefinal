@@ -8,6 +8,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 // Our placement students for banner and stories
 const students = [
@@ -547,8 +553,8 @@ const PlacementPage = () => {
         </section>
 
         {/* 3. Campus Placement's Drive Section */}
-        <section className="w-full bg-gradient-to-r from-blue-100 via-blue-50 to-blue-100 py-10 md:py-16">
-          <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-[260px_1fr] gap-6 items-start">
+        <section className="w-full bg-gradient-to-r from-blue-100 via-blue-50 to-blue-100 py-10 md:py-16 overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 grid md:grid-cols-[260px_1fr] gap-6 items-start">
             <div className="hidden md:flex flex-col pt-2">
               <h2 className="heading-institute text-left leading-tight">
                 Campus<br />Placement's<br />Drive
@@ -568,40 +574,49 @@ const PlacementPage = () => {
                 </a>
               </div>
               {/* Placement Cards Carousel */}
-              <Swiper navigation={true} modules={[Navigation]} slidesPerView={1} spaceBetween={20} loop={true} className="w-full mt-6">
-                {[
-                  { label: "WELCOME", title: "Moment of a Warm Welcome!", image: branchImages[0] },
-                  { label: "PLACEMENTS", title: "Helping Learners Achieve Their Dream IT Jobs!", image: branchImages[1] },
-                  { label: "JOBS", title: "Offering Placements to Learners on the Spot", image: branchImages[2] },
-                  { label: "MOCK", title: "Our Learners Appearing for Their Mock Interviews", image: branchImages[0] },
-                ].map((item, idx) => (
-                  <SwiperSlide key={idx}>
-                    <motion.div
-                      className="relative rounded-2xl overflow-hidden shadow-2xl border border-blue-200"
-                      style={{ transformStyle: 'preserve-3d', perspective: '1000px' }}
-                      whileHover={{
-                        y: -10,
-                        rotateY: 5,
-                        scale: 1.02,
-                        transition: { duration: 0.3 }
-                      }}
-                    >
-                      <img src={item.image} alt={item.title} className="w-full h-[360px] md:h-[420px] object-cover" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+              <div className="w-full mt-6 overflow-hidden">
+                <Swiper 
+                  navigation={true} 
+                  modules={[Navigation]} 
+                  slidesPerView={1} 
+                  spaceBetween={20} 
+                  loop={true} 
+                  className="w-full"
+                >
+                  {[
+                    { label: "WELCOME", title: "Moment of a Warm Welcome!", image: branchImages[0] },
+                    { label: "PLACEMENTS", title: "Helping Learners Achieve Their Dream IT Jobs!", image: branchImages[1] },
+                    { label: "JOBS", title: "Offering Placements to Learners on the Spot", image: branchImages[2] },
+                    { label: "MOCK", title: "Our Learners Appearing for Their Mock Interviews", image: branchImages[0] },
+                  ].map((item, idx) => (
+                    <SwiperSlide key={idx} className="!w-full">
                       <motion.div
-                        className="absolute bottom-0 left-0 right-0 p-5 md:p-7 text-white"
-                        initial={{ y: 20, opacity: 0 }}
-                        whileInView={{ y: 0, opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.2, duration: 0.5 }}
+                        className="relative rounded-2xl overflow-hidden shadow-2xl border border-blue-200 w-full"
+                        style={{ transformStyle: 'preserve-3d', perspective: '1000px' }}
+                        whileHover={{
+                          y: -10,
+                          rotateY: 5,
+                          scale: 1.02,
+                          transition: { duration: 0.3 }
+                        }}
                       >
-                        <span className="uppercase text-xs tracking-widest text-blue-200 mb-2 block">{item.label}</span>
-                        <h3 className="text-2xl md:text-3xl font-extrabold leading-snug max-w-3xl">{item.title}</h3>
+                        <img src={item.image} alt={item.title} className="w-full h-[360px] md:h-[420px] object-cover" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                        <motion.div
+                          className="absolute bottom-0 left-0 right-0 p-5 md:p-7 text-white"
+                          initial={{ y: 20, opacity: 0 }}
+                          whileInView={{ y: 0, opacity: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: 0.2, duration: 0.5 }}
+                        >
+                          <span className="uppercase text-xs tracking-widest text-blue-200 mb-2 block">{item.label}</span>
+                          <h3 className="text-xl md:text-2xl lg:text-3xl font-extrabold leading-snug pr-4 md:pr-6 break-words max-w-full">{item.title}</h3>
+                        </motion.div>
                       </motion.div>
-                    </motion.div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
             </div>
           </div>
         </section>
@@ -960,6 +975,112 @@ const PlacementPage = () => {
                   <div className="text-gray-600">Learners already placed</div>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQs Section - Professional */}
+        <section className="py-12 md:py-16 bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-center mb-12"
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 backdrop-blur-sm border border-blue-100 shadow-sm mb-4">
+                <span className="w-2 h-2 rounded-full bg-blue-600"></span>
+                <span className="text-xs font-semibold text-blue-700 tracking-widest">FREQUENTLY ASKED QUESTIONS</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-extrabold mb-3">
+                <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-orange-500 bg-clip-text text-transparent">
+                  Everything you need to know about Placements
+                </span>
+              </h2>
+              <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto">
+                Clear, concise answers about our placement process, support, and opportunities.
+              </p>
+            </motion.div>
+
+            <div className="grid lg:grid-cols-2 gap-10 max-w-7xl mx-auto items-center">
+              {/* Left - Illustration Image */}
+              <motion.div
+                initial={{ opacity: 0, x: -40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                className="relative"
+              >
+                <div className="absolute -inset-4 bg-gradient-to-tr from-blue-200/40 via-purple-200/40 to-orange-200/40 rounded-3xl blur-2xl" aria-hidden></div>
+                <img
+                  src="/uploads/FAQ-vector-design-concept.jpg"
+                  alt="Frequently Asked Questions about Placements"
+                  className="relative w-full h-auto rounded-3xl ring-1 ring-blue-100 shadow-xl"
+                />
+              </motion.div>
+
+              {/* Right - FAQ Accordions */}
+              <motion.div
+                initial={{ opacity: 0, x: 40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="w-full"
+              >
+                <Accordion type="single" collapsible className="w-full">
+                  <AccordionItem value="faq-1" className="group bg-white border border-blue-100 rounded-2xl mb-4 shadow-sm hover:shadow-lg transition-shadow">
+                    <AccordionTrigger className="px-6 py-5 text-left font-semibold hover:no-underline">
+                      <span className="text-gray-900">How does QUASTECH help with placements?</span>
+                    </AccordionTrigger>
+                    <AccordionContent className="px-6 pb-6 text-gray-700 leading-relaxed">
+                      We provide comprehensive placement support including resume building, profile preparation, mock interviews, HR rounds practice, and direct interview opportunities through our 800+ hiring partners. Our dedicated placement team guides you through the entire process.
+                    </AccordionContent>
+                  </AccordionItem>
+
+                  <AccordionItem value="faq-2" className="group bg-white border border-blue-100 rounded-2xl mb-4 shadow-sm hover:shadow-lg transition-shadow">
+                    <AccordionTrigger className="px-6 py-5 text-left font-semibold hover:no-underline">
+                      <span className="text-gray-900">What companies are associated with QUASTECH for placements?</span>
+                    </AccordionTrigger>
+                    <AccordionContent className="px-6 pb-6 text-gray-700 leading-relaxed">
+                      We have partnerships with 800+ leading IT companies including TCS, Accenture, Capgemini, Infosys, Wipro, Cognizant, Mind Gate, AQM, GreytHR, and many more. These companies regularly conduct campus drives and hire our students.
+                    </AccordionContent>
+                  </AccordionItem>
+
+                  <AccordionItem value="faq-3" className="group bg-white border border-blue-100 rounded-2xl mb-4 shadow-sm hover:shadow-lg transition-shadow">
+                    <AccordionTrigger className="px-6 py-5 text-left font-semibold hover:no-underline">
+                      <span className="text-gray-900">What is the placement process after course completion?</span>
+                    </AccordionTrigger>
+                    <AccordionContent className="px-6 pb-6 text-gray-700 leading-relaxed">
+                      After completing your training, you'll attend profile building sessions, participate in mock interviews, and get your resume reviewed. Then, we schedule interviews with our hiring partners. Most students secure placements within 2-4 weeks of course completion.
+                    </AccordionContent>
+                  </AccordionItem>
+
+                  <AccordionItem value="faq-4" className="group bg-white border border-blue-100 rounded-2xl mb-4 shadow-sm hover:shadow-lg transition-shadow">
+                    <AccordionTrigger className="px-6 py-5 text-left font-semibold hover:no-underline">
+                      <span className="text-gray-900">What is the average placement package offered?</span>
+                    </AccordionTrigger>
+                    <AccordionContent className="px-6 pb-6 text-gray-700 leading-relaxed">
+                      Placement packages vary based on skills, experience, and company. Our students have secured positions ranging from entry-level (3-5 LPA) to senior roles (8-15 LPA). We focus on matching candidates with roles that align with their expertise and career goals.
+                    </AccordionContent>
+                  </AccordionItem>
+
+                  <AccordionItem value="faq-5" className="group bg-white border border-blue-100 rounded-2xl mb-4 shadow-sm hover:shadow-lg transition-shadow">
+                    <AccordionTrigger className="px-6 py-5 text-left font-semibold hover:no-underline">
+                      <span className="text-gray-900">Do you provide placement assistance for all courses?</span>
+                    </AccordionTrigger>
+                    <AccordionContent className="px-6 pb-6 text-gray-700 leading-relaxed">
+                      Yes, placement assistance is available for all our courses including IT Placement Courses, Non-IT Placement Courses, Online Courses, and Degree Programs. We ensure every student gets dedicated support to kickstart their career.
+                    </AccordionContent>
+                  </AccordionItem>
+
+                  <AccordionItem value="faq-6" className="group bg-white border border-blue-100 rounded-2xl mb-1 shadow-sm hover:shadow-lg transition-shadow">
+                    <AccordionTrigger className="px-6 py-5 text-left font-semibold hover:no-underline">
+                      <span className="text-gray-900">What support is provided during placement drives?</span>
+                    </AccordionTrigger>
+                    <AccordionContent className="px-6 pb-6 text-gray-700 leading-relaxed">
+                      During placement drives, we provide interview scheduling, pre-interview briefings, technical and HR preparation sessions, resume optimization, and post-interview feedback. Our team is available throughout the process to address any concerns and help you succeed.
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
+              </motion.div>
             </div>
           </div>
         </section>

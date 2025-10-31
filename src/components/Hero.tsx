@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import { User, Mail, Phone, Send, Star, Award, Users, TrendingUp, Download, ArrowRight } from "lucide-react";
-import { TypeAnimation } from "react-type-animation";
+import { useState } from "react";
+import { User, Mail, Phone, Send, Download } from "lucide-react";
 import BrochureModal from "./BrochureModal";
 
 const HeroBackground = () => (
@@ -196,110 +195,94 @@ export default function Hero() {
       <HeroBackground />
       <FloatingElements />
 
-      <div className="relative z-10 w-full px-3 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
+      <div className="relative z-10 w-full px-4 sm:px-6 md:px-8 lg:px-10 py-6 sm:py-8 md:py-10 lg:py-12 overflow-visible">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 lg:gap-8 items-center min-h-[60vh]">
+          <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* LEFT TEXT */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-center lg:text-left order-1 lg:order-1 w-full"
+              className="text-center lg:text-left order-1 lg:order-1 w-full overflow-visible"
             >
-              <div className="mb-4">
-                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 text-white leading-tight drop-shadow-lg">
-                  <TypeAnimation
-                    sequence={[
-                      'Trusted and Renowned Training Institute',
-                      2000,
-                      'Launch Your Tech Career',
-                      2000,
-                      'Build Your Future',
-                      2000,
-                      'Transform Your Life',
-                      2000,
-                    ]}
-                    wrapper="span"
-                    speed={50}
-                    deletionSpeed={30}
-                    repeat={Infinity}
-                    className="block bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent"
-                    cursor={true}
-                    preRenderFirstString={true}
-                  />
-                </h1>
-                <div className="text-sm sm:text-base max-w-lg mx-auto lg:mx-0 font-medium text-white/95 min-h-[40px] sm:min-h-[45px] flex items-center justify-center lg:justify-start drop-shadow-md">
-                  <TypeAnimation
-                    sequence={[
-                      'Learn, build, and grow with guidance from industry experts.',
-                      3000,
-                      'We help you gain confidence, skills, and your dream job!',
-                      3000,
-                      'Transform your career with industry-ready skills.',
-                      3000,
-                      'Join thousands of successful graduates.',
-                      3000,
-                    ]}
-                    wrapper="span"
-                    speed={60}
-                    deletionSpeed={40}
-                    repeat={Infinity}
-                    className="block text-center lg:text-left"
-                    cursor={true}
-                    preRenderFirstString={true}
-                  />
-                </div>
-              </div>
-
-              {/* Feature Cards Grid */}
-              <div className="grid grid-cols-2 gap-3 mb-6">
-                {[
-                  { title: "Placement", icon: Users, color: "from-blue-500 to-cyan-500" },
-                  { title: "ISO Certified", icon: Award, color: "from-orange-500 to-red-500" },
-                  { title: "Industrial Based Training", icon: TrendingUp, color: "from-green-500 to-emerald-500" },
-                  { title: "EMI Option", icon: Star, color: "from-purple-500 to-pink-500" },
-                ].map((feature, index) => (
-                  <motion.div
-                    key={feature.title}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.5 + index * 0.1 }}
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    className="bg-white/15 backdrop-blur-xl border border-white/30 rounded-lg p-3 hover:bg-white/25 transition-all duration-300 cursor-pointer shadow-lg"
-                  >
-                    <div className="flex items-center gap-2 mb-2">
-                      <div className={`w-6 h-6 rounded-lg bg-gradient-to-r ${feature.color} flex items-center justify-center shadow-md`}>
-                        <feature.icon className="w-3 h-3 text-white" />
-                      </div>
-                      <p className="text-xs font-semibold text-white drop-shadow-sm">{feature.title}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row gap-3 mb-6">
-              <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.97 }}
-                onClick={() => setIsModalOpen(true)}
-                  className="relative bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 transition-all text-white font-semibold rounded-xl px-6 py-3 shadow-lg hover:shadow-xl text-base overflow-hidden group flex items-center justify-center gap-2"
+              {/* Main Heading */}
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.6 }}
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-5 md:mb-6 text-white leading-[1.3] drop-shadow-lg"
               >
-                  <Download className="w-5 h-5" />
-                  <span className="relative z-10">Book Your Demo</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
-              </motion.button>
+                <div className="block mb-3 md:mb-4 whitespace-nowrap">India's Leading and Trusted</div>
+                <div className="block bg-gradient-to-r from-blue-400 via-blue-300 to-orange-400 bg-clip-text text-transparent mb-3 md:mb-4 whitespace-nowrap pr-2" style={{ lineHeight: '1.5', paddingBottom: '0.5rem', display: 'inline-block' }}>
+                  IT Training Institute Offering
+                </div>
+                <div className="block whitespace-nowrap">Classroom & Online Training</div>
+              </motion.h1>
 
+              {/* In Association With Section */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.6 }}
+                className="mb-6"
+              >
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 flex-wrap">
+                  <span className="text-white/90 text-sm sm:text-base font-semibold underline decoration-white/50">
+                    In association with:
+                  </span>
+                  <div className="flex items-center gap-4 sm:gap-6 flex-wrap">
+                    {/* NSDC Logo */}
+                    <motion.img
+                      src="/uploads/nsdeimg01.png"
+                      alt="NSDC Logo"
+                      className="h-12 sm:h-14 md:h-16 w-auto object-contain"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.5, duration: 0.4 }}
+                      whileHover={{ scale: 1.1 }}
+                    />
+                    {/* Skill India Logo */}
+                    <motion.img
+                      src="/uploads/skillindia--.jpg"
+                      alt="Skill India Logo"
+                      className="h-10 sm:h-12 md:h-14 w-auto object-contain"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.6, duration: 0.4 }}
+                      whileHover={{ scale: 1.1 }}
+                    />
+                    {/* IBM Logo */}
+                    <motion.img
+                      src="/uploads/ibm.png"
+                      alt="IBM Logo"
+                      className="h-8 sm:h-10 md:h-12 w-auto object-contain"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.7, duration: 0.4 }}
+                      whileHover={{ scale: 1.1 }}
+                    />
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Action Button */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8, duration: 0.6 }}
+                className="flex justify-center lg:justify-start"
+              >
                 <motion.button
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.97 }}
-                  className="relative bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 transition-all text-white font-semibold rounded-xl px-6 py-3 shadow-lg hover:shadow-xl text-base overflow-hidden group flex items-center justify-center gap-2"
+                  onClick={() => setIsModalOpen(true)}
+                  className="relative bg-gradient-to-r from-blue-500 to-orange-500 hover:from-blue-600 hover:to-orange-600 transition-all text-white font-bold rounded-xl px-6 py-3 sm:px-8 sm:py-4 shadow-lg hover:shadow-xl text-base sm:text-lg overflow-hidden group flex items-center justify-center gap-2"
                 >
-                  <ArrowRight className="w-5 h-5" />
-                  <span className="relative z-10">Know More</span>
+                  <Download className="w-5 h-5 sm:w-6 sm:h-6" />
+                  <span className="relative z-10">Download Brochure</span>
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
                 </motion.button>
-              </div>
+              </motion.div>
 
             </motion.div>
 

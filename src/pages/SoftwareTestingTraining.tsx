@@ -41,7 +41,8 @@ import {
   Certificate,
   ArrowUp,
   UserCircle,
-  BadgeCheck
+  BadgeCheck,
+  Rocket
 } from "lucide-react";
 import {
   Accordion,
@@ -126,12 +127,6 @@ const SoftwareTestingTraining = () => {
       title: "2 Global Certifications",
       icon: Award,
       description: "Earn industry-recognized global certifications.",
-    },
-    {
-      title: "Integrated Internship",
-      icon: Briefcase,
-      secondaryIcon: GraduationCap,
-      description: "Gain real-time experience with our integrated internship program.",
     },
     {
       title: "Personalised Career Coach",
@@ -751,7 +746,7 @@ const SoftwareTestingTraining = () => {
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
               {courseHighlights.map((highlight, index) => (
                 <motion.div
                   key={index}
@@ -1376,82 +1371,100 @@ const SoftwareTestingTraining = () => {
         {/* Projects Section */}
         <section className="py-8 md:py-12 bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50">
           <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-[2fr_1fr] gap-12 max-w-7xl mx-auto">
-              {/* Left Column - Projects Content */}
+            <div className="max-w-7xl mx-auto">
+              {/* Projects Title */}
               <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
+                className="text-center mb-12"
               >
-                {/* Projects Title */}
-                <h2 className="text-4xl md:text-5xl font-extrabold mb-6 relative">
+                <h2 className="text-4xl md:text-5xl font-extrabold mb-6 relative inline-block">
                   <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-orange-500 bg-clip-text text-transparent">
                     Projects
                   </span>
-                  <div className="absolute bottom-0 left-0 w-24 h-1 bg-blue-600 rounded-full"></div>
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-blue-600 rounded-full"></div>
                 </h2>
-
                 {/* Introductory Paragraph */}
-                <p className="text-lg text-gray-700 mb-8 leading-relaxed">
+                <p className="text-lg text-gray-700 mb-8 leading-relaxed max-w-4xl mx-auto">
                   The belief at Quastech is in the practical application of theoretical knowledge. There is how our students participate in a dynamic learning process, and create projects based on the concepts.
                 </p>
-
-                {/* Key Points List */}
-                <div className="space-y-6">
-                  {[
-                    "Students immerse themselves into practical projects, transferring theoretical knowledge to real-life situations thus promoting a better understanding of the topics covered.",
-                    "Teamwork encouraged, students work together on projects that reflect the collaborative nature of their professional work environment",
-                    "Projects act as a reflection of real life issues which prepare student for the rigors and responsibilities that their future careers will demand.",
-                    "Mentorship and advice from industry experts will ensure that our students' projects meet current workplace benchmarks",
-                    "Students are making use of the most recent tools and technologies while working on projects that are both educational, but also engage with current trends in industry.",
-                    "Through repeated design processes, students adjust and improve their projects learning valuable skills about project management as well as optimization.",
-                    "Finished projects not only act as the testimony of learning, but also a great portfolio, demonstrating talents to potential employers."
-                  ].map((point, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                      className="flex items-start gap-4"
-                    >
-                      <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center rounded-full bg-gradient-to-br from-orange-200 to-orange-300">
-                        <span className="text-orange-600 font-bold text-lg">Q</span>
-                      </div>
-                      <p className="text-gray-700 leading-relaxed flex-1">{point}</p>
-                  </motion.div>
-                ))}
-              </div>
               </motion.div>
 
-              {/* Right Column - Contact Information Only */}
-              <div>
-                {/* Contact Information */}
-                <motion.div
-                  initial={{ opacity: 0, x: 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8 }}
-                  viewport={{ once: true }}
-                  className="bg-white rounded-xl shadow-lg p-8 border border-gray-200"
-                >
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <div className="flex-1">
-                        <p className="text-sm font-semibold text-gray-600 mb-1">Phone (For Voice Call):</p>
-                        <p className="text-base font-bold text-gray-800">+918422800381</p>
+              {/* 3D Cards Grid */}
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                {[
+                  {
+                    text: "Students immerse themselves into practical projects, transferring theoretical knowledge to real-life situations thus promoting a better understanding of the topics covered.",
+                    icon: Code
+                  },
+                  {
+                    text: "Teamwork encouraged, students work together on projects that reflect the collaborative nature of their professional work environment",
+                    icon: Users
+                  },
+                  {
+                    text: "Projects act as a reflection of real life issues which prepare student for the rigors and responsibilities that their future careers will demand.",
+                    icon: Target
+                  },
+                  {
+                    text: "Mentorship and advice from industry experts will ensure that our students' projects meet current workplace benchmarks",
+                    icon: Award
+                  },
+                  {
+                    text: "Students are making use of the most recent tools and technologies while working on projects that are both educational, but also engage with current trends in industry.",
+                    icon: Rocket
+                  },
+                  {
+                    text: "Through repeated design processes, students adjust and improve their projects learning valuable skills about project management as well as optimization.",
+                    icon: TrendingUp
+                  }
+                ].map((item, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    whileHover={{ 
+                      y: -12, 
+                      scale: 1.02,
+                      rotateY: 5,
+                      rotateX: 5
+                    }}
+                    className="relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 group"
+                    style={{ 
+                      transformStyle: 'preserve-3d',
+                      perspective: '1000px'
+                    }}
+                  >
+                    {/* 3D Effect Background Gradient */}
+                    <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-orange-500 rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300"></div>
+                    
+                    {/* Card Content */}
+                    <div className="relative z-10">
+                      {/* Icon with Q badge */}
+                      <div className="flex items-start gap-4 mb-4">
+                        <div className="relative flex-shrink-0">
+                          <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-orange-400 to-orange-500 shadow-md group-hover:shadow-lg transition-shadow">
+                            <item.icon className="w-6 h-6 text-white" strokeWidth={2} />
+                          </div>
+                          <div className="absolute -bottom-1 -right-1 w-6 h-6 flex items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-blue-600 shadow-sm border-2 border-white">
+                            <span className="text-white font-bold text-xs">Q</span>
+                          </div>
+                        </div>
                       </div>
-                      <Phone className="w-6 h-6 text-orange-500 flex-shrink-0" />
+                      
+                      {/* Description Text */}
+                      <p className="text-gray-700 leading-relaxed text-sm md:text-base">
+                        {item.text}
+                      </p>
                     </div>
-                    <div className="flex items-center justify-between">
-                      <div className="flex-1">
-                        <p className="text-sm font-semibold text-gray-600 mb-1">WhatsApp (For Call & Chat):</p>
-                        <p className="text-base font-bold text-gray-800">+918422800381</p>
-                      </div>
-                      <MessageCircle className="w-6 h-6 text-orange-500 flex-shrink-0" />
-                    </div>
-                  </div>
-                </motion.div>
+                    
+                    {/* Shine Effect on Hover */}
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                  </motion.div>
+                ))}
               </div>
             </div>
           </div>
