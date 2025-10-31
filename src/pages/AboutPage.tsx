@@ -27,6 +27,22 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { DarkModeProvider } from "@/contexts/DarkModeContext";
 
+// Company logos for sliding effect
+const companyList = [
+  { name: "Accenture", logo: "/images/Logo folder/accenture.jpg" },
+  { name: "TCS", logo: "/images/Logo folder/tcs.jpg" },
+  { name: "Capgemini", logo: "/images/Logo folder/capgemini.jpg" },
+  { name: "JustDial", logo: "/images/Logo folder/justdial.jpg" },
+  { name: "Mind Gate", logo: "/images/Logo folder/mind gate.jpg" },
+  { name: "Infibeam", logo: "/images/Logo folder/infibeam.jpg" },
+  { name: "Ingram", logo: "/images/Logo folder/ingram.jpg" },
+  { name: "AQM", logo: "/images/Logo folder/AQM_New_Logo.jpg" },
+  { name: "Aurion", logo: "/images/Logo folder/Aurion logo.png" },
+  { name: "Axioned", logo: "/images/Logo folder/axioned.jpg" },
+  { name: "Cybertech", logo: "/images/Logo folder/cybertech.jpg" },
+  { name: "GreytHR", logo: "/images/Logo folder/greytrix_logo.jpg" },
+];
+
 const AboutPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -52,6 +68,11 @@ const AboutPage = () => {
       icon: Target,
       title: "Industry Alignment",
       description: "Our courses are designed in collaboration with industry experts and leading tech companies. We ensure our curriculum stays relevant, practical, and aligned with current market requirements and emerging technologies."
+    },
+    {
+      icon: Award,
+      title: "Quality Excellence",
+      description: "We maintain the highest standards of educational quality through ISO 9001:2015 certification, continuous improvement processes, and rigorous quality assurance measures. Our commitment to excellence ensures every student receives world-class training."
     }
   ];
 
@@ -117,40 +138,229 @@ const AboutPage = () => {
       <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-background">
         <Header />
 
-        {/* Hero Banner with Gradient - Matching Website Theme */}
-        <section className="relative px-4 pt-20 md:pt-24 pb-12 md:pb-16 overflow-hidden">
+        {/* Hero Banner with Gradient Background - Same as ContactPage */}
+        <section className="relative px-4 pt-20 md:pt-24 pb-4 md:pb-6 overflow-hidden min-h-[350px] md:min-h-[420px] flex items-center">
           <div className="absolute inset-0 z-0">
-            {/* Clean Professional Hero Gradient - Same as Hero Component */}
-            <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800" />
-            {/* Subtle Overlay for Better Text Contrast */}
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 via-transparent to-orange-900/20" />
-            {/* Professional Mesh Overlay - Reduced Opacity */}
-            <div className="absolute inset-0 bg-gradient-mesh opacity-10" />
-            {/* Subtle Grid Pattern - Reduced Opacity */}
-            <div
-              className="absolute inset-0 opacity-5"
-              style={{
-                backgroundImage:
-                  "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
-                backgroundSize: "60px 60px",
+            {/* Main Gradient Background - Same as ContactPage */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#1e3a8a] via-[#2563eb] to-[#f97316]" />
+            
+            {/* Static Gradient Overlays */}
+            <div className="absolute inset-0 opacity-30">
+              <div className="absolute inset-0" style={{
+                backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.5) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(249, 115, 22, 0.5) 0%, transparent 50%)',
+              }} />
+            </div>
+
+            {/* Animated Mesh Gradient Overlay */}
+            <div className="absolute inset-0 opacity-20" style={{
+              backgroundImage: `linear-gradient(135deg, rgba(30, 58, 138, 0.4) 0%, transparent 50%), 
+                               linear-gradient(225deg, rgba(249, 115, 22, 0.4) 0%, transparent 50%),
+                               linear-gradient(45deg, rgba(59, 130, 246, 0.3) 0%, transparent 50%)`,
+            }} />
+
+            {/* Animated Floating Elements */}
+            <motion.div
+              initial={{ y: 0, x: 0, rotate: 0 }}
+              animate={{ 
+                y: -20,
+                x: 10,
+                rotate: 8
               }}
+              transition={{ 
+                duration: 7, 
+                repeat: Infinity,
+                repeatType: 'reverse',
+                ease: "easeInOut" 
+              }}
+              className="absolute top-16 left-8 w-48 h-48 md:w-56 md:h-56 bg-gradient-to-br from-blue-500/30 to-blue-600/30 rounded-full blur-3xl"
+            />
+            <motion.div
+              initial={{ y: 0, x: 0, rotate: 0 }}
+              animate={{ 
+                y: 20,
+                x: -10,
+                rotate: -8
+              }}
+              transition={{ 
+                duration: 9, 
+                repeat: Infinity,
+                repeatType: 'reverse',
+                ease: "easeInOut",
+                delay: 1
+              }}
+              className="absolute bottom-12 right-8 w-64 h-64 md:w-72 md:h-72 bg-gradient-to-br from-orange-500/30 to-orange-600/30 rounded-full blur-3xl"
+            />
+            <motion.div
+              initial={{ scale: 1, opacity: 0.3 }}
+              animate={{ 
+                scale: 1.15,
+                opacity: 0.4
+              }}
+              transition={{ 
+                duration: 10, 
+                repeat: Infinity,
+                repeatType: 'reverse',
+                ease: "easeInOut",
+                delay: 2
+              }}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] md:w-[450px] md:h-[450px] bg-gradient-to-br from-blue-600/20 to-orange-500/20 rounded-full blur-3xl"
             />
           </div>
-          <div className="relative z-10 w-full max-w-6xl mx-auto text-center py-8">
+          
+          <div className="relative z-10 w-full max-w-7xl mx-auto grid md:grid-cols-2 gap-4 md:gap-6 items-center py-2">
+            {/* Left Side - Text Content with 3D Effects */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -50, rotateY: -15 }}
+              animate={{ opacity: 1, x: 0, rotateY: 0 }}
               transition={{ duration: 0.8 }}
+              style={{ transformStyle: 'preserve-3d', perspective: '1000px' }}
+              className="space-y-2 md:space-y-3"
             >
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 text-white">
+              <motion.h1
+                className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white drop-shadow-2xl mb-1"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.6 }}
+                whileHover={{ scale: 1.05, rotateY: 5 }}
+              >
                 About Quastech
-              </h1>
-              <p className="text-xl md:text-2xl text-blue-200 max-w-3xl mx-auto leading-relaxed mb-4">
+              </motion.h1>
+              
+              <motion.p
+                className="text-base md:text-lg text-blue-200 leading-snug drop-shadow-lg mb-2"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.6 }}
+              >
                 Empowering Careers Through Excellence in IT Education
-              </p>
-              <p className="text-lg text-white/80 max-w-2xl mx-auto">
-                Since 2010, we've been committed to transforming lives through quality education, industry-relevant training, and unwavering support for student success.
-              </p>
+              </motion.p>
+              
+              <motion.div
+                className="space-y-2"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.6 }}
+              >
+                <p className="text-sm md:text-base text-white/90 leading-snug">
+                  Since 2010, we've been committed to transforming lives through quality education, industry-relevant training, and unwavering support for student success.
+                </p>
+                <p className="text-xs md:text-sm text-white/80 leading-snug">
+                  QUASTECH (Future Through Innovations) is a leading IT training institute established with the mission "To Provide excellent & smart working professionals to IT industry."
+                </p>
+              </motion.div>
+
+              {/* Stats Quick View */}
+              <motion.div
+                className="grid grid-cols-2 gap-2 pt-1"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.6 }}
+              >
+                {[
+                  { value: "40,000+", label: "Students" },
+                  { value: "800+", label: "Companies" },
+                  { value: "95%", label: "Placement" },
+                  { value: "15+", label: "Years" }
+                ].map((stat, idx) => (
+                  <motion.div
+                    key={idx}
+                    className="bg-white/10 backdrop-blur-sm rounded-lg p-2 md:p-2.5 border border-white/20"
+                    style={{ transformStyle: 'preserve-3d' }}
+                    whileHover={{
+                      scale: 1.05,
+                      rotateY: 5,
+                      rotateX: -3,
+                      backgroundColor: 'rgba(255,255,255,0.15)',
+                      transition: { duration: 0.3 }
+                    }}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.6 + idx * 0.1 }}
+                  >
+                    <div className="text-lg md:text-xl font-extrabold text-white mb-0.5">{stat.value}</div>
+                    <div className="text-xs text-blue-200 font-semibold">{stat.label}</div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </motion.div>
+
+            {/* Right Side - Image with 3D Effects */}
+            <motion.div
+              initial={{ opacity: 0, x: 50, rotateY: 15 }}
+              animate={{ opacity: 1, x: 0, rotateY: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative flex items-center justify-center"
+              style={{ transformStyle: 'preserve-3d', perspective: '1000px' }}
+            >
+              <motion.div
+                className="relative w-full max-w-md"
+                whileHover={{
+                  rotateY: -10,
+                  rotateX: 5,
+                  scale: 1.05,
+                  transition: { duration: 0.3 }
+                }}
+                animate={{
+                  y: -10
+                }}
+                transition={{
+                  y: {
+                    duration: 4,
+                    repeat: Infinity,
+                    repeatType: 'reverse',
+                    ease: 'easeInOut'
+                  }
+                }}
+              >
+                <div className="relative transform rotate-3 border-2 border-blue-400/50 rounded-xl overflow-hidden shadow-xl p-2 bg-gradient-to-br from-blue-500/20 to-transparent backdrop-blur-sm">
+                  <img
+                    src="/images/big-data-enegenering--training.png"
+                    alt="Big Data Engineering Training"
+                    className="w-full h-auto object-contain rounded-md max-h-[280px] md:max-h-[320px]"
+                    onError={(e) => {
+                      e.currentTarget.src = "/images/branches/IMG20240104153417.jpg";
+                    }}
+                  />
+                  {/* Glow Effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 via-transparent to-blue-600/20 pointer-events-none rounded-md" />
+                </div>
+                {/* Floating Particles Effect */}
+                {[...Array(4)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="absolute w-1.5 h-1.5 bg-blue-400/40 rounded-full"
+                    style={{
+                      left: `${20 + i * 20}%`,
+                      top: `${15 + (i % 2) * 30}%`,
+                    }}
+                    animate={{
+                      y: -15,
+                      opacity: 0.8,
+                      scale: 1.3
+                    }}
+                    transition={{
+                      y: {
+                        duration: 2 + i * 0.3,
+                        repeat: Infinity,
+                        repeatType: 'reverse',
+                        delay: i * 0.2
+                      },
+                      opacity: {
+                        duration: 2 + i * 0.3,
+                        repeat: Infinity,
+                        repeatType: 'reverse',
+                        delay: i * 0.2
+                      },
+                      scale: {
+                        duration: 2 + i * 0.3,
+                        repeat: Infinity,
+                        repeatType: 'reverse',
+                        delay: i * 0.2
+                      }
+                    }}
+                  />
+                ))}
+              </motion.div>
             </motion.div>
           </div>
         </section>
@@ -165,7 +375,7 @@ const AboutPage = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 text-[#19376D]">
+              <h2 className="heading-institute text-center md:text-left">
                 About us
               </h2>
               <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-6">
@@ -210,7 +420,7 @@ const AboutPage = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-8 text-[#19376D]">
+              <h2 className="heading-institute">
                 Our Story
               </h2>
               <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-6">
@@ -226,7 +436,7 @@ const AboutPage = () => {
           </div>
         </section>
 
-        {/* Our Values Section - Left Values, Right Image */}
+        {/* Our Values Section - Reorganized Layout */}
         <section className="py-20 px-4 md:px-8 bg-white">
           <div className="max-w-7xl mx-auto">
             <motion.div
@@ -236,15 +446,15 @@ const AboutPage = () => {
               transition={{ duration: 0.8 }}
               className="mb-12"
             >
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 text-[#19376D]">
+              <h2 className="heading-institute mb-4">
                 Our Values
               </h2>
             </motion.div>
             
-            <div className="grid md:grid-cols-2 gap-12 items-start">
-              {/* Left Column - Values Grid */}
+            <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-start">
+              {/* Left Column - Values Grid (First 3 cards) */}
               <div className="grid grid-cols-1 gap-8">
-                {values.map((value, index) => (
+                {values.slice(0, 3).map((value, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, y: 30 }}
@@ -266,25 +476,52 @@ const AboutPage = () => {
                 ))}
               </div>
 
-              {/* Right Column - Angular Image */}
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="relative"
-              >
-                <div className="relative transform rotate-3 md:rotate-6 border-2 border-blue-600 rounded-lg overflow-hidden shadow-2xl p-2 bg-gradient-to-br from-blue-50 to-transparent">
-                  <img
-                    src="/assets/about_asset/images/Main_About.jpg"
-                    alt="Quastech Values"
-                    className="w-full h-auto object-cover rounded"
-                    onError={(e) => {
-                      e.currentTarget.src = "/images/branches/IMG20240104153434.jpg";
-                    }}
-                  />
+              {/* Right Column - Image at Top, Cards Below */}
+              <div className="space-y-8">
+                {/* Top Image */}
+                <motion.div
+                  initial={{ opacity: 0, x: 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                  className="relative"
+                >
+                  <div className="relative transform rotate-3 md:rotate-6 border-2 border-blue-600 rounded-lg overflow-hidden shadow-2xl p-2 bg-gradient-to-br from-blue-50 to-transparent">
+                    <img
+                      src="/assets/about_asset/images/Main_About.jpg"
+                      alt="Quastech Values"
+                      className="w-full h-auto object-cover rounded"
+                      onError={(e) => {
+                        e.currentTarget.src = "/images/branches/IMG20240104153434.jpg";
+                      }}
+                    />
+                  </div>
+                </motion.div>
+
+                {/* Remaining Value Cards Below Image (2 cards) */}
+                <div className="grid grid-cols-1 gap-8">
+                  {values.slice(3, 5).map((value, index) => (
+                    <motion.div
+                      key={index + 3}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: (index + 3) * 0.1, duration: 0.6 }}
+                      className="bg-blue-50 rounded-xl p-6 border border-blue-200 hover:border-blue-400 hover:shadow-lg transition-all"
+                    >
+                      <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center flex-shrink-0">
+                          <value.icon className="w-6 h-6 text-white" />
+                        </div>
+                        <div>
+                          <h3 className="text-xl md:text-2xl font-bold text-[#19376D] mb-3">{value.title}</h3>
+                          <p className="text-gray-700 leading-relaxed">{value.description}</p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </section>
@@ -298,10 +535,10 @@ const AboutPage = () => {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 text-[#19376D]">
+              <h2 className="heading-institute mb-4">
                 Why Choose Quastech?
               </h2>
-              <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
+              <p className="section-subtitle">
                 What makes us stand out from the rest
               </p>
             </motion.div>
@@ -336,7 +573,7 @@ const AboutPage = () => {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 text-[#19376D]">
+              <h2 className="heading-institute mb-4">
                 Our Achievements
               </h2>
             </motion.div>
@@ -372,37 +609,175 @@ const AboutPage = () => {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 text-[#19376D]">
+              <h2 className="heading-institute mb-4">
                 Our Journey
               </h2>
-              <p className="text-lg md:text-xl text-gray-700">Key milestones that shaped our success</p>
+              <p className="section-subtitle">Key milestones that shaped our success</p>
             </motion.div>
 
-            <div className="space-y-8">
-              {milestones.map((milestone, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1, duration: 0.6 }}
-                  className={`flex items-center gap-6 ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
-                >
-                  <div className="flex-1 bg-white rounded-xl p-6 border border-blue-200 hover:shadow-lg transition-all">
-                    <div className="flex items-center gap-4 mb-3">
-                      <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center flex-shrink-0">
-                        <milestone.icon className="w-8 h-8 text-white" />
+            <div className="relative max-w-5xl mx-auto pl-4 md:pl-0">
+              {/* Vertical Timeline Line with Gentle Curve */}
+              <div className="absolute left-8 md:left-12 top-0 bottom-0 w-1">
+                <svg className="w-full h-full" viewBox="0 0 4 1200" preserveAspectRatio="none">
+                  <defs>
+                    <linearGradient id="journeyTimelineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stopColor="#60A5FA" />
+                      <stop offset="50%" stopColor="#3B82F6" />
+                      <stop offset="100%" stopColor="#60A5FA" />
+                    </linearGradient>
+                  </defs>
+                  {/* Gentle S-curve path */}
+                  <path
+                    d="M 2 0 Q 4 150 2 300 T 2 600 T 2 900 T 2 1200"
+                    stroke="url(#journeyTimelineGradient)"
+                    strokeWidth="3"
+                    fill="none"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </div>
+
+              {/* Timeline Items */}
+              <div className="space-y-12 md:space-y-16 relative">
+                {milestones.map((milestone, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1, duration: 0.6 }}
+                    className="relative flex items-start gap-6 md:gap-8"
+                  >
+                    {/* Timeline Node (Circle) */}
+                    <div className="relative z-10 flex-shrink-0">
+                      <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white border-4 border-blue-500 shadow-lg flex items-center justify-center">
+                        <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-blue-600 flex items-center justify-center">
+                          <milestone.icon className="w-5 h-5 md:w-6 md:h-6 text-white" />
+                        </div>
                       </div>
-                      <div>
-                        <div className="text-2xl font-bold text-blue-600">{milestone.year}</div>
-                        <h3 className="text-xl font-bold text-[#19376D]">{milestone.title}</h3>
+                      {/* Year Badge */}
+                      <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded whitespace-nowrap">
+                        {milestone.year}
                       </div>
                     </div>
-                    <p className="text-gray-700 leading-relaxed">{milestone.description}</p>
-                  </div>
-                </motion.div>
-              ))}
+
+                    {/* Content Card */}
+                    <div className="flex-1 bg-white rounded-xl p-6 md:p-8 border border-blue-200 hover:border-blue-400 hover:shadow-xl transition-all mt-2">
+                      <h3 className="text-xl md:text-2xl font-bold text-[#19376D] mb-3">
+                        {milestone.title}
+                      </h3>
+                      <p className="text-gray-700 leading-relaxed text-sm md:text-base">
+                        {milestone.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
+          </div>
+        </section>
+
+        {/* Our Hiring Partners - Sliding Company Logos */}
+        <section className="py-16 bg-white">
+          <div className="max-w-6xl mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-8"
+            >
+              <h2 className="heading-institute-lg mb-4">Our Hiring Partners</h2>
+              <p className="section-subtitle text-center">Organizations around the globe trusting our Learners technical skills and hiring them with good payscale</p>
+            </motion.div>
+            
+            {/* First Row - Sliding from Right to Left */}
+            <div className="overflow-hidden mb-6">
+              <motion.div
+                className="flex gap-6"
+                animate={{
+                  x: ['0%', '-50%']
+                }}
+                transition={{
+                  x: {
+                    repeat: Infinity,
+                    repeatType: 'loop',
+                    duration: 30,
+                    ease: 'linear'
+                  }
+                }}
+              >
+                {/* Duplicate the logos for seamless loop */}
+                {[...companyList.slice(0, 6), ...companyList.slice(0, 6)].map((company, i) => (
+                  <div
+                    key={`first-${i}`}
+                    className="flex-shrink-0 w-48 md:w-56 lg:w-64"
+                  >
+                    <motion.div
+                      className="bg-white rounded-xl p-4 shadow-md hover:shadow-xl transition-all border border-gray-100 flex items-center justify-center h-24"
+                      whileHover={{ scale: 1.05, rotateY: 5 }}
+                      style={{ transformStyle: 'preserve-3d' }}
+                    >
+                      <img src={company.logo} alt={company.name} className="max-w-full max-h-full object-contain" />
+                    </motion.div>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+
+            {/* Second Row - Sliding from Left to Right */}
+            <div className="overflow-hidden">
+              <motion.div
+                className="flex gap-6"
+                animate={{
+                  x: ['-50%', '0%']
+                }}
+                transition={{
+                  x: {
+                    repeat: Infinity,
+                    repeatType: 'loop',
+                    duration: 30,
+                    ease: 'linear'
+                  }
+                }}
+              >
+                {/* Duplicate the logos for seamless loop */}
+                {[...companyList.slice(6, 12), ...companyList.slice(6, 12)].map((company, i) => (
+                  <div
+                    key={`second-${i}`}
+                    className="flex-shrink-0 w-48 md:w-56 lg:w-64"
+                  >
+                    <motion.div
+                      className="bg-white rounded-xl p-4 shadow-md hover:shadow-xl transition-all border border-gray-100 flex items-center justify-center h-24"
+                      whileHover={{ scale: 1.05, rotateY: -5 }}
+                      style={{ transformStyle: 'preserve-3d' }}
+                    >
+                      <img src={company.logo} alt={company.name} className="max-w-full max-h-full object-contain" />
+                    </motion.div>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+            
+            {/* Stats */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+              className="mt-8 text-center"
+            >
+              <div className="inline-flex gap-8">
+                <div className="text-center">
+                  <div className="text-4xl font-bold text-blue-600">800+</div>
+                  <div className="text-gray-600">Companies partnered with us</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-4xl font-bold text-blue-600">8k+</div>
+                  <div className="text-gray-600">Learners already placed</div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </section>
 

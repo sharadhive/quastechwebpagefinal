@@ -258,22 +258,71 @@ const PlacementPage = () => {
         
         {/* 1. Hero Banner Section - Croma Campus Style */}
         <section className="relative px-4 pt-20 md:pt-22 pb-6 md:pb-8 overflow-hidden flex items-center justify-center min-h-[450px] md:min-h-[520px]">
-          {/* Hero Component Background Gradient */}
+          {/* Hero Component Background Gradient - Same as ContactPage */}
           <div className="absolute inset-0 -z-1">
-            {/* Clean Professional Hero Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800" />
-            {/* Subtle Overlay for Better Text Contrast */}
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 via-transparent to-orange-900/20" />
-            {/* Professional Mesh Overlay - Reduced Opacity */}
-            <div className="absolute inset-0 bg-gradient-mesh opacity-10" />
-            {/* Subtle Grid Pattern - Reduced Opacity */}
-            <div
-              className="absolute inset-0 opacity-5"
-            style={{
-                backgroundImage:
-                  "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
-                backgroundSize: "60px 60px",
+            {/* Main Gradient Background - Same as ContactPage */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#1e3a8a] via-[#2563eb] to-[#f97316]" />
+            
+            {/* Static Gradient Overlays */}
+            <div className="absolute inset-0 opacity-30">
+              <div className="absolute inset-0" style={{
+                backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.5) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(249, 115, 22, 0.5) 0%, transparent 50%)',
+              }} />
+            </div>
+
+            {/* Animated Mesh Gradient Overlay */}
+            <div className="absolute inset-0 opacity-20" style={{
+              backgroundImage: `linear-gradient(135deg, rgba(30, 58, 138, 0.4) 0%, transparent 50%), 
+                               linear-gradient(225deg, rgba(249, 115, 22, 0.4) 0%, transparent 50%),
+                               linear-gradient(45deg, rgba(59, 130, 246, 0.3) 0%, transparent 50%)`,
+            }} />
+
+            {/* Animated Floating Elements */}
+            <motion.div
+              initial={{ y: 0, x: 0, rotate: 0 }}
+              animate={{ 
+                y: -20,
+                x: 10,
+                rotate: 8
               }}
+              transition={{ 
+                duration: 7, 
+                repeat: Infinity,
+                repeatType: 'reverse',
+                ease: "easeInOut" 
+              }}
+              className="absolute top-16 left-8 w-48 h-48 md:w-56 md:h-56 bg-gradient-to-br from-blue-500/30 to-blue-600/30 rounded-full blur-3xl"
+            />
+            <motion.div
+              initial={{ y: 0, x: 0, rotate: 0 }}
+              animate={{ 
+                y: 20,
+                x: -10,
+                rotate: -8
+              }}
+              transition={{ 
+                duration: 9, 
+                repeat: Infinity,
+                repeatType: 'reverse',
+                ease: "easeInOut",
+                delay: 1
+              }}
+              className="absolute bottom-12 right-8 w-64 h-64 md:w-72 md:h-72 bg-gradient-to-br from-orange-500/30 to-orange-600/30 rounded-full blur-3xl"
+            />
+            <motion.div
+              initial={{ scale: 1, opacity: 0.3 }}
+              animate={{ 
+                scale: 1.15,
+                opacity: 0.4
+              }}
+              transition={{ 
+                duration: 10, 
+                repeat: Infinity,
+                repeatType: 'reverse',
+                ease: "easeInOut",
+                delay: 2
+              }}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] md:w-[450px] md:h-[450px] bg-gradient-to-br from-blue-600/20 to-orange-500/20 rounded-full blur-3xl"
             />
           </div>
           
@@ -498,22 +547,22 @@ const PlacementPage = () => {
         </section>
 
         {/* 3. Campus Placement's Drive Section */}
-        <section className="w-full bg-[#232323] py-10 md:py-16">
+        <section className="w-full bg-gradient-to-r from-blue-100 via-blue-50 to-blue-100 py-10 md:py-16">
           <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-[260px_1fr] gap-6 items-start">
             <div className="hidden md:flex flex-col pt-2">
-              <h2 className="text-4xl leading-tight font-extrabold text-white">
+              <h2 className="heading-institute text-left leading-tight">
                 Campus<br />Placement's<br />Drive
               </h2>
             </div>
             <div className="flex flex-col gap-4">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                <div className="text-white">
-                  <div className="text-2xl md:text-3xl font-extrabold mb-3">Placement Drive by uvXcel</div>
-                  <p className="text-gray-200 text-sm md:text-base max-w-3xl">
+                <div className="text-gray-700">
+                  <div className="heading-institute-md mb-3">Placement Drive by uvXcel</div>
+                  <p className="text-gray-700 text-sm md:text-base max-w-3xl">
                     The campus placement drive is an opportunity for our Learners as well as companies to select the best & qualified candidate or company in a shorter period of time. Quastech is known in the market for providing the quality candidates and that is why 800+ companies have trusted us in hand picking the talent they require.
                   </p>
                 </div>
-                <a href="/contact" className="self-start md:self-auto bg-[#ccfb49] hover:bg-lime-300 transition-colors px-5 py-2 font-bold rounded-md text-[#282828] text-sm shadow-md whitespace-nowrap flex items-center">
+                <a href="/contact" className="self-start md:self-auto bg-gradient-to-r from-blue-600 to-orange-500 hover:from-blue-700 hover:to-orange-600 text-white transition-colors px-5 py-2 font-bold rounded-md text-sm shadow-md whitespace-nowrap flex items-center">
                   Get a Free Counseling
                   <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                 </a>
@@ -528,7 +577,7 @@ const PlacementPage = () => {
                 ].map((item, idx) => (
                   <SwiperSlide key={idx}>
                     <motion.div
-                      className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10"
+                      className="relative rounded-2xl overflow-hidden shadow-2xl border border-blue-200"
                       style={{ transformStyle: 'preserve-3d', perspective: '1000px' }}
                       whileHover={{
                         y: -10,
@@ -626,7 +675,7 @@ const PlacementPage = () => {
         <section className="relative bg-white py-14 px-3">
           <div className="max-w-6xl mx-auto">
             <div className="flex items-center mb-9">
-              <h2 className="text-3xl font-extrabold text-[#19376D] flex-1 tracking-tight">Recent Placements</h2>
+              <h2 className="heading-institute-lg flex-1 tracking-tight">Recent Placements</h2>
               <span className="ml-3 bg-blue-50 text-blue-700 rounded-full px-4 py-1 text-xs font-bold shadow">1578+</span>
             </div>
             <div className="flex flex-wrap gap-4 justify-center mb-10">
@@ -706,7 +755,7 @@ const PlacementPage = () => {
         {/* 6. Placed Learner's Testimonials */}
         <section className="py-16 bg-gradient-to-br from-gray-50 to-blue-50">
           <div className="max-w-6xl mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-12 text-[#19376D]">Placed Learner's Testimonials</h2>
+            <h2 className="heading-institute-lg text-center mb-12">Placed Learner's Testimonials</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {testimonials.map((testimonial, i) => (
                 <motion.div
@@ -753,7 +802,7 @@ const PlacementPage = () => {
         {/* 7. Profile Building Sessions */}
         <section className="py-16 bg-white">
           <div className="max-w-6xl mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-12 text-[#19376D]">Profile building sessions</h2>
+            <h2 className="heading-institute-lg text-center mb-12">Profile building sessions</h2>
             <div className="grid md:grid-cols-5 gap-4 mb-8">
               {profileSessions.map((session) => (
                 <button
@@ -797,7 +846,7 @@ const PlacementPage = () => {
         {/* 8. Upcoming Placement Drives */}
         <section className="py-16 bg-gradient-to-br from-blue-50 to-gray-50">
           <div className="max-w-6xl mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-12 text-[#19376D]">Upcoming placement drives</h2>
+            <h2 className="heading-institute-lg text-center mb-12">Upcoming placement drives</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {upcomingDrives.map((drive, i) => (
             <motion.div
@@ -830,14 +879,75 @@ const PlacementPage = () => {
         {/* 9. Our Hiring Partners */}
         <section className="py-16 bg-white">
           <div className="max-w-6xl mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-4 text-[#19376D]">Our Hiring Partners</h2>
-            <p className="text-center text-gray-600 mb-8">Organizations around the globe trusting our Learners technical skills and hiring them with good payscale</p>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-              {companyList.slice(0, 12).map((company, i) => (
-                <div key={i} className="bg-white rounded-xl p-4 shadow-md hover:shadow-xl transition-all border border-gray-100 flex items-center justify-center h-24">
-                  <img src={company.logo} alt={company.name} className="max-w-full max-h-full object-contain" />
-                </div>
-              ))}
+            <h2 className="heading-institute-lg text-center mb-4">Our Hiring Partners</h2>
+            <p className="section-subtitle text-center mb-8">Organizations around the globe trusting our Learners technical skills and hiring them with good payscale</p>
+            
+            {/* First Row - Sliding from Right to Left */}
+            <div className="overflow-hidden mb-6">
+              <motion.div
+                className="flex gap-6"
+                animate={{
+                  x: ['0%', '-50%']
+                }}
+                transition={{
+                  x: {
+                    repeat: Infinity,
+                    repeatType: 'loop',
+                    duration: 30,
+                    ease: 'linear'
+                  }
+                }}
+              >
+                {/* Duplicate the logos for seamless loop */}
+                {[...companyList.slice(0, 6), ...companyList.slice(0, 6)].map((company, i) => (
+                  <div
+                    key={`first-${i}`}
+                    className="flex-shrink-0 w-48 md:w-56 lg:w-64"
+                  >
+                    <motion.div
+                      className="bg-white rounded-xl p-4 shadow-md hover:shadow-xl transition-all border border-gray-100 flex items-center justify-center h-24"
+                      whileHover={{ scale: 1.05, rotateY: 5 }}
+                      style={{ transformStyle: 'preserve-3d' }}
+                    >
+                      <img src={company.logo} alt={company.name} className="max-w-full max-h-full object-contain" />
+                    </motion.div>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+
+            {/* Second Row - Sliding from Left to Right */}
+            <div className="overflow-hidden">
+              <motion.div
+                className="flex gap-6"
+                animate={{
+                  x: ['-50%', '0%']
+                }}
+                transition={{
+                  x: {
+                    repeat: Infinity,
+                    repeatType: 'loop',
+                    duration: 30,
+                    ease: 'linear'
+                  }
+                }}
+              >
+                {/* Duplicate the logos for seamless loop */}
+                {[...companyList.slice(6, 12), ...companyList.slice(6, 12)].map((company, i) => (
+                  <div
+                    key={`second-${i}`}
+                    className="flex-shrink-0 w-48 md:w-56 lg:w-64"
+                  >
+                    <motion.div
+                      className="bg-white rounded-xl p-4 shadow-md hover:shadow-xl transition-all border border-gray-100 flex items-center justify-center h-24"
+                      whileHover={{ scale: 1.05, rotateY: -5 }}
+                      style={{ transformStyle: 'preserve-3d' }}
+                    >
+                      <img src={company.logo} alt={company.name} className="max-w-full max-h-full object-contain" />
+                    </motion.div>
+                  </div>
+                ))}
+              </motion.div>
             </div>
             <div className="mt-8 text-center">
               <div className="inline-flex gap-8">
