@@ -94,10 +94,13 @@ const Footer = () => {
     { name: "Full Stack Java Development", href: "/full-stack-java-development" },
     { name: "Full Stack Python Development", href: "/full-stack-python-development" },
     { name: "Full Stack Web Development", href: "/web-development-course" },
+    { name: "Data Science With Python", href: "/python-data-science" },
     { name: "Java Development Training", href: "/java-training" },
     { name: "Python Development Training", href: "/python-training" },
     { name: "Web Designing Training", href: "/web-designing-training" },
-    { name: "Digital Marketing", href: "#" }
+    { name: "React Training", href: "/react-course" },
+    { name: "Angular Training", href: "/angular-course" },
+    { name: "Digital Marketing", href: "/digital-marketing" }
   ];
 
   const quickLinks = [
